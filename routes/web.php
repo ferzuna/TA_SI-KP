@@ -16,3 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// ini routes ke home admin
+Route::get('/admin', function () {
+    return view('admin.home');
+});
+
+// dosen
+Route::get('/dosen', function () {
+    return view('dosen.home');
+});
+
+// mahasiswa
+Route::get('/mahasiswa', function () {
+    return view('mahasiswa.home');
+});
+
+// koordinator
+Route::get('/koordinator', function () {
+    return view('koordinator.home');
+});
