@@ -1,0 +1,17 @@
+nav {
+    background-color: #04144C;
+}
+
+nav .navbar-brand img{
+    height: 65px;
+    width: 100%;
+    margin: 0px 10px;
+}
+
+nav li a.nav-link{
+    color: white;
+}
+
+nav .navbar-nav {
+    justify-content: space-between;
+}
