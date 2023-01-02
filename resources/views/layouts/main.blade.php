@@ -21,6 +21,8 @@
         @yield('container')
     </div>
 
+    @include('partials.footer')
+
 </body>
 
 </html>
