@@ -1,0 +1,25 @@
+nav {
+    background-color: #04144C;
+}
+
+nav .navbar-brand img{
+    height: 65px;
+    width: 100%;
+    margin: 0px 5px;
+}
+
+
+
+nav li a.nav-link{
+    color: white;
+    margin: 0px 10px;
+}
+
+nav .collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .btn-login {
+    margin: 0px 20px;
+}
