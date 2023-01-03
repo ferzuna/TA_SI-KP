@@ -1,5 +1,5 @@
-@extends('layouts.main')
+@extends('mahasiswa.layouts.main')
 
-@section('container')
+@section('content')
     <h1>halaman mahasiswa</h1>
 @endsection
