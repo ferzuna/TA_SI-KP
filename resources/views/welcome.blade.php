@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('container')
+@section('section')
     <section class="welcome">
         <div class="welcome-wrapper">
             <div class="container">

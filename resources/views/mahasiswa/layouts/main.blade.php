@@ -15,13 +15,13 @@
 </head>
 
 <body>
-    @include('layouts.navbar')
+    @include('mahasiswa.layouts.navbar')
 
     <div>
         @yield('section')
     </div>
 
-    @include('layouts.footer')
+    @include('mahasiswa.layouts.footer')
 
 </body>
 
