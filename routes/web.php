@@ -36,3 +36,4 @@ Route::get('/mahasiswa', function () {
 Route::get('/koordinator', function () {
     return view('koordinator.home');
 });
+// test
