@@ -4,27 +4,30 @@
         <div class="container">
             <div class="row">
                 <div class="d-flex justify-content-between">
-                    <div class="col-lg-7 col-md-6 d-flex my-auto">
+                    <div class="col-lg-7 col-md-12 d-flex my-auto">
                         <div class="footer-contact">
                             <img src="{{ asset('img/Logo.svg') }}" alt="Teknik Komputer Undip">
                         </div>
                     </div>
-
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h5 style="font-weight: 700">Services</h5>
-                        <ul>
-                            <li><a href="#">Permohonan KP</a></li>
-                            <li><a href="#">Dokumen KP</a></li>
-                        </ul>
+                    <div class="col-lg-5 col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-12 footer-links">
+                                <h5 style="font-weight: 700">Services</h5>
+                                <ul>
+                                    <li><a href="#">Permohonan KP</a></li>
+                                    <li><a href="#">Dokumen KP</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 footer-links">
+                                <h5 style="font-weight: 700">Contact Us</h5>
+                                <ul>
+                                    <li><a href="#">Email : tekkom@undip.ac.id</a></li>
+                                    <li><a href="#">No. Telepon: (024) 76480609</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h5 style="font-weight: 700">Contact Us</h5>
-                        <ul>
-                            <li><a href="#">Email : tekkom@undip.ac.id</a></li>
-                            <li><a href="#">No. Telepon: (024) 76480609</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
