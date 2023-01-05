@@ -36,4 +36,8 @@ Route::get('/mahasiswa', function () {
 Route::get('/koordinator', function () {
     return view('koordinator.home');
 });
-// test
+
+//login
+Route::get('/login', function (){
+    return view('login.index');
+});
