@@ -15,9 +15,11 @@
                 </li>
             </ul>
             <div class="btn-login">
-                <button type="button" class="btn btn-light" style="border-radius: 24px">
-                    <div style="padding: 0px 10px; font-size: 14px; font-weight: 600">Login</div>
-                </button>
+                <a href="/login">
+                    <button type="button" class="btn btn-light" style="border-radius: 24px">
+                        <div style="padding: 0px 10px; font-size: 14px; font-weight: 600">Login</div>
+                    </button>
+                </a>
             </div>
         </div>
     </div>
