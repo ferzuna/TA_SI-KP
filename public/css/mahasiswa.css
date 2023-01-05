@@ -1,0 +1,30 @@
+.app-mahasiswa {
+    background-color: #CCCCCC;
+}
+
+section.welcome-mahasiswa {
+    padding: 1em;
+}
+
+.welcome-mahasiswa .banner .media-right {
+    display: block;
+    background-color: white;
+    padding: 10px 1em;
+    border-left: 4em solid #907E7E;
+}
+
+.welcome-mahasiswa .biodata-wrapper {
+    margin: 2em 0;
+}
+
+.welcome-mahasiswa .biodata-wrapper .banner .media-right {
+    display: block;
+    background-color: white;
+    padding: 10px 1em;
+    margin-bottom: 1em;
+    border-left: 4em solid #907E7E;
+}
+
+.biodata-wrapper {
+    padding: 1em 0;
+}
