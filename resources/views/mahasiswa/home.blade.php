@@ -104,26 +104,46 @@
         {{-- Menu Mahasiswa --}}
         <div class="menu-mahasiswa">
             <div class="container-fluid">
-                <h2 class="text-center">
+                <h2 class="title text-center">
                     Layanan
                 </h2>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <h2 class="text-center">Test</h2>
+                <div class="wrap">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-content">
+                                    <h4 class="text-center">Pendaftaran KP</h4>
+                                    <p style="margin-top:2em">Pengajuan proposal dan surat permohonan KP untuk di TTD
+                                        Kepala
+                                        Departemen lalu diberikan
+                                        kepaada perusahaan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-content">
+                                    <h4 class="text-center">Pengumpulan Berkas</h4>
+                                    <p style="margin-top:2em">Pengumpulan berkas yang berkairan dengan magang yang peru
+                                        ditanda
+                                        tangan diikumpulkan disini
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-content">
+                                    <h4 class="text-center">Finalisasi Berkas</h4>
+                                    <p style="margin-top:2em">Pengumpulan semua berkas yang perlu ditanda tangan dosen
+                                        dan
+                                        juga
+                                        pengumpulan lainnya
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <h2 class="text-center">Test</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <h2 class="text-center">Test</h2>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

@@ -28,3 +28,15 @@ section.welcome-mahasiswa {
 .biodata-wrapper {
     padding: 1em 0;
 }
+
+.menu-mahasiswa .wrap {
+    
+}
+
+.menu-mahasiswa .title {
+    margin: 2em 0em;
+}
+.menu-mahasiswa .card-content {
+    padding: 2em;
+    
+}
