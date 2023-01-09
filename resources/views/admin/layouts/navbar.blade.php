@@ -28,7 +28,7 @@
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Daftar Berkas yang Sudah di Tandatangan') }}</span>
+            <span>{{ __('Bobot Bimbingan') }}</span>
         </a>
     </li>
 
@@ -36,8 +36,7 @@
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-fw fa-cog"></i>
-            <span>{{ __('Daftar Berkas yang Belum
-                            di Tanda Tangan') }}</span>
+            <span>{{ __('Daftar Berkas dan Nilai') }}</span>
         </a>
     </li>
 
