@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,9 @@ Route::get('/', function () {
 });
 
 // ini routes ke home admin
-Route::get('/admin', function () {
-    return view('admin.home');
-});
+// Route::get('/admin', function () {
+//     return view('admin.home');
+// });
 
 // dosen
 Route::get('/dosen', function () {
@@ -37,11 +39,20 @@ Route::get('/koordinator', function () {
     return view('koordinator.home');
 });
 
-//login
-Route::get('/login', function () {
-    return view('login.index');
-});
+
 
 // Auth::routes();
 
+Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin',[LoginController::class,'showAdminLoginForm'])->name('admin.login-view');
+Route::post('/admin',[LoginController::class,'adminLogin'])->name('admin.login');
+
+Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm'])->name('admin.register-view');
+Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
+
+Route::get('/admin/dashboard',function(){
+    return view('admin.home');
+})->middleware('auth:admin');
