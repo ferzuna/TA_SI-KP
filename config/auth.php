@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+        'dosen' => [
+            'driver' => 'session',
+            'provider' => 'dosens'
+        ],
+        'koor' => [
+            'driver' => 'session',
+            'provider' => 'koors'
+        ]
     ],
 
     /*
@@ -62,7 +74,19 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Mahasiswa::class,
+        ],
+        'dosens' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Dosen::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'koors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Koor::class,
         ],
 
         // 'users' => [
@@ -93,6 +117,25 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'dosens' => [
+            'provider' => 'dosens',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'koors' => [
+            'provider' => 'koors',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*
