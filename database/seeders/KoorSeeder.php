@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Koor;
 use Illuminate\Database\Seeder;
 
 class KoorSeeder extends Seeder
@@ -13,6 +14,11 @@ class KoorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $koor = Koor::create([
+            'username' => 'burisma123',
+            'password' => bcrypt('password') 
+        ]);
+
+        $koor->assignRole('koor');
     }
 }

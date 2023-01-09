@@ -10,7 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 
-$role = Role::create(['name' => 'mahasiswa']);
 
 class User extends Authenticatable
 {
