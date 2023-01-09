@@ -102,7 +102,7 @@
                     <div class="card-body">
                         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
                             <b>Selamat Datang Fadzil </b></br></br>
-                            Anda telah login sebagai Administrator, Silahkan menggunakan menu di panel kiri.
+                            Anda telah login sebagai Koordinator KP, Silahkan menggunakan menu di panel kiri.
                         </div>
                     </div>
                 </div>
