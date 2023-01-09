@@ -1,9 +1,9 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #04144C">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink iconsenyum"></i></div>
-        <div class="sidebar-brand-text mx-3"> SMDM </div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" style="height: auto !important"
+        href="/">
+        <img src="{{ asset('img/Logo-navbar.svg') }}" alt="">
     </a>
 
     <!-- Divider -->
@@ -17,18 +17,18 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    {{-- <hr class="sidebar-divider"> --}}
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         {{ __('Master Data') }}
-    </div>
+    </div> --}}
 
     <!-- Nav Item - Santri -->
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Data Santri') }}</span>
+            <span>{{ __('Bobot Bimbingan') }}</span>
         </a>
     </li>
 
@@ -36,7 +36,7 @@
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-fw fa-cog"></i>
-            <span>{{ __('Pengaturan') }}</span>
+            <span>{{ __('Daftar Berkas dan Nilai') }}</span>
         </a>
     </li>
 

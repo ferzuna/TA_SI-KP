@@ -1,10 +1,13 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
     <div class="footer-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="d-flex justify-content-between">
-                    <div class="col-lg-7 col-md-12 d-flex my-auto">
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-6 col-md-12 d-flex my-auto">
                         <div class="footer-contact">
                             <img src="{{ asset('img/Logo.svg') }}" alt="Teknik Komputer Undip">
                         </div>
