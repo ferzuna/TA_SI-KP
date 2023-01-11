@@ -41,6 +41,10 @@ class LoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:dosen')->except('logout');
         $this->middleware('guest:koor')->except('logout');
+        $this->middleware('guest:web')->except('logout');
+
+        // $this->middleware('guest:mahasiswa')->except('logout');
+
     }
 
     public function showAdminLoginForm()
@@ -55,7 +59,7 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (\Auth::guard('admin')->attempt($request->only(['username','password']), $request->get('remember'))){
+        if (Auth::guard('admin')->attempt($request->only(['username','password']), $request->get('remember'))){
             return redirect()->intended('/admin/dashboard');
         }
 
@@ -74,7 +78,7 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (\Auth::guard('dosen')->attempt($request->only(['username','password']), $request->get('remember'))){
+        if (Auth::guard('dosen')->attempt($request->only(['username','password']), $request->get('remember'))){
             return redirect()->intended('/dosen/dashboard');
         }
 
@@ -93,7 +97,7 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (\Auth::guard('koor')->attempt($request->only(['username','password']), $request->get('remember'))){
+        if (Auth::guard('koor')->attempt($request->only(['username','password']), $request->get('remember'))){
             return redirect()->intended('/koor/dashboard');
         }
 
