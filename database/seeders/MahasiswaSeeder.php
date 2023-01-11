@@ -25,6 +25,7 @@ class MahasiswaSeeder extends Seeder
             'password' => bcrypt('password') 
         ]);
 
+        // $all = Mahasiswa::all();
         $mahasiswa->assignRole('mahasiswa');
     }
 }
