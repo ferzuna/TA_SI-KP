@@ -24,6 +24,6 @@ class DosenSeeder extends Seeder
             'password' => bcrypt('password') 
         ]);
 
-        $dosen->assignRole('dosen');
+        // $dosen->assignRole('dosen');
     }
 }

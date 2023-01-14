@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 use Illuminate\Database\Seeder;
 
-class PermissionSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds. 
@@ -28,19 +28,19 @@ class PermissionSeeder extends Seeder
 
         Role::create([
             'name' => 'dosen',
-            'guard_name' => 'dosen'
+            'guard_name' => 'web'
 
         ]);
 
         Role::create([
             'name' => 'admin',
-            'guard_name' => 'admin'
+            'guard_name' => 'web'
 
         ]);
 
         Role::create([
             'name' => 'koor',
-            'guard_name' => 'koor'
+            'guard_name' => 'web'
 
         ]);
         // app()[PermissionRegistrar::class]->forgetCachedPermissions();
