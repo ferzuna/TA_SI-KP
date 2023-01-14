@@ -2,18 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Role;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Mahasiswa extends Authenticatable
+
+class Mahasiswa extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    use HasFactory, HasRoles;
+    use HasFactory;
 
     protected $guarded = ['id'];
 

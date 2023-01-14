@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\KoorSeeder;
 use Database\Seeders\RoleSeeder;
+use Database\Seeders\UserSeeder;
 use Database\Seeders\AdminSeeder;
 use Database\Seeders\DosenSeeder;
 use Database\Seeders\MahasiswaSeeder;
@@ -20,10 +21,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(RoleSeeder::class);
-        $this->call(MahasiswaSeeder::class);
-        $this->call(DosenSeeder::class);
-        $this->call(AdminSeeder::class);
-        $this->call(KoorSeeder::class);
+        $this->call(UserSeeder::class);
 
     }
 }

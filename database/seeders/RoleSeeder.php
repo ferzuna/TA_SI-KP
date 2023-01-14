@@ -28,19 +28,19 @@ class RoleSeeder extends Seeder
 
         Role::create([
             'name' => 'dosen',
-            'guard_name' => 'dosen'
+            'guard_name' => 'web'
 
         ]);
 
         Role::create([
             'name' => 'admin',
-            'guard_name' => 'admin'
+            'guard_name' => 'web'
 
         ]);
 
         Role::create([
             'name' => 'koor',
-            'guard_name' => 'koor'
+            'guard_name' => 'web'
 
         ]);
         // app()[PermissionRegistrar::class]->forgetCachedPermissions();

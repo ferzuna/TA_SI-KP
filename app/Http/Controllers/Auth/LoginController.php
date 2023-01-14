@@ -38,69 +38,33 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:dosen')->except('logout');
-        $this->middleware('guest:koor')->except('logout');
-        $this->middleware('guest:web')->except('logout');
+        // $this->middleware('guest:admin')->except('logout');
+        // $this->middleware('guest:dosen')->except('logout');
+        // $this->middleware('guest:koor')->except('logout');
+        // $this->middleware('guest:web')->except('logout');
 
         // $this->middleware('guest:mahasiswa')->except('logout');
 
     }
 
-    public function showAdminLoginForm()
-    {
-        return view('auth.login', ['url' => route('admin.login-view'), 'title'=>'Admin']);
-    }
+    
 
-    public function adminLogin(Request $request)
-    {
-        $this->validate($request, [
-            'username'   => 'required|username',
-            'password' => 'required|min:6'
-        ]);
+    // public function showAdminLoginForm()
+    // {
+    //     return view('auth.login', ['url' => route('admin.login-view'), 'title'=>'Admin']);
+    // }
 
-        if (Auth::guard('admin')->attempt($request->only(['username','password']), $request->get('remember'))){
-            return redirect()->intended('/admin/dashboard');
-        }
+    // public function adminLogin(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'email'   => 'required|email',
+    //         'password' => 'required|min:6'
+    //     ]);
 
-        return back()->withInput($request->only('username', 'remember'));
-    }
+    //     if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
+    //         return redirect()->intended('/admin/dashboard');
+    //     }
 
-    public function showDosenLoginForm()
-    {
-        return view('auth.login', ['url' => route('dosen.login-view'), 'title'=>'dosen']);
-    }
-
-    public function dosenLogin(Request $request)
-    {
-        $this->validate($request, [
-            'username'   => 'required|username',
-            'password' => 'required|min:6'
-        ]);
-
-        if (Auth::guard('dosen')->attempt($request->only(['username','password']), $request->get('remember'))){
-            return redirect()->intended('/dosen/dashboard');
-        }
-
-        return back()->withInput($request->only('username', 'remember'));
-    }
-
-    public function showKoorLoginForm()
-    {
-        return view('auth.login', ['url' => route('koor.login-view'), 'title'=>'koor']);
-    }
-
-    public function koorLogin(Request $request)
-    {
-        $this->validate($request, [
-            'username'   => 'required|username',
-            'password' => 'required|min:6'
-        ]);
-
-        if (Auth::guard('koor')->attempt($request->only(['username','password']), $request->get('remember'))){
-            return redirect()->intended('/koor/dashboard');
-        }
-
-        return back()->withInput($request->only('username', 'remember'));
-    }
+    //     return back()->withInput($request->only('email', 'remember'));
+    // }
 }

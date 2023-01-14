@@ -20,7 +20,7 @@ class CreateAdminsTable extends Migration
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
