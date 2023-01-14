@@ -47,7 +47,22 @@ class LoginController extends Controller
 
     }
 
-    
+    protected function authenticated(Request $request, $user){
+        if ($user->hasRole('admin')){
+            return redirect()->route('admin');
+        }
+        else if ($user->hasRole('dosen')){
+            return redirect()->route('dosen');
+        }
+        else if ($user->hasRole('koor')){
+            return redirect()->route('koordinator');
+        }
+        else if ($user->hasRole('mahasiswa')){
+            return redirect()->route('mahasiswa');
+        }
+
+        return redirect()->route('home');
+    }
 
     // public function showAdminLoginForm()
     // {
