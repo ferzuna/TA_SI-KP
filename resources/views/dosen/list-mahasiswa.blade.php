@@ -16,7 +16,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="col-md-6">
-                                    <form method="POST" action="{{ route('santri.store') }}">
+                                    <form method="POST" action="">
                                         @csrf
                                         <input type="text" class="border rounded-0 form-control"
                                             style="width: 440px;margin-bottom: 15px;" placeholder="Nama" name="nama" />
@@ -77,7 +77,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($mysantri as $data)
+                                        {{-- @foreach ($mysantri as $data)
                                             <tr>
                                                 <td class="namecntr"><img class="rounded-circle mr-2" width="30"
                                                         height="30"
@@ -191,7 +191,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                     <tfoot>
                                         <tr>

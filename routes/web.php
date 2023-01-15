@@ -47,16 +47,27 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', function() {
+
+// admin
+Route::get('/admin', function () {
     return view('admin.home');
 })->name('admin');
-Route::get('/dosen', function() {
+
+// dosen
+Route::get('/dosen', function () {
     return view('dosen.home');
 })->name('dosen');
-Route::get('/mahasiswa', function() {
+Route::get('/dosen/list-mahasiswa', function () {
+    return view('dosen.list-mahasiswa');
+})->name('dosen.list-mahasiswa');
+
+// mahasiswa
+Route::get('/mahasiswa', function () {
     return view('mahasiswa.home');
 })->name('mahasiswa');
-Route::get('/koordinator', function() {
+
+// koordinator
+Route::get('/koordinator', function () {
     return view('koordinator.home');
 })->name('koordinator');
 
