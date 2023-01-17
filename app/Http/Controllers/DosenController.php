@@ -15,7 +15,11 @@ class DosenController extends Controller
      */
     public function index()
     {
-        //
+        $alldosen = Dosen::all();
+        return view ('admin.bobot',[
+            "alldosen"=>$alldosen
+        ]);
+
     }
 
     /**

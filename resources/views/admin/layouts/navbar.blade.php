@@ -11,7 +11,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="/admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('Dashboard') }}</span></a>
     </li>
@@ -26,7 +26,7 @@
 
     <!-- Nav Item - Santri -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="{{ route('bobot') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Bobot Bimbingan') }}</span>
         </a>

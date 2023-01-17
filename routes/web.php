@@ -71,6 +71,12 @@ Route::get('/koordinator', function () {
     return view('koordinator.home');
 })->name('koordinator');
 
+Route::get('/bobot', function () {
+    return view('admin.bobot');
+})->name('bobot');
+
+// Route::get('/bobot', [App\Http\Controllers\DosenController::class, 'index'])->name('bobot');
+
 
 // Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
