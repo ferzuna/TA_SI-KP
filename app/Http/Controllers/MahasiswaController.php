@@ -18,6 +18,13 @@ class MahasiswaController extends Controller
         //
     }
 
+
+    public function allmhs(){
+        $mymahasiswa = Mahasiswa::all();
+        return view('dosen.list-mahasiswa', [
+            "mymahasiswa" => $mymahasiswa
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

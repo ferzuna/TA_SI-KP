@@ -67,27 +67,26 @@
                                 <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>NIM</th>
                                             <th>Nama Lengkap</th>
-                                            <th>Gender</th>
-                                            <th>Alamat</th>
-                                            <th>Perguruan Tinggi</th>
-                                            <th>Jurusan</th>
+                                            <th>Angkatan</th>
+                                            <th>No_telp</th>
+                                            <th>username</th>
                                             <th>Status</th>
-                                            <th>Manage</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($mysantri as $data)
+                                        @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <td class="namecntr"><img class="rounded-circle mr-2" width="30"
+                                                <!-- <td class="namecntr"><img class="rounded-circle mr-2" width="30"
                                                         height="30"
                                                         src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                </td>
-                                                <td><?= $data['gender'] ?></td>
-                                                <td><?= $data['alamat'] ?></td>
-                                                <td><?= $data['pt'] ?></td>
-                                                <td><?= $data['jurusan'] ?></td>
-                                                <td><?= $data['status'] ?></td>
+                                                </td> -->
+                                                <td><?= $data['NIM'] ?></td>
+                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $data['angkatan'] ?></td>
+                                                <td><?= $data['no_telp'] ?></td>
+                                                <td><?= $data['username'] ?></td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>
@@ -191,17 +190,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <td><strong>NIM</strong></td>
                                             <td><strong>Nama Lengkap</strong></td>
-                                            <td><strong>Gender</strong></td>
-                                            <td><strong>Alamat</strong></td>
-                                            <td><strong>Perguruan Tinggi</strong></td>
-                                            <td><strong>Jurusan</strong></td>
+                                            <td><strong>Angkatan</strong></td>
+                                            <td><strong>No_telp</strong></td>
+                                            <td><strong>username</strong></td>
                                             <td><strong>Status</strong></td>
-                                            <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>

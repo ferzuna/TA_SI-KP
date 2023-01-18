@@ -57,9 +57,12 @@ Route::get('/admin', function () {
 Route::get('/dosen', function () {
     return view('dosen.home');
 })->name('dosen');
-Route::get('/dosen/list-mahasiswa', function () {
-    return view('dosen.list-mahasiswa');
-})->name('dosen.list-mahasiswa');
+
+
+// Route::get('/dosen/list-mahasiswa', function () {
+//     return view('dosen.list-mahasiswa');
+// })->name('dosen.list-mahasiswa');
+Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
 
 // mahasiswa
 Route::get('/mahasiswa', function () {
