@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
 
 @section('section')
-    <h1>konzzz</h1>
-<!-- <div class="container-fluid">
+    
+<div class="container-fluid">
         <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Manajemen Data Mahasantri') }}</h1>
 
         @if (session('success'))
@@ -38,5 +38,6 @@
                     <td> {{ $dosen['bobot_bimbingan'] }} </td>
                 </tr>
             </tbody>
-        </table> -->
+        </table> 
+    @endforeach
 @endsection
