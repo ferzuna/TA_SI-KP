@@ -52,9 +52,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/admin', function () {
     return view('admin.home');
 })->name('admin');
+Route::get('/bobot', function () {
+    return view('admin.bobot');
+})->name('bobot');
+Route::get('/bobot-list', function () {
+    return view('admin.bobot-list');
+})->name('bobot-list');
 
 // dosen
-Route::get('/dosen', function () {
+Route::get('/admin/bobot', function () {
     return view('dosen.home');
 })->name('dosen');
 
@@ -74,9 +80,7 @@ Route::get('/koordinator', function () {
     return view('koordinator.home');
 })->name('koordinator');
 
-Route::get('/bobot', function () {
-    return view('admin.bobot');
-})->name('bobot');
+
 
 // Route::get('/bobot', [App\Http\Controllers\DosenController::class, 'index'])->name('bobot');
 
