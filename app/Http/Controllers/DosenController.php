@@ -22,6 +22,11 @@ class DosenController extends Controller
 
     }
 
+    public function detailbimbingan(){
+
+    }
+    
+
     /**
      * Show the form for creating a new resource.
      *

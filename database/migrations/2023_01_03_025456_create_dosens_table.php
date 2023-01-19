@@ -19,6 +19,7 @@ class CreateDosensTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('email');
+            $table->integer('kuota_bimbingan')->nullable();
             $table->integer('bobot_bimbingan')->nullable();
             $table->string('username');
             $table->string('password');
