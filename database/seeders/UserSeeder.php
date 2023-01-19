@@ -17,28 +17,32 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'role_id' => 3
         ]);
         $admin->assignRole('admin');
         
         $dosen = User::create([
             'name' => 'dosen',
             'email' => 'dosen@gmail.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'role_id' => 4
         ]);
         $dosen->assignRole('dosen');
         
         $koor = User::create([
             'name' => 'koor',
             'email' => 'koor@gmail.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'role_id' => 2
         ]);
         $koor->assignRole('koor');
 
         $mahasiswa = User::create([
             'name' => 'mahasiswa',
             'email' => 'mahasiswa@gmail.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'role_id' => 1
         ]);
         $mahasiswa->assignRole('mahasiswa');
     }

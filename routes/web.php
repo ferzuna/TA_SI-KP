@@ -48,19 +48,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 // admin
 Route::get('/admin', function () {
     return view('admin.home');
 })->name('admin');
-Route::get('/bobot', function () {
-    return view('admin.bobot');
-})->name('bobot');
+
 Route::get('/bobot-list', function () {
     return view('admin.bobot-list');
 })->name('bobot-list');
 
 // dosen
-Route::get('/admin/bobot', function () {
+Route::get('/dosen', function () {
     return view('dosen.home');
 })->name('dosen');
 
@@ -84,7 +83,7 @@ Route::get('/koordinator', function () {
 //     return view('admin.bobot');
 // })->name('bobot');
 
-Route::get('/bobot', [App\Http\Controllers\DosenController::class, 'index'])->name('bobot');
+Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'index'])->name('bobot');
 
 
 // Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
