@@ -22,9 +22,7 @@ class DosenController extends Controller
 
     }
 
-    public function detailbimbingan(){
 
-    }
     
 
     /**
