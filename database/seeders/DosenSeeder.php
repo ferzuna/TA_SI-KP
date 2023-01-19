@@ -20,6 +20,7 @@ class DosenSeeder extends Seeder
             'nama' => 'fadzil ferdiawan',
             'alamat' => 'batam',
             'bobot_bimbingan' => 0,
+            'kuota_bimbingan' => 0,
             'email' => 'ferzuna@gmail.com',
             'username' => 'ferzuna',
             'password' => bcrypt('password') 
@@ -30,6 +31,7 @@ class DosenSeeder extends Seeder
             'nama' => 'muhammad ilham wicaksono',
             'alamat' => 'bekasi',
             'bobot_bimbingan' => 0,
+            'kuota_bimbingan' => 0,
             'email' => 'wicak@gmail.com',
             'username' => 'wicak',
             'password' => bcrypt('password') 
@@ -39,6 +41,7 @@ class DosenSeeder extends Seeder
             'nama' => 'indriawan muhammad akbar',
             'alamat' => 'jakarta',
             'bobot_bimbingan' => 0,
+            'kuota_bimbingan' => 0,
             'email' => 'kibar@gmail.com',
             'username' => 'kibar',
             'password' => bcrypt('password') 
@@ -48,6 +51,7 @@ class DosenSeeder extends Seeder
             'nama' => 'murjito',
             'alamat' => 'bintara',
             'bobot_bimbingan' => 0,
+            'kuota_bimbingan' => 0,
             'email' => 'jito@gmail.com',
             'username' => 'jito',
             'password' => bcrypt('password') 
@@ -57,6 +61,7 @@ class DosenSeeder extends Seeder
             'nama' => 'joko warsono',
             'alamat' => 'bintara',
             'bobot_bimbingan' => 0,
+            'kuota_bimbingan' => 0,
             'email' => 'djoko@gmail.com',
             'username' => 'djoko',
             'password' => bcrypt('password') 
