@@ -1,9 +1,8 @@
 @extends('admin.layouts.main')
 
 @section('section')
-    
-<div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Manajemen Data Mahasantri') }}</h1>
+    <div class="container-fluid">
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Bobot Bimbingan Dosen') }}</h1>
 
         @if (session('success'))
             <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -20,24 +19,35 @@
             </div>
         @endif
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>NIP</th>
-                    <th>email</th>
-                    <th>Bobot Bimbingan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($alldosen as $dosen)
-                <tr>
-                    <td> {{ $dosen['nama'] }} </td>
-                    <td> {{ $dosen['NIP'] }} </td>
-                    <td> {{ $dosen['email'] }} </td>
-                    <td> {{ $dosen['bobot_bimbingan'] }} </td>
-                </tr>
-            </tbody>
-        </table> 
-    @endforeach
+        <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 font-weight-bold text-primary mb-3">Risma Septiana S.T.,
+                                        M.Eng.</div>
+                                    <strong>NIP : <span>21120119130056</span></strong>
+                                    <br>
+                                    <strong>Kuota Bimbingan : <span>30</span></strong>
+                                    <br>
+                                    <strong>Bobot Bimbingan : <span>25</span></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+
+
+
+
+
+
+        </div>
+    </div>
 @endsection
