@@ -76,12 +76,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($mymahasiswa as $data)
+                                        {{-- @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <!-- <td class="namecntr"><img class="rounded-circle mr-2" width="30"
-                                                                            height="30"
-                                                                            src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                                    </td> -->
+                                                <td class="namecntr"><img class="rounded-circle mr-2" width="30"
+                                                        height="30"
+                                                        src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
+                                                </td>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['nama'] ?></td>
                                                 <td><?= $data['angkatan'] ?></td>
@@ -174,7 +174,7 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        {{-- <div class="modal-body">
+                                                        <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
                                                                     action="{{ route('santri.destroy', $data['id']) }}">
@@ -186,11 +186,11 @@
                                                                         data-dismiss="modal">Close</button>
                                                                 </form>
                                                             </div>
-                                                        </div> --}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                     <tfoot>
                                         <tr>

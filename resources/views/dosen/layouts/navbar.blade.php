@@ -35,24 +35,23 @@
 
     <!-- Nav Item - Santri -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="{{ route('dosen.pendaftaran') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Daftar Berkas yang Sudah di Tandatangan') }}</span>
+            <span>{{ __('Pendaftaran KP') }}</span>
         </a>
     </li>
 
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="{{ route('dosen.bimbingan') }}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>{{ __('Daftar Berkas yang Belum
-                                                                                        di Tanda Tangan') }}</span>
+            <span>{{ __('Bimbingan Seminar') }}</span>
         </a>
     </li>
 
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="{{ route('dosen.jadwal') }}">
             <i class="fas fa-fw fa-cog"></i>
             <span>{{ __('Jadwal Pelaksanaan KP') }}</span>
         </a>
