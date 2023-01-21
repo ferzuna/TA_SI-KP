@@ -19,10 +19,20 @@ class DosenController extends Controller
         return view ('admin.bobot',[
             "alldosen"=>$alldosen
         ]);
-
     }
 
+// function yang belom jadi
+    // public function bimbingan(){
+    //     $bobot = Dosen::all();
+    //     $totalkuota = 0;
+    //     $totalbobot = 0;
+    //     foreach ($bobot as $bimbingan){
+    //         $totalkuota = $totalkuota + $bimbingan['kuota_bimbingan'];
+    //         $totalbobot = $totalbobot + $bimbingan['bobot_bimbingan'];
+    //     }
 
+    //     return $totalkuota;
+    // }
     
 
     /**
