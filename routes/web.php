@@ -67,6 +67,16 @@ Route::get('/dosen', function () {
 //     return view('dosen.list-mahasiswa');
 // })->name('dosen.list-mahasiswa');
 Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
+Route::get('/dosen/pendaftaran', function () {
+    return view('dosen.pendaftaran');
+})->name('dosen.pendaftaran');
+Route::get('/dosen/bimbingan', function () {
+    return view('dosen.bimbingan');
+})->name('dosen.bimbingan');
+Route::get('/dosen/jadwal', function () {
+    return view('dosen.jadwal');
+})->name('dosen.jadwal');
+
 
 // mahasiswa
 Route::get('/mahasiswa', function () {
