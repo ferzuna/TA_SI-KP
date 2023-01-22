@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.home');
     }
 
     /**
@@ -81,6 +81,6 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        
     }
 }

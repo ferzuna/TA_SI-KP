@@ -15,6 +15,10 @@ class DosenController extends Controller
      */
     public function index()
     {
+        return view('dosen.home');
+    }
+
+    public function bobotdosen(){
         $alldosen = Dosen::all();
         return view ('admin.bobot',[
             "alldosen"=>$alldosen
