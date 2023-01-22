@@ -49,18 +49,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // admin
-Route::get('/admin', function () {
-    return view('admin.home');
-})->name('admin');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
 Route::get('/bobot-list', function () {
     return view('admin.bobot-list');
 })->name('bobot-list');
 
 // dosen
-Route::get('/dosen', function () {
-    return view('dosen.home');
-})->name('dosen');
+Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen');
 
 
 // Route::get('/dosen/list-mahasiswa', function () {
@@ -79,20 +75,18 @@ Route::get('/dosen/jadwal', function () {
 
 
 // mahasiswa
-Route::get('/mahasiswa', function () {
-    return view('mahasiswa.home');
-})->name('mahasiswa');
+Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
+// untuk balancing beban dosen pembimbing
+Route::post('/dosbing', [App\Http\Controllers\DosenController::class, 'bimbingan']);
 
 // koordinator
-Route::get('/koordinator', function () {
-    return view('koordinator.home');
-})->name('koordinator');
+Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
 
 // Route::get('/bobot', function () {
 //     return view('admin.bobot');
 // })->name('bobot');
 
-Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'index'])->name('bobot');
+Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
 
 
 // Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
