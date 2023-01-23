@@ -25,6 +25,14 @@
     </div> --}}
 
     <!-- Nav Item - Santri -->
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.list-mahasiswa') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>{{ __('List Mahasiswa') }}</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{ route('bobot') }}">
             <i class="fas fa-fw fa-user"></i>
