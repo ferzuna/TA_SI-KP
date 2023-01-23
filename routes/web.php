@@ -87,6 +87,7 @@ Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index']
 // })->name('bobot');
 
 Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
+Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
 
 
 // Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

@@ -25,6 +25,13 @@ class DosenController extends Controller
         ]);
     }
 
+    public function pendaftaran(){
+        $alldosen = Dosen::where('bobot_bimbingan', '<', 25)->get();
+        return view('mahasiswa.pendaftaran',[
+            "alldosen"=>$alldosen
+        ]);
+    }
+
 // function yang belom jadi
     // public function bimbingan(){
     //     $bobot = Dosen::all();

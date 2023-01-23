@@ -12,7 +12,7 @@
                         <a class="nav-link" aria-current="page" href="{{ route('mahasiswa') }}">Home</a>
                     </li>
                     <li class="nav-item my-auto">
-                        <a class="nav-link" href="">Pendaftaran KP</a>
+                        <a class="nav-link" href="{{ route('pendaftaran') }}">Pendaftaran KP</a>
                     </li>
                     <li class="nav-item my-auto">
                         <a class="nav-link" href="#">Pengumpulan Berkas</a>
