@@ -22,25 +22,26 @@
         <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
+
             @foreach ($alldosen as $dosen)
-            <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="h5 font-weight-bold text-primary mb-3">{{ $dosen['nama'] }}</div>
-                                    <strong>NIP : <span>{{ $dosen['NIP'] }}</span></strong>
-                                    <br>
-                                    <strong>Kuota Bimbingan : <span>{{ $dosen['kuota_bimbingan'] }}</span></strong>
-                                    <br>
-                                    <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
+                            <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="h5 font-weight-bold text-primary mb-3">{{ $dosen['nama'] }}</div>
+                                        <strong>NIP : <span>{{ $dosen['NIP'] }}</span></strong>
+                                        <br>
+                                        <strong>Kuota Bimbingan : <span>{{ $dosen['kuota_bimbingan'] }}</span></strong>
+                                        <br>
+                                        <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </a>
             @endforeach
 
 

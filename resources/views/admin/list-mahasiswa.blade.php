@@ -1,4 +1,4 @@
-@extends('dosen.layouts.main')
+@extends('admin.layouts.main')
 
 @section('section')
     <div id="wrapper">
@@ -47,12 +47,10 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- Content --}}
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">Jadwal Pelaksanaan Seminar KP</h1>
+                            <h1 class="h3 mb-2 text-gray-800">List Bimbingan Mahasiswa</h1>
                         </div>
                         <div class="col"> <button
                                 class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
@@ -71,8 +69,10 @@
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
-                                            <th>Nama Perusahaan</th>
-                                            <th>Tanggal</th>
+                                            <th>NIM</th>
+                                            <th>Semester</th>
+                                            <th>Jumlah SKSk</th>
+                                            <th>Manage</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -108,8 +108,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
-                                                                <form method="POST"
-                                                                    action="{{ route('santri.update', $data['id']) }}">
+                                                                <form method="POST" action="">
                                                                     @csrf
                                                                     <input type="text"
                                                                         class="border rounded-0 form-control"
@@ -195,8 +194,10 @@
                                     <tfoot>
                                         <tr>
                                             <td><strong>Nama</strong></td>
-                                            <td><strong>Nama Perusahaan</strong></td>
-                                            <td><strong>Tanggal</strong></td>
+                                            <td><strong>NIM</strong></td>
+                                            <td><strong>Semester</strong></td>
+                                            <td><strong>Jumlah SKSk</strong></td>
+                                            <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>

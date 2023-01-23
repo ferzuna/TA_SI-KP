@@ -50,18 +50,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-
+Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
 Route::get('/bobot-list', function () {
     return view('admin.bobot-list');
 })->name('bobot-list');
+Route::get('/admin/list-mahasiswa', function () {
+    return view('admin.list-mahasiswa');
+})->name('admin.list-mahasiswa');
+
+
 
 // dosen
 Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen');
-
-
-// Route::get('/dosen/list-mahasiswa', function () {
-//     return view('dosen.list-mahasiswa');
-// })->name('dosen.list-mahasiswa');
 Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
 Route::get('/dosen/pendaftaran', function () {
     return view('dosen.pendaftaran');
@@ -76,18 +76,18 @@ Route::get('/dosen/jadwal', function () {
 
 // mahasiswa
 Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
+Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
+
+
 // untuk balancing beban dosen pembimbing
 Route::post('/dosbing', [App\Http\Controllers\DosenController::class, 'bimbingan']);
+
+
 
 // koordinator
 Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
 
-// Route::get('/bobot', function () {
-//     return view('admin.bobot');
-// })->name('bobot');
 
-Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
-Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
 
 
 // Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

@@ -4,6 +4,7 @@
     <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
+                {{-- Floating Modal --}}
                 <div class="modal fade" id="addsantri" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -49,7 +50,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">Sistem Manajemen Data Mahasantri</h1>
+                            <h1 class="h3 mb-2 text-gray-800">List Bimbingan Laporan</h1>
                         </div>
                         <div class="col"> <button
                                 class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
@@ -67,12 +68,13 @@
                                 <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>NIM</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Angkatan</th>
-                                            <th>No_telp</th>
-                                            <th>username</th>
-                                            <th>Status</th>
+                                            <th>Nama</th>
+                                            <th>KP-B1</th>
+                                            <th>KP-B2</th>
+                                            <th>KP-B3</th>
+                                            <th>Bukti Seminar (10)</th>
+                                            <th>Laporan KP</th>
+                                            <th>Manage</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -194,12 +196,13 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td><strong>NIM</strong></td>
-                                            <td><strong>Nama Lengkap</strong></td>
-                                            <td><strong>Angkatan</strong></td>
-                                            <td><strong>No_telp</strong></td>
-                                            <td><strong>username</strong></td>
-                                            <td><strong>Status</strong></td>
+                                            <td><strong>Nama</strong></td>
+                                            <td><strong>KP-B1</strong></td>
+                                            <td><strong>KP-B2</strong></td>
+                                            <td><strong>KP-B3</strong></td>
+                                            <td><strong>Bukti Seminar (10)</strong></td>
+                                            <td><strong>Laporan KP</strong></td>
+                                            <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>
