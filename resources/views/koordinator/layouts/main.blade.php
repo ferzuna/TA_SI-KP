@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/koordinator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
-    <!-- ini tambahan buat logout -->
+
+    <!-- tambahan untuk logout -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
@@ -22,12 +23,13 @@
 <body>
     <div class="app-koordinator">
         @include('koordinator.layouts.navbar')
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" style="width: 100%">
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
                         id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                     <ul class="nav navbar-nav flex-nowrap ml-auto">
                         <div class="d-none d-sm-block topbar-divider"></div>
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

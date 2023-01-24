@@ -58,6 +58,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/list-mahasiswa', function () {
         return view('admin.list-mahasiswa');
     })->name('admin.list-mahasiswa');
+
+    Route::get('/admin/berkas-nilai', function () {
+        return view('admin.berkas-nilai');
+    })->name('admin.berkas-nilai');
+    Route::get('/admin/pengaturan', function () {
+        return view('admin.pengaturan');
+    })->name('admin.pengaturan');
 });
 
 // dosen
@@ -73,6 +80,9 @@ Route::group(['middleware' => 'dosen'], function () {
     Route::get('/dosen/jadwal', function () {
         return view('dosen.jadwal');
     })->name('dosen.jadwal');
+    Route::get('/dosen/pengaturan', function () {
+        return view('dosen.pengaturan');
+    })->name('dosen.pengaturan');
 });
 
 // mahasiswa
@@ -84,6 +94,15 @@ Route::group(['middleware' => 'mahasiswa'], function () {
 // koordinator
 Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
+    Route::get('/koordinator/sudah-dinilai', function () {
+        return view('koordinator.sudah-dinilai');
+    })->name('koordinator.sudah-dinilai');
+    Route::get('/koordinator/belum-dinilai', function () {
+        return view('koordinator.belum-dinilai');
+    })->name('koordinator.belum-dinilai');
+    Route::get('/koordinator/pengaturan', function () {
+        return view('koordinator.pengaturan');
+    })->name('koordinator.pengaturan');
 });
 
 
