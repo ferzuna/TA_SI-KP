@@ -42,9 +42,16 @@
 
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
-        <a class="nav-link">
-            <i class="fas fa-fw fa-cog"></i>
+        <a class="nav-link" href="{{ route('admin.berkas-nilai') }}">
+            <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Daftar Berkas dan Nilai') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.pengaturan') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>{{ __('Pengaturan') }}</span>
         </a>
     </li>
 

@@ -44,7 +44,7 @@
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('dosen.bimbingan') }}">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Bimbingan Seminar') }}</span>
         </a>
     </li>
@@ -52,8 +52,15 @@
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('dosen.jadwal') }}">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Jadwal Pelaksanaan KP') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('dosen.pengaturan') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>{{ __('Pengaturan') }}</span>
         </a>
     </li>
 

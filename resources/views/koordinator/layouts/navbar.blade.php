@@ -11,7 +11,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="{{ route('koordinator') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{ __('Dashboard') }}</span></a>
     </li>
@@ -26,7 +26,7 @@
 
     <!-- Nav Item - Santri -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="{{ route('koordinator.sudah-dinilai') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Daftar Berkas yang Sudah di Tandatangan') }}</span>
         </a>
@@ -34,10 +34,17 @@
 
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="{{ route('koordinator.belum-dinilai') }}">
             <i class="fas fa-fw fa-cog"></i>
             <span>{{ __('Daftar Berkas yang Belum
-                            di Tanda Tangan') }}</span>
+                                                                                                    di Tanda Tangan') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('koordinator.pengaturan') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>{{ __('Pengaturan') }}</span>
         </a>
     </li>
 
