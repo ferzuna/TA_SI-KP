@@ -17,7 +17,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 // ini routes ke home admin
 // Route::get('/admin', function () {
@@ -49,43 +49,63 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // admin
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
-Route::get('/bobot-list', function () {
-    return view('admin.bobot-list');
-})->name('bobot-list');
-Route::get('/admin/list-mahasiswa', function () {
-    return view('admin.list-mahasiswa');
-})->name('admin.list-mahasiswa');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
+    Route::get('/bobot-list', function () {
+        return view('admin.bobot-list');
+    })->name('bobot-list');
+    Route::get('/admin/list-mahasiswa', function () {
+        return view('admin.list-mahasiswa');
+    })->name('admin.list-mahasiswa');
+});
+
+// dosen
+Route::group(['middleware' => 'dosen'], function () {
+    Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen')->middleware('dosen');
+    Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
+    Route::get('/dosen/pendaftaran', function () {
+        return view('dosen.pendaftaran');
+    })->name('dosen.pendaftaran');
+    Route::get('/dosen/bimbingan', function () {
+        return view('dosen.bimbingan');
+    })->name('dosen.bimbingan');
+    Route::get('/dosen/jadwal', function () {
+        return view('dosen.jadwal');
+    })->name('dosen.jadwal');
+});
+
+// mahasiswa
+Route::group(['middleware' => 'mahasiswa'], function () {
+    Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
+    Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
+});
+
+// koordinator
+Route::group(['middleware' => 'koor'], function () {
+    Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
+});
+
+
+
 
 
 
 // dosen
-Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen');
-Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
-Route::get('/dosen/pendaftaran', function () {
-    return view('dosen.pendaftaran');
-})->name('dosen.pendaftaran');
-Route::get('/dosen/bimbingan', function () {
-    return view('dosen.bimbingan');
-})->name('dosen.bimbingan');
-Route::get('/dosen/jadwal', function () {
-    return view('dosen.jadwal');
-})->name('dosen.jadwal');
+
 
 
 // mahasiswa
-Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
-Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
+
 
 
 // untuk balancing beban dosen pembimbing
-Route::post('/dosbing', [App\Http\Controllers\DosenController::class, 'bimbingan']);
+// Route::post('/dosbing', [App\Http\Controllers\DosenController::class, 'bimbingan']);
 
 
 
 // koordinator
-Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
+
 
 
 

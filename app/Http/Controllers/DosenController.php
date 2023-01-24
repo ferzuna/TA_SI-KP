@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Dosen;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
+use App\Models\Pendaftaran;
+use GuzzleHttp\Psr7\Request;
 
 class DosenController extends Controller
 {
