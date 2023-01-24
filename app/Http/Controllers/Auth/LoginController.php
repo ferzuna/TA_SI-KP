@@ -61,7 +61,7 @@ class LoginController extends Controller
             return redirect()->route('mahasiswa');
         }
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
     // public function showAdminLoginForm()
