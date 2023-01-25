@@ -8,6 +8,7 @@
     <!-- untuk css ini di folder public ya -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-DOXMLfHhQkvFFp+rWTZwVlPVqdIhpDVYT9csOnHSgWQWPX0v5MCGtjCJbY6ERspU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Kerja Praktik - Teknik Komputer</title>
 
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">

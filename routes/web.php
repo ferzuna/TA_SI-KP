@@ -89,6 +89,12 @@ Route::group(['middleware' => 'dosen'], function () {
 Route::group(['middleware' => 'mahasiswa'], function () {
     Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
+    Route::get('/mahasiswa/pengumpulan', function () {
+        return view('mahasiswa.pengumpulan');
+    })->name('pengumpulan');
+    Route::get('/mahasiswa/pengaturan', function () {
+        return view('mahasiswa.pengaturan');
+    })->name('mahasiswa.pengaturan');
 });
 
 // koordinator

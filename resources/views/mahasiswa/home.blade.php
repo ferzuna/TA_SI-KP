@@ -26,20 +26,36 @@
                                     <div class="card-header">
                                         <div class="card-body">
                                             <div class="row">
+                                                <div class="d-flex justify-content-end">
+                                                    <a href="{{ route('mahasiswa.pengaturan') }}">
+                                                        <i class="fas fa-fw fa-cog"></i>
+                                                        <span>{{ __('Ubah Profil') }}</span>
+                                                    </a>
+                                                </div>
                                                 <div class="col-md-4">
-                                                    <img src="https://www.w3schools.com/howto/img_avatar.png"
-                                                        style="max-width: 150px; width: 100%" alt="foto">
+                                                    <div class="py-2">
+                                                        <img src="https://www.w3schools.com/howto/img_avatar.png"
+                                                            style="max-width: 150px; width: 100%" alt="foto">
+                                                    </div>
+
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <h4><b>Mahasiswa</b></h4>
-                                                    <span>Fadzil Ferdiawan</span>
-                                                    <br>
-                                                    <span>Angkatan 2019</span>
-                                                    <br>
-                                                    <span>0812939491929</span>
-                                                    <br>
-                                                    <span>fadzilferdiawan@students.undip.ac.id</span>
+                                                    <div class="py-2">
+                                                        <h4><b>Mahasiswa</b></h4>
+                                                        <span>Fadzil Ferdiawan</span>
+                                                        <br>
+                                                        <span>Angkatan 2019</span>
+                                                        <br>
+                                                        <span>0812939491929</span>
+                                                        <br>
+                                                        <span>fadzilferdiawan@students.undip.ac.id</span>
+                                                    </div>
+
+
+
                                                 </div>
+
+
                                             </div>
                                         </div>
                                         <div class="card-footer text-center">
