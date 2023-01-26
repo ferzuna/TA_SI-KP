@@ -2,22 +2,45 @@
 
 @section('section')
     <div class="wrapper">
-        <h2>halaman pendaftaran kp</h2>
-        <form action="" method="post">
-            @csrf
-            <label for="perusahaan">Nama Perusahaan</label>
-            <input type="text" name="perusahaan">
-            <label for="a1">KP A1</label>
-            <input type="text" name="a1">
-            <label for="diterima">Email/Surat Diterima KP</label>
-            <input type="text" name="diterima">
-            <label for="dosen">dosen pilihan :</label>
-            <select name="" id="">
-                @foreach ($alldosen as $dosen)
-                    <option value="{{ $dosen['nama'] }}">{{ $dosen['nama'] }}</option>
-                @endforeach
-            </select>
-            <button type="submit">submit</button>
-        </form>
+        <div class="container">
+            <div class="py-3">
+                <form action="" method="post">
+                    <div class="row">
+                        <h2>halaman pendaftaran kp</h2>
+                        @csrf
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label for="perusahaan">Nama Perusahaan</label>
+                                <input class="form-control" type="text" name="perusahaan">
+                            </div>
+                            <div class="form-group">
+                                <label for="a1">KP A1</label>
+                                <input class="form-control" type="text" name="a1">
+                            </div>
+                            <div class="form-group">
+                                <label for="diterima">Email/Surat Diterima KP</label>
+                                <input class="form-control" type="text" name="diterima">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label for="dosen">dosen pilihan :</label>
+                                <select class="form-select input-border" name="" id=""
+                                    aria-label="Default select example">
+
+                                    @foreach ($alldosen as $dosen)
+                                        <option id="" value="{{ $dosen['nama'] }}">{{ $dosen['nama'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="py-2">
+                            <button type="submit" class="btn btn-light btn-outline-dark">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
