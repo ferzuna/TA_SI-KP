@@ -19,34 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-// ini routes ke home admin
-// Route::get('/admin', function () {
-//     return view('admin.home');
-// });
-
-// dosen
-// Route::get('/dosen', function () {
-//     return view('dosen.home');
-// });
-
-// mahasiswa
-// Route::get('/mahasiswa', function () {
-//     return view('mahasiswa.home');
-// });
-
-// koordinator
-// Route::get('/koordinator', function () {
-//     return view('koordinator.home');
-// });
-
-
-
 
 // Auth::routes();
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // admin
 Route::group(['middleware' => 'admin'], function () {
