@@ -70,6 +70,9 @@ Route::group(['middleware' => 'mahasiswa'], function () {
     Route::get('/mahasiswa/pengumpulan', function () {
         return view('mahasiswa.pengumpulan');
     })->name('pengumpulan');
+    Route::get('/mahasiswa/finalisasi', function () {
+        return view('mahasiswa.finalisasi');
+    })->name('finalisasi');
     Route::get('/mahasiswa/pengaturan', function () {
         return view('mahasiswa.pengaturan');
     })->name('mahasiswa.pengaturan');

@@ -19,7 +19,7 @@
                         <a class="nav-link" href="{{ route('pengumpulan') }}">Pengumpulan Berkas</a>
                     </li>
                     <li class="nav-item my-auto">
-                        <a class="nav-link" href="#">Finalisasi Berkas</a>
+                        <a class="nav-link" href="{{ route('finalisasi') }}">Finalisasi Berkas</a>
                     </li>
 
                 </ul>
