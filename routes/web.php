@@ -18,6 +18,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+Route::get('/permohonan', function () {
+    return view('permohonan');
+})->name('permohonan');
 
 
 // Auth::routes();
