@@ -2,10 +2,12 @@
 
 namespace App\Mail;
 
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+
 
 class ContactFormMail extends Mailable
 {
@@ -32,7 +34,7 @@ class ContactFormMail extends Mailable
         return $this->from('noreply.sikp@gmail.com')
             ->markdown('template.client.contactform')
             ->with([
-                'name' => $this->user['name'],
+                'nama' => $this->user['nama'],
                 'nim' => $this->user['nim'],
                 'email' => $this->user['email'],
                 'perusahaan' => $this->user['perusahaan'],

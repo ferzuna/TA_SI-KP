@@ -16,17 +16,17 @@ class PermohonanController extends Controller
     public function sendPermohonan(Request $request)
     {
         $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
             'nim' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'perusahaan' => ['string', 'max:255'],
+            'perusahaan' => ['required', 'string', 'max:255'],
             'proposal' => ['required', 'string', 'max:255'],
             'dokumen' => ['required', 'string', 'max:255'],
-            'sks' => ['required', 'int', 'max:10']
+            'sks' => ['required', 'string', 'max:255']
         ]);
 
         $contact = [
-            'name' => $request['name'],
+            'nama' => $request['nama'],
             'nim' => $request['nim'],
             'email' => $request['email'],
             'perusahaan' => $request['perusahaan'],
@@ -34,17 +34,16 @@ class PermohonanController extends Controller
             'dokumen' => $request['dokumen'],
             'sks' => $request['sks'],
         ];
-        dd("bisa");
+
 
         // try {
         //     //code...
-        //     Mail::to('noreply.sikp@gmail.com')->send(new ContactFormMail($contact));
-        //     dd("BISA");
+        Mail::to('fadzil324@gmail.com')->send(new ContactFormMail($contact));
+        // dd("BISA");
 
-        //     return redirect()->route('permohonan')->with('status', ' Pesan Anda telah terkirim');
+        return redirect()->route('permohonan')->with('status', ' Pesan Anda telah terkirim');
         // } catch (\Exception $e) {
-        //     //throw $th;
-        //     dd("GABISA");
+        //throw $th;
         //     return redirect()->route('permohonan')->with('error', ' Pesan Anda gagal terkirim');
         // }
     }

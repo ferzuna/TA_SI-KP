@@ -2,7 +2,7 @@
 
 @section('section')
     <div class="wrapper">
-        {{-- @if (session('status'))
+        @if (session('status'))
             <div class="container justify-content-center alert-wrap">
                 <div class="row">
                     <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>@lang('contact.header.weak') ! </strong> &nbsp; {{ session('error') }}
+                            <strong>Pesan Anda gagal Terkirim</strong> &nbsp; {{ session('error') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="color: #181818">&times;</span>
                             </button>
@@ -29,10 +29,10 @@
                     </div>
                 </div>
             </div>
-        @endif --}}
+        @endif
         <div class="container">
             <div class="py-3">
-                <form action="{{ route('permohonan.sendPermohonan') }}" method="post">
+                <form action="{{ route('permohonan.sendPermohonan') }}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <h2 class="py-3"><b>Halaman pengumpulan berkas bimbingan kp</b></h2>
 
@@ -40,15 +40,15 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="Nama">Nama</label>
-                                <input class="form-control" type="text" name="Nama" required>
+                                <input class="form-control" type="text" name="nama" required>
                             </div>
                             <div class="form-group">
                                 <label for=nim>NIM</label>
-                                <input class="form-control" type="text" name=nim required>
+                                <input class="form-control" type="text" name="nim" required>
                             </div>
                             <div class="form-group">
                                 <label for=email>email</label>
-                                <input class="form-control" type="text" name=email required>
+                                <input class="form-control" type="email" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="perusahaan">Nama Perusahaan</label>

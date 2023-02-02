@@ -18,11 +18,11 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/permohonan', 'App\Http\Controllers\PermohonanController@index')->name('permohonan');
-Route::post('/permohonan', 'App\Http\Controllers\PermohonanController@sendPermohonan')->name('permohonan.sendPermohonan');
+Route::get('/permohonan', [App\Http\Controllers\PermohonanController::class, 'index'])->name('permohonan');
+Route::post('/permohonan', [App\Http\Controllers\PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
 
 
-// Auth::routes();
+Auth::routes();
 
 // Auth::routes();
 
