@@ -4,7 +4,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="py-3">
-                <form action="" method="post">
+                <form action="{{ route('create') }}" method="post">
                     <div class="row">
                         <h2>halaman pendaftaran kp</h2>
                         @csrf
