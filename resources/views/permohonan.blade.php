@@ -2,9 +2,37 @@
 
 @section('section')
     <div class="wrapper">
+        {{-- @if (session('status'))
+            <div class="container justify-content-center alert-wrap">
+                <div class="row">
+                    <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>@lang('contact.header.strong') ! </strong> &nbsp; {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="container justify-content-center alert-wrap">
+                <div class="row">
+                    <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>@lang('contact.header.weak') ! </strong> &nbsp; {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif --}}
         <div class="container">
             <div class="py-3">
-                <form action="" method="post">
+                <form action="{{ route('permohonan.sendPermohonan') }}" method="post">
                     <div class="row">
                         <h2 class="py-3"><b>Halaman pengumpulan berkas bimbingan kp</b></h2>
 
@@ -12,30 +40,34 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="Nama">Nama</label>
-                                <input class="form-control" type="text" name="Nama">
+                                <input class="form-control" type="text" name="Nama" required>
                             </div>
                             <div class="form-group">
                                 <label for=nim>NIM</label>
-                                <input class="form-control" type="text" name=nim>
+                                <input class="form-control" type="text" name=nim required>
+                            </div>
+                            <div class="form-group">
+                                <label for=email>email</label>
+                                <input class="form-control" type="text" name=email required>
                             </div>
                             <div class="form-group">
                                 <label for="perusahaan">Nama Perusahaan</label>
-                                <input class="form-control" type="text" name="perusahaan">
+                                <input class="form-control" type="text" name="perusahaan" required>
                             </div>
                             <div class="form-group">
                                 <label for="proposal">Proposal Perusahaan</label>
-                                <input class="form-control" type="text" name="proposal">
+                                <input class="form-control" type="text" name="proposal" required>
                             </div>
 
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="dokumen">Dokumen Rekomendasi</label>
-                                <input class="form-control" type="text" name="dokumen">
+                                <input class="form-control" type="text" name="dokumen" required>
                             </div>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Kumulatif</label>
-                                <input class="form-control" type="text" name="sks">
+                                <input class="form-control" type="text" name="sks" required>
                             </div>
                         </div>
                         <div class="py-2">
