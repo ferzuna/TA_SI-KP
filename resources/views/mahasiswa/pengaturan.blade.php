@@ -84,10 +84,10 @@
 
                                 <div class="card-body">
 
-                                    <form method="POST" {{-- action="{{ route('pengaturan.update') }}"  --}} autocomplete="off">
+                                    <form method="POST" action="{{ route('test') }}" autocomplete="off">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                        <input type="hidden" name="_method" value="PUT">
+                                        <input type="hidden" name="_method" value="POST">
 
                                         <h6 class="heading-small text-muted mb-4">User information</h6>
 

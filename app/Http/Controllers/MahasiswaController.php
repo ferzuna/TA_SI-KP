@@ -77,7 +77,7 @@ class MahasiswaController extends Controller
      */
     public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
     {
-        //
+        return view('/home');
     }
 
     /**
@@ -89,5 +89,8 @@ class MahasiswaController extends Controller
     public function destroy(Mahasiswa $mahasiswa)
     {
         //
+    }
+    public function test(){
+        return view('/home');
     }
 }
