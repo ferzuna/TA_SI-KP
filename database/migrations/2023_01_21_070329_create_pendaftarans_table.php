@@ -15,9 +15,10 @@ class CreatePendaftaransTable extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('NIM');
-            $table->string('durasi_kp');
-            $table->string('berkas_a1');
+            $table->string('perusahaan');
+            $table->string('bukti');
+            $table->string('a1');
+            $table->string('dosbing');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="py-3">
-                <form action="{{ route('create') }}" method="post">
+                <form action="{{ route('pendaftaran.store') }}" method="POST">
                     <div class="row">
                         <h2>halaman pendaftaran kp</h2>
                         @csrf
@@ -19,13 +19,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="diterima">Email/Surat Diterima KP</label>
-                                <input class="form-control" type="text" name="diterima">
+                                <input class="form-control" type="text" name="bukti">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="dosen">dosen pilihan :</label>
-                                <select class="form-select input-border" name="" id=""
+                                <select class="form-select input-border" name="dosbing" id=""
                                     aria-label="Default select example">
 
                                     @foreach ($alldosen as $dosen)
