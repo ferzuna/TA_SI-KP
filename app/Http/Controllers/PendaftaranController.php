@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftaran;
 use App\Http\Requests\StorePendaftaranRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdatePendaftaranRequest;
+use Illuminate\Routing\Controller;
 
 class PendaftaranController extends Controller
 {
@@ -25,7 +27,7 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        return view('/home');
+        //
     }
 
     /**
@@ -34,9 +36,17 @@ class PendaftaranController extends Controller
      * @param  \App\Http\Requests\StorePendaftaranRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePendaftaranRequest $request)
+    public function store(Request $request)
     {
-        //
+
+        Pendaftaran::create([
+            'perusahaan' => $request->perusahaan,
+            'a1' => $request->a1,
+            'bukti' => $request->bukti,
+            'dosbing' => $request->dosbing,
+        ]);
+
+        return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
     }
 
     /**
