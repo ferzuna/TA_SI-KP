@@ -28,7 +28,13 @@ class DosenController extends Controller
     }
 
     public function pendaftaran(){
-        $alldosen = Dosen::where('bobot_bimbingan', '<=', 'kuota_bimbingan')->get();
+        $alldosen = [];
+        $all = Dosen::all();
+        foreach($all as $dosen){
+            if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
+                $alldosen[] = $dosen;
+            }
+        }
         return view('mahasiswa.pendaftaran',[
             "alldosen"=>$alldosen
         ]);
