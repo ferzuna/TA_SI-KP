@@ -36,15 +36,15 @@ class PermohonanController extends Controller
         ];
 
 
-        // try {
-        //     //code...
-        Mail::to('fadzil324@gmail.com')->send(new ContactFormMail($contact));
-        // dd("BISA");
+        try {
+            //     //code...
+            Mail::to('fadzil324@gmail.com')->send(new ContactFormMail($contact));
+            // dd("BISA");
 
-        return redirect()->route('permohonan')->with('status', ' Pesan Anda telah terkirim');
-        // } catch (\Exception $e) {
-        //throw $th;
-        //     return redirect()->route('permohonan')->with('error', ' Pesan Anda gagal terkirim');
-        // }
+            return redirect()->route('permohonan')->with('status', ' Departemen akan memproses permohonan anda');
+        } catch (\Exception $e) {
+            //throw $th;
+            return redirect()->route('permohonan')->with('error', ' Pesan Anda gagal terkirim');
+        }
     }
 }
