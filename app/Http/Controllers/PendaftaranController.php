@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Pendaftaran;
-use App\Http\Requests\StorePendaftaranRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdatePendaftaranRequest;
 use Illuminate\Routing\Controller;
+use App\Http\Requests\StorePendaftaranRequest;
+use App\Http\Requests\UpdatePendaftaranRequest;
 
 class PendaftaranController extends Controller
 {
@@ -44,6 +45,14 @@ class PendaftaranController extends Controller
             'a1' => $request->a1,
             'bukti' => $request->bukti,
             'dosbing' => $request->dosbing,
+        ]);
+
+        $value = Dosen::where('nama', $request->dosbing)->first();
+        $iddosen = $value['id'];
+        $bobot = Dosen::find($iddosen)['bobot_bimbingan'];
+
+        Dosen::find($iddosen)->update([
+            'bobot_bimbingan' => $bobot + 1,
         ]);
 
         return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
