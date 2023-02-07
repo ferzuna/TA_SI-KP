@@ -38,6 +38,7 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.info-magang');
     })->name('admin.info-magang');
     Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
+    Route::post('/admin/bobot/update/{id}', [App\Http\Controllers\DosenController::class, 'kuotabimbingan'])->name('kuota');
     Route::get('/bobot-list', function () {
         return view('admin.bobot-list');
     })->name('bobot-list');

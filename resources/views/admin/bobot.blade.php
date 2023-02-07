@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="col-md-6">
-                                            <form method="POST" action="">
+                                            <form method="POST" action="{{route('kuota', $dosen['id'])}}">
                                                 @csrf
                                                 <input type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Nama"
