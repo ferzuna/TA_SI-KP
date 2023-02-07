@@ -20,6 +20,9 @@ Route::get('/', function () {
 })->name('welcome');
 Route::get('/permohonan', [App\Http\Controllers\PermohonanController::class, 'index'])->name('permohonan');
 Route::post('/permohonan', [App\Http\Controllers\PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
+Route::get('/info-magang', function () {
+    return view('info-magang');
+})->name('info-magang');
 
 
 Auth::routes();
@@ -31,6 +34,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // admin
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/info-magang', function () {
+        return view('admin.info-magang');
+    })->name('admin.info-magang');
     Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
     Route::get('/bobot-list', function () {
         return view('admin.bobot-list');
