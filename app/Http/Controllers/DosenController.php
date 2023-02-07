@@ -6,7 +6,8 @@ use App\Models\Dosen;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
 use App\Models\Pendaftaran;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
+// use GuzzleHttp\Psr7\Request;
 
 class DosenController extends Controller
 {
@@ -39,26 +40,13 @@ class DosenController extends Controller
             "alldosen"=>$alldosen
         ]);
     }
+    public function kuotabimbingan(Request $request, $id){
+        $dosen = Dosen::find($id)->update([
+            'kuota_bimbingan' => $request->kuota,
+        ]);
 
-    // public function pendaftaranpart2(){
-    //     $semuadosen = Dosen::all();
-    //     foreach ($semuadosen as $dosen){
-
-    //     }
-    // }
-
-// function yang belom jadi
-    // public function bimbingan(){
-    //     $bobot = Dosen::all();
-    //     $totalkuota = 0;
-    //     $totalbobot = 0;
-    //     foreach ($bobot as $bimbingan){
-    //         $totalkuota = $totalkuota + $bimbingan['kuota_bimbingan'];
-    //         $totalbobot = $totalbobot + $bimbingan['bobot_bimbingan'];
-    //     }
-
-    //     return $totalkuota;
-    // }
+        return redirect('/admin/bobot')->with('success', 'Data updated');
+    }
     
 
     /**
