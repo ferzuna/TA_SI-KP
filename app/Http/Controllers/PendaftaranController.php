@@ -55,6 +55,23 @@ class PendaftaranController extends Controller
             'bobot_bimbingan' => $bobot + 1,
         ]);
 
+        $bobotbimbingan = 0;
+        $kuotabimbingan = 0;
+        $i = 0;
+        $semua = Dosen::all();
+        foreach ($semua as $bimbingan){
+            $bobotbimbingan = $bobotbimbingan + $bimbingan['bobot_bimbingan'];
+            $kuotabimbingan = $kuotabimbingan + $bimbingan['kuota_bimbingan'];
+        }
+        if($bobotbimbingan >= $kuotabimbingan){
+            foreach($semua as $bimbingan){
+                $i++;
+                Dosen::find($i)->update([
+                    'bobot_bimbingan' => 0,
+                ]);
+            }
+        }
+
         return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
     }
 
