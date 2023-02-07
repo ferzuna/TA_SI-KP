@@ -16,6 +16,12 @@
             <span>{{ __('Dashboard') }}</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.info-magang') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>{{ __('Info Magang') }}</span></a>
+    </li>
+
     <!-- Divider -->
     {{-- <hr class="sidebar-divider"> --}}
 

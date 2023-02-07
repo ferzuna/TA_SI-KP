@@ -15,12 +15,12 @@
                             </p>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-lg-5">
-                                        <button class="button-home">Info Magang</button>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <button class="button-home">Selengkapnya</button>
-                                    </div>
+                                    <a href="{{ route('info-magang') }}">
+                                        <div class="col-lg-5">
+                                            <button class="button-home">Info Magang</button>
+                                        </div>
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
