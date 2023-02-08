@@ -48,10 +48,9 @@ class PendaftaranController extends Controller
         ]);
 
         $value = Dosen::where('nama', $request->dosbing)->first();
-        $iddosen = $value['id'];
-        $bobot = Dosen::find($iddosen)['bobot_bimbingan'];
+        $bobot = Dosen::find($value['id'])['bobot_bimbingan'];
 
-        Dosen::find($iddosen)->update([
+        Dosen::find($value['id'])->update([
             'bobot_bimbingan' => $bobot + 1,
         ]);
 
