@@ -29,7 +29,7 @@
                                     aria-label="Default select example">
 
                                     @foreach ($alldosen as $dosen)
-                                        <option id="" value="{{ $dosen['nama'] }}">{{ $dosen['nama'] }}
+                                        <option id="" value="{{ $dosen['name'] }}">{{ $dosen['name'] }}
                                         </option>
                                     @endforeach
                                 </select>

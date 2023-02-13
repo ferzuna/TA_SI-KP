@@ -84,7 +84,7 @@
                                                                                                             src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
                                                                                                     </td> -->
                                                 <td><?= $data['NIM'] ?></td>
-                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $data['name'] ?></td>
                                                 <td><?= $data['angkatan'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['username'] ?></td>
