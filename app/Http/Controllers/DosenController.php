@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Dosen;
-use App\Http\Requests\StoreDosenRequest;
-use App\Http\Requests\UpdateDosenRequest;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\Http\Requests\StoreDosenRequest;
+use App\Http\Requests\UpdateDosenRequest;
 // use GuzzleHttp\Psr7\Request;
 
 class DosenController extends Controller
@@ -22,7 +24,7 @@ class DosenController extends Controller
     }
 
     public function bobotdosen(){
-        $alldosen = Dosen::all();
+        $alldosen = User::where('role_id', 4)->get();
         return view ('admin.bobot',[
             "alldosen"=>$alldosen
         ]);
@@ -30,7 +32,7 @@ class DosenController extends Controller
 
     public function pendaftaran(){
         $alldosen = [];
-        $all = Dosen::all();
+        $all = User::where('role_id', 4)->get();
         foreach($all as $dosen){
             if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
                 $alldosen[] = $dosen;
@@ -41,7 +43,7 @@ class DosenController extends Controller
         ]);
     }
     public function kuotabimbingan(Request $request, $id){
-        $dosen = Dosen::find($id)->update([
+        User::find($id)->update([
             'kuota_bimbingan' => $request->kuota,
         ]);
 

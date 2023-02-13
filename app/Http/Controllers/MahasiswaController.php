@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\Pendaftaran;
@@ -24,7 +25,7 @@ class MahasiswaController extends Controller
 
 
     public function allmhs(){
-        $mymahasiswa = Mahasiswa::all();
+        $mymahasiswa = User::where('role_id', 1)->get();
         return view('dosen.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa
         ]);
@@ -38,27 +39,30 @@ class MahasiswaController extends Controller
             'dosbing' => $request->dosbing,
         ]);
 
-        $value = Dosen::where('nama', $request->dosbing)->first();
-        $bobot = Dosen::find($value['id'])['bobot_bimbingan'];
+        $value = User::where('name', $request->dosbing)->first();
+        $bobot = User::find($value['id'])['bobot_bimbingan'];
 
-        Dosen::find($value['id'])->update([
+        User::find($value['id'])->update([
             'bobot_bimbingan' => $bobot + 1,
         ]);
 
         $bobotbimbingan = 0;
         $kuotabimbingan = 0;
         $i = 0;
-        $semua = Dosen::all();
+        $semua = User::where('role_id', 4)->get();
+        $all = User::all();
         foreach ($semua as $bimbingan){
             $bobotbimbingan = $bobotbimbingan + $bimbingan['bobot_bimbingan'];
             $kuotabimbingan = $kuotabimbingan + $bimbingan['kuota_bimbingan'];
         }
         if($bobotbimbingan >= $kuotabimbingan){
-            foreach($semua as $bimbingan){
+            foreach($all as $bimbingan){
                 $i++;
-                Dosen::find($i)->update([
-                    'bobot_bimbingan' => 0,
-                ]);
+                if($bimbingan['role_id'] == 4){
+                    User::find($i)->update([
+                        'bobot_bimbingan' => 0,
+                    ]);
+                }
             }
         }
 

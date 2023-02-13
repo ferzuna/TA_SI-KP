@@ -30,7 +30,7 @@
                             <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="h5 font-weight-bold text-primary mb-3">{{ $dosen['nama'] }}</div>
+                                        <div class="h5 font-weight-bold text-primary mb-3">{{ $dosen['name'] }}</div>
                                         <strong>NIP : <span>{{ $dosen['NIP'] }}</span></strong>
                                         <br>
                                         <strong>Kuota Bimbingan : <span>{{ $dosen['kuota_bimbingan'] }}</span></strong>
@@ -61,7 +61,7 @@
                                                 @csrf
                                                 <input type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Nama"
-                                                    name="nama" value="<?= $dosen['nama'] ?>" />
+                                                    name="nama" value="<?= $dosen['name'] ?>" />
                                                 <select type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Gender"
                                                     name="gender" />
