@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Koor;
 use App\Http\Requests\StoreKoorRequest;
 use App\Http\Requests\UpdateKoorRequest;
+use App\Models\Penilaian;
+use App\Models\User;
 
 class KoorController extends Controller
 {
@@ -15,7 +17,8 @@ class KoorController extends Controller
      */
     public function index()
     {
-        return view('koordinator.home');
+        $mahasiswa_aktif = User::where('role_id', 1)->count();
+        return view('koordinator.home', compact('mahasiswa_aktif'));
     }
 
     /**
@@ -23,6 +26,19 @@ class KoorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function sudah_dinilai()
+    {
+        // $belum_ttd = Penilaian::where('role_id', 1)->count();
+        return view('koordinator.sudah-dinilai');
+    }
+
+    public function belum_dinilai()
+    {
+        // $belum_ttd = Penilaian::where('role_id', 1)->count();
+        return view('koordinator.belum-dinilai');
+    }
+
     public function create()
     {
         //

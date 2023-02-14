@@ -2,7 +2,7 @@
 
 @section('section')
     <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Manajemen Data Mahasantri') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Informasi Kerja Praktik') }}</h1>
 
         @if (session('success'))
             <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -27,8 +27,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Santri Aktif</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">aktif</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mahasiswa Aktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mahasiswa_aktif }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user-alt fa-2x text-gray-300"></i>
@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Santri Tidak Aktif
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Sudah Seminar KP
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">noaktif</div>
                             </div>
@@ -62,7 +62,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Santri Putra</div>
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mendaftar KP</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">putra</div>
                             </div>
                             <div class="col-auto">
@@ -79,7 +79,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Santri Putri</div>
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Belum Seminar KP
+                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">putri</div>
                             </div>
                             <div class="col-auto">
@@ -121,15 +122,12 @@
                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                 src="{{ asset('img/logoundip.svg') }}" alt="">
                         </div>
-                        <p class="text-justify">Pondok Pesantren Darul Ilmi ini didirikan pada tahun 2018. Berawal dari
-                            kontrak
-                            asrama hingga dapat membangun bangunan pesantren pada tahun 2020. Pesantren modern berbasis
-                            digital
-                            dan entrepreneurship yang menjadi santri mahir dalam teknologi serta mampu beradaptasi dengan
-                            perkembangan zaman.</p>
-                        <a target="_blank" rel="nofollow" href="https://ponpesdarulilmimeteseh.com/">Website Utama Ponpes
+                        <p class="text-justify">Kerja Praktik (KP) merupakan salah satu syarat kelulusan yang harus ditempuh
+                            oleh mahasiswa, salah satunya pada Departemen Teknik Komputer Universitas Diponegoro (Undip).
+                            Tujuan KP adalah memperkenalkan mahasiswa pada situasi di dunia kerja yang sesungguhnya.</p>
+                        {{-- <a target="_blank" rel="nofollow" href="https://ponpesdarulilmimeteseh.com/">Website Utama Ponpes
                             Darul
-                            Ilmi →</a>
+                            Ilmi →</a> --}}
                     </div>
                 </div>
 
