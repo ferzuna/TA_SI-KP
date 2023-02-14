@@ -92,12 +92,8 @@ Route::group(['middleware' => 'mahasiswa'], function () {
 // koordinator
 Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
-    Route::get('/koordinator/sudah-dinilai', function () {
-        return view('koordinator.sudah-dinilai');
-    })->name('koordinator.sudah-dinilai');
-    Route::get('/koordinator/belum-dinilai', function () {
-        return view('koordinator.belum-dinilai');
-    })->name('koordinator.belum-dinilai');
+    Route::get('/koordinator/sudah-dinilai', [App\Http\Controllers\KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
+    Route::get('/koordinator/belum-dinilai', [App\Http\Controllers\KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');
