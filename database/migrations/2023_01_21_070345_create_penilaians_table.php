@@ -18,6 +18,7 @@ class CreatePenilaiansTable extends Migration
             $table->string('NIP');
             $table->string('NIM');
             $table->string('berkasnilaiakhir');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
