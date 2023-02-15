@@ -68,22 +68,19 @@
                                 <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
                                             <th>NIM</th>
+                                            <th>Nama</th>
                                             <th>Semester</th>
+                                            <th>No. telp</th>
                                             <th>Jumlah SKSk</th>
                                             <th>Manage</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($mymahasiswa as $data)
+                                        @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <td class="namecntr"><img class="rounded-circle mr-2" width="30"
-                                                        height="30"
-                                                        src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                </td>
                                                 <td><?= $data['NIM'] ?></td>
-                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $data['name'] ?></td>
                                                 <td><?= $data['angkatan'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['username'] ?></td>
@@ -176,7 +173,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{ route('santri.destroy', $data['id']) }}">
+                                                                    action="">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
@@ -189,13 +186,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td><strong>Nama</strong></td>
                                             <td><strong>NIM</strong></td>
+                                            <td><strong>Nama</strong></td>
                                             <td><strong>Semester</strong></td>
+                                            <td><strong>No. telp</strong></td>
                                             <td><strong>Jumlah SKSk</strong></td>
                                             <td><strong>Manage</strong></td>
                                         </tr>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Admin;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 
@@ -18,6 +20,12 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
+    public function allmhs(){
+        $mymahasiswa = User::where('role_id', 1)->get();
+        return view('admin.list-mahasiswa', [
+            "mymahasiswa" => $mymahasiswa
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
