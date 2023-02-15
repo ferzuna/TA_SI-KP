@@ -42,10 +42,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/bobot-list', function () {
         return view('admin.bobot-list');
     })->name('bobot-list');
-    Route::get('/admin/list-mahasiswa', function () {
-        return view('admin.list-mahasiswa');
-    })->name('admin.list-mahasiswa');
-
+    Route::get('/admin/list-mahasiswa', [App\Http\Controllers\AdminController::class, 'allmhs'])->name('admin.list-mahasiswa');
     Route::get('/admin/berkas-nilai', function () {
         return view('admin.berkas-nilai');
     })->name('admin.berkas-nilai');
