@@ -29,8 +29,8 @@ class KoorController extends Controller
 
     public function sudah_dinilai()
     {
-        // $belum_ttd = Penilaian::where('role_id', 1)->count();
-        return view('koordinator.sudah-dinilai');
+        $belum_ttd = Penilaian::where('status', 1)->get();
+        return view('koordinator.sudah-dinilai', compact('belum_ttd'));
     }
 
     public function belum_dinilai()

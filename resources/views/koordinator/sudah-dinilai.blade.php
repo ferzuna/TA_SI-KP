@@ -78,6 +78,7 @@
                                             <th>KP-B1</th>
                                             <th>KP-B5</th>
                                             <th>Form Nilai KP</th>
+                                            <th>Status</th>
                                             <th>Manage</th>
                                         </tr>
                                     </thead>
@@ -206,6 +207,7 @@
                                             <td><strong>KP-B1</strong></td>
                                             <td><strong>KP-B5</strong></td>
                                             <td><strong>Form Nilai KP</strong></td>
+                                            <td><strong>Status</strong></td>
                                             <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
