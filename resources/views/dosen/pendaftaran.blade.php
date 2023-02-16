@@ -72,7 +72,7 @@
                                             <th>Semester</th>
                                             <th>Nama Perusahaan</th>
                                             <th>KP-A1</th>
-                                            <th>KP-B2</th>
+
                                             <th>Surat Diterima</th>
                                             <th>Manage</th>
                                         </tr>
@@ -200,7 +200,6 @@
                                             <td><strong>Semester</strong></td>
                                             <td><strong>Nama Perusahaan</strong></td>
                                             <td><strong>KP-A1</strong></td>
-                                            <td><strong>KP-B2</strong></td>
                                             <td><strong>Surat Diterima</strong></td>
                                             <td><strong>Manage</strong></td>
                                         </tr>
