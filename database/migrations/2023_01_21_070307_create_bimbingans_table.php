@@ -15,11 +15,15 @@ class CreateBimbingansTable extends Migration
     {
         Schema::create('bimbingans', function (Blueprint $table) {
             $table->id();
-            $table->string('NIP');
-            $table->string('NIM');
-            $table->string('status');
-            $table->string('makalah');
-            $table->string('laporan');
+            $table->string('NIP')->nullable();
+            $table->string('NIM')->nullable();
+            $table->string('status')->nullable();
+            $table->string('makalah')->nullable();
+            $table->string('laporan')->nullable();
+            $table->string('a1')->nullable();
+            $table->string('b1')->nullable();
+            $table->string('b2')->nullable();
+            $table->string('b3')->nullable();
             $table->timestamps();
         });
     }

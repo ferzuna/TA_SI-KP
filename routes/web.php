@@ -73,10 +73,11 @@ Route::group(['middleware' => 'dosen'], function () {
 Route::group(['middleware' => 'mahasiswa'], function () {
     Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\DosenController::class, 'pendaftaran'])->name('pendaftaran');
-    Route::post('/mahasiswa/pendaftaran', [App\Http\Controllers\MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
+    Route::post('/mahasiswa/pendaftaran/store', [App\Http\Controllers\MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
     Route::get('/mahasiswa/pengumpulan', function () {
         return view('mahasiswa.pengumpulan');
     })->name('pengumpulan');
+    Route::post('/mahasiswa/pengumpulan/store', [App\Http\Controllers\MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
     Route::get('/mahasiswa/finalisasi', function () {
         return view('mahasiswa.finalisasi');
     })->name('finalisasi');

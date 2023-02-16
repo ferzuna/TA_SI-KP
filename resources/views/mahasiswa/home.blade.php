@@ -10,7 +10,7 @@
 
                         </div>
                         <div class="media-right">
-                            selamat datang Fadzil, di sistem informasi KP
+                            selamat datang {{ $mhs['name'] }}, di sistem informasi KP
                         </div>
                     </div>
                 </div>
@@ -42,11 +42,11 @@
                                                 <div class="col-md-8">
                                                     <div class="py-2">
                                                         <h4><b>Mahasiswa</b></h4>
-                                                        <span>Fadzil Ferdiawan</span>
+                                                        <span>{{ $mhs['name'] }}</span>
                                                         <br>
-                                                        <span>Angkatan 2019</span>
+                                                        <span>Angkatan {{$mhs['angkatan']}}</span>
                                                         <br>
-                                                        <span>0812939491929</span>
+                                                        <span>Nomor telepon: {{$mhs['no_telp']}}</span>
                                                         <br>
                                                         <span>fadzilferdiawan@students.undip.ac.id</span>
                                                     </div>
