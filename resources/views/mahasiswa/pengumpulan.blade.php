@@ -4,7 +4,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="py-3">
-                <form action="" method="post">
+                <form action="{{route('bimbingan.store')}}" method="post">
                     <div class="row">
 
                         <h2>halaman pengumpulan berkas bimbingan kp</h2>
@@ -20,7 +20,7 @@
                             </div>
                             <div class="form-group">
                                 <label for=makalah>KP A1</label>
-                                <input class="form-control" type="text" name=makalah>
+                                <input class="form-control" type="text" name=a1>
                             </div>
                             <div class="form-group">
                                 <label for="b1">KP B1</label>
