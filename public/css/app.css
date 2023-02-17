@@ -592,6 +592,12 @@ progress {
   content: "— ";
 }
 
+.login-head-logo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -613,6 +619,13 @@ progress {
 .figure-img {
   margin-bottom: 0.5rem;
   line-height: 1;
+}
+
+.background-app {
+  background-image: url(../img/Widya-Puraya.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 .figure-caption {
