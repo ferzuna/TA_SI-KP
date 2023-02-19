@@ -32,7 +32,7 @@ class MahasiswaController extends Controller
     public function allmhs(){
         $mymahasiswa = User::where('role_id', 1)->get();
         return view('dosen.list-mahasiswa', [
-            "mymahasiswa" => $mymahasiswa
+            "mymahasiswa" => $mymahasiswa,
         ]);
     }
 
@@ -76,20 +76,58 @@ class MahasiswaController extends Controller
     }
 
     public function bimbinganstore(Request $request){
-        $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
-        Bimbingan::create([
-            'NIP' => User::where('name', $dosbing)->first()['NIP'],
-            'NIM' => Auth::user()->NIM,
-            'makalah' => $request->makalah,
-            'laporan' => $request->laporan,
-            'a1' => $request->a1,
-            'b1' => $request->b1,
-            'b2' => $request->b2,
-            'b3' => $request->b3,
-            'status' => $request->b3,
-        ]);
-        
+        $nim = Auth::user()->NIM;
+        $data = Bimbingan::where('NIM', $nim)->first();
+        if(isset($data)){
+            Bimbingan::where('NIM', $nim)->first()->update([
+                'makalah' => $request->makalah,
+                'laporan' => $request->laporan,
+                'a1' => $request->a1,
+                'b1' => $request->b1,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
+                'survey' => $request->survey,
+                'jadwal' => $request->jadwal,
+                'status' => $request->b3,
+            ]);
+        }else{
+            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
+            Bimbingan::create([
+                'NIP' => User::where('name', $dosbing)->first()['NIP'],
+                'NIM' => Auth::user()->NIM,
+                'makalah' => $request->makalah,
+                'laporan' => $request->laporan,
+                'a1' => $request->a1,
+                'b1' => $request->b1,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
+                'survey' => $request->survey,
+                'jadwal' => $request->jadwal,
+                'status' => $request->b3,
+            ]);
+        }
         return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
+    }
+
+    public function pengumpulan(){
+        $nim = Auth::user()->NIM;
+        $data = Bimbingan::where('NIM', $nim)->first();
+        if(!isset($data)){
+            $data = [
+                'makalah' => '',
+                'laporan' => '',
+                'a1' => '',
+                'b1' => '',
+                'b2' => '',
+                'b3' => '',
+                'survey' => '',
+                'jadwal' => '',
+                'status' => '',
+            ];
+        }
+        return view('mahasiswa.pengumpulan', [
+            'data' => $data,
+        ]);
     }
     /**
      * Show the form for creating a new resource.

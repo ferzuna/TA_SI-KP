@@ -75,9 +75,7 @@ Route::group(['middleware' => 'mahasiswa'], function () {
     Route::post('/mahasiswa/pendaftaran/store', [App\Http\Controllers\MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
     Route::get('/mahasiswa/permohonan', [App\Http\Controllers\PermohonanController::class, 'index'])->name('permohonan');
     Route::post('/mahasiswa/permohonan', [App\Http\Controllers\PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
-    Route::get('/mahasiswa/pengumpulan', function () {
-        return view('mahasiswa.pengumpulan');
-    })->name('pengumpulan');
+    Route::get('/mahasiswa/pengumpulan', [App\Http\Controllers\MahasiswaController::class, 'pengumpulan'])->name('pengumpulan');
     Route::post('/mahasiswa/pengumpulan/store', [App\Http\Controllers\MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
     Route::get('/mahasiswa/finalisasi', function () {
         return view('mahasiswa.finalisasi');
