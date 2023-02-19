@@ -89,6 +89,7 @@ class UserSeeder extends Seeder
             'angkatan' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
+            'email' => 'bolehngasal@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1
         ]);
@@ -100,6 +101,7 @@ class UserSeeder extends Seeder
             'angkatan' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
+            'email' => 'ferzuna1@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1 
         ]);
@@ -111,6 +113,7 @@ class UserSeeder extends Seeder
             'angkatan' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
+            'email' => 'wickkedua@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1 
         ]);
@@ -122,6 +125,7 @@ class UserSeeder extends Seeder
             'angkatan' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
+            'email' => 'dime@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1 
         ]);
@@ -133,6 +137,7 @@ class UserSeeder extends Seeder
             'angkatan' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
+            'email' => 'theshield@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1 
         ]);

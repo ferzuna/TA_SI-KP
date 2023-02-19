@@ -7,6 +7,7 @@ use App\Models\Dosen;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
 // use GuzzleHttp\Psr7\Request;
@@ -33,13 +34,15 @@ class DosenController extends Controller
     public function pendaftaran(){
         $alldosen = [];
         $all = User::where('role_id', 4)->get();
+        $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         foreach($all as $dosen){
             if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
                 $alldosen[] = $dosen;
             }
         }
         return view('mahasiswa.pendaftaran',[
-            "alldosen"=>$alldosen
+            "alldosen"=>$alldosen,
+            "pendaftaran"=>$pendaftaran,
         ]);
     }
     public function kuotabimbingan(Request $request, $id){

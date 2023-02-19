@@ -48,7 +48,7 @@
                                                         <br>
                                                         <span>Nomor telepon: {{$mhs['no_telp']}}</span>
                                                         <br>
-                                                        <span>fadzilferdiawan@students.undip.ac.id</span>
+                                                        <span>{{ $mhs['email'] }}</span>
                                                     </div>
 
 

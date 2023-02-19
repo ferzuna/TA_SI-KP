@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('NIP')->unique()->nullable(); //dosen
             $table->string('NIM')->unique()->nullable(); //mahasiswa
             $table->string('name');
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->unique();
             $table->string('username');
             $table->string('password');
             $table->string('alamat')->nullable(); //dosen
@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('bobot_bimbingan')->nullable(); //dosen
             $table->string('angkatan')->nullable(); //mahasiswa
             $table->string('no_telp')->nullable(); //mahasiswa
+            $table->string('sks')->nullable(); //mahasiswa
             $table->integer('role_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

@@ -11,7 +11,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="perusahaan">Nama Perusahaan</label>
-                                <input class="form-control" type="text" name="perusahaan">
+                                <input class="form-control" type="text" name="perusahaan" value="{{-- $pendaftaran['perusahaan'] --}}">
                             </div>
                             <div class="form-group">
                                 <label for="a1">KP A1</label>
