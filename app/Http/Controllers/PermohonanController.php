@@ -11,7 +11,7 @@ class PermohonanController extends Controller
 
     public function index()
     {
-        return view('permohonan');
+        return view('mahasiswa.permohonan');
     }
     public function sendPermohonan(Request $request)
     {

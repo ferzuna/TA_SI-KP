@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-between">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item my-auto">
-                        <a class="nav-link" aria-current="page" href="{{ route('mahasiswa') }}">Home</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('permohonan') }}">Permohonan KP</a>
                     </li>
                     <li class="nav-item my-auto">
                         <a class="nav-link" href="{{ route('pendaftaran') }}">Pendaftaran KP</a>

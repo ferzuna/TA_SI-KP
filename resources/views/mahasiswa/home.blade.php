@@ -44,9 +44,9 @@
                                                         <h4><b>Mahasiswa</b></h4>
                                                         <span>{{ $mhs['name'] }}</span>
                                                         <br>
-                                                        <span>Angkatan {{$mhs['angkatan']}}</span>
+                                                        <span>Angkatan {{ $mhs['angkatan'] }}</span>
                                                         <br>
-                                                        <span>Nomor telepon: {{$mhs['no_telp']}}</span>
+                                                        <span>Nomor telepon: {{ $mhs['no_telp'] }}</span>
                                                         <br>
                                                         <span>fadzilferdiawan@students.undip.ac.id</span>
                                                     </div>
@@ -124,12 +124,12 @@
                     Layanan
                 </h2>
                 <div class="wrap">
-                    <div class="row">
-                        <div class="col-lg-4">
+                    <div class="row my-2">
+                        <div class="col-lg-6">
                             <div class="card h-100">
-                                <a href="{{ route('pendaftaran') }}" class="link-dark">
+                                <a href="{{ route('permohonan') }}" class="link-dark">
                                     <div class="card-content">
-                                        <h4 class="text-center">Pendaftaran KP</h4>
+                                        <h4 class="text-center">Permohonan KP</h4>
                                         <p style="margin-top:2em">Pengajuan proposal dan surat permohonan KP untuk di TTD
                                             Kepala
                                             Departemen lalu diberikan
@@ -138,7 +138,20 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <a href="{{ route('pendaftaran') }}" class="link-dark">
+                                    <div class="card-content">
+                                        <h4 class="text-center">Pendaftaran KP</h4>
+                                        <p style="margin-top:2em">Pengajuan pendaftaran KP serta pemilihan dosen pembimbing
+                                            KP setelah diterima di perusahaan</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
                             <div class="card h-100">
                                 <a href="{{ route('pengumpulan') }}" class="link-dark">
                                     <div class="card-content">
@@ -151,7 +164,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="card h-100">
                                 <a href="{{ route('finalisasi') }}" class="link-dark">
                                     <div class="card-content">
