@@ -24,6 +24,8 @@ class CreateBimbingansTable extends Migration
             $table->string('b1')->nullable();
             $table->string('b2')->nullable();
             $table->string('b3')->nullable();
+            $table->string('survey')->nullable();
+            $table->dateTime('jadwal')->nullable();
             $table->timestamps();
         });
     }

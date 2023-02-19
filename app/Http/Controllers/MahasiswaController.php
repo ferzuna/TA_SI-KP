@@ -86,6 +86,8 @@ class MahasiswaController extends Controller
                 'b1' => $request->b1,
                 'b2' => $request->b2,
                 'b3' => $request->b3,
+                'survey' => $request->survey,
+                'jadwal' => $request->jadwal,
                 'status' => $request->b3,
             ]);
         }else{
@@ -99,6 +101,8 @@ class MahasiswaController extends Controller
                 'b1' => $request->b1,
                 'b2' => $request->b2,
                 'b3' => $request->b3,
+                'survey' => $request->survey,
+                'jadwal' => $request->jadwal,
                 'status' => $request->b3,
             ]);
         }
@@ -116,6 +120,8 @@ class MahasiswaController extends Controller
                 'b1' => '',
                 'b2' => '',
                 'b3' => '',
+                'survey' => '',
+                'jadwal' => '',
                 'status' => '',
             ];
         }

@@ -39,11 +39,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="survey-perusahaan">Form Survey Perusahaan</label>
-                                <input class="form-control" type="text" name="survey-perusahaan" value="{{ $data['laporan'] }}">
+                                <input class="form-control" type="text" name="survey" value="{{ $data['survey'] }}">
                             </div>
                             <div class="form-group">
                                 <label for="jadwal-seminar">Jadwal Seminar</label>
-                                <input class="form-control" type="datetime-local" name="jadwal-seminar" id="" value="">
+                                <input class="form-control" type="datetime-local" name="jadwal" id="" value="{{ $data['jadwal'] }}">
                             </div>
                         </div>
 
