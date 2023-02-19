@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('mahasiswa.layouts.main')
 
 @section('section')
     <div class="wrapper">
