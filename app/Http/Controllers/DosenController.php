@@ -31,20 +31,7 @@ class DosenController extends Controller
         ]);
     }
 
-    public function pendaftaran(){
-        $alldosen = [];
-        $all = User::where('role_id', 4)->get();
-        $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
-        foreach($all as $dosen){
-            if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
-                $alldosen[] = $dosen;
-            }
-        }
-        return view('mahasiswa.pendaftaran',[
-            "alldosen"=>$alldosen,
-            "pendaftaran"=>$pendaftaran,
-        ]);
-    }
+    
     public function kuotabimbingan(Request $request, $id){
         User::find($id)->update([
             'kuota_bimbingan' => $request->kuota,
@@ -54,6 +41,12 @@ class DosenController extends Controller
     }
     
 
+    public function halamanpendaftaran(){
+        $mymahasiswa = Pendaftaran::where('dosbing', Auth::user()->name)->get();
+        return view('dosen.pendaftaran', [
+            'mymahasiswa' => $mymahasiswa,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

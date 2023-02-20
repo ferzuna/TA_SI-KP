@@ -36,7 +36,44 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    public function pendaftaran(){
+        $alldosen = [];
+        $all = User::where('role_id', 4)->get();
+        $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        
+        //jika data belum ada maka text field akan kosong, tapi jika sudah ada maka akan terisi
+        // note: untuk bagian dosen belum fix
+        if(!isset($pendaftaran)){
+            $pendaftaran = [
+                'perusahaan' => '',
+                'bukti' => '',
+                'a1' => '',
+            ];
+        }
+        foreach($all as $dosen){
+            if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
+                $alldosen[] = $dosen;
+            }
+        }
+        return view('mahasiswa.pendaftaran',[
+            "alldosen"=>$alldosen,
+            "pendaftaran"=>$pendaftaran,
+        ]);
+    }
+
     public function pendaftaranstore(Request $request){
+        // pengondisian untuk data yang sudah ada
+        $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        if(isset($ini)){
+            Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
+                'perusahaan' => $request->perusahaan,
+                'a1' => $request->a1,
+                'bukti' => $request->bukti,
+                'dosbing' => $request->dosbing,
+            ]);
+            return redirect('/mahasiswa')->with('success', 'pendaftaran updated!');
+        }
+
         Pendaftaran::create([
             'perusahaan' => $request->perusahaan,
             'NIM' => Auth::user()->NIM,
@@ -110,8 +147,7 @@ class MahasiswaController extends Controller
     }
 
     public function pengumpulan(){
-        $nim = Auth::user()->NIM;
-        $data = Bimbingan::where('NIM', $nim)->first();
+        $data = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         if(!isset($data)){
             $data = [
                 'makalah' => '',
