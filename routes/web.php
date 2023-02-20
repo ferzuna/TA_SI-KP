@@ -19,9 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/info-magang', function () {
-    return view('info-magang');
-})->name('info-magang');
+Route::get('/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangdepan'])->name('info-magang');
 
 
 Auth::routes();
