@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 
 class PermohonanController extends Controller
