@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use App\Models\Infomagang;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,13 @@ class AdminController extends Controller
         $mymahasiswa = User::where('role_id', 1)->get();
         return view('admin.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa
+        ]);
+    }
+
+    public function infomagangcreate(){
+        $infomagang = Infomagang::all();
+        return view('admin.info-magang', [
+            'infomagang' => $infomagang,
         ]);
     }
     /**

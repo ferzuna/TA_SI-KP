@@ -33,9 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // admin
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/info-magang', function () {
-        return view('admin.info-magang');
-    })->name('admin.info-magang');
+    Route::get('/admin/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
     Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
     Route::post('/admin/bobot/update/{id}', [App\Http\Controllers\DosenController::class, 'kuotabimbingan'])->name('kuota');
     Route::get('/bobot-list', function () {
