@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DosenController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -51,9 +52,7 @@ Route::group(['middleware' => 'dosen'], function () {
     Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::get('/dosen/pendaftaran', [App\Http\Controllers\DosenController::class, 'halamanpendaftaran'])->name('dosen.pendaftaran');
-    Route::get('/dosen/bimbingan', function () {
-        return view('dosen.bimbingan');
-    })->name('dosen.bimbingan');
+    Route::get('/dosen/bimbingan', [DosenController::class, 'bimbingan'])->name('dosen.bimbingan');
     Route::get('/dosen/jadwal', function () {
         return view('dosen.jadwal');
     })->name('dosen.jadwal');
