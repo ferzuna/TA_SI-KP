@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Dosen;
+use App\Models\Bimbingan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -45,6 +46,13 @@ class DosenController extends Controller
         $mymahasiswa = Pendaftaran::where('dosbing', Auth::user()->name)->get();
         return view('dosen.pendaftaran', [
             'mymahasiswa' => $mymahasiswa,
+        ]);
+    }
+
+    public function bimbingan(){
+        $bimbingan = Bimbingan::where('NIP', Auth::user()->NIP)->get();
+        return view('dosen.bimbingan', [
+            'bimbingan'=>$bimbingan,
         ]);
     }
     /**
