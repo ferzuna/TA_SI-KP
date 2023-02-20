@@ -27,6 +27,12 @@ class AdminController extends Controller
             "mymahasiswa" => $mymahasiswa
         ]);
     }
+    public function infomagangdepan(){
+        $infomagang = Infomagang::all();
+        return view('info-magang', [
+            'infomagang'=>$infomagang,
+        ]);
+    }
 
     public function infomagangcreate(){
         $infomagang = Infomagang::all();
