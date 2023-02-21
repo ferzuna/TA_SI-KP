@@ -14,7 +14,6 @@
                             <div class="col-lg-6 col-12 footer-links">
                                 <h5 style="font-weight: 700">Services</h5>
                                 <ul>
-                                    <li><a href="#">Permohonan KP</a></li>
                                     <li><a href="#">Dokumen KP</a></li>
                                 </ul>
                             </div>

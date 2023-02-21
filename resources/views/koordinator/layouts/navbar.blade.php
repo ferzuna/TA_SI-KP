@@ -26,10 +26,16 @@
 
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('koordinator.permohonan') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>{{ __('Permohonan KP') }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('koordinator.belum-dinilai') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Daftar Berkas yang Belum
-                                                                                                                            di Tanda Tangan') }}</span>
+                                                                                                                                                                di Tanda Tangan') }}</span>
         </a>
     </li>
     <!-- Nav Item - Santri -->
