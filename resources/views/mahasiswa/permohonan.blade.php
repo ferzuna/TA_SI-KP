@@ -28,22 +28,10 @@
             <div class="py-3">
                 <form action="{{ route('permohonan.sendPermohonan') }}" method="POST" enctype="multipart/form-data">
                     <div class="row">
-                        <h2 class="py-3"><b>Halaman pengumpulan berkas bimbingan kp</b></h2>
+                        <h2 class="py-3"><b>Halaman Permohonan Kerja Praktik</b></h2>
 
                         @csrf
                         <div class="col-lg-4 col-md-6">
-                            <div class="form-group">
-                                <label for="Nama">Nama</label>
-                                <input class="form-control" type="text" name="nama" required>
-                            </div>
-                            <div class="form-group">
-                                <label for=nim>NIM</label>
-                                <input class="form-control" type="text" name="nim" required>
-                            </div>
-                            <div class="form-group">
-                                <label for=email>email</label>
-                                <input class="form-control" type="email" name="email" required>
-                            </div>
                             <div class="form-group">
                                 <label for="perusahaan">Nama Perusahaan</label>
                                 <input class="form-control" type="text" name="perusahaan" required>

@@ -27,10 +27,17 @@ class KoorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function permohonan()
+    {
+
+        return view('koordinator.permohonan');
+    }
+
+
     public function sudah_dinilai()
     {
-        $belum_ttd = Penilaian::where('status', 1)->get();
-        return view('koordinator.sudah-dinilai', compact('belum_ttd'));
+        // $sudah_ttd = Penilaian::where('status', 1)->get();
+        return view('koordinator.sudah-dinilai', compact('sudah_ttd'));
     }
 
     public function belum_dinilai()

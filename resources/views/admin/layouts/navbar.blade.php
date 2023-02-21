@@ -45,6 +45,13 @@
             <span>{{ __('Bobot Bimbingan') }}</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.permohonan') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>{{ __('Permohonan KP') }}</span>
+        </a>
+    </li>
+
 
     <!-- Nav Item - Pengaturan -->
     <li class="nav-item">
