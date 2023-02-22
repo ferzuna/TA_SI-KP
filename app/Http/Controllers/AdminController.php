@@ -21,20 +21,23 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
-    public function allmhs(){
+    public function allmhs()
+    {
         $mymahasiswa = User::where('role_id', 1)->get();
         return view('admin.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa
         ]);
     }
-    public function infomagangdepan(){
+    public function infomagangdepan()
+    {
         $infomagang = Infomagang::all();
         return view('info-magang', [
-            'infomagang'=>$infomagang,
+            'infomagang' => $infomagang,
         ]);
     }
 
-    public function infomagangcreate(){
+    public function infomagangcreate()
+    {
         $infomagang = Infomagang::all();
         return view('admin.info-magang', [
             'infomagang' => $infomagang,
@@ -56,6 +59,10 @@ class AdminController extends Controller
      * @param  \App\Http\Requests\StoreAdminRequest  $request
      * @return \Illuminate\Http\Response
      */
+    public function permohonan()
+    {
+        return view('admin.permohonan');
+    }
     public function store(StoreAdminRequest $request)
     {
         //
@@ -103,6 +110,5 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        
     }
 }

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('/admin/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
     Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
+    Route::get('/admin/permohonan', [App\Http\Controllers\AdminController::class, 'permohonan'])->name('admin.permohonan');
     Route::post('/admin/bobot/update/{id}', [App\Http\Controllers\DosenController::class, 'kuotabimbingan'])->name('kuota');
     Route::get('/bobot-list', function () {
         return view('admin.bobot-list');
@@ -82,6 +83,7 @@ Route::group(['middleware' => 'mahasiswa'], function () {
 // koordinator
 Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
+    Route::get('/koordinator/permohonan', [App\Http\Controllers\KoorController::class, 'permohonan'])->name('koordinator.permohonan');
     Route::get('/koordinator/sudah-dinilai', [App\Http\Controllers\KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
     Route::get('/koordinator/belum-dinilai', [App\Http\Controllers\KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
     Route::get('/koordinator/pengaturan', function () {
