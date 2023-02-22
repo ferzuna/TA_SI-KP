@@ -80,10 +80,7 @@
                                     <tbody>
                                         @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <td class="namecntr"><img class="rounded-circle mr-2" width="30"
-                                                        height="30"
-                                                        src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                </td>
+                                                <td><?= $data['nama'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td><?= $data['a1'] ?></td>
