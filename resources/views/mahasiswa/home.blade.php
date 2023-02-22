@@ -77,9 +77,7 @@
 
                             </div>
                             <div class="media-right">
-                                Mahasiswa mencari tempat/lokasi Kerja Praktek, setelah diterima Mahasiswa mengajukan Surat
-                                Permohonan Kerja Praktek dan proposal
-                                pengajuan pelaksanaan Kerja Praktek ke Dosen Pembimbing
+                                Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal : {{ $jadwal['jadwal'] }}
                             </div>
                         </div>
                         <div class="banner">
@@ -87,9 +85,7 @@
 
                             </div>
                             <div class="media-right">
-                                Mahasiswa mencari tempat/lokasi Kerja Praktek, setelah diterima Mahasiswa mengajukan Surat
-                                Permohonan Kerja Praktek dan proposal
-                                pengajuan pelaksanaan Kerja Praktek ke Dosen Pembimbing
+                                Dosen Pembimbing : {{ $pendaftaran['dosbing'] }}
                             </div>
                         </div>
                         <div class="banner">
@@ -97,9 +93,7 @@
 
                             </div>
                             <div class="media-right">
-                                Mahasiswa mencari tempat/lokasi Kerja Praktek, setelah diterima Mahasiswa mengajukan Surat
-                                Permohonan Kerja Praktek dan proposal
-                                pengajuan pelaksanaan Kerja Praktek ke Dosen Pembimbing
+                                Pelaksanaan Kerja Praktik dilaksanakan di : {{ $pendaftaran['perusahaan'] }}
                             </div>
                         </div>
                         <div class="banner">

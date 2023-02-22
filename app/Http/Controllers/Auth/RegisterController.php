@@ -52,9 +52,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'nim' => ['required', 'string', 'max:255', 'unique:users'],
+            'NIM' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'sks' => ['required', 'bigint', 'max:20'],
+            'sks' => ['required', 'string', 'max:20'],
             'username' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -70,11 +70,12 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'nim' => $data['nim'],
+            'NIM' => $data['NIM'],
             'email' => $data['email'],
             'sks' => $data['sks'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
-        ]);
+            'role_id' => 1,
+        ])->assignRole('mahasiswa')->with('success');
     }
 }

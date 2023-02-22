@@ -23,8 +23,12 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mhs = User::where('name', Auth::user()->name)->first();
+        $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+        $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.home', [
-            "mhs" => $mhs
+            "mhs" => $mhs,
+            "jadwal"=> $bimbingan,
+            "pendaftaran"=>$pendaftaran,
         ]);
     }
 
@@ -62,6 +66,11 @@ class MahasiswaController extends Controller
     }
 
     public function pendaftaranstore(Request $request){
+        // $this->validate($request, [
+        //     'perusahaan' => ['required|max:255'],
+        //     'a1' => ['required|max:255'],
+        //     'bukti' => ['required|max:255'],
+        // ]);
         // pengondisian untuk data yang sudah ada
         $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         if(isset($ini)){

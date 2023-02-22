@@ -17,10 +17,10 @@
 
                                 <div class="col-md-6">
                                     <input id="nama lengkap" type="text"
-                                        class="form-control @error('nama lengkap') is-invalid @enderror" name="nama lengkap"
+                                        class="form-control @error('nama lengkap') is-invalid @enderror" name="name"
                                         value="{{ old('nama lengkap') }}" required autocomplete="nama lengkap" autofocus>
 
-                                    @error('nama')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -29,15 +29,15 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="nim"
+                                <label for="NIM"
                                     class="col-md-4 col-form-label text-md-end">{{ __('NIM') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nim" type="text"
-                                        class="form-control @error('nim') is-invalid @enderror" name="nim"
-                                        value="{{ old('nim') }}" required autocomplete="nim" autofocus>
+                                    <input id="NIM" type="text"
+                                        class="form-control @error('NIM') is-invalid @enderror" name="NIM"
+                                        value="{{ old('NIM') }}" required autocomplete="NIM" autofocus>
 
-                                    @error('nim')
+                                    @error('NIM')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
