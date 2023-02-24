@@ -10,7 +10,7 @@
 
                         </div>
                         <div class="media-right">
-                            selamat datang {{ $mhs['name'] }}, di sistem informasi KP
+                            selamat datang {{-- $mhs['name'] --}}, di sistem informasi KP
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
 
                             </div>
                             <div class="media-right">
-                                Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal : {{ $jadwal['jadwal'] }}
+                                Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal : {{-- $jadwal['jadwal'] --}}
                             </div>
                         </div>
                         <div class="banner">
@@ -85,7 +85,7 @@
 
                             </div>
                             <div class="media-right">
-                                Dosen Pembimbing : {{ $pendaftaran['dosbing'] }}
+                                Dosen Pembimbing : {{-- $pendaftaran['dosbing'] --}}
                             </div>
                         </div>
                         <div class="banner">
@@ -93,7 +93,7 @@
 
                             </div>
                             <div class="media-right">
-                                Pelaksanaan Kerja Praktik dilaksanakan di : {{ $pendaftaran['perusahaan'] }}
+                                Pelaksanaan Kerja Praktik dilaksanakan di : {{-- $pendaftaran['perusahaan'] --}}
                             </div>
                         </div>
                         <div class="banner">
