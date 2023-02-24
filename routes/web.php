@@ -18,7 +18,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome')->middleware('welcome');
 
 Route::get('/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangdepan'])->name('info-magang');
 

@@ -78,9 +78,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- ini masi bbelom fix -->
+                                        <!-- solusi alternatifnya di dalem db pendaftaran ditambahin nama mhs -->
+                                        <?php $i = 0 ?>
                                         @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $user[$i]['name'] ?></td><?php $i++ ?>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td><?= $data['a1'] ?></td>

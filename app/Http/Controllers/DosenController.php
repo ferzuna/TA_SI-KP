@@ -44,8 +44,13 @@ class DosenController extends Controller
 
     public function halamanpendaftaran(){
         $mymahasiswa = Pendaftaran::where('dosbing', Auth::user()->name)->get();
+        $user = [];
+        foreach($mymahasiswa as $mahasiswa){
+            $user[] = User::where('NIM', $mahasiswa['NIM'])->first();
+        }
         return view('dosen.pendaftaran', [
             'mymahasiswa' => $mymahasiswa,
+            'user'=>$user,
         ]);
     }
 
