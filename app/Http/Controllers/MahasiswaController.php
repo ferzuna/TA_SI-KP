@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Dosen;
 use App\Models\Bimbingan;
 use App\Models\Mahasiswa;
+use App\Models\Permohonan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -49,7 +50,6 @@ class MahasiswaController extends Controller
         // note: untuk bagian dosen belum fix
         if(!isset($pendaftaran)){
             $pendaftaran = [
-                'perusahaan' => '',
                 'bukti' => '',
                 'a1' => '',
             ];
@@ -72,10 +72,10 @@ class MahasiswaController extends Controller
         //     'bukti' => ['required|max:255'],
         // ]);
         // pengondisian untuk data yang sudah ada
-        $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first(); 
+        $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if(isset($ini)){
             Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
-                'perusahaan' => $request->perusahaan,
                 'a1' => $request->a1,
                 'bukti' => $request->bukti,
                 'dosbing' => $request->dosbing,
@@ -84,7 +84,7 @@ class MahasiswaController extends Controller
         }
 
         Pendaftaran::create([
-            'perusahaan' => $request->perusahaan,
+            'perusahaan' => $perusahaan['perusahaan'],
             'NIM' => Auth::user()->NIM,
             'a1' => $request->a1,
             'bukti' => $request->bukti,
