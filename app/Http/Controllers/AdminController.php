@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Models\Infomagang;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -42,6 +43,16 @@ class AdminController extends Controller
         return view('admin.info-magang', [
             'infomagang' => $infomagang,
         ]);
+    }
+
+    public function addinfomagang(Request $request){
+        Infomagang::create([
+            'perusahaan' => $request->perusahaan,
+            'posisi' => $request->posisi,
+            'durasi' => $request->durasi,
+            'requirement' => $request->requirement,
+        ]);
+        return redirect('/admin/info-magang')->with('success', 'pendaftaran created!');
     }
     /**
      * Show the form for creating a new resource.
@@ -97,9 +108,15 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdminRequest $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        //
+        Infomagang::find($id)->update([
+            'perusahaan' => $request->perusahaan,
+            'posisi' => $request->posisi,
+            'durasi' => $request->durasi,
+            'requirement' => $request->requirement,
+        ]);
+        return redirect('/admin/info-magang')->with('success', 'info magang updated');
     }
 
     /**
@@ -108,7 +125,9 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
+        Infomagang::find($id)->delete();
+        return redirect('/admin/info-magang')->with('success', 'magang deleted');
     }
 }

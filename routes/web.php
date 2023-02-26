@@ -33,6 +33,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('/admin/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
+    Route::post('/admin/info-magang/store', [App\Http\Controllers\AdminController::class, 'addinfomagang'])->name('addinfomagang');
+    Route::post('/admin/info-magang/destroy/{id}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('infomagang.destroy');
+    Route::post('/admin/info-magang/update/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('infomagang.update');
     Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
     Route::get('/admin/permohonan', [App\Http\Controllers\AdminController::class, 'permohonan'])->name('admin.permohonan');
     Route::post('/admin/bobot/update/{id}', [App\Http\Controllers\DosenController::class, 'kuotabimbingan'])->name('kuota');

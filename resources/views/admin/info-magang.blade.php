@@ -10,34 +10,24 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add Santri</h5>
+                                <h5 class="modal-title">Add Info Magang</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <div class="col-md-6">
-                                    <form method="POST" action="">
+                                    <form method="POST" action="{{ route('addinfomagang') }}">
                                         @csrf
                                         <input type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Nama" name="nama" />
-                                        <select type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Gender" name="gender" />
-                                        <option value="Laki - Laki" selected>Laki - Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
-                                        </select>
+                                            style="width: 440px;margin-bottom: 15px;" placeholder="Perusahaan" name="perusahaan" />
                                         <input type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Alamat" name="alamat" />
+                                            style="width: 440px;margin-bottom: 15px;" placeholder="Posisi" name="posisi" />
                                         <input type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Perguruan Tinggi"
-                                            name="pt" />
-                                        <input type="text" class="border rounded-0 form-control" placeholder="Jurusan"
-                                            style="margin-bottom: 15px;width: 440px;" name="jurusan" />
-                                        <select type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Status" name="status" />
-                                        <option value="Aktif" selected>Aktif</option>
-                                        <option value="Tidak Aktif">Tidak Aktif</option>
-                                        </select>
+                                            style="width: 440px;margin-bottom: 15px;" placeholder="Durasi"
+                                            name="durasi" />
+                                        <input type="text" class="border rounded-0 form-control" placeholder="Requirement"
+                                            style="margin-bottom: 15px;width: 440px;" name="requirement" />
                                         <input type="submit" class="btn btn-success" value="Save Changes"
                                             name="submit"></input>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -103,50 +93,28 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
-                                                                <form method="POST" action="">
+                                                                <form method="POST" action="{{ route('infomagang.update', $data['id']) }}">
                                                                     @csrf
                                                                     <input type="text"
                                                                         class="border rounded-0 form-control"
                                                                         style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Nama" name="nama"
-                                                                        value="<?= $data['nama'] ?>" />
-                                                                    <select type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Gender" name="gender" />
-                                                                    <option
-                                                                        <?= $data['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
-                                                                        value="Laki - Laki">Laki - Laki</option>
-                                                                    <option
-                                                                        <?= $data['gender'] == 'Perempuan' ? 'selected' : '' ?>
-                                                                        value="Perempuan">Perempuan</option>
-                                                                    </select>
+                                                                        placeholder="Perusahaan" name="perusahaan"
+                                                                        value="<?= $data['perusahaan'] ?>" />
                                                                     <input type="text"
                                                                         class="border rounded-0 form-control"
                                                                         style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Alamat" name="alamat"
-                                                                        value="<?= $data['alamat'] ?>" />
+                                                                        placeholder="Posisi" name="posisi"
+                                                                        value="<?= $data['posisi'] ?>" />
                                                                     <input type="text"
                                                                         class="border rounded-0 form-control"
                                                                         style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Perguruan Tinggi" name="pt"
-                                                                        value="<?= $data['pt'] ?>" />
+                                                                        placeholder="Durasi" name="durasi"
+                                                                        value="<?= $data['durasi'] ?>" />
                                                                     <input type="text"
                                                                         class="border rounded-0 form-control"
-                                                                        placeholder="Jurusan"
+                                                                        placeholder="requirement"
                                                                         style="margin-bottom: 15px;width: 440px;"
-                                                                        name="jurusan" value="<?= $data['jurusan'] ?>" />
-                                                                    <select type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Status" name="status" />
-                                                                    <option
-                                                                        <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                        value="Aktif">Aktif</option>
-                                                                    <option
-                                                                        <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                        value="Tidak Aktif">Tidak Aktif</option>
-                                                                    </select>
+                                                                        name="requirement" value="<?= $data['requirement'] ?>" />
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>
                                                                     <button type="button" class="btn btn-secondary"
@@ -162,7 +130,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Delete Santri</h5>
+                                                            <h5 class="modal-title">Delete magang</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -171,7 +139,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
+                                                                    action="{{ route('infomagang.destroy',$data['id']) }}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
