@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Infomagang;
+use App\Models\Permohonan;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
-use App\Models\Infomagang;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -72,7 +73,10 @@ class AdminController extends Controller
      */
     public function permohonan()
     {
-        return view('admin.permohonan');
+        $permohonan = Permohonan::all();
+        return view('admin.permohonan',[
+            'permohonan' => $permohonan,
+        ]);
     }
     public function store(StoreAdminRequest $request)
     {

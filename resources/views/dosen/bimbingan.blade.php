@@ -78,9 +78,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i = 0 ?>
                                         @foreach ($bimbingan as $data)
                                             <tr>
-                                                <td><?= $data['NIM'] ?></td>
+                                                <td><?= $user[$i]['name'] ?></td><?php $i++ ?>
                                                 <td><?= $data['b1'] ?></td>
                                                 <td><?= $data['b2'] ?></td>
                                                 <td><?= $data['b3'] ?></td>

@@ -56,8 +56,13 @@ class DosenController extends Controller
 
     public function bimbingan(){
         $bimbingan = Bimbingan::where('NIP', Auth::user()->NIP)->get();
+        $user = [];
+        foreach($bimbingan as $mahasiswa){
+            $user[] = User::where('NIM', $mahasiswa['NIM'])->first();
+        }
         return view('dosen.bimbingan', [
             'bimbingan'=>$bimbingan,
+            'user' => $user,
         ]);
     }
     /**
