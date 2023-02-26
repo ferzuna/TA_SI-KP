@@ -5,38 +5,60 @@ namespace App\Http\Controllers;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
-use Illuminate\Routing\Controller;
+// use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class PermohonanController extends Controller
 {
 
     public function index()
     {
-        return view('mahasiswa.permohonan');
+        $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        if(!isset($data)){
+            $data = [
+                'perusahaan' => '',
+                'proposal' => '',
+                'dok_rekomendasi' => '',
+                'sks' => '',
+            ];
+        }
+        return view('mahasiswa.permohonan', [
+            'data'=>$data
+        ]);
     }
     public function sendPermohonan(Request $request)
     {
-        $this->validate($request, [
-            'nama' => ['required', 'string', 'max:255'],
-            'nim' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'perusahaan' => ['required', 'string', 'max:255'],
-            'proposal' => ['required', 'string', 'max:255'],
-            'dokumen' => ['required', 'string', 'max:255'],
-            'sks' => ['required', 'string', 'max:255']
-        ]);
+        $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        if(isset($data)){
+            Permohonan::where('NIM', Auth::user()->NIM)->first()->update([
+                'perusahaan' => $request->perusahaan,
+                'proposal' => $request->proposal,
+                'dok_rekomendasi' => $request->dok_rekomendasi,
+                'sks' => $request->sks,
+                'status'=> false,
+            ]);
+        }else{
+        // $this->validate($request, [
+        //     'perusahaan' => ['required', 'string', 'max:255'],
+        //     'proposal' => ['required', 'string', 'max:255'],
+        //     'dokumen' => ['required', 'string', 'max:255'],
+        //     'sks' => ['required', 'string', 'max:255'],
+        // ]);
 
         $contact = [
-            'nama' => $request['nama'],
-            'nim' => $request['nim'],
-            'email' => $request['email'],
+            'name' => Auth::user()->name,
+            'NIM' => Auth::user()->NIM,
+            'email' => Auth::user()->email,
             'perusahaan' => $request['perusahaan'],
             'proposal' => $request['proposal'],
-            'dokumen' => $request['dokumen'],
+            'dok_rekomendasi' => $request['dok_rekomendasi'],
             'sks' => $request['sks'],
+            'status'=> false,
         ];
-
+        Permohonan::create($contact);
+    }
 
         try {
             //     //code...

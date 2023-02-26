@@ -22,6 +22,7 @@ class CreatePermohonansTable extends Migration
             $table->string('proposal')->nullable();
             $table->string('dok_rekomendasi')->nullable();
             $table->string('sks')->nullable();
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

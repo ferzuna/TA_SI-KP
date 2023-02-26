@@ -80,17 +80,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($mymahasiswa as $data)
+                                        @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <td class="namecntr"><img class="rounded-circle mr-2" width="30"
-                                                        height="30"
-                                                        src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                </td>
+                                                <td><?= $data['name'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
-                                                <td><?= $data['nama'] ?></td>
-                                                <td><?= $data['angkatan'] ?></td>
-                                                <td><?= $data['no_telp'] ?></td>
-                                                <td><?= $data['username'] ?></td>
+                                                <td><?= $data['perusahaan'] ?></td>
+                                                <td><?= $data['dok_rekomendasi'] ?></td>
+                                                <td><?= $data['proposal'] ?></td>
+                                                <td><?= $data['sks'] ?></td>
+                                                <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>
@@ -180,7 +178,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{ route('santri.destroy', $data['id']) }}">
+                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
@@ -193,7 +191,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>

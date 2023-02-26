@@ -34,22 +34,22 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="perusahaan">Nama Perusahaan</label>
-                                <input class="form-control" type="text" name="perusahaan" required>
+                                <input class="form-control" type="text" name="perusahaan" value="{{ $data['perusahaan'] }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="proposal">Proposal Perusahaan</label>
-                                <input class="form-control" type="text" name="proposal" required>
+                                <input class="form-control" type="text" name="proposal" value="{{ $data['proposal'] }}" required>
                             </div>
 
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="dokumen">Dokumen Rekomendasi</label>
-                                <input class="form-control" type="text" name="dokumen" required>
+                                <label for="dok_rekomendasi">Dokumen Rekomendasi</label>
+                                <input class="form-control" type="text" name="dok_rekomendasi" value="{{ $data['dok_rekomendasi'] }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Kumulatif</label>
-                                <input class="form-control" type="text" name="sks" required>
+                                <input class="form-control" type="text" name="sks" value="{{ $data['sks'] }}" required>
                             </div>
                         </div>
                         <div class="py-2">

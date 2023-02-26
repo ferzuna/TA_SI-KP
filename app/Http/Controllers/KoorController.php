@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koor;
+use App\Models\User;
+use App\Models\Penilaian;
+use App\Models\Permohonan;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreKoorRequest;
 use App\Http\Requests\UpdateKoorRequest;
-use App\Models\Penilaian;
-use App\Models\User;
 
 class KoorController extends Controller
 {
@@ -29,8 +31,10 @@ class KoorController extends Controller
 
     public function permohonan()
     {
-
-        return view('koordinator.permohonan');
+        $mymahasiswa = Permohonan::all();
+        return view('koordinator.permohonan', [
+            'mymahasiswa'=>$mymahasiswa,
+        ]);
     }
 
 
