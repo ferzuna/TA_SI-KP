@@ -89,7 +89,9 @@
                                                 <td><?= $data['proposal'] ?></td>
                                                 <td><?= $data['sks'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
-                                                <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
+                                                <td><i class="fas fa-check-circle" style="padding-left: 9px;" type="button"
+                                                        data-toggle="modal"></i>
+                                                    <i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>
                                                     <i class="material-icons icondelete" style="padding-left: 8px;"
@@ -169,7 +171,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Delete Santri</h5>
+                                                            <h5 class="modal-title">Delete Data</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -177,8 +179,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
-                                                                <form method="POST"
-                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
+                                                                <form method="POST" action="{{-- route('santri.destroy',$data['id']) --}}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
