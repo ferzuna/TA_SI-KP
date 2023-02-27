@@ -9,7 +9,7 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dokumen KP</a>
+                    <a class="nav-link" href="{{ route('dokumen') }}">Dokumen KP</a>
                 </li>
             </ul>
             <div class="btn-login">
