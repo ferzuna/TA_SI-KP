@@ -90,7 +90,7 @@
                                                 <td><?= $data['sks'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                 <td><i class="fas fa-check-circle" style="padding-left: 9px;" type="button"
-                                                        data-toggle="modal"></i>
+                                                        data-toggle="modal" data-target="#approve<?= $data['id'] ?>"></i>
                                                     <i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>
@@ -184,6 +184,33 @@
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Okay" name="delete"></input>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- approved -->
+                                            <div class="modal fade" id="approve<?= $data['id'] ?>" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Setujui Data</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="col-md-6">
+                                                                <form method="POST" action="{{ route('koordinator.approved', $data['id']) }}">
+                                                                    @csrf
+                                                                    <h6>Apakah Anda Yakin?</h6>
+                                                                    <input type="submit" class="btn btn-success"
+                                                                        value="Okay" name="approve"></input>
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
                                                                 </form>

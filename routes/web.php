@@ -91,6 +91,7 @@ Route::group(['middleware' => 'mahasiswa'], function () {
 Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
     Route::get('/koordinator/permohonan', [App\Http\Controllers\KoorController::class, 'permohonan'])->name('koordinator.permohonan');
+    Route::post('/koordinator/permohonan/approved/{id}', [App\Http\Controllers\KoorController::class, 'approved'])->name('koordinator.approved');
     Route::get('/koordinator/sudah-dinilai', [App\Http\Controllers\KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
     Route::get('/koordinator/belum-dinilai', [App\Http\Controllers\KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
     Route::get('/koordinator/pengaturan', function () {
