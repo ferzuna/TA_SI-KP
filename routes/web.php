@@ -19,6 +19,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome')->middleware('welcome');
+Route::get('/dokumen', function () {
+    return view('dokumen');
+})->name('dokumen');
 
 Route::get('/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangdepan'])->name('info-magang');
 
@@ -28,6 +31,7 @@ Auth::routes();
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 // admin
 Route::group(['middleware' => 'admin'], function () {
