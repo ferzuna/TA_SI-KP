@@ -5,13 +5,6 @@
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <div class="container">
-                    <div class="row">
-                        <div class="col" style="width: 505px; padding: 1.5em 0">
-                            <h1 class="h3 mb-2 text-gray-800">Dokumen Kerja Praktik</h1>
-                        </div>
-
-
-                    </div>
                     <article id="post-184" class="post-184 page type-page status-publish hentry">
                         <div class="entry-content">
                             <div class="et-l et-l--post">
