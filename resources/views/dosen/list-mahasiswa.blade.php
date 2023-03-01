@@ -79,10 +79,6 @@
                                     <tbody>
                                         @foreach ($mymahasiswa as $data)
                                             <tr>
-                                                <!-- <td class="namecntr"><img class="rounded-circle mr-2" width="30"
-                                                                                                            height="30"
-                                                                                                            src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                                                                    </td> -->
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['angkatan'] ?></td>
@@ -174,10 +170,10 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        {{-- <div class="modal-body">
+                                                        <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{ route('santri.destroy', $data['id']) }}">
+                                                                    action="{{ route('listmahasiswa.destroy', $data['id']) }}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
@@ -186,7 +182,7 @@
                                                                         data-dismiss="modal">Close</button>
                                                                 </form>
                                                             </div>
-                                                        </div> --}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -58,7 +58,8 @@ Route::group(['middleware' => 'admin'], function () {
 // dosen
 Route::group(['middleware' => 'dosen'], function () {
     Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen')->middleware('dosen');
-    Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'allmhs'])->name('dosen.list-mahasiswa');
+    Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
+    Route::post('/dosen/list-mahasiswa/destroy/{id}', [App\Http\Controllers\DosenController::class, 'mahasiswadestroy'])->name('listmahasiswa.destroy');
     Route::get('/dosen/pendaftaran', [App\Http\Controllers\DosenController::class, 'halamanpendaftaran'])->name('dosen.pendaftaran');
     Route::get('/dosen/bimbingan', [DosenController::class, 'bimbingan'])->name('dosen.bimbingan');
     Route::get('/dosen/jadwal', function () {

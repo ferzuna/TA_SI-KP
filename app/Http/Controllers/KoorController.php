@@ -6,7 +6,7 @@ use App\Models\Koor;
 use App\Models\User;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKoorRequest;
 use App\Http\Requests\UpdateKoorRequest;
 

@@ -7,7 +7,7 @@ use App\Models\Dosen;
 use App\Models\Bimbingan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
@@ -63,6 +63,15 @@ class DosenController extends Controller
         return view('dosen.bimbingan', [
             'bimbingan'=>$bimbingan,
             'user' => $user,
+        ]);
+    }
+
+    public function allmhs(){
+        //ini harusnya memunculkan nama mahasiswa yang dibimbing oleh dosen tsb, coba cari dengan left join
+        $mymahasiswa = User::where('role_id', 1)->get();
+        $pendaftaran = Pendaftaran::where('dosbing', Auth::user()->name)->get();
+        return view('dosen.list-mahasiswa', [
+            "mymahasiswa" => $mymahasiswa,
         ]);
     }
     /**
@@ -126,8 +135,9 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dosen $dosen)
+    public function mahasiswadestroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect('/dosen/list-mahasiswa');
     }
 }

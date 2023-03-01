@@ -15,8 +15,8 @@ class CreateBimbingansTable extends Migration
     {
         Schema::create('bimbingans', function (Blueprint $table) {
             $table->id();
-            $table->string('NIP')->nullable();
-            $table->string('NIM')->nullable();
+            $table->string('NIP');
+            $table->string('NIM');
             $table->string('status')->nullable();
             $table->string('makalah')->nullable();
             $table->string('laporan')->nullable();

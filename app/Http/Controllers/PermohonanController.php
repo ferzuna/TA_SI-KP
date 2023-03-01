@@ -16,14 +16,6 @@ class PermohonanController extends Controller
     public function index()
     {
         $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
-        if(!isset($data)){
-            $data = [
-                'perusahaan' => '',
-                'proposal' => '',
-                'dok_rekomendasi' => '',
-                'sks' => '',
-            ];
-        }
         return view('mahasiswa.permohonan', [
             'data'=>$data
         ]);

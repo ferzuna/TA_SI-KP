@@ -10,7 +10,7 @@
 
                         </div>
                         <div class="media-right">
-                            selamat datang {{-- $mhs['name'] --}}, di sistem informasi KP
+                            selamat datang {{ isset($mhs['name']) ? $mhs['name'] : '' }}, di sistem informasi KP
                         </div>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
                                                 <div class="col-md-8">
                                                     <div class="py-2">
                                                         <h4><b>Mahasiswa</b></h4>
-                                                        <span>{{ $mhs['name'] }}</span>
+                                                        <span>{{ isset($mhs['name']) ? $mhs['name'] : '' }}</span>
                                                         <br>
-                                                        <span>Angkatan {{ $mhs['angkatan'] }}</span>
+                                                        <span>Angkatan {{ isset($mhs['angkatan']) ? $mhs['angkatan'] : '' }}</span>
                                                         <br>
-                                                        <span>Nomor telepon: {{ $mhs['no_telp'] }}</span>
+                                                        <span>Nomor telepon: {{ isset($mhs['no_telp']) ? $mhs['no_telp'] : '' }}</span>
                                                         <br>
-                                                        <span>{{ $mhs['email'] }}</span>
+                                                        <span>{{ isset($mhs['email']) ? $mhs['email'] : '' }}</span>
                                                     </div>
 
 
@@ -77,7 +77,7 @@
 
                             </div>
                             <div class="media-right">
-                                Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal : {{-- $jadwal['jadwal'] --}}
+                                Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal : {{ isset($jadwal['jadwal']) ? $jadwal['jadwal'] : '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -85,7 +85,7 @@
 
                             </div>
                             <div class="media-right">
-                                Dosen Pembimbing : {{-- $pendaftaran['dosbing'] --}}
+                                Dosen Pembimbing : {{ isset($pendaftaran['dosbing']) ? $pendaftaran['dosbing']: '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -93,7 +93,7 @@
 
                             </div>
                             <div class="media-right">
-                                Pelaksanaan Kerja Praktik dilaksanakan di : {{-- $pendaftaran['perusahaan'] --}}
+                                Pelaksanaan Kerja Praktik dilaksanakan di : {{ isset($pendaftaran['perusahaan']) ? $pendaftaran['perusahaan'] : '' }}
                             </div>
                         </div>
                         <div class="banner">

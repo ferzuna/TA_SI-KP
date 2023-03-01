@@ -15,9 +15,9 @@ class CreatePermohonansTable extends Migration
     {
         Schema::create('permohonans', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('NIM')->nullable();
-            $table->string('email')->nullable();
+            $table->string('name');
+            $table->string('NIM');
+            $table->string('email');
             $table->string('perusahaan')->nullable();
             $table->string('proposal')->nullable();
             $table->string('dok_rekomendasi')->nullable();

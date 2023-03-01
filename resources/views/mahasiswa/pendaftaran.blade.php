@@ -11,12 +11,12 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="a1">KP A1</label>
-                                <input class="form-control" type="text" name="a1" value="{{ $pendaftaran['a1'] }}">
+                                <input class="form-control" type="text" name="a1" value="{{ isset($pendaftaran['a1']) ? $pendaftaran['a1'] : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="diterima">Email/Surat Diterima KP</label>
                                 <input class="form-control" type="text" name="bukti"
-                                    value="{{ $pendaftaran['bukti'] }}">
+                                    value="{{ isset($pendaftaran['bukti']) ? $pendaftaran['bukti'] : '' }}">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">

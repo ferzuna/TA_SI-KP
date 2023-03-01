@@ -7,7 +7,7 @@ use App\Models\Admin;
 use App\Models\Infomagang;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 

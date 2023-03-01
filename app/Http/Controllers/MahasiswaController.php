@@ -9,7 +9,7 @@ use App\Models\Mahasiswa;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMahasiswaRequest;
 use App\Http\Requests\UpdateMahasiswaRequest;
@@ -33,14 +33,6 @@ class MahasiswaController extends Controller
         ]);
     }
 
-
-    public function allmhs(){
-        $mymahasiswa = User::where('role_id', 1)->get();
-        return view('dosen.list-mahasiswa', [
-            "mymahasiswa" => $mymahasiswa,
-        ]);
-    }
-
     public function pendaftaran(){
         $alldosen = [];
         $all = User::where('role_id', 4)->get();
@@ -48,12 +40,12 @@ class MahasiswaController extends Controller
         
         //jika data belum ada maka text field akan kosong, tapi jika sudah ada maka akan terisi
         // note: untuk bagian dosen belum fix
-        if(!isset($pendaftaran)){
-            $pendaftaran = [
-                'bukti' => '',
-                'a1' => '',
-            ];
-        }
+        // if(!isset($pendaftaran)){
+        //     $pendaftaran = [
+        //         'bukti' => '',
+        //         'a1' => '',
+        //     ];
+        // }
         foreach($all as $dosen){
             if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
                 $alldosen[] = $dosen;
@@ -67,9 +59,9 @@ class MahasiswaController extends Controller
 
     public function pendaftaranstore(Request $request){
         // $this->validate($request, [
-        //     'perusahaan' => ['required|max:255'],
-        //     'a1' => ['required|max:255'],
-        //     'bukti' => ['required|max:255'],
+        //     'perusahaan' => ['required', 'max:255'],
+        //     'a1' => ['required', 'max:255'],
+        //     'bukti' => ['required', 'max:255'],
         // ]);
         // pengondisian untuk data yang sudah ada
         $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first(); 
@@ -157,19 +149,6 @@ class MahasiswaController extends Controller
 
     public function pengumpulan(){
         $data = Bimbingan::where('NIM', Auth::user()->NIM)->first();
-        if(!isset($data)){
-            $data = [
-                'makalah' => '',
-                'laporan' => '',
-                'a1' => '',
-                'b1' => '',
-                'b2' => '',
-                'b3' => '',
-                'survey' => '',
-                'jadwal' => '',
-                'status' => '',
-            ];
-        }
         return view('mahasiswa.pengumpulan', [
             'data' => $data,
         ]);
