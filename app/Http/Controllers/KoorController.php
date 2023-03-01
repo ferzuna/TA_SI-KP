@@ -31,13 +31,16 @@ class KoorController extends Controller
 
     public function permohonan()
     {
-        $mymahasiswa = Permohonan::all();
+        $mymahasiswa = Permohonan::where('status', 0)->get();
+        $mymahasiswa1 = Permohonan::where('status', 1)->get();
         return view('koordinator.permohonan', [
-            'mymahasiswa'=>$mymahasiswa,
+            'mymahasiswa' => $mymahasiswa,
+            'mymahasiswa1' => $mymahasiswa1,
         ]);
     }
 
-    public function approved($id){
+    public function approved($id)
+    {
         $approved = Permohonan::find($id)->update([
             'status' => 1,
         ]);
@@ -47,7 +50,7 @@ class KoorController extends Controller
     public function sudah_dinilai()
     {
         // $sudah_ttd = Penilaian::where('status', 1)->get();
-        return view('koordinator.sudah-dinilai', compact('sudah_ttd'));
+        return view('koordinator.sudah-dinilai');
     }
 
     public function belum_dinilai()
