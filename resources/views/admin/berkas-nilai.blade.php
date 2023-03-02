@@ -80,7 +80,7 @@
                                     <tbody>
                                         @foreach ($datas as $data)
                                             <tr>
-                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $data['name'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['angkatan'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>

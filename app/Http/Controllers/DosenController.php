@@ -43,33 +43,28 @@ class DosenController extends Controller
     
 
     public function halamanpendaftaran(){
-        $mymahasiswa = Pendaftaran::where('dosbing', Auth::user()->name)->get();
-        $user = [];
-        foreach($mymahasiswa as $mahasiswa){
-            $user[] = User::where('NIM', $mahasiswa['NIM'])->first();
-        }
+        $mymahasiswa = User::leftJoin('Pendaftarans', function($join) {
+            $join->on('users.NIM', '=', 'pendaftarans.NIM');
+        })->where('dosbing', Auth::user()->name)->get();
         return view('dosen.pendaftaran', [
             'mymahasiswa' => $mymahasiswa,
-            'user'=>$user,
         ]);
     }
 
     public function bimbingan(){
-        $bimbingan = Bimbingan::where('NIP', Auth::user()->NIP)->get();
-        $user = [];
-        foreach($bimbingan as $mahasiswa){
-            $user[] = User::where('NIM', $mahasiswa['NIM'])->first();
-        }
+        $bimbingan = Bimbingan::leftJoin('Users', function($join) {
+            $join->on('bimbingans.NIM', '=', 'users.NIM');
+        })->get();
         return view('dosen.bimbingan', [
             'bimbingan'=>$bimbingan,
-            'user' => $user,
         ]);
     }
 
     public function allmhs(){
-        //ini harusnya memunculkan nama mahasiswa yang dibimbing oleh dosen tsb, coba cari dengan left join
-        $mymahasiswa = User::where('role_id', 1)->get();
-        $pendaftaran = Pendaftaran::where('dosbing', Auth::user()->name)->get();
+        $mymahasiswa = Pendaftaran::leftJoin('Users', function($join) {
+            $join->on('pendaftarans.NIM', '=', 'Users.NIM');
+        })
+        ->get();
         return view('dosen.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa,
         ]);

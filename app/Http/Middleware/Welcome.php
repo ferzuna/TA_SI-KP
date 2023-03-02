@@ -23,11 +23,11 @@ class Welcome
         }else if(Auth::user()->role_id == 1){
             return redirect('/mahasiswa');
         }else if(Auth::user()->role_id == 2){
-            return redirect('/dosen');
+            return redirect('/koordinator');
         }else if(Auth::user()->role_id == 3){
             return redirect('/admin');
         }else if(Auth::user()->role_id == 4){
-            return redirect('/koor');
+            return redirect('/dosen');
         }else{
             return $next($request);
         }
