@@ -58,7 +58,10 @@ class AdminController extends Controller
     }
 
     public function berkas(){
-        $data = Penilaian::all();
+        // $data = Penilaian::all();
+        $data = Penilaian::leftJoin('Users', function($join) {
+            $join->on('penilaians.NIM', '=', 'users.NIM');
+        })->get();
         return view('admin.berkas-nilai', [
             'datas' => $data,
         ]);
