@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Penilaian;
 use App\Models\Infomagang;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
@@ -54,6 +55,13 @@ class AdminController extends Controller
             'requirement' => $request->requirement,
         ]);
         return redirect('/admin/info-magang')->with('success', 'pendaftaran created!');
+    }
+
+    public function berkas(){
+        $data = Penilaian::all();
+        return view('admin.berkas-nilai', [
+            'datas' => $data,
+        ]);
     }
     /**
      * Show the form for creating a new resource.
