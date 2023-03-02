@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KoorController;
+use App\Http\Controllers\PermohonanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -23,33 +27,31 @@ Route::get('/dokumen', function () {
     return view('dokumen');
 })->name('dokumen');
 
-Route::get('/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangdepan'])->name('info-magang');
+Route::get('/info-magang', [AdminController::class, 'infomagangdepan'])->name('info-magang');
 
 
 Auth::routes();
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // admin
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/info-magang', [App\Http\Controllers\AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
-    Route::post('/admin/info-magang/store', [App\Http\Controllers\AdminController::class, 'addinfomagang'])->name('addinfomagang');
-    Route::post('/admin/info-magang/destroy/{id}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('infomagang.destroy');
-    Route::post('/admin/info-magang/update/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('infomagang.update');
-    Route::get('/admin/bobot', [App\Http\Controllers\DosenController::class, 'bobotdosen'])->name('bobot');
-    Route::get('/admin/permohonan', [App\Http\Controllers\AdminController::class, 'permohonan'])->name('admin.permohonan');
-    Route::post('/admin/bobot/update/{id}', [App\Http\Controllers\DosenController::class, 'kuotabimbingan'])->name('kuota');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/info-magang', [AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
+    Route::post('/admin/info-magang/store', [AdminController::class, 'addinfomagang'])->name('addinfomagang');
+    Route::post('/admin/info-magang/destroy/{id}', [AdminController::class, 'destroy'])->name('infomagang.destroy');
+    Route::post('/admin/info-magang/update/{id}', [AdminController::class, 'update'])->name('infomagang.update');
+    Route::get('/admin/bobot', [DosenController::class, 'bobotdosen'])->name('bobot');
+    Route::get('/admin/permohonan', [AdminController::class, 'permohonan'])->name('admin.permohonan');
+    Route::post('/admin/bobot/update/{id}', [DosenController::class, 'kuotabimbingan'])->name('kuota');
     Route::get('/bobot-list', function () {
         return view('admin.bobot-list');
     })->name('bobot-list');
-    Route::get('/admin/list-mahasiswa', [App\Http\Controllers\AdminController::class, 'allmhs'])->name('admin.list-mahasiswa');
-    Route::get('/admin/berkas-nilai', function () {
-        return view('admin.berkas-nilai');
-    })->name('admin.berkas-nilai');
+    Route::get('/admin/list-mahasiswa', [AdminController::class, 'allmhs'])->name('admin.list-mahasiswa');
+    Route::get('/admin/berkas-nilai', [AdminController::class, 'berkas'])->name('admin.berkas-nilai');
     Route::get('/admin/pengaturan', function () {
         return view('admin.pengaturan');
     })->name('admin.pengaturan');
@@ -57,10 +59,10 @@ Route::group(['middleware' => 'admin'], function () {
 
 // dosen
 Route::group(['middleware' => 'dosen'], function () {
-    Route::get('/dosen', [App\Http\Controllers\DosenController::class, 'index'])->name('dosen')->middleware('dosen');
-    Route::get('/dosen/list-mahasiswa', [App\Http\Controllers\DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
-    Route::post('/dosen/list-mahasiswa/destroy/{id}', [App\Http\Controllers\DosenController::class, 'mahasiswadestroy'])->name('listmahasiswa.destroy');
-    Route::get('/dosen/pendaftaran', [App\Http\Controllers\DosenController::class, 'halamanpendaftaran'])->name('dosen.pendaftaran');
+    Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
+    Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
+    Route::post('/dosen/list-mahasiswa/destroy/{id}', [DosenController::class, 'mahasiswadestroy'])->name('listmahasiswa.destroy');
+    Route::get('/dosen/pendaftaran', [DosenController::class, 'halamanpendaftaran'])->name('dosen.pendaftaran');
     Route::get('/dosen/bimbingan', [DosenController::class, 'bimbingan'])->name('dosen.bimbingan');
     Route::get('/dosen/jadwal', function () {
         return view('dosen.jadwal');
@@ -72,29 +74,28 @@ Route::group(['middleware' => 'dosen'], function () {
 
 // mahasiswa
 Route::group(['middleware' => 'mahasiswa'], function () {
-    Route::get('/mahasiswa', [App\Http\Controllers\MahasiswaController::class, 'index'])->name('mahasiswa');
-    Route::get('/mahasiswa/pendaftaran', [App\Http\Controllers\MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
-    Route::post('/mahasiswa/pendaftaran/store', [App\Http\Controllers\MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
-    Route::get('/mahasiswa/permohonan', [App\Http\Controllers\PermohonanController::class, 'index'])->name('permohonan');
-    Route::post('/mahasiswa/permohonan', [App\Http\Controllers\PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
-    Route::get('/mahasiswa/pengumpulan', [App\Http\Controllers\MahasiswaController::class, 'pengumpulan'])->name('pengumpulan');
-    Route::post('/mahasiswa/pengumpulan/store', [App\Http\Controllers\MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
-    Route::get('/mahasiswa/finalisasi', function () {
-        return view('mahasiswa.finalisasi');
-    })->name('finalisasi');
+    Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+    Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
+    Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
+    Route::get('/mahasiswa/permohonan', [PermohonanController::class, 'index'])->name('permohonan');
+    Route::post('/mahasiswa/permohonan', [PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
+    Route::get('/mahasiswa/pengumpulan', [MahasiswaController::class, 'pengumpulan'])->name('pengumpulan');
+    Route::post('/mahasiswa/pengumpulan/store', [MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
+    Route::get('/mahasiswa/finalisasi', [MahasiswaController::class, 'finalisasi'])->name('finalisasi');
+    Route::post('/mahasiswa/finalisasi/store', [MahasiswaController::class, 'finalisasistore'])->name('finalisasi.store');
     Route::get('/mahasiswa/pengaturan', function () {
         return view('mahasiswa.pengaturan');
     })->name('mahasiswa.pengaturan');
-    Route::post('/mahasiswa/pengaturan', [App\Http\Controllers\MahasiswaController::class, 'test'])->name('test');
+    Route::post('/mahasiswa/pengaturan', [MahasiswaController::class, 'test'])->name('test');
 });
 
 // koordinator
 Route::group(['middleware' => 'koor'], function () {
-    Route::get('/koordinator', [App\Http\Controllers\KoorController::class, 'index'])->name('koordinator');
-    Route::get('/koordinator/permohonan', [App\Http\Controllers\KoorController::class, 'permohonan'])->name('koordinator.permohonan');
-    Route::post('/koordinator/permohonan/approved/{id}', [App\Http\Controllers\KoorController::class, 'approved'])->name('koordinator.approved');
-    Route::get('/koordinator/sudah-dinilai', [App\Http\Controllers\KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
-    Route::get('/koordinator/belum-dinilai', [App\Http\Controllers\KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
+    Route::get('/koordinator', [KoorController::class, 'index'])->name('koordinator');
+    Route::get('/koordinator/permohonan', [KoorController::class, 'permohonan'])->name('koordinator.permohonan');
+    Route::post('/koordinator/permohonan/approved/{id}', [KoorController::class, 'approved'])->name('koordinator.approved');
+    Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
+    Route::get('/koordinator/belum-dinilai', [KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');

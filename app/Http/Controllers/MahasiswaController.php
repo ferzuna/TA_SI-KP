@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Dosen;
 use App\Models\Bimbingan;
 use App\Models\Mahasiswa;
+use App\Models\Penilaian;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
@@ -126,7 +127,7 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
                 'survey' => $request->survey,
                 'jadwal' => $request->jadwal,
-                'status' => $request->b3,
+                'status' => 0,
             ]);
         }else{
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
@@ -141,7 +142,7 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
                 'survey' => $request->survey,
                 'jadwal' => $request->jadwal,
-                'status' => $request->b3,
+                'status' => 0,
             ]);
         }
         return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
@@ -152,6 +153,43 @@ class MahasiswaController extends Controller
         return view('mahasiswa.pengumpulan', [
             'data' => $data,
         ]);
+    }
+
+    public function finalisasi(){
+        $data = Penilaian::where('NIM', Auth::user()->NIM)->first();
+        return view('mahasiswa.finalisasi', [
+            'data' => $data,
+        ]);
+    }
+
+    public function finalisasistore(Request $request){
+        $nim = Auth::user()->NIM;
+        $data = Penilaian::where('NIM', $nim)->first();
+        if(isset($data)){
+            Penilaian::where('NIM', $nim)->first()->update([
+                'makalah' => $request->makalah,
+                'laporan' => $request->laporan,
+                'kehadiran' => $request->kehadiran,
+                'a2' => $request->a2,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
+                'status' => 0,
+            ]);
+        }else{
+            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
+            Penilaian::create([
+                'NIP' => User::where('name', $dosbing)->first()['NIP'],
+                'NIM' => Auth::user()->NIM,
+                'makalah' => $request->makalah,
+                'laporan' => $request->laporan,
+                'kehadiran' => $request->kehadiran,
+                'a2' => $request->a2,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
+                'status' => 0,
+            ]);
+        }
+        return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
     }
     /**
      * Show the form for creating a new resource.
