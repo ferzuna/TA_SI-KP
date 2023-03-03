@@ -38,37 +38,48 @@
                                         data-initial="{{ Auth::user()->name[0] }}">
                                     </figure>
                                 </div>
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                        <label for="imageUpload"></label>
+                                    </div>
+                                    <div class="avatar-preview">
+                                        <div id="imagePreview"
+                                            style="background-image: url('http://i.pravatar.cc/500?img=7');">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card-body">
 
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="text-center">
-                                                <h5 class="font-weight-bold">{{ Auth::user()->fullName }}</h5>
+                                                <h5 class="font-weight-bold">{{ Auth::user()->name }}</h5>
                                                 <p>Administrator</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- <div class="row">
-                                                                                                    <div class="col-md-4">
-                                                                                                        <div class="card-profile-stats">
-                                                                                                            <span class="heading">22</span>
-                                                                                                            <span class="description">Friends</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-4">
-                                                                                                        <div class="card-profile-stats">
-                                                                                                            <span class="heading">10</span>
-                                                                                                            <span class="description">Photos</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-4">
-                                                                                                        <div class="card-profile-stats">
-                                                                                                            <span class="heading">89</span>
-                                                                                                            <span class="description">Comments</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div> -->
+                                    {{-- <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card-profile-stats">
+                                                <span class="heading">22</span>
+                                                <span class="description">Friends</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card-profile-stats">
+                                                <span class="heading">10</span>
+                                                <span class="description">Photos</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card-profile-stats">
+                                                <span class="heading">89</span>
+                                                <span class="description">Comments</span>
+                                            </div>
+                                        </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -102,10 +113,19 @@
                                                             value="{{ old('name', Auth::user()->name) }}">
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="name">NIM<span
+                                                                class="small text-danger">*</span></label>
+                                                        <input type="number" id="name" class="form-control"
+                                                            name="nim" placeholder="NIM"
+                                                            value="{{ old('nim', Auth::user()->NIM) }}">
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="email">Username<span
                                                                 class="small text-danger">*</span></label>
@@ -114,6 +134,57 @@
                                                             value="{{ old('username', Auth::user()->username) }}">
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="email">E-mail<span
+                                                                class="small text-danger">*</span></label>
+                                                        <input type="email" id="email" class="form-control"
+                                                            name="email" placeholder="Email"
+                                                            value="{{ old('email', Auth::user()->email) }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="confirm_password">Nomor
+                                                            Telepon</label>
+                                                        <input type="number" id="confirm_password" class="form-control"
+                                                            name="password_confirmation" placeholder="Confirm password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="current_password">Jumlah
+                                                            SKSk</label>
+                                                        <input type="number" id="current_password" class="form-control"
+                                                            name="current_password" placeholder="Current password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label"
+                                                            for="new_password">Angkatan</label>
+                                                        <input type="number" id="new_password" class="form-control"
+                                                            name="new_password" placeholder="New password"
+                                                            value="{{ old('angkatan', Auth::user()->angkatan) }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label"
+                                                            for="confirm_password">Alamat</label>
+                                                        <input type="text area" id="confirm_password"
+                                                            class="form-control" name="password_confirmation"
+                                                            placeholder="Alamat Anda"
+                                                            value="{{ old('alamat', Auth::user()->alamat) }}">
+                                                    </div>
+                                                </div>
+
+
                                             </div>
 
                                             <div class="row">
@@ -166,4 +237,23 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imageUpload").change(function() {
+            readURL(this);
+        });
+    </script>
 @endsection
