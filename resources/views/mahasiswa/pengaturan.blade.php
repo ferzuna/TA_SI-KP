@@ -32,21 +32,30 @@
                         <div class="col-lg-4 order-lg-2">
 
                             <div class="card shadow mb-4">
-                                <div class="card-profile-image mt-4">
-                                    <figure class="rounded-circle avatar avatar font-weight-bold"
-                                        style="font-size: 60px; height: 180px; width: 180px;"
-                                        data-initial="{{ Auth::user()->name[0] }}">
-                                    </figure>
-                                </div>
+                                {{-- <div class="card-profile-image mt-4">
+
+                                </div> --}}
+
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
-                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageUpload"></label>
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                            <label for="imageUpload"></label>
+                                        </form>
+
                                     </div>
                                     <div class="avatar-preview">
-                                        <div id="imagePreview"
-                                            style="background-image: url('http://i.pravatar.cc/500?img=7');">
-                                        </div>
+                                        @if (Auth::user()->image)
+                                            <div id="imagePreview"
+                                                style="background-image: url('http://i.pravatar.cc/500?img=7');">
+                                            </div>
+                                        @else()
+                                            <div id="imagePreview" class="rounded-circle avatar avatar font-weight-bold"
+                                                style="background-image: url(''); font-size: 60px; height: 180px; width: 180px;"
+                                                data-initial="{{ Auth::user()->name[0] }}">
+                                            </div>
+                                        @endif
+
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -150,7 +159,8 @@
                                                         <label class="form-control-label" for="confirm_password">Nomor
                                                             Telepon</label>
                                                         <input type="number" id="confirm_password" class="form-control"
-                                                            name="password_confirmation" placeholder="Confirm password">
+                                                            name="password_confirmation" placeholder="No. Telepon"
+                                                            value="{{ old('no_telp', Auth::user()->no_telp) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -158,7 +168,8 @@
                                                         <label class="form-control-label" for="current_password">Jumlah
                                                             SKSk</label>
                                                         <input type="number" id="current_password" class="form-control"
-                                                            name="current_password" placeholder="Current password">
+                                                            name="current_password" placeholder="Jumlah SKSk"
+                                                            value="{{ old('sks', Auth::user()->sks) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -248,6 +259,7 @@
                     $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
                     $('#imagePreview').hide();
                     $('#imagePreview').fadeIn(650);
+                    $('#imagePreview').removeAttr('data-initial');
                 }
                 reader.readAsDataURL(input.files[0]);
             }
