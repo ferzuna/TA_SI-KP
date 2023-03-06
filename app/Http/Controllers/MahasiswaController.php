@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Dosen;
 use App\Models\Bimbingan;
-use App\Models\Mahasiswa;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
@@ -218,10 +216,10 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Mahasiswa $mahasiswa)
-    {
+    // public function show(Mahasiswa $mahasiswa)
+    // {
         //
-    }
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -229,10 +227,10 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mahasiswa $mahasiswa)
-    {
+    // public function edit(Mahasiswa $mahasiswa)
+    // {
         //
-    }
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -241,10 +239,10 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
-    {
-        return view('/home');
-    }
+    // public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
+    // {
+        // return view('/home');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -252,11 +250,29 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mahasiswa $mahasiswa)
-    {
+    // public function destroy(Mahasiswa $mahasiswa)
+    // {
         //
+    // }
+    public function setting(Request $request){
+        User::find(Auth::user()->id)->update([
+            'name' => $request->name,
+            'NIM' => $request->NIM,
+            'username' => $request->username,
+            'email' => $request->email,
+            'no_telp' => $request->no_telp,
+            'sks' => $request->sks,
+            'angkatan' => $request->angkatan,
+            'alamat' => $request->alamat,
+            'new_password' => $request->new_password,
+        ]);
+        return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
     }
-    public function test(){
-        return view('/home');
+
+    // ini buat profil picturenya, blom jadi
+    public function avatar(Request $request){
+        User::find(Auth::user()->NIM)->update([
+            'image' => $request->test,
+        ]);
     }
 }

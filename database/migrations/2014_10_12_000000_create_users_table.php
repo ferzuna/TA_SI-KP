@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('no_telp')->nullable(); //mahasiswa
             $table->string('sks')->nullable(); //mahasiswa
             $table->integer('role_id');
+            $table->binary('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Koor;
 use App\Models\User;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
@@ -81,10 +80,10 @@ class KoorController extends Controller
      * @param  \App\Models\Koor  $koor
      * @return \Illuminate\Http\Response
      */
-    public function show(Koor $koor)
-    {
-        //
-    }
+    // public function show(Koor $koor)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -92,10 +91,10 @@ class KoorController extends Controller
      * @param  \App\Models\Koor  $koor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Koor $koor)
-    {
-        //
-    }
+    // public function edit(Koor $koor)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -104,10 +103,10 @@ class KoorController extends Controller
      * @param  \App\Models\Koor  $koor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKoorRequest $request, Koor $koor)
-    {
-        //
-    }
+    // public function update(UpdateKoorRequest $request, Koor $koor)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -115,8 +114,8 @@ class KoorController extends Controller
      * @param  \App\Models\Koor  $koor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Koor $koor)
-    {
-        //
-    }
+    // public function destroy(Koor $koor)
+    // {
+    //     //
+    // }
 }

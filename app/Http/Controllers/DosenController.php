@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Dosen;
 use App\Models\Bimbingan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
@@ -96,10 +95,10 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Dosen $dosen)
-    {
-        //
-    }
+    // public function show(Dosen $dosen)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -107,10 +106,10 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dosen $dosen)
-    {
-        //
-    }
+    // public function edit(Dosen $dosen)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -119,10 +118,10 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDosenRequest $request, Dosen $dosen)
-    {
-        //
-    }
+    // public function update(UpdateDosenRequest $request, Dosen $dosen)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
-// use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
