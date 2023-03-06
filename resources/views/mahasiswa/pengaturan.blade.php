@@ -38,7 +38,7 @@
 
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
-                                        <form action="" method="post" enctype="multipart/form-data">
+                                        <form action="{{ route('mahasiswa.avatar') }}" method="post" enctype="multipart/form-data">
                                             <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                                             <label for="imageUpload"></label>
                                         </form>
@@ -104,7 +104,7 @@
 
                                 <div class="card-body">
 
-                                    <form method="POST" action="{{ route('test') }}" autocomplete="off">
+                                    <form method="POST" action="{{ route('mahasiswa.setting') }}" autocomplete="off">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <input type="hidden" name="_method" value="POST">
@@ -127,7 +127,7 @@
                                                         <label class="form-control-label" for="name">NIM<span
                                                                 class="small text-danger">*</span></label>
                                                         <input type="number" id="name" class="form-control"
-                                                            name="nim" placeholder="NIM"
+                                                            name="NIM" placeholder="NIM"
                                                             value="{{ old('nim', Auth::user()->NIM) }}">
                                                     </div>
                                                 </div>
@@ -159,7 +159,7 @@
                                                         <label class="form-control-label" for="confirm_password">Nomor
                                                             Telepon</label>
                                                         <input type="number" id="confirm_password" class="form-control"
-                                                            name="password_confirmation" placeholder="No. Telepon"
+                                                            name="no_telp" placeholder="No. Telepon"
                                                             value="{{ old('no_telp', Auth::user()->no_telp) }}">
                                                     </div>
                                                 </div>
@@ -168,7 +168,7 @@
                                                         <label class="form-control-label" for="current_password">Jumlah
                                                             SKSk</label>
                                                         <input type="number" id="current_password" class="form-control"
-                                                            name="current_password" placeholder="Jumlah SKSk"
+                                                            name="sks" placeholder="Jumlah SKSk"
                                                             value="{{ old('sks', Auth::user()->sks) }}">
                                                     </div>
                                                 </div>
@@ -177,7 +177,7 @@
                                                         <label class="form-control-label"
                                                             for="new_password">Angkatan</label>
                                                         <input type="number" id="new_password" class="form-control"
-                                                            name="new_password" placeholder="New password"
+                                                            name="angkatan" placeholder="New password"
                                                             value="{{ old('angkatan', Auth::user()->angkatan) }}">
                                                     </div>
                                                 </div>
@@ -189,7 +189,7 @@
                                                         <label class="form-control-label"
                                                             for="confirm_password">Alamat</label>
                                                         <input type="text area" id="confirm_password"
-                                                            class="form-control" name="password_confirmation"
+                                                            class="form-control" name="alamat"
                                                             placeholder="Alamat Anda"
                                                             value="{{ old('alamat', Auth::user()->alamat) }}">
                                                     </div>

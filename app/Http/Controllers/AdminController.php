@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Admin;
 use App\Models\Penilaian;
 use App\Models\Infomagang;
 use App\Models\Permohonan;
@@ -100,10 +99,10 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
-    {
-        //
-    }
+    // public function show(Admin $admin)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -111,10 +110,10 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
-    {
-        //
-    }
+    // public function edit(Admin $admin)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
