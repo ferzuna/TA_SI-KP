@@ -21,6 +21,13 @@ class PermohonanController extends Controller
     }
     public function sendPermohonan(Request $request)
     {
+        $this->validate($request, [
+            'perusahaan' => 'required|string|max:255',
+            'proposal' => 'required|string|max:255',
+            'dok_rekomendasi' => 'required|string|max:255',
+            // 'sks' => 'required|digits:3',
+            'sks' => 'required|digits_between:1,3',
+        ]);
         $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if(isset($data)){
             Permohonan::where('NIM', Auth::user()->NIM)->first()->update([
@@ -31,13 +38,6 @@ class PermohonanController extends Controller
                 'status'=> false,
             ]);
         }else{
-        // $this->validate($request, [
-        //     'perusahaan' => ['required', 'string', 'max:255'],
-        //     'proposal' => ['required', 'string', 'max:255'],
-        //     'dokumen' => ['required', 'string', 'max:255'],
-        //     'sks' => ['required', 'string', 'max:255'],
-        // ]);
-
         $contact = [
             'name' => Auth::user()->name,
             'NIM' => Auth::user()->NIM,
