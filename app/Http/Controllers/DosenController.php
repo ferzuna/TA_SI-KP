@@ -77,7 +77,7 @@ class DosenController extends Controller
         // ->join('penilaians', 'users.NIM', '=', 'penilaians.NIM')
         $seminar = Pendaftaran::leftJoin('Users', function($join) {
             $join->on('pendaftarans.NIM', '=', 'Users.NIM');
-        })->join('penilaians', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
         ->where('dosbing', Auth::user()->name)->get();
         return view('dosen.jadwal', [
             'seminar' => $seminar,
