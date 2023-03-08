@@ -64,9 +64,7 @@ Route::group(['middleware' => 'dosen'], function () {
     Route::post('/dosen/list-mahasiswa/destroy/{id}', [DosenController::class, 'mahasiswadestroy'])->name('listmahasiswa.destroy');
     Route::get('/dosen/pendaftaran', [DosenController::class, 'halamanpendaftaran'])->name('dosen.pendaftaran');
     Route::get('/dosen/bimbingan', [DosenController::class, 'bimbingan'])->name('dosen.bimbingan');
-    Route::get('/dosen/jadwal', function () {
-        return view('dosen.jadwal');
-    })->name('dosen.jadwal');
+    Route::get('/dosen/jadwal', [DosenController::class, 'jadwalseminar'])->name('dosen.jadwal');
     Route::get('/dosen/pengaturan', function () {
         return view('dosen.pengaturan');
     })->name('dosen.pengaturan');
