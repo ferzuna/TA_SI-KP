@@ -298,7 +298,7 @@
                                                             <td><?= $data['dok_rekomendasi'] ?></td>
                                                             <td><?= $data['proposal'] ?></td>
                                                             <td><?= $data['sks'] ?></td>
-                                                            <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
+                                                            <td>{{ $data['status'] ? 'telah disetujui' : 'belum disetujui' }}</td>
                                                             <td><i class="fas fa-check-circle" style="padding-left: 9px;"
                                                                     type="button" data-toggle="modal"
                                                                     data-target="#approve<?= $data['id'] ?>"></i>

@@ -57,11 +57,11 @@ class MahasiswaController extends Controller
     }
 
     public function pendaftaranstore(Request $request){
-        // $this->validate($request, [
-        //     'perusahaan' => ['required', 'max:255'],
-        //     'a1' => ['required', 'max:255'],
-        //     'bukti' => ['required', 'max:255'],
-        // ]);
+        $this->validate($request, [
+            'a1' => 'required|string|max:255',
+            'bukti' => 'required|string|max:255',
+            'dosbing' => 'required|string|max:255',
+        ]);
         // pengondisian untuk data yang sudah ada
         $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first(); 
         $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
@@ -113,6 +113,16 @@ class MahasiswaController extends Controller
     }
 
     public function bimbinganstore(Request $request){
+        $this->validate($request, [
+            'makalah' => 'required|string|max:255',
+            'laporan' => 'required|string|max:255',
+            'a1' => 'required|string|max:255',
+            'b1' => 'required|string|max:255',
+            'b2' => 'required|string|max:255',
+            'b3' => 'required|string|max:255',
+            'survey' => 'required|string|max:255',
+            'jadwal' => 'required|date',
+        ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
         if(isset($data)){
@@ -161,6 +171,14 @@ class MahasiswaController extends Controller
     }
 
     public function finalisasistore(Request $request){
+        $this->validate($request, [
+            'makalah' => 'required|string|max:255',
+            'laporan' => 'required|string|max:255',
+            'kehadiran' => 'required|string|max:255',
+            'a2' => 'required|string|max:255',
+            'b2' => 'required|string|max:255',
+            'b3' => 'required|string|max:255',
+        ]);
         $nim = Auth::user()->NIM;
         $data = Penilaian::where('NIM', $nim)->first();
         if(isset($data)){
@@ -255,6 +273,16 @@ class MahasiswaController extends Controller
         //
     // }
     public function setting(Request $request){
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'NIM' => 'required|digits:14',
+            'username' => 'required|string|max:255',
+            'email' => 'required|email',
+            'no_telp' => 'required|digits_between:1,20',
+            'sks' => 'required|digits_between:1,3',
+            'alamat' => 'required|string|max:255',
+            'angkatan' => 'required|digits:4',
+        ]);
         User::find(Auth::user()->id)->update([
             'name' => $request->name,
             'NIM' => $request->NIM,

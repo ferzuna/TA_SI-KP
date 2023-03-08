@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Kumulatif</label>
-                                <input class="form-control" type="text" name="sks" value="{{ isset($data['sks']) ? $data['sks'] : '' }}" required>
+                                <input class="form-control" type="number" name="sks" value="{{ isset($data['sks']) ? $data['sks'] : '' }}" required>
                             </div>
                         </div>
                         <div class="py-2">
