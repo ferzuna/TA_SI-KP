@@ -76,23 +76,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($mymahasiswa as $data)
+                                        @foreach ($seminar as $data)
                                             <tr>
-                                                <td class="namecntr"><img class="rounded-circle mr-2" width="30"
-                                                        height="30"
-                                                        src="{{ asset('img/user.png') }}"><?= $data['nama'] ?>
-                                                </td>
-                                                <td><?= $data['NIM'] ?></td>
-                                                <td><?= $data['nama'] ?></td>
-                                                <td><?= $data['angkatan'] ?></td>
-                                                <td><?= $data['no_telp'] ?></td>
-                                                <td><?= $data['username'] ?></td>
-                                                <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#edit<?= $data['id'] ?>"></i>
-                                                    <i class="material-icons icondelete" style="padding-left: 8px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#deletemas<?= $data['id'] ?>">delete</i>
+                                                <td><?= $data['name'] ?></td>
+                                                <td><?= $data['perusahaan'] ?></td>
+                                                <td><?= $data['jadwal'] ?></td>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
@@ -109,7 +97,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{ route('santri.update', $data['id']) }}">
+                                                                    action="{{-- route('santri.update',$data['id']) --}}">
                                                                     @csrf
                                                                     <input type="text"
                                                                         class="border rounded-0 form-control"
@@ -177,7 +165,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{ route('santri.destroy', $data['id']) }}">
+                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
@@ -190,7 +178,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>

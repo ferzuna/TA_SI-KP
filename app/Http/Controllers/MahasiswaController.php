@@ -37,14 +37,6 @@ class MahasiswaController extends Controller
         $all = User::where('role_id', 4)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         
-        //jika data belum ada maka text field akan kosong, tapi jika sudah ada maka akan terisi
-        // note: untuk bagian dosen belum fix
-        // if(!isset($pendaftaran)){
-        //     $pendaftaran = [
-        //         'bukti' => '',
-        //         'a1' => '',
-        //     ];
-        // }
         foreach($all as $dosen){
             if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
                 $alldosen[] = $dosen;

@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Bimbingan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Dosen;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDosenRequest;
@@ -66,6 +68,19 @@ class DosenController extends Controller
         ->get();
         return view('dosen.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa,
+        ]);
+    }
+
+    public function jadwalseminar(){
+        // $seminar = DB::table('users')
+        // ->join('pendaftarans', 'users.NIM', '=', 'pendaftarans.NIM')
+        // ->join('penilaians', 'users.NIM', '=', 'penilaians.NIM')
+        $seminar = Pendaftaran::leftJoin('Users', function($join) {
+            $join->on('pendaftarans.NIM', '=', 'Users.NIM');
+        })->join('penilaians', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        ->where('dosbing', Auth::user()->name)->get();
+        return view('dosen.jadwal', [
+            'seminar' => $seminar,
         ]);
     }
     /**
