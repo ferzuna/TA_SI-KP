@@ -7,6 +7,7 @@ use App\Models\Bimbingan;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
+use App\Models\Penjadwalan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -129,6 +130,10 @@ class MahasiswaController extends Controller
                 'jadwal' => $request->jadwal,
                 'status' => 0,
             ]);
+
+            Penjadwalan::where('NIM', $nim)->first()->update([
+                'waktu_seminar' => $request->jadwal,
+            ]);
         }else{
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
             Bimbingan::create([
@@ -143,6 +148,11 @@ class MahasiswaController extends Controller
                 'survey' => $request->survey,
                 'jadwal' => $request->jadwal,
                 'status' => 0,
+            ]);
+            Penjadwalan::create([
+                'NIP' => User::where('name', $dosbing)->first()['NIP'],
+                'NIM' => Auth::user()->NIM,
+                'waktu_seminar' => $request->jadwal,
             ]);
         }
         return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
