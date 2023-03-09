@@ -9,6 +9,8 @@ use App\Models\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -54,7 +56,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'NIM' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'sks' => ['required', 'string', 'max:20'],
+            'sks' => ['required', 'digits_between:1,3'],
             'username' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -78,5 +80,13 @@ class RegisterController extends Controller
             'role_id' => 1,
         ])->assignRole('mahasiswa');
         return $user;
+    }
+
+    // ini biar user yg register ga auto login
+    public function register(Request $request){
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        return $this->registered($request, $user)
+        ?: redirect()->route('login')->with('success');
     }
 }
