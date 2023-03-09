@@ -52,7 +52,7 @@ class MahasiswaController extends Controller
     public function pendaftaranstore(Request $request){
         $this->validate($request, [
             'a1' => 'required|string|max:255',
-            'bukti' => 'required|string|max:255',
+            'bukti' => 'max:255',
             'dosbing' => 'required|string|max:255',
         ]);
         // pengondisian untuk data yang sudah ada
@@ -107,14 +107,14 @@ class MahasiswaController extends Controller
 
     public function bimbinganstore(Request $request){
         $this->validate($request, [
-            'makalah' => 'required|string|max:255',
-            'laporan' => 'required|string|max:255',
-            'a1' => 'required|string|max:255',
-            'b1' => 'required|string|max:255',
-            'b2' => 'required|string|max:255',
-            'b3' => 'required|string|max:255',
-            'survey' => 'required|string|max:255',
-            'jadwal' => 'required|date',
+            'makalah' => 'max:255',
+            'laporan' => 'max:255',
+            'a1' => 'max:255',
+            'b1' => 'max:255',
+            'b2' => 'max:255',
+            'b3' => 'max:255',
+            'survey' => 'max:255',
+            // 'jadwal' => 'date',
         ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
@@ -155,7 +155,7 @@ class MahasiswaController extends Controller
                 'waktu_seminar' => $request->jadwal,
             ]);
         }
-        return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
+        return redirect('/mahasiswa/pengumpulan')->with('success', 'pengumpulan berkas created!');
     }
 
     public function pengumpulan(){
@@ -174,12 +174,12 @@ class MahasiswaController extends Controller
 
     public function finalisasistore(Request $request){
         $this->validate($request, [
-            'makalah' => 'required|string|max:255',
-            'laporan' => 'required|string|max:255',
-            'kehadiran' => 'required|string|max:255',
-            'a2' => 'required|string|max:255',
-            'b2' => 'required|string|max:255',
-            'b3' => 'required|string|max:255',
+            'makalah' => 'max:255',
+            'laporan' => 'max:255',
+            'kehadiran' => 'max:255',
+            'a2' => 'max:255',
+            'b2' => 'max:255',
+            'b3' => 'max:255',
         ]);
         $nim = Auth::user()->NIM;
         $data = Penilaian::where('NIM', $nim)->first();
