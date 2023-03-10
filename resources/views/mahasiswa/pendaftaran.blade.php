@@ -11,7 +11,8 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="a1">KP A1</label>
-                                <input class="form-control" type="text" name="a1" value="{{ isset($pendaftaran['a1']) ? $pendaftaran['a1'] : '' }}">
+                                <input class="form-control" type="text" name="a1"
+                                    value="{{ isset($pendaftaran['a1']) ? $pendaftaran['a1'] : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="diterima">Email/Surat Diterima KP</label>
@@ -21,7 +22,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="dosen">dosen pilihan :</label>
+                                <label for="dosen">Dosen Pilihan :</label>
                                 <select class="form-select input-border" name="dosbing" id=""
                                     aria-label="Default select example">
 
