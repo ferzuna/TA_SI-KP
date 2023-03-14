@@ -37,59 +37,86 @@ class MahasiswaController extends Controller
         $alldosen = [];
         $all = User::where('role_id', 4)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
-        
+        $dp = "";
+
+        if(isset($pendaftaran['dosbing'])){
+            $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->get();
+            $dp = $pendaftaran['dosbing'];
+        }
         foreach($all as $dosen){
-            if($dosen['bobot_bimbingan'] < $dosen['kuota_bimbingan']){
+            if($dosen['bobot_bimbingan']%$dosen['kuota_bimbingan'] != 0){
+                $alldosen[] = $dosen;
+            }
+            else if($dosen['bobot_bimbingan'] == 0 && $dosen['kuota_bimbingan'] != 0){
                 $alldosen[] = $dosen;
             }
         }
         return view('mahasiswa.pendaftaran',[
             "alldosen"=>$alldosen,
             "pendaftaran"=>$pendaftaran,
+            "dp"=>$dp,
         ]);
     }
 
     public function pendaftaranstore(Request $request){
+        $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+
+        if(!isset($perusahaan)){
+            return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
+        }
         $this->validate($request, [
             'a1' => 'required|string|max:255',
             'bukti' => 'max:255',
             'dosbing' => 'required|string|max:255',
         ]);
         // pengondisian untuk data yang sudah ada
-        $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first(); 
-        $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if(isset($ini)){
             Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
                 'a1' => $request->a1,
                 'bukti' => $request->bukti,
                 'dosbing' => $request->dosbing,
             ]);
-            return redirect('/mahasiswa')->with('success', 'pendaftaran updated!');
+        }else{
+            Pendaftaran::create([
+                'perusahaan' => $perusahaan['perusahaan'],
+                'NIM' => Auth::user()->NIM,
+                'a1' => $request->a1,
+                'bukti' => $request->bukti,
+                'dosbing' => $request->dosbing,
+            ]);
         }
-
-        Pendaftaran::create([
-            'perusahaan' => $perusahaan['perusahaan'],
-            'NIM' => Auth::user()->NIM,
-            'a1' => $request->a1,
-            'bukti' => $request->bukti,
-            'dosbing' => $request->dosbing,
-        ]);
-
-        $value = User::where('name', $request->dosbing)->first();
-        $bobot = User::find($value['id'])['bobot_bimbingan'];
-
-        User::find($value['id'])->update([
-            'bobot_bimbingan' => $bobot + 1,
-        ]);
+        
+        $semua = User::where('role_id', 4)->get();
+        $all = User::all();
+        $k = 0;
+        
+        foreach($all as $bimbingan){
+            $k++;
+            if($bimbingan['role_id'] == 4){
+                $bobot = Pendaftaran::where('dosbing', $bimbingan['name'])->get();
+                $jumlah = count($bobot);
+                User::find($k)->update([
+                    'bobot_bimbingan' => $jumlah,
+                ]);
+            }
+        }
 
         $bobotbimbingan = 0;
         $kuotabimbingan = 0;
         $i = 0;
-        $semua = User::where('role_id', 4)->get();
-        $all = User::all();
         foreach ($semua as $bimbingan){
-            $bobotbimbingan = $bobotbimbingan + $bimbingan['bobot_bimbingan'];
-            $kuotabimbingan = $kuotabimbingan + $bimbingan['kuota_bimbingan'];
+            if($bimbingan['bobot_bimbingan'] == 0){
+                $bobotbimbingan += $bimbingan['bobot_bimbingan'];
+                $kuotabimbingan += $bimbingan['kuota_bimbingan'];
+            }
+            else if($bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'] == 0){
+                $bobotbimbingan += $bimbingan['kuota_bimbingan'];
+                $kuotabimbingan += $bimbingan['kuota_bimbingan'];
+            }else{
+                $bobotbimbingan += $bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'];
+                $kuotabimbingan += $bimbingan['kuota_bimbingan'];
+            }
         }
         if($bobotbimbingan >= $kuotabimbingan){
             foreach($all as $bimbingan){
