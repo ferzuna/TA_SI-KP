@@ -85,7 +85,8 @@ Route::group(['middleware' => 'mahasiswa'], function () {
         return view('mahasiswa.pengaturan');
     })->name('mahasiswa.pengaturan');
     Route::post('/mahasiswa/pengaturan', [MahasiswaController::class, 'setting'])->name('mahasiswa.setting');
-    Route::post('/mahasiswa/pengaturan/avatar', [MahasiswaController::class, 'avatar'])->name('mahasiswa.avatar');
+    Route::post('/mahasiswa/pengaturan/store', [MahasiswaController::class, 'avatar'])->name('mahasiswa.avatar');
+    // Route::resource('products', 'App\Http\Controllers\MahasiswaController');
 });
 
 // koordinator

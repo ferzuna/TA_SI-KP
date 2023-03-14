@@ -83,7 +83,7 @@
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['angkatan'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
-                                                <td><?= $data['username'] ?></td>
+                                                <td><?= $data['sks'] ?></td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>

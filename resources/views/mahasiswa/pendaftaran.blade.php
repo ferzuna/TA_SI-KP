@@ -25,7 +25,7 @@
                                 <label for="dosen">Dosen Pilihan :</label>
                                 <select class="form-select input-border" name="dosbing" id=""
                                     aria-label="Default select example">
-
+                                        <option id="" value="{{ $dp }}">{{ $dp }}</option>
                                     @foreach ($alldosen as $dosen)
                                         <option id="" value="{{ $dosen['name'] }}">{{ $dosen['name'] }}
                                         </option>
