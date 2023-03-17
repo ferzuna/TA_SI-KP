@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Bimbingan;
+use App\Models\Permohonan;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Dosen;
@@ -145,8 +146,12 @@ class DosenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function mahasiswadestroy($id)
-    {
-        User::find($id)->delete();
+    {   
+        $user = User::find($id); 
+        Permohonan::where('NIM', $user['NIM'])->first()->delete();
+        Pendaftaran::where('NIM', $user['NIM'])->first()->delete();
+        $user->delete();
+        
         return redirect('/dosen/list-mahasiswa');
     }
 }
