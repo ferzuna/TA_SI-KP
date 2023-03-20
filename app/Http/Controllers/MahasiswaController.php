@@ -11,8 +11,6 @@ use App\Models\Penjadwalan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreMahasiswaRequest;
-use App\Http\Requests\UpdateMahasiswaRequest;
 
 class MahasiswaController extends Controller
 {
@@ -44,7 +42,7 @@ class MahasiswaController extends Controller
             $dp = $pendaftaran['dosbing'];
         }
         foreach($all as $dosen){
-            if($dosen['bobot_bimbingan']%$dosen['kuota_bimbingan'] != 0){
+            if($dosen['bobot_bimbingan'] % $dosen['kuota_bimbingan'] != 0){
                 $alldosen[] = $dosen;
             }
             else if($dosen['bobot_bimbingan'] == 0 && $dosen['kuota_bimbingan'] != 0){
@@ -141,7 +139,6 @@ class MahasiswaController extends Controller
             'b2' => 'max:255',
             'b3' => 'max:255',
             'survey' => 'max:255',
-            // 'jadwal' => 'date',
         ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
@@ -236,71 +233,7 @@ class MahasiswaController extends Controller
         }
         return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreMahasiswaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreMahasiswaRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    // public function show(Mahasiswa $mahasiswa)
-    // {
-        //
-    // }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit(Mahasiswa $mahasiswa)
-    // {
-        //
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateMahasiswaRequest  $request
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
-    // {
-        // return view('/home');
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy(Mahasiswa $mahasiswa)
-    // {
-        //
-    // }
     public function setting(Request $request){
         $this->validate($request, [
             'name' => 'required|string|max:255',
@@ -312,6 +245,38 @@ class MahasiswaController extends Controller
             'alamat' => 'required|string|max:255',
             'angkatan' => 'required|digits:4',
         ]);
+        $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+        $penilaian = Penilaian::where('NIM', Auth::user()->NIM)->first();
+        $penjadwalan = Penjadwalan::where('NIM', Auth::user()->NIM)->first();
+        if(isset($pendaftaran)){
+            $pendaftaran->update([
+                'NIM' => $request->NIM,
+            ]);
+        }
+        if(isset($permohonan)){
+            $permohonan->update([
+                'name' => $request->name,
+                'NIM' => $request->NIM,
+            ]);
+        }
+        if(isset($bimbingan)){
+            $bimbingan->update([
+                'NIM' => $request->NIM,
+            ]);
+        }
+        if(isset($penilaian)){
+            $penilaian->update([
+                'NIM' => $request->NIM,
+            ]);
+        }
+        if(isset($penjadwalan)){
+            $penjadwalan->update([
+                'NIM' => $request->NIM,
+            ]);
+        }
+
         User::find(Auth::user()->id)->update([
             'name' => $request->name,
             'NIM' => $request->NIM,
@@ -328,8 +293,18 @@ class MahasiswaController extends Controller
 
     // ini buat profil picturenya, blom jadi
     public function avatar(Request $request){
-        User::find(Auth::user()->NIM)->update([
-            'image' => $request->test,
-        ]);
+        // $this->validate($request, [
+        //     'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        // ]);
+
+        // $image_path = $request->file('image')->store('image', 'public');
+
+        // User::where('name', Auth::user()->name)->update([
+        //     'image' => $image_path,
+        // ]);
+        $s = "ijln";
+        dd($s);
+
+        return redirect('/mahasiswa');
     }
 }
