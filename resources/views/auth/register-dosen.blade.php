@@ -30,12 +30,12 @@
 
                             <div class="row mb-3">
                                 <label for="NIM"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('NIM') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('NIP') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="NIM" type="text"
-                                        class="form-control @error('NIM') is-invalid @enderror" name="NIM"
-                                        value="{{ old('NIM') }}" required autocomplete="NIM" autofocus>
+                                    <input id="NIP" type="text"
+                                        class="form-control @error('NIP') is-invalid @enderror" name="NIP"
+                                        value="{{ old('NIP') }}" required autocomplete="NIP" autofocus>
 
                                     @error('NIM')
                                         <span class="invalid-feedback" role="alert">
@@ -55,23 +55,6 @@
                                         value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="sks"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Jumlah SKS Kumulatif') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="sks" type="text"
-                                        class="form-control @error('sks') is-invalid @enderror" name="sks"
-                                        value="{{ old('sks') }}" required autocomplete="sks" autofocus>
-
-                                    @error('sks')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

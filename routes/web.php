@@ -8,6 +8,7 @@ use App\Http\Controllers\PermohonanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterDosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/info-magang', [AdminController::class, 'infomagangdepan'])->name('i
 
 
 Auth::routes();
+Route::get('/register-dosen', [RegisterDosenController::class, 'index'])->name('register-dosen');
 
 // Auth::routes();
 
