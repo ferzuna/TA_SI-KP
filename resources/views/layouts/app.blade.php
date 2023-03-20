@@ -50,9 +50,11 @@
                                 @endif
 
                                 @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
+                                    @if (!Route::is('register-dosen'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
                                 @endif
                             @else
                                 <li class="nav-item dropdown">
