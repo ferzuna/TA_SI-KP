@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -54,44 +55,27 @@ class RegisterDosenController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
+    
+
+    public function store(Request $request){
+        $validateddata = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'NIM' => ['required', 'string', 'max:255', 'unique:users'],
+            'NIP' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'sks' => ['required', 'digits_between:1,3'],
             'username' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        $user = User::create([
-            'name' => $data['name'],
-            'NIM' => $data['NIM'],
-            'email' => $data['email'],
-            'sks' => $data['sks'],
-            'username' => $data['username'],
-            'password' => Hash::make($data['password']),
-            'role_id' => 1,
-        ])->assignRole('dosen');
-        return $user;
-    }
-
-    // ini biar user yg register ga auto login
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-        event(new Registered($user = $this->create($request->all())));
-        return $this->registered($request, $user)
-            ?: redirect()->route('login')->with('success');
+        $validateddata = [
+            'name' => $request->name,
+            'NIP' => $request->NIP,
+            'email' => $request->email,
+            'bobot_bimbingan' => 0,
+            'kuota_bimbingan' => 0,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'role_id' => 4,
+        ];
+        User::create($validateddata)->assignRole('dosen');
+        return redirect('/login');
     }
 }
