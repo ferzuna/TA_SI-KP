@@ -27,84 +27,88 @@
                         </div>
                     @endif
 
-                    <div class="row">
+                    <form action="{{ route('mahasiswa.setting') }}" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-lg-4 order-lg-2">
 
-                        <div class="col-lg-4 order-lg-2">
-
-                            <div class="card shadow mb-4">
-                                {{-- <div class="card-profile-image mt-4">
-
-                                </div> --}}
-
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <form action="{{ route('mahasiswa.avatar') }}" method="post" enctype="multipart/form-data">
-                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                            <label for="imageUpload"></label>
-                                        </form>
-
-                                    </div>
-                                    <div class="avatar-preview">
-                                        @if (Auth::user()->image)
-                                            <div id="imagePreview"
-                                                style="background-image: url('http://i.pravatar.cc/500?img=7');">
-                                            </div>
-                                        @else()
-                                            <div id="imagePreview" class="rounded-circle avatar avatar font-weight-bold"
-                                                style="background-image: url(''); font-size: 60px; height: 180px; width: 180px;"
-                                                data-initial="{{ Auth::user()->name[0] }}">
-                                            </div>
-                                        @endif
-
-                                    </div>
-                                </div>
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="text-center">
-                                                <h5 class="font-weight-bold">{{ Auth::user()->name }}</h5>
-                                                <p>Administrator</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{-- <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="card-profile-stats">
-                                                <span class="heading">22</span>
-                                                <span class="description">Friends</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="card-profile-stats">
-                                                <span class="heading">10</span>
-                                                <span class="description">Photos</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="card-profile-stats">
-                                                <span class="heading">89</span>
-                                                <span class="description">Comments</span>
-                                            </div>
-                                        </div>
+                                <div class="card shadow mb-4">
+                                    {{-- <div class="card-profile-image mt-4">
+    
                                     </div> --}}
+
+                                    <div class="avatar-upload">
+                                        <div class="avatar-edit">
+                                            {{-- <form id="form1" action="{{ route('mahasiswa.setting') }}" method="post"
+                                                enctype="multipart/form-data"> --}}
+                                            <input type='file' id="imageUpload" name="imageUpload"
+                                                accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="oldImage" value="{{ Auth::user()->image }}">
+                                            <label for="imageUpload"></label>
+                                            {{-- </form> --}}
+
+                                        </div>
+                                        <div class="avatar-preview">
+                                            @if (Auth::user()->image)
+                                                <div id="imagePreview"
+                                                    style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
+                                                </div>
+                                            @else()
+                                                <div id="imagePreview" class="rounded-circle avatar avatar font-weight-bold"
+                                                    style="background-image: url(''); font-size: 60px; height: 180px; width: 180px;"
+                                                    data-initial="{{ Auth::user()->name[0] }}">
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <h5 class="font-weight-bold">{{ Auth::user()->name }}</h5>
+                                                    <p>Angkatan {{ Auth::user()->angkatan }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card-profile-stats">
+                                                    <span class="heading">22</span>
+                                                    <span class="description">Friends</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-profile-stats">
+                                                    <span class="heading">10</span>
+                                                    <span class="description">Photos</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card-profile-stats">
+                                                    <span class="heading">89</span>
+                                                    <span class="description">Comments</span>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </div>
                                 </div>
+
                             </div>
 
-                        </div>
+                            <div class="col-lg-8 order-lg-1">
 
-                        <div class="col-lg-8 order-lg-1">
+                                <div class="card shadow mb-4">
 
-                            <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                                    </div>
 
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
-                                </div>
+                                    <div class="card-body">
 
-                                <div class="card-body">
-
-                                    <form method="POST" action="{{ route('mahasiswa.setting') }}" autocomplete="off">
+                                        {{-- <form id="form2" method="POST" action="{{ route('mahasiswa.setting') }}"
+                                            autocomplete="off"> --}}
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <input type="hidden" name="_method" value="POST">
@@ -189,8 +193,7 @@
                                                         <label class="form-control-label"
                                                             for="confirm_password">Alamat</label>
                                                         <input type="text area" id="confirm_password"
-                                                            class="form-control" name="alamat"
-                                                            placeholder="Alamat Anda"
+                                                            class="form-control" name="alamat" placeholder="Alamat Anda"
                                                             value="{{ old('alamat', Auth::user()->alamat) }}">
                                                     </div>
                                                 </div>
@@ -230,19 +233,21 @@
                                         <div class="pl-lg-4">
                                             <div class="row">
                                                 <div class="col text-center">
-                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    <button id="submitBtn" type="submit" class="btn btn-primary">Save
+                                                        Changes</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                        {{-- </form> --}}
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
                         </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
