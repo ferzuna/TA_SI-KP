@@ -11,6 +11,7 @@ use App\Models\Penjadwalan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -26,41 +27,42 @@ class MahasiswaController extends Controller
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.home', [
             "mhs" => $mhs,
-            "jadwal"=> $bimbingan,
-            "pendaftaran"=>$pendaftaran,
+            "jadwal" => $bimbingan,
+            "pendaftaran" => $pendaftaran,
         ]);
     }
 
-    public function pendaftaran(){
+    public function pendaftaran()
+    {
         $alldosen = [];
         $all = User::where('role_id', 4)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $dp = "";
 
-        if(isset($pendaftaran['dosbing'])){
+        if (isset($pendaftaran['dosbing'])) {
             $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->get();
             $dp = $pendaftaran['dosbing'];
         }
-        foreach($all as $dosen){
-            if($dosen['bobot_bimbingan'] % $dosen['kuota_bimbingan'] != 0){
+        foreach ($all as $dosen) {
+            if ($dosen['bobot_bimbingan'] % $dosen['kuota_bimbingan'] != 0) {
                 $alldosen[] = $dosen;
-            }
-            else if($dosen['bobot_bimbingan'] == 0 && $dosen['kuota_bimbingan'] != 0){
+            } else if ($dosen['bobot_bimbingan'] == 0 && $dosen['kuota_bimbingan'] != 0) {
                 $alldosen[] = $dosen;
             }
         }
-        return view('mahasiswa.pendaftaran',[
-            "alldosen"=>$alldosen,
-            "pendaftaran"=>$pendaftaran,
-            "dp"=>$dp,
+        return view('mahasiswa.pendaftaran', [
+            "alldosen" => $alldosen,
+            "pendaftaran" => $pendaftaran,
+            "dp" => $dp,
         ]);
     }
 
-    public function pendaftaranstore(Request $request){
+    public function pendaftaranstore(Request $request)
+    {
         $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
 
-        if(!isset($perusahaan)){
+        if (!isset($perusahaan)) {
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
         $this->validate($request, [
@@ -69,13 +71,13 @@ class MahasiswaController extends Controller
             'dosbing' => 'required|string|max:255',
         ]);
         // pengondisian untuk data yang sudah ada
-        if(isset($ini)){
+        if (isset($ini)) {
             Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
                 'a1' => $request->a1,
                 'bukti' => $request->bukti,
                 'dosbing' => $request->dosbing,
             ]);
-        }else{
+        } else {
             Pendaftaran::create([
                 'perusahaan' => $perusahaan['perusahaan'],
                 'NIM' => Auth::user()->NIM,
@@ -84,14 +86,14 @@ class MahasiswaController extends Controller
                 'dosbing' => $request->dosbing,
             ]);
         }
-        
+
         $semua = User::where('role_id', 4)->get();
         $all = User::all();
         $k = 0;
-        
-        foreach($all as $bimbingan){
+
+        foreach ($all as $bimbingan) {
             $k++;
-            if($bimbingan['role_id'] == 4){
+            if ($bimbingan['role_id'] == 4) {
                 $bobot = Pendaftaran::where('dosbing', $bimbingan['name'])->get();
                 $jumlah = count($bobot);
                 User::find($k)->update([
@@ -103,23 +105,22 @@ class MahasiswaController extends Controller
         $bobotbimbingan = 0;
         $kuotabimbingan = 0;
         $i = 0;
-        foreach ($semua as $bimbingan){
-            if($bimbingan['bobot_bimbingan'] == 0){
+        foreach ($semua as $bimbingan) {
+            if ($bimbingan['bobot_bimbingan'] == 0) {
                 $bobotbimbingan += $bimbingan['bobot_bimbingan'];
                 $kuotabimbingan += $bimbingan['kuota_bimbingan'];
-            }
-            else if($bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'] == 0){
+            } else if ($bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'] == 0) {
                 $bobotbimbingan += $bimbingan['kuota_bimbingan'];
                 $kuotabimbingan += $bimbingan['kuota_bimbingan'];
-            }else{
+            } else {
                 $bobotbimbingan += $bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'];
                 $kuotabimbingan += $bimbingan['kuota_bimbingan'];
             }
         }
-        if($bobotbimbingan >= $kuotabimbingan){
-            foreach($all as $bimbingan){
+        if ($bobotbimbingan >= $kuotabimbingan) {
+            foreach ($all as $bimbingan) {
                 $i++;
-                if($bimbingan['role_id'] == 4){
+                if ($bimbingan['role_id'] == 4) {
                     User::find($i)->update([
                         'bobot_bimbingan' => 0,
                     ]);
@@ -130,7 +131,8 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
     }
 
-    public function bimbinganstore(Request $request){
+    public function bimbinganstore(Request $request)
+    {
         $this->validate($request, [
             'makalah' => 'max:255',
             'laporan' => 'max:255',
@@ -142,7 +144,7 @@ class MahasiswaController extends Controller
         ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
-        if(isset($data)){
+        if (isset($data)) {
             Bimbingan::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
@@ -158,7 +160,7 @@ class MahasiswaController extends Controller
             Penjadwalan::where('NIM', $nim)->first()->update([
                 'waktu_seminar' => $request->jadwal,
             ]);
-        }else{
+        } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
             Bimbingan::create([
                 'NIP' => User::where('name', $dosbing)->first()['NIP'],
@@ -182,21 +184,24 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa/pengumpulan')->with('success', 'pengumpulan berkas created!');
     }
 
-    public function pengumpulan(){
+    public function pengumpulan()
+    {
         $data = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.pengumpulan', [
             'data' => $data,
         ]);
     }
 
-    public function finalisasi(){
+    public function finalisasi()
+    {
         $data = Penilaian::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.finalisasi', [
             'data' => $data,
         ]);
     }
 
-    public function finalisasistore(Request $request){
+    public function finalisasistore(Request $request)
+    {
         $this->validate($request, [
             'makalah' => 'max:255',
             'laporan' => 'max:255',
@@ -207,7 +212,7 @@ class MahasiswaController extends Controller
         ]);
         $nim = Auth::user()->NIM;
         $data = Penilaian::where('NIM', $nim)->first();
-        if(isset($data)){
+        if (isset($data)) {
             Penilaian::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
@@ -217,7 +222,7 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
                 'status' => 0,
             ]);
-        }else{
+        } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
             Penilaian::create([
                 'NIP' => User::where('name', $dosbing)->first()['NIP'],
@@ -234,8 +239,10 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
     }
 
-    public function setting(Request $request){
+    public function setting(Request $request)
+    {
         $this->validate($request, [
+            'imageUpload' => 'image|file|max:5120',
             'name' => 'required|string|max:255',
             'NIM' => 'required|digits:14',
             'username' => 'required|string|max:255',
@@ -250,34 +257,42 @@ class MahasiswaController extends Controller
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         $penilaian = Penilaian::where('NIM', Auth::user()->NIM)->first();
         $penjadwalan = Penjadwalan::where('NIM', Auth::user()->NIM)->first();
-        if(isset($pendaftaran)){
+        if (isset($pendaftaran)) {
             $pendaftaran->update([
                 'NIM' => $request->NIM,
             ]);
         }
-        if(isset($permohonan)){
+        if (isset($permohonan)) {
             $permohonan->update([
                 'name' => $request->name,
                 'NIM' => $request->NIM,
             ]);
         }
-        if(isset($bimbingan)){
+        if (isset($bimbingan)) {
             $bimbingan->update([
                 'NIM' => $request->NIM,
             ]);
         }
-        if(isset($penilaian)){
+        if (isset($penilaian)) {
             $penilaian->update([
                 'NIM' => $request->NIM,
             ]);
         }
-        if(isset($penjadwalan)){
+        if (isset($penjadwalan)) {
             $penjadwalan->update([
                 'NIM' => $request->NIM,
             ]);
         }
 
+        if ($request->file('imageUpload')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+        }
+
         User::find(Auth::user()->id)->update([
+
+            'image' => $request->file('imageUpload')->store('avatar-images/mahasiswa'),
             'name' => $request->name,
             'NIM' => $request->NIM,
             'username' => $request->username,
@@ -292,7 +307,8 @@ class MahasiswaController extends Controller
     }
 
     // ini buat profil picturenya, blom jadi
-    public function avatar(Request $request){
+    public function avatar(Request $request)
+    {
         // $this->validate($request, [
         //     'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         // ]);
