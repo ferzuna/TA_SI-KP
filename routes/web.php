@@ -33,6 +33,7 @@ Route::get('/info-magang', [AdminController::class, 'infomagangdepan'])->name('i
 
 Auth::routes();
 Route::get('/register-dosen', [RegisterDosenController::class, 'index'])->name('register-dosen');
+Route::post('/register-dosen', [RegisterDosenController::class, 'store'])->name('register-dosen-store');
 
 // Auth::routes();
 
