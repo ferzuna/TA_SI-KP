@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MahasiswaController extends Controller
 {
@@ -129,6 +130,12 @@ class MahasiswaController extends Controller
         }
 
         return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
+    }
+
+    public function exportPdf()
+    {
+        $pdf = Pdf::loadView('mahasiswa.pdf.export-permohonan');
+        return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
     }
 
     public function bimbinganstore(Request $request)
@@ -284,15 +291,21 @@ class MahasiswaController extends Controller
             ]);
         }
 
-        if ($request->file('imageUpload')) {
+
+        if ($request->file('imageUpload') == null) {
+            $file = $request->oldImage;
+        } elseif ($request->file('imageUpload')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
+            $file = $request->file('imageUpload')->store('avatar-images/mahasiswa');
         }
+
+
 
         User::find(Auth::user()->id)->update([
 
-            'image' => $request->file('imageUpload')->store('avatar-images/mahasiswa'),
+            'image' => $file,
             'name' => $request->name,
             'NIM' => $request->NIM,
             'username' => $request->username,

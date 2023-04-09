@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterDosenController;
+use App\Http\Middleware\Mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,7 @@ Route::group(['middleware' => 'mahasiswa'], function () {
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
     Route::get('/mahasiswa/permohonan', [PermohonanController::class, 'index'])->name('permohonan');
     Route::post('/mahasiswa/permohonan', [PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
+    Route::get('mahasiswa/export-pdf', [MahasiswaController::class, 'exportPdf'])->name('export-pdf');
     Route::get('/mahasiswa/pengumpulan', [MahasiswaController::class, 'pengumpulan'])->name('pengumpulan');
     Route::post('/mahasiswa/pengumpulan/store', [MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
     Route::get('/mahasiswa/finalisasi', [MahasiswaController::class, 'finalisasi'])->name('finalisasi');
