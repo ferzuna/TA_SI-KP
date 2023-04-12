@@ -6,9 +6,22 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-md-12">
                     <div class="banner">
-                        <div class="media-left">
-
+                        @if (Auth::user()->alamat === null || Auth::user()->alamat === null || Auth::user()->sks === null || Auth::user()->no_telp === null)    
+                        <div class="alert alert-warn">Perhatian!! Harap Lengkapi data diri Anda <a href="{{ route('mahasiswa.pengaturan') }}">
+                            <span>{{ __('disini') }}</span>
+                        </a>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" style="color: #181818">&times;</span>
+                          </button>
+                    </div>
+                        @endif
+                        
+                        <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP Anda <a href="{{ route('export-pdf') }}">disini</a>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                              </button>
                         </div>
+
                         <div class="media-right">
                             selamat datang {{ isset($mhs['name']) ? $mhs['name'] : '' }}, di sistem informasi KP
                         </div>
@@ -181,4 +194,8 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    
 @endsection
