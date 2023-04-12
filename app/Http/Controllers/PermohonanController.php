@@ -53,7 +53,7 @@ class PermohonanController extends Controller
 
         try {
             //     //code...
-            Mail::to('fadzil324@gmail.com')->send(new ContactFormMail($contact));
+            // Mail::to('fadzil324@gmail.com')->send(new ContactFormMail($contact));
             // dd("BISA");
 
             return redirect()->route('permohonan')->with('status', ' Departemen akan memproses permohonan anda');

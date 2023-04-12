@@ -134,8 +134,14 @@ class MahasiswaController extends Controller
 
     public function exportPdf()
     {
-        $pdf = Pdf::loadView('mahasiswa.pdf.export-permohonan');
-        return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
+        $identity = Auth::user();
+        $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        return view('mahasiswa.pdf.export-permohonan',[
+            'data' => $identity,
+            'permohonan' => $permohonan,
+        ]);
+        // $pdf = Pdf::loadView('mahasiswa.pdf.export-permohonan');
+        // return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
     }
 
     public function bimbinganstore(Request $request)
