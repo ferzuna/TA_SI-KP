@@ -5,9 +5,12 @@
         @if (session('status'))
             <div class="container justify-content-center alert-wrap">
                 <div class="row">
-                    <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
+                    <div class="col-lg-8 col-xl-8 col-md-10 mx-auto mt-5">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>Pesan Terkirim! </strong> &nbsp; {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                              </button>
                         </div>
                     </div>
                 </div>
@@ -19,6 +22,9 @@
                     <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Pesan Anda gagal Terkirim</strong> &nbsp; {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                              </button>
                         </div>
                     </div>
                 </div>
@@ -29,9 +35,6 @@
                 <form action="{{ route('permohonan.sendPermohonan') }}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <h2 class="py-3"><b>Halaman Permohonan Kerja Praktik</b></h2>
-                        <div class="text-center">
-                            <a href="{{ route('export-pdf') }}">Download link</a>
-                        </div>
 
                         @csrf
                         <div class="col-lg-4 col-md-6">
