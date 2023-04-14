@@ -104,7 +104,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
 
-
+    @yield('script')
 </body>
 
 </html>
