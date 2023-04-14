@@ -8,6 +8,7 @@ use App\Models\Infomagang;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Mahasiswa;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 
@@ -21,6 +22,15 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.home');
+    }
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $mymahasiswa = User::where('name', 'like', "%".$search."%")->where('role_id', 1)->paginate();
+
+        return view('admin.list-mahasiswa', [
+            'mymahasiswa' => $mymahasiswa
+        ]);
     }
 
     public function allmhs()

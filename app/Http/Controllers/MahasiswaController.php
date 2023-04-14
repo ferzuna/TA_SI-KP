@@ -45,10 +45,12 @@ class MahasiswaController extends Controller
             $dp = $pendaftaran['dosbing'];
         }
         foreach ($all as $dosen) {
-            if ($dosen['bobot_bimbingan'] % $dosen['kuota_bimbingan'] != 0) {
-                $alldosen[] = $dosen;
-            } else if ($dosen['bobot_bimbingan'] == 0 && $dosen['kuota_bimbingan'] != 0) {
-                $alldosen[] = $dosen;
+            if($dosen['kuota_bimbingan'] != 0){
+                if ($dosen['bobot_bimbingan'] % $dosen['kuota_bimbingan'] != 0) {
+                    $alldosen[] = $dosen;
+                } else if ($dosen['bobot_bimbingan'] == 0 && $dosen['kuota_bimbingan'] != 0) {
+                    $alldosen[] = $dosen;
+                }
             }
         }
         return view('mahasiswa.pendaftaran', [
