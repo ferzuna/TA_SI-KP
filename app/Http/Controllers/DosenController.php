@@ -150,8 +150,19 @@ class DosenController extends Controller
         $user = User::find($id); 
         Permohonan::where('NIM', $user['NIM'])->first()->delete();
         Pendaftaran::where('NIM', $user['NIM'])->first()->delete();
-        $user->delete();
         
         return redirect('/dosen/list-mahasiswa');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        // $mymahasiswa = User::where('name', 'like', "%".$search."%")->where('role_id', 1)->paginate();
+        $mymahasiswa = User::leftJoin('Pendaftarans', function($join){
+            $join->on('users.NIM', '=', 'pendaftarans.NIM');  
+        })->where('name', 'like', "%".$search."%")->where('role_id', 1)->where('dosbing', Auth::user()->name)->paginate();
+        return view('dosen.list-mahasiswa', [
+            'mymahasiswa' => $mymahasiswa
+        ]);
     }
 }

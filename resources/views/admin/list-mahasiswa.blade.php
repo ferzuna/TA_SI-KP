@@ -48,6 +48,16 @@
                     </div>
                 </div>
                 <div class="container-fluid">
+
+
+                <form action="{{ route('admin.search') }}" method="post">
+                    @csrf
+        <input type="text" name="search" size="40" autofocus 
+        placeholder="input keyword" autocomplete="off" class="search" value="">
+        <button type="submit" class="tombol">search!</button>
+    </form>
+
+
                     <div class="row">
                         <div class="col" style="width: 505px;">
                             <h1 class="h3 mb-2 text-gray-800">List Bimbingan Mahasiswa</h1>
