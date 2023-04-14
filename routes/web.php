@@ -60,6 +60,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/pengaturan', function () {
         return view('admin.pengaturan');
     })->name('admin.pengaturan');
+    Route::post('/admin/pengaturan', [AdminController::class, 'setting'])->name('admin.setting');
 });
 
 // dosen
@@ -74,6 +75,7 @@ Route::group(['middleware' => 'dosen'], function () {
     Route::get('/dosen/pengaturan', function () {
         return view('dosen.pengaturan');
     })->name('dosen.pengaturan');
+    Route::post('/dosen/pengaturan', [DosenController::class, 'setting'])->name('dosen.setting');
 });
 
 // mahasiswa

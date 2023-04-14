@@ -9,7 +9,9 @@ use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Mahasiswa;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAdminRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateAdminRequest;
 
 class AdminController extends Controller
@@ -26,7 +28,7 @@ class AdminController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-        $mymahasiswa = User::where('name', 'like', "%".$search."%")->where('role_id', 1)->paginate();
+        $mymahasiswa = User::where('name', 'like', "%" . $search . "%")->where('role_id', 1)->paginate();
 
         return view('admin.list-mahasiswa', [
             'mymahasiswa' => $mymahasiswa
@@ -56,7 +58,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function addinfomagang(Request $request){
+    public function addinfomagang(Request $request)
+    {
         Infomagang::create([
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
@@ -66,9 +69,10 @@ class AdminController extends Controller
         return redirect('/admin/info-magang')->with('success', 'pendaftaran created!');
     }
 
-    public function berkas(){
+    public function berkas()
+    {
         // $data = Penilaian::all();
-        $data = Penilaian::leftJoin('Users', function($join) {
+        $data = Penilaian::leftJoin('Users', function ($join) {
             $join->on('penilaians.NIM', '=', 'users.NIM');
         })->get();
         return view('admin.berkas-nilai', [
@@ -94,7 +98,7 @@ class AdminController extends Controller
     public function permohonan()
     {
         $permohonan = Permohonan::all();
-        return view('admin.permohonan',[
+        return view('admin.permohonan', [
             'permohonan' => $permohonan,
         ]);
     }
@@ -153,5 +157,34 @@ class AdminController extends Controller
     {
         Infomagang::find($id)->delete();
         return redirect('/admin/info-magang')->with('success', 'magang deleted');
+    }
+
+    public function setting(Request $request)
+    {
+        $this->validate($request, [
+            'imageUpload' => 'image|file|max:5120',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'email' => 'required|email',
+        ]);
+
+        if ($request->file('imageUpload') == null) {
+            $file = $request->oldImage;
+        } elseif ($request->file('imageUpload')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $file = $request->file('imageUpload')->store('avatar-images/mahasiswa');
+        }
+
+        User::find(Auth::user()->id)->update([
+
+            'image' => $file,
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'new_password' => $request->new_password,
+        ]);
+        return redirect('/admin')->with('success', 'Profil Berhasil Diperbarui');
     }
 }

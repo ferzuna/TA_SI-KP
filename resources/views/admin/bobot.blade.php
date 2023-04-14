@@ -25,7 +25,7 @@
 
             @foreach ($alldosen as $dosen)
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-1">
                         <div class="card-body">
                             <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
                                 <div class="row no-gutters align-items-center">
@@ -42,8 +42,9 @@
                                     </div>
                                 </div>
                             </a>
+                            <br>
                             <span type="button" data-toggle="modal" data-target="#edit<?= $dosen['id'] ?>"><i
-                                    class="fas fa-edit iconedit" style="padding-left: 9px;"></i> Edit </span>
+                                    class="p-0 fas fa-edit iconedit" style="padding-left: 9px;"></i> Edit </span>
                         </div>
                         <div class="modal fade" id="edit<?= $dosen['id'] ?>" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,24 +60,25 @@
                                         <div class="col-md-6">
                                             <form method="POST" action="{{route('kuota', $dosen['id'])}}">
                                                 @csrf
-                                                <input type="text" class="border rounded-0 form-control"
+                                                <label class="p-0" for="nama">Nama</label>
+                                                <input type="text" disabled class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Nama"
                                                     name="nama" value="<?= $dosen['name'] ?>" />
-                                                <select type="text" class="border rounded-0 form-control"
+                                                {{-- <select type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Gender"
                                                     name="gender" />
                                                 <option <?= $dosen['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
                                                     value="Laki - Laki">Laki - Laki</option>
                                                 <option <?= $dosen['gender'] == 'Perempuan' ? 'selected' : '' ?>
                                                     value="Perempuan">Perempuan</option>
-                                                </select>
+                                                </select> --}}
+                                                <label class="p-0" for="nama">Kuota Bimbingan</label>
                                                 <input type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Alamat"
                                                     name="kuota" value="<?= $dosen['kuota_bimbingan'] ?>" />
 
-                                                <input type="text" class="border rounded-0 form-control"
-                                                    placeholder="Jurusan" style="margin-bottom: 15px;width: 440px;"
-                                                    name="jurusan" value="<?= $dosen['jurusan'] ?>" />
+
+                                                <label class="p-0" for="nama">Status</label>
                                                 <select type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Status"
                                                     name="status" />

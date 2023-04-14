@@ -11,6 +11,7 @@ use App\Http\Middleware\Dosen;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
 // use GuzzleHttp\Psr7\Request;
@@ -164,5 +165,34 @@ class DosenController extends Controller
         return view('dosen.list-mahasiswa', [
             'mymahasiswa' => $mymahasiswa
         ]);
+    }
+
+    public function setting(Request $request)
+    {
+        $this->validate($request, [
+            'imageUpload' => 'image|file|max:5120',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'email' => 'required|email',
+        ]);
+
+        if ($request->file('imageUpload') == null) {
+            $file = $request->oldImage;
+        } elseif ($request->file('imageUpload')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $file = $request->file('imageUpload')->store('avatar-images/mahasiswa');
+        }
+
+        User::find(Auth::user()->id)->update([
+
+            'image' => $file,
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'new_password' => $request->new_password,
+        ]);
+        return redirect('/dosen')->with('success', 'Profil Berhasil Diperbarui');
     }
 }

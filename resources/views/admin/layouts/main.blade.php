@@ -47,9 +47,29 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         data-toggle="dropdown" aria-expanded="false" href="#"><span
                                             class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::user()->name }}</span>
-                                        <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                            data-initial="{{ Auth::user()->name[0] }}">
-                                        </figure>
+                                            @if (Auth::user()->image)
+                                            {{-- <div id="imagePreview"
+                                                style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
+                                            </div> --}}
+                                            <figure class="img-profile rounded-circle avatar font-weight-bold"
+                                                style="background-image: url({{ asset('storage/' . Auth::user()->image) }});
+                                                object-fit: fill;
+                                                background-size: cover;
+                                                background-repeat: no-repeat;
+                                                background-position: center;
+                                                width: 45px;
+                                                height: 45px;
+                                                border-radius: 50%;
+                                                overflow: hidden;
+                                                opacity: 1;
+                                                display: inline-flex;
+                                                vertical-align: middle;">
+                                            </figure>
+                                        @else()
+                                            <figure class="img-profile rounded-circle avatar font-weight-bold"
+                                                data-initial="{{ Auth::user()->name[0] }}">
+                                            </figure>
+                                        @endif
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -101,6 +121,8 @@
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
+
+    @yield('script')
 
 
 </body>
