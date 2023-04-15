@@ -101,8 +101,8 @@
 
       <div class="tujuan">
          <ul style="list-style-type: none; padding: 0;">
-            <li style="padding-bottom:0.5em;"> Yth. Bapak/Ibu HR</li>
-            <li style="padding-bottom:0.5em;"> PT Radya Anugrah Digital</li>
+            <li style="padding-bottom:0.5em;"> Yth. Bapak/Ibu HRD</li>
+            <li style="padding-bottom:0.5em;"> {{$permohonan->perusahaan}}</li>
             <li style="padding-bottom:0.5em;"> di Tempat</li>
          </ul>
       </div>
@@ -112,19 +112,20 @@
             yang tersebut di bawah ini: 
          </p>
          <ul style="list-style-type: none; padding: 0;">
-            <li style="padding-bottom:0.5em;"> Nama <span style="margin-left: 80px;">: Dimas Rafi</span></li>
-            <li style="padding-bottom:0.5em;"> NIM <span style="margin-left: 87px;">: Dimas Rafi</span></li>
-            <li style="padding-bottom:0.5em;"> Prodi/Jurusan <span style="margin-left: 30px;">: Dimas Rafi</span></li>
-            <li style="padding-bottom:0.5em;"> Alamat <span style="margin-left: 70px;">: Dimas Rafi</span></li>
-            <li style="padding-bottom:0.5em;"> Semester <span style="margin-left: 58px;">: 5</span></li>
+            <li style="padding-bottom:0.5em;"> Nama <span style="margin-left: 80px;">: {{Auth::user()->name}}</span></li>
+            <li style="padding-bottom:0.5em;"> NIM <span style="margin-left: 87px;">: {{Auth::user()->NIM}}</span></li>
+            <li style="padding-bottom:0.5em;"> Prodi/Jurusan <span style="margin-left: 30px;">: Teknik Komputer</span></li>
+            <li style="padding-bottom:0.5em;"> Angkatan <span style="margin-left: 56px;">: {{Auth::user()->angkatan}}</span></li>
+            <li style="padding-bottom:0.5em;"> Alamat <span style="margin-left: 71px;">: {{Auth::user()->alamat}}</span></li>
+            <li style="padding-bottom:0.5em;"> Telepon/HP <span style="margin-left: 43px;">: {{Auth::user()->no_telp}}</span></li>
          </ul>
             <br>
 
-            <p style="text-indent: 50px; text-align:justify; line-height:150%">Akan melaksanakan Program Kerja Praktek di PT Radya Anugerah Digital selama 3
+            <p style="text-indent: 50px; text-align:justify; line-height:150%">Akan melaksanakan Program Kerja Praktek di {{$permohonan->perusahaan}} selama 3
             bulan pada bulan Januari 2022 hingga Maret 2022 atau sesuai kebijakan Instansi terkait.
             Mohon berkenan sekiranya dapat menerima mahasiswa tersebut untuk melaksanakan kerja
             praktek dan dibantu untuk mendapatkan data berupa laporan tentang kegiatan yang dilakukan
-            di PT Radya Anugerah Digital.
+            di {{$permohonan->perusahaan}}.
          </p>
             
          <p style="text-indent: 50px;">Atas perhatian dan bantuannya kami ucapkan terima kasih.</p>
@@ -136,7 +137,7 @@
     </section>
     <section class="footer">
       <div class="ttd">
-         <span style="line-height: 150%;">Semarang, 3 Januari 2022</span>
+         <span style="line-height: 150%;">Semarang, {{$permohonan->updated_at->isoFormat('D MMMM Y')}}</span>
          <br>
          <span style="line-height: 150%;">a.n Dekan</span>
          <br>

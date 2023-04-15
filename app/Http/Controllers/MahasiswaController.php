@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class MahasiswaController extends Controller
 {
@@ -25,12 +26,17 @@ class MahasiswaController extends Controller
     {
         $mhs = User::where('name', Auth::user()->name)->first();
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+        $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        // $permohonan->updated_at = Carbon::parse('2021-03-16 08:27:00')->locale('id');
+        // $permohonan->updated_at->settings(['formatFunction' => 'translatedFormat']);
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.home', [
             "mhs" => $mhs,
             "jadwal" => $bimbingan,
             "pendaftaran" => $pendaftaran,
+            "permohonan" => $permohonan,
         ]);
+        
     }
 
     public function pendaftaran()
