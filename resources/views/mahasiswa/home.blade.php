@@ -16,11 +16,14 @@
                     </div>
                         @endif
                         
+                        @if ($permohonan->status === 1)
                         <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP Anda <a href="{{ route('export-pdf') }}">disini</a>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="color: #181818">&times;</span>
                               </button>
                         </div>
+                        @endif
+                        
 
                         <div class="media-right">
                             selamat datang {{ isset($mhs['name']) ? $mhs['name'] : '' }}, di sistem informasi KP
