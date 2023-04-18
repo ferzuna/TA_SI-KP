@@ -175,7 +175,6 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
                 'survey' => $request->survey,
                 'jadwal' => $request->jadwal,
-                'status' => 0,
             ]);
 
             Penjadwalan::where('NIM', $nim)->first()->update([
@@ -194,7 +193,7 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
                 'survey' => $request->survey,
                 'jadwal' => $request->jadwal,
-                'status' => 0,
+                'status' => '',
             ]);
             Penjadwalan::create([
                 'NIP' => User::where('name', $dosbing)->first()['NIP'],
