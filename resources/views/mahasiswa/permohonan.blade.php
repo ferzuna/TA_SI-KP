@@ -59,12 +59,12 @@
                             <div class="form-group">
                                 <label for="jadwal-seminar">Tanggal Mulai</label>
                                 <input class="form-control" type="datetime-local" name="mulai" id=""
-                                    value="{{ isset($data['jadwal']) ? $data['jadwal'] : '' }}">
+                                    value="{{ isset($data['mulai']) ? $data['mulai'] : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="jadwal-seminar">Tanggal Selesai</label>
                                 <input class="form-control" type="datetime-local" name="selesai" id=""
-                                    value="{{ isset($data['jadwal']) ? $data['jadwal'] : '' }}">
+                                    value="{{ isset($data['selesai']) ? $data['selesai'] : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Kumulatif</label>
