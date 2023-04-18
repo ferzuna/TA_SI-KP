@@ -50,10 +50,27 @@
                                                         <span>{{ __('Ubah Profil') }}</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-12 d-flex justify-content-center">
                                                     <div class="py-2">
-                                                        <img src="{{ asset('storage/' . Auth::user()->image) }}"
-                                                            style="max-width: 150px; width: 100%" alt="foto">
+                                                    @if (Auth::user()->image)
+                                                    <figure class="img-profile font-weight-bold"
+                                                style="background-image: url({{ asset('storage/' . Auth::user()->image) }});
+                                                object-fit: fill;
+                                                background-size: cover;
+                                                background-repeat: no-repeat;
+                                                background-position: center;
+                                                width: 100px;
+                                                height: 120px;
+                                                overflow: hidden;
+                                                opacity: 1;
+                                                display: inline-flex;
+                                                vertical-align: middle;">
+                                            </figure>
+                                                    @else
+                                                    <img src="https://www.w3schools.com/howto/img_avatar.png"
+                                                    style="max-width: 150px; width: 100%" alt="foto">
+                                                    @endif
+                                                        
                                                     </div>
 
                                                 </div>
