@@ -57,6 +57,16 @@
                                     value="{{ isset($data['dok_rekomendasi']) ? $data['dok_rekomendasi'] : '' }}" required>
                             </div>
                             <div class="form-group">
+                                <label for="jadwal-seminar">Tanggal Mulai</label>
+                                <input class="form-control" type="datetime-local" name="mulai" id=""
+                                    value="{{ isset($data['jadwal']) ? $data['jadwal'] : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="jadwal-seminar">Tanggal Selesai</label>
+                                <input class="form-control" type="datetime-local" name="selesai" id=""
+                                    value="{{ isset($data['jadwal']) ? $data['jadwal'] : '' }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="sks">Jumlah SKS Kumulatif</label>
                                 <input class="form-control" type="number" name="sks"
                                     value="{{ isset($data['sks']) ? $data['sks'] : '' }}" required>
@@ -65,7 +75,6 @@
                         <div class="py-2">
                             <button type="submit" class="btn btn-light btn-outline-dark">Submit</button>
                         </div>
-
                     </div>
                 </form>
             </div>

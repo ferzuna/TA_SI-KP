@@ -30,6 +30,18 @@
                                 <input class="form-control" type="text" name="b1"
                                     value="{{ isset($data['b1']) ? $data['b1'] : '' }}">
                             </div>
+                            @if (isset($data->status))
+                                <div class="form-group">
+                                    <label for="jadwal-seminar">Status</label>
+                                    <select class="form-select input-border" name="ruangan" id=""
+                                        aria-label="Default select example">
+                                        <option id="" value="Sudah Revisi">Sudah Revisi
+                                        </option>
+                                        <option id="" value="Revisi">Belum Revisi
+                                        </option>
+                                    </select>
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-4 col-md-6">
 
