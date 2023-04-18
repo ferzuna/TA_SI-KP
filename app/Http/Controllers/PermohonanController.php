@@ -35,6 +35,8 @@ class PermohonanController extends Controller
                 'proposal' => $request->proposal,
                 'dok_rekomendasi' => $request->dok_rekomendasi,
                 'sks' => $request->sks,
+                'mulai' => $request->mulai,
+                'selesai' => $request->selesai,
                 'status'=> false,
             ]);
         }else{
@@ -46,6 +48,8 @@ class PermohonanController extends Controller
             'proposal' => $request['proposal'],
             'dok_rekomendasi' => $request['dok_rekomendasi'],
             'sks' => $request['sks'],
+            'mulai' => $request->mulai,
+            'selesai' => $request->selesai,
             'status'=> false,
         ];
         Permohonan::create($contact);
