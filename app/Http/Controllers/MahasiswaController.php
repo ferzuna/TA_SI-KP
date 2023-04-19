@@ -270,7 +270,7 @@ class MahasiswaController extends Controller
             'no_telp' => 'required|digits_between:1,20',
             'sks' => 'required|digits_between:1,3',
             'alamat' => 'required|string|max:255',
-            'angkatan' => 'required|digits:4',
+            'semester' => 'required|digits:4',
         ]);
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
@@ -325,7 +325,7 @@ class MahasiswaController extends Controller
             'email' => $request->email,
             'no_telp' => $request->no_telp,
             'sks' => $request->sks,
-            'angkatan' => $request->angkatan,
+            'semester' => $request->semester,
             'alamat' => $request->alamat,
             'new_password' => $request->new_password,
         ]);

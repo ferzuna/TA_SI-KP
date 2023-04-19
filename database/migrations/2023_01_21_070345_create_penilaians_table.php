@@ -23,7 +23,7 @@ class CreatePenilaiansTable extends Migration
             $table->string('a2')->nullable();
             $table->string('b2')->nullable();
             $table->string('b3')->nullable();
-            $table->boolean('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

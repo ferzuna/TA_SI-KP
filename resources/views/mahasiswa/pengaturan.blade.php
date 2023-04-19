@@ -67,7 +67,7 @@
                                             <div class="col-lg-12">
                                                 <div class="text-center">
                                                     <h5 class="font-weight-bold">{{ Auth::user()->name }}</h5>
-                                                    <p>Angkatan {{ Auth::user()->angkatan }}</p>
+                                                    <p>Semester {{ Auth::user()->semester }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,10 +179,10 @@
                                                 <div class="col-lg-4">
                                                     <div class="form-group focused">
                                                         <label class="form-control-label"
-                                                            for="new_password">Angkatan</label>
+                                                            for="new_password">Semester</label>
                                                         <input type="number" id="new_password" class="form-control"
-                                                            name="angkatan" placeholder="New password"
-                                                            value="{{ old('angkatan', Auth::user()->angkatan) }}">
+                                                            name="semester" placeholder="New password"
+                                                            value="{{ old('semester', Auth::user()->semester) }}">
                                                     </div>
                                                 </div>
                                             </div>

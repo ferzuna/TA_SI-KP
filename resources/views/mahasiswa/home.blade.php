@@ -79,8 +79,8 @@
                                                         <h4><b>Mahasiswa</b></h4>
                                                         <span>{{ isset($mhs['name']) ? $mhs['name'] : '' }}</span>
                                                         <br>
-                                                        <span>Angkatan
-                                                            {{ isset($mhs['angkatan']) ? $mhs['angkatan'] : '' }}</span>
+                                                        <span>Semester
+                                                            {{ isset($mhs['semester']) ? $mhs['semester'] : '' }}</span>
                                                         <br>
                                                         <span>Nomor telepon:
                                                             {{ isset($mhs['no_telp']) ? $mhs['no_telp'] : '' }}</span>

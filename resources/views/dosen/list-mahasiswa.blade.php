@@ -70,7 +70,7 @@
                                         <tr>
                                             <th>NIM</th>
                                             <th>Nama Lengkap</th>
-                                            <th>Angkatan</th>
+                                            <th>Semester</th>
                                             <th>No_telp</th>
                                             <th>Nama Perusahaan</th>
                                             <th>Status</th>
@@ -81,7 +81,7 @@
                                             <tr>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['name'] ?></td>
-                                                <td><?= $data['angkatan'] ?></td>
+                                                <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td> status</td>
@@ -193,7 +193,7 @@
                                         <tr>
                                             <td><strong>NIM</strong></td>
                                             <td><strong>Nama Lengkap</strong></td>
-                                            <td><strong>Angkatan</strong></td>
+                                            <td><strong>Semester</strong></td>
                                             <td><strong>No_telp</strong></td>
                                             <td><strong>Nama Perusahaan</strong></td>
                                             <td><strong>Status</strong></td>
@@ -207,4 +207,5 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+    
 @endsection

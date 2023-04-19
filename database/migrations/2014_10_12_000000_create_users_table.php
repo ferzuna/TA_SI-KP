@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('alamat')->nullable(); //dosen
             $table->integer('kuota_bimbingan')->nullable(); //dosen
             $table->integer('bobot_bimbingan')->nullable(); //dosen
-            $table->string('angkatan')->nullable(); //mahasiswa
+            $table->string('semester')->nullable(); //mahasiswa
             $table->string('no_telp')->nullable(); //mahasiswa
             $table->string('sks')->nullable(); //mahasiswa
             $table->integer('role_id');

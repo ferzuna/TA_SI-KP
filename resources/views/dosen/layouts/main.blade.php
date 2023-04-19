@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
+    <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
     <!-- ini tambahan buat logout -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -109,6 +112,14 @@
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">
     </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.data').DataTable();
+    });
+    </script>
+
+    <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('.data').DataTable();
