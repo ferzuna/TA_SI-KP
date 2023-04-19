@@ -63,12 +63,6 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Santri</h6>
                         </div>
-                        <!-- <form action="{{ route('dosen.search') }}" method="post">
-    @csrf
-        <input  type="text" name="search" size="40" autofocus 
-        placeholder="input keyword" autocomplete="off" class="search" value="">
-        <button type="submit" class="tombol">search!</button>
-    </form> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
