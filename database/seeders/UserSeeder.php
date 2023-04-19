@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
         $mahasiswa = User::create([
             'NIM' => '2112',
             'name' => 'mahasiswa',
-            'angkatan' => '2019',
+            'semester' => '2019',
             'no_telp' => '983385',
             'username' => 'mahasiswa',
             'email' => 'mahasiswa@gmail.com',
@@ -86,7 +86,7 @@ class UserSeeder extends Seeder
         $mahasiswa9 = User::create([
             'NIM' => '21120119130070',
             'name' => 'Indriawan Muhammad Akbar',
-            'angkatan' => '2019',
+            'semester' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
             'email' => 'bolehngasal@gmail.com',
@@ -98,7 +98,7 @@ class UserSeeder extends Seeder
         $mahasiswa1 = User::create([
             'NIM' => '21120119130056',
             'name' => 'Fadzil Ferdiawan',
-            'angkatan' => '2019',
+            'semester' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
             'email' => 'ferzuna1@gmail.com',
@@ -110,7 +110,7 @@ class UserSeeder extends Seeder
         $mahasiswa2 = User::create([
             'NIM' => '21120119130114',
             'name' => 'Muhammad Ilham Wicaksono',
-            'angkatan' => '2019',
+            'semester' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
             'email' => 'wickkedua@gmail.com',
@@ -122,7 +122,7 @@ class UserSeeder extends Seeder
         $mahasiswa3 = User::create([
             'NIM' => '21120119130072',
             'name' => 'Dimas Rafi',
-            'angkatan' => '2019',
+            'semester' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
             'email' => 'dime@gmail.com',
@@ -134,7 +134,7 @@ class UserSeeder extends Seeder
         $mahasiswa4 = User::create([
             'NIM' => '21120119130078',
             'name' => 'Alif Nabil Musyaffa',
-            'angkatan' => '2019',
+            'semester' => '2019',
             'no_telp' => '081317382813',
             'username' => 'imakbar',
             'email' => 'theshield@gmail.com',

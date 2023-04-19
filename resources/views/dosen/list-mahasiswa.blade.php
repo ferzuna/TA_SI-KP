@@ -63,12 +63,12 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Santri</h6>
                         </div>
-                        <form action="{{ route('dosen.search') }}" method="post">
+                        <!-- <form action="{{ route('dosen.search') }}" method="post">
     @csrf
         <input  type="text" name="search" size="40" autofocus 
         placeholder="input keyword" autocomplete="off" class="search" value="">
         <button type="submit" class="tombol">search!</button>
-    </form>
+    </form> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
@@ -76,7 +76,7 @@
                                         <tr>
                                             <th>NIM</th>
                                             <th>Nama Lengkap</th>
-                                            <th>Angkatan</th>
+                                            <th>Semester</th>
                                             <th>No_telp</th>
                                             <th>Nama Perusahaan</th>
                                             <th>Status</th>
@@ -87,7 +87,7 @@
                                             <tr>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['name'] ?></td>
-                                                <td><?= $data['angkatan'] ?></td>
+                                                <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td> status</td>
@@ -199,7 +199,7 @@
                                         <tr>
                                             <td><strong>NIM</strong></td>
                                             <td><strong>Nama Lengkap</strong></td>
-                                            <td><strong>Angkatan</strong></td>
+                                            <td><strong>Semester</strong></td>
                                             <td><strong>No_telp</strong></td>
                                             <td><strong>Nama Perusahaan</strong></td>
                                             <td><strong>Status</strong></td>
@@ -213,4 +213,5 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+    
 @endsection

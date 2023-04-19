@@ -91,7 +91,7 @@
                                             <tr>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['name'] ?></td>
-                                                <td><?= $data['angkatan'] ?></td>
+                                                <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['sks'] ?></td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
