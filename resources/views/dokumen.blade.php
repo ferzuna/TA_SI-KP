@@ -16,11 +16,11 @@
                                                 <div
                                                     class="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
                                                     <div class="et_pb_text_inner">
-                                                        <div class="entry-content full-content">
-                                                            <p><strong><a
+                                                        <div class="entry-content full-content mt-5">
+                                                            {{-- <p><strong><a
                                                                         href="https://tekkom.ft.undip.ac.id/unduh-dokumen/kp-dan-ta"
                                                                         target="_blank" rel="noopener noreferrer">Dokumen
-                                                                        Kerja Praktek dan Tugas Akhir</a></strong></p>
+                                                                        Kerja Praktek dan Tugas Akhir</a></strong></p> --}}
                                                             <h3><strong>Kerja Praktek</strong></h3>
                                                             <p>Kerja praktek dilakukan oleh mahasiswa untuk memberikan
                                                                 gambaran tentang dunia kerja yang sesungguhnya. Kerja

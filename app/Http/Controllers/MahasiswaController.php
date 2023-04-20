@@ -150,9 +150,13 @@ class MahasiswaController extends Controller
     {
         $identity = Auth::user();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        $to_date = Carbon::parse($permohonan->selesai);
+        $from_date = Carbon::parse($permohonan->mulai);
+        $months = $to_date->diffInMonths($from_date);
         return view('mahasiswa.pdf.export-permohonan',[
             'data' => $identity,
             'permohonan' => $permohonan,
+            'selisih' => $months,
         ]);
         // $pdf = Pdf::loadView('mahasiswa.pdf.export-permohonan');
         // return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
@@ -286,7 +290,7 @@ class MahasiswaController extends Controller
             'no_telp' => 'required|digits_between:1,20',
             'sks' => 'required|digits_between:1,3',
             'alamat' => 'required|string|max:255',
-            'semester' => 'required|digits:4',
+            'semester' => 'required|digits_between:1,2',
         ]);
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();

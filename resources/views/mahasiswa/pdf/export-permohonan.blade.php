@@ -93,7 +93,7 @@
     <section class="body">
       <div class="no-surat">
          <ul style="list-style-type: none; padding: 0;">
-            <li style="padding-bottom:0.5em;"> Nomor <span style="margin-left: 70px;">:</span></li>
+            <li style="padding-bottom:0.5em;"> Nomor <span style="margin-left: 70px;">: .../UN7.F3.5/KM/I/2023</span></li>
             <li style="padding-bottom:0.5em;"> Lampiran <span style="margin-left: 53px;">: -</span></li>
             <li style="padding-bottom:0.5em;"> Hal <span style="margin-left: 92px;">: Permohonan Kerja Praktek</span></li>
          </ul>
@@ -115,14 +115,14 @@
             <li style="padding-bottom:0.5em;"> Nama <span style="margin-left: 80px;">: {{Auth::user()->name}}</span></li>
             <li style="padding-bottom:0.5em;"> NIM <span style="margin-left: 87px;">: {{Auth::user()->NIM}}</span></li>
             <li style="padding-bottom:0.5em;"> Prodi/Jurusan <span style="margin-left: 30px;">: Teknik Komputer</span></li>
-            <li style="padding-bottom:0.5em;"> Angkatan <span style="margin-left: 56px;">: {{Auth::user()->angkatan}}</span></li>
+            <li style="padding-bottom:0.5em;"> Semester <span style="margin-left: 59px;">: {{Auth::user()->semester}}</span></li>
             <li style="padding-bottom:0.5em;"> Alamat <span style="margin-left: 71px;">: {{Auth::user()->alamat}}</span></li>
             <li style="padding-bottom:0.5em;"> Telepon/HP <span style="margin-left: 43px;">: {{Auth::user()->no_telp}}</span></li>
          </ul>
             <br>
 
-            <p style="text-indent: 50px; text-align:justify; line-height:150%">Akan melaksanakan Program Kerja Praktek di {{$permohonan->perusahaan}} selama 3
-            bulan pada bulan Januari 2022 hingga Maret 2022 atau sesuai kebijakan Instansi terkait.
+            <p style="text-indent: 50px; text-align:justify; line-height:150%">Akan melaksanakan Program Kerja Praktek di {{$permohonan->perusahaan}} selama {{$selisih}}
+            bulan pada {{ Carbon\Carbon::parse($permohonan->mulai)->isoFormat(' MMMM Y') }} hingga {{ Carbon\Carbon::parse($permohonan->selesai)->isoFormat(' MMMM Y') }} atau sesuai kebijakan Instansi terkait.
             Mohon berkenan sekiranya dapat menerima mahasiswa tersebut untuk melaksanakan kerja
             praktek dan dibantu untuk mendapatkan data berupa laporan tentang kegiatan yang dilakukan
             di {{$permohonan->perusahaan}}.
