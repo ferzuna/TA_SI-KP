@@ -41,10 +41,16 @@ class MahasiswaController extends Controller
 
     public function pendaftaran()
     {
-        $alldosen = [];
         $all = User::where('role_id', 4)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        $alldosen = [];
         $dp = "";
+        $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+
+        // untuk memastikan apakah user sudah melakukan proses permohonan kerja praktik
+        if (!isset($perusahaan)) {
+            return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
+        }
 
         if (isset($pendaftaran['dosbing'])) {
             $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->get();
@@ -206,6 +212,11 @@ class MahasiswaController extends Controller
 
     public function pengumpulan()
     {
+        // untuk memastikan apakah user sudah melakukan proses permohonan kerja praktik
+        $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        if (!isset($perusahaan)) {
+            return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
+        }
         $data = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.pengumpulan', [
             'data' => $data,
@@ -214,6 +225,11 @@ class MahasiswaController extends Controller
 
     public function finalisasi()
     {
+        // untuk memastikan apakah user sudah melakukan proses permohonan kerja praktik
+        $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        if (!isset($perusahaan)) {
+            return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
+        }
         $data = Penilaian::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.finalisasi', [
             'data' => $data,
