@@ -46,31 +46,27 @@
                             <div class="form-group">
                                 <label for="proposal">Proposal Perusahaan</label>
                                 <input class="form-control" type="text" name="proposal"
-                                    value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}" required>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="form-group">
-                                <label for="dok_rekomendasi">Dokumen Rekomendasi</label>
-                                <input class="form-control" type="text" name="dok_rekomendasi"
-                                    value="{{ isset($data['dok_rekomendasi']) ? $data['dok_rekomendasi'] : '' }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="jadwal-seminar">Tanggal Mulai</label>
-                                <input class="form-control" type="datetime-local" name="mulai" id=""
-                                    value="{{ isset($data['mulai']) ? $data['mulai'] : '' }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="jadwal-seminar">Tanggal Selesai</label>
-                                <input class="form-control" type="datetime-local" name="selesai" id=""
-                                    value="{{ isset($data['selesai']) ? $data['selesai'] : '' }}">
+                                    value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}">
+                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="sks">Jumlah SKS Kumulatif</label>
                                 <input class="form-control" type="number" name="sks"
-                                    value="{{ isset($data['sks']) ? $data['sks'] : '' }}" required>
+                                    value="{{ isset(Auth::user()->sks) ? Auth::user()->sks : '' }}" required>
                             </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label for="jadwal-seminar">Tanggal Mulai</label>
+                                <input class="form-control" type="date" name="mulai" placeholder="dd-mm-yyyy" id=""
+                                    value="{{ isset($data['mulai']) ? $data['mulai'] : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="jadwal-seminar">Tanggal Selesai</label>
+                                <input class="form-control" type="date" name="selesai" id=""
+                                    value="{{ isset($data['selesai']) ? $data['selesai'] : '' }}">
+                            </div>
+                            
                         </div>
                         <div class="py-2">
                             <button type="submit" class="btn btn-light btn-outline-dark">Submit</button>

@@ -179,9 +179,9 @@
                                                 <div class="col-lg-4">
                                                     <div class="form-group focused">
                                                         <label class="form-control-label"
-                                                            for="new_password">Semester</label>
-                                                        <input type="number" id="new_password" class="form-control"
-                                                            name="semester" placeholder="New password"
+                                                            for="semester">Semester</label>
+                                                        <input type="number" id="semester" class="form-control"
+                                                            name="semester" placeholder="Semester"
                                                             value="{{ old('semester', Auth::user()->semester) }}">
                                                     </div>
                                                 </div>
