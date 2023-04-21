@@ -72,7 +72,6 @@
                                             <th>Nama</th>
                                             <th>NIM</th>
                                             <th>Perusahaan</th>
-                                            <th>Dokumen Rekomendasi</th>
                                             <th>Proposal</th>
                                             <th>SKSk</th>
                                             <th>Status</th>
@@ -85,7 +84,6 @@
                                             <td><?= $data['name'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
-                                                <td><?= $data['dok_rekomendasi'] ?></td>
                                                 <td><?= $data['proposal'] ?></td>
                                                 <td><?= $data['sks'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
@@ -198,7 +196,6 @@
                                             <td><strong>Nama</strong></td>
                                             <td><strong>NIM</strong></td>
                                             <td><strong>Perusahaan</strong></td>
-                                            <td><strong>Dokumen Rekomendasi</strong></td>
                                             <td><strong>Proposal</strong></td>
                                             <td><strong>SKSk</strong></td>
                                             <td><strong>Status</strong></td>
