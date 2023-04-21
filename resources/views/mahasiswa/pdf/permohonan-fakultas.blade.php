@@ -95,37 +95,33 @@
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.5em;"> Nomor <span style="margin-left: 70px;">: .../UN7.F3.5/KM/I/2023</span></li>
             <li style="padding-bottom:0.5em;"> Lampiran <span style="margin-left: 53px;">: -</span></li>
-            <li style="padding-bottom:0.5em;"> Hal <span style="margin-left: 92px;">: Permohonan Kerja Praktek</span></li>
+            <li style="padding-bottom:0.5em;"> Hal <span style="margin-left: 92px;">: Pengantar Permohonan Kerja Praktik</span></li>
          </ul>
       </div>
 
       <div class="tujuan">
          <ul style="list-style-type: none; padding: 0;">
-            <li style="padding-bottom:0.5em;"> Yth. Bapak/Ibu HRD</li>
-            <li style="padding-bottom:0.5em;"> {{$permohonan->perusahaan}}</li>
+            <li style="padding-bottom:0.5em;"> Yth. Wakil Dekan Bidang Akademik dan Kemahasiswaan Fakultas Teknik UNDIP</li>
             <li style="padding-bottom:0.5em;"> di Tempat</li>
          </ul>
       </div>
 
       <div class="isi">
-         <p style="text-indent: 50px;">Dalam rangka menyelesaikan mata kuliah kerja praktek, mahasiswa Fakultas Teknik
+         <p style="text-indent: 50px;">Dalam rangka menyelesaikan mata kuliah kerja praktek, mahasiswa Departemen Teknik Komputer
             yang tersebut di bawah ini: 
          </p>
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.5em;"> Nama <span style="margin-left: 80px;">: {{Auth::user()->name}}</span></li>
-            <li style="padding-bottom:0.5em;"> NIM <span style="margin-left: 87px;">: {{Auth::user()->NIM}}</span></li>
-            <li style="padding-bottom:0.5em;"> Prodi/Jurusan <span style="margin-left: 30px;">: Teknik Komputer</span></li>
-            <li style="padding-bottom:0.5em;"> Semester <span style="margin-left: 59px;">: {{Auth::user()->semester}}</span></li>
-            <li style="padding-bottom:0.5em;"> Alamat <span style="margin-left: 71px;">: {{Auth::user()->alamat}}</span></li>
-            <li style="padding-bottom:0.5em;"> Telepon/HP <span style="margin-left: 43px;">: {{Auth::user()->no_telp}}</span></li>
+            <li style="padding-bottom:0.5em;"> Prodi/Jurusan <span style="margin-left: 30px;">: S1 Teknik Komputer</span></li>
          </ul>
 
-            <p style="text-indent: 50px; text-align:justify; line-height:150%">Akan melaksanakan Program Kerja Praktek di {{$permohonan->perusahaan}} selama {{$selisih}}
-            bulan pada {{ Carbon\Carbon::parse($permohonan->mulai)->isoFormat(' MMMM Y') }} hingga {{ Carbon\Carbon::parse($permohonan->selesai)->isoFormat(' MMMM Y') }} atau sesuai kebijakan Instansi terkait.
-            Mohon berkenan sekiranya dapat menerima mahasiswa tersebut untuk melaksanakan kerja
-            praktek dan dibantu untuk mendapatkan data berupa laporan tentang kegiatan yang dilakukan
-            di {{$permohonan->perusahaan}}.
-         </p>
+            <p style="text-indent: 50px; text-align:justify; line-height:150%">Akan melaksanakan Program Kerja Praktik pada {{ Carbon\Carbon::parse($permohonan->mulai)->isoFormat('D MMMM Y') }} s/d {{ Carbon\Carbon::parse($permohonan->selesai)->isoFormat('D MMMM Y') }} atau sesuai kebijakan Perusahaan. Mohon berkenan untuk dapat dibuatkan surat permohonan kerja praktik ke instansi berikut:
+            </p>
+
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="padding-bottom:0.5em;"> Nama Instansi<span style="margin-left: 30px;">: {{$permohonan->perusahaan}}</span></li>
+             </ul>
+         
             
          <p style="text-indent: 50px;">Atas perhatian dan bantuannya kami ucapkan terima kasih.</p>
 

@@ -162,6 +162,22 @@ class MahasiswaController extends Controller
         // return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
     }
 
+    public function permohonanFakultas()
+    {
+        $identity = Auth::user();
+        $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        $to_date = Carbon::parse($permohonan->selesai);
+        $from_date = Carbon::parse($permohonan->mulai);
+        $months = $to_date->diffInMonths($from_date);
+        return view('mahasiswa.pdf.permohonan-fakultas',[
+            'data' => $identity,
+            'permohonan' => $permohonan,
+            'selisih' => $months,
+        ]);
+        // $pdf = Pdf::loadView('mahasiswa.pdf.export-permohonan');
+        // return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
+    }
+
     public function bimbinganstore(Request $request)
     {
         $this->validate($request, [

@@ -86,6 +86,7 @@ Route::group(['middleware' => 'mahasiswa'], function () {
     Route::get('/mahasiswa/permohonan', [PermohonanController::class, 'index'])->name('permohonan');
     Route::post('/mahasiswa/permohonan', [PermohonanController::class, 'sendPermohonan'])->name('permohonan.sendPermohonan');
     Route::get('mahasiswa/export-pdf', [MahasiswaController::class, 'exportPdf'])->name('export-pdf');
+    Route::get('mahasiswa/permohonan-fakultas', [MahasiswaController::class, 'permohonanFakultas'])->name('permohonan-fakultas');
     Route::get('/mahasiswa/pengumpulan', [MahasiswaController::class, 'pengumpulan'])->name('pengumpulan');
     Route::post('/mahasiswa/pengumpulan/store', [MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
     Route::get('/mahasiswa/finalisasi', [MahasiswaController::class, 'finalisasi'])->name('finalisasi');
