@@ -49,11 +49,6 @@
                                     value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
-                            <div class="form-group">
-                                <label for="sks">Jumlah SKS Kumulatif</label>
-                                <input class="form-control" type="number" name="sks"
-                                    value="{{ isset(Auth::user()->sks) ? Auth::user()->sks : '' }}" required>
-                            </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
