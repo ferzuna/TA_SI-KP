@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header" style="background-color:#04144C">
                         <div class="login-head-logo py-3">
-                            <img src="{{ asset('img/Logo-navbar.svg') }}" alt="">
+                            <img src="{{ asset('img/Logo-Navbar.svg') }}" alt="">
                         </div>
                     </div>
 
