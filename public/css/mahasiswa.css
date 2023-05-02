@@ -1,0 +1,178 @@
+.app-mahasiswa {
+    background-color: #CCCCCC;
+}
+
+section.welcome-mahasiswa {
+    padding: 1em;
+}
+
+.welcome-mahasiswa .banner .media-right {
+    display: block;
+    background-color: white;
+    padding: 10px 1em;
+    border-left: 4em solid #907E7E;
+}
+
+.welcome-mahasiswa .biodata-wrapper {
+    margin: 2em 0;
+}
+
+.welcome-mahasiswa .biodata-wrapper .banner .media-right {
+    display: block;
+    background-color: white;
+    padding: 10px 1em;
+    margin-bottom: 1em;
+    border-left: 4em solid #907E7E;
+}
+
+.biodata-wrapper {
+    padding: 1em 0;
+}
+
+.menu-mahasiswa .wrap {
+    
+}
+
+.menu-mahasiswa .title {
+    margin: 2em 0em;
+}
+.menu-mahasiswa .card-content {
+    padding: 2em;
+    
+}
+
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 25px auto;
+  }
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+  }
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+  .avatar-upload .avatar-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+  }
+  .avatar-upload .avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+  }
+  .avatar-upload .avatar-edit input + label:after {
+    content: "\f040";
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+  }
+  .avatar-upload .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Notification Dashboard */
+
+  .alert {
+    margin: 10px 0px;
+    padding:12px;
+    border-radius: 5px;
+  
+    font-family: 'Open Sans', sans-serif;
+    font-size: .9rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  
+  .alert:hover {
+    cursor: pointer;
+  }
+  
+  .alert:before {
+    padding-right: 12px;
+  }
+    
+  /* .alert:after {
+    content: '\f00d';
+    font-family: 'FontAwesome';
+    float: right;
+    padding: 3px;
+      
+  } */
+
+  .alert:after:hover {
+    cursor: pointer;
+  }
+  
+  .alert-info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    border: 1px solid darken(#BDE5F8, 15%);
+  }
+  
+  .alert-info:before {
+    content: '\f05a';
+    font-family: 'FontAwesome';
+  }
+  
+  .alert-warn {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    border: 1px solid darken(#FEEFB3, 15%);
+  }
+  
+  .alert-warn:before {
+    content: '\f071';
+    font-family: 'FontAwesome';
+  }
+  
+  .alert-error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    border: 1px solid darken(#FFBABA, 15%);
+  }
+  
+  .alert-error:before {
+    content: '\f057';
+    font-family: 'FontAwesome';
+  }
+  
+  .alert-success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border: 1px solid darken(#DFF2BF, 15%);
+  }
+  
+  .alert-success:before {
+    content: '\f058';
+    font-family: 'FontAwesome';
+  }

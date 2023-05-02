@@ -39,7 +39,19 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
+        ]
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admins'
+        // ],
+        // 'dosen' => [
+        //     'driver' => 'session',
+        //     'provider' => 'dosens'
+        // ],
+        // 'koor' => [
+        //     'driver' => 'session',
+        //     'provider' => 'koors'
+        // ]
     ],
 
     /*
@@ -64,6 +76,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        // 'dosens' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+        // 'koors' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -93,6 +117,25 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        // 'dosens' => [
+        //     'provider' => 'dosens',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+        // 'admins' => [
+        //     'provider' => 'admins',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+        // 'koors' => [
+        //     'provider' => 'koors',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+
     ],
 
     /*
