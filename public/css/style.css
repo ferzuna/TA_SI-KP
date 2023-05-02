@@ -1,0 +1,98 @@
+a {
+    text-decoration: none;
+}
+
+nav, footer {
+    background-color: #04144C;
+    color: white ;
+}
+
+nav .navbar-brand img{
+    height: 65px;
+    width: 100%;
+    margin: 0px 5px;
+}
+
+nav li a.nav-link{
+    color: white;
+    margin: 0px 10px;
+}
+
+nav .collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .btn-login {
+    margin: 0px 20px;
+}
+
+footer .footer-top {
+    padding: 5vh 0vh;
+}
+
+footer .footer-top .footer-contact {
+    display: flex;
+}
+
+footer .footer-contact img {
+    height: 125px;
+    width: 100%;
+}
+
+footer .footer-links ul {
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none;
+    ;
+
+}
+
+footer .footer-links a {
+    color: white;
+}
+
+footer .copyright-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.welcome .welcome-wrapper {
+    background-image: url(../img/Widya-Puraya.svg);
+    background-size: 100%;
+}
+
+.welcome .welcome-wrapper .welcome-title{
+    font-weight: 700;
+    font-size: 3em;
+}
+
+.welcome .welcome-wrapper .welcome-desc{
+    font-size: 20px;
+    padding-top: 2em;
+}
+
+.welcome-wrapper .title-desc,.title-logo{
+    padding: 10vh 2vh;
+}
+
+
+.welcome .welcome-wrapper .button-home {
+    color: white;
+    background-color: #04144C;
+    border-radius: 45px;
+    padding: 16px 42px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.welcome .welcome-wrapper .button-home:hover {
+    color: #04144C;
+    background-color: white;
+}
+
+.title-logo .welcome-logo{
+    height: 360px;
+    width: 100%;
+}
