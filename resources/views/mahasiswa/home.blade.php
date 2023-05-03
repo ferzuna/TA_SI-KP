@@ -17,7 +17,7 @@
                         @endif
                         
                         @if (isset($permohonan->status))
-                        @if ($permohonan->status === 1)
+                        @if ($permohonan->status == 1)
                         <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP untuk Perusahaan <a href="{{ route('export-pdf') }}">disini</a>, untuk Fakultas <a href="{{ route('permohonan-fakultas') }}">disini</a>.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="color: #181818">&times;</span>
