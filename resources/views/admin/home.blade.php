@@ -119,7 +119,7 @@
                     <div class="card-body">
                         <div class="text-center">
                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                src="{{ asset('img/logoundip.svg') }}" alt="">
+                                src="{{ asset('img/logoUndip.svg') }}" alt="">
                         </div>
                         <p class="text-justify">Pondok Pesantren Darul Ilmi ini didirikan pada tahun 2018. Berawal dari
                             kontrak
