@@ -289,7 +289,6 @@
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
                                                             <td><?= $data['perusahaan'] ?></td>
-                                                            <td><?= $data['dok_rekomendasi'] ?></td>
                                                             <td><?= $data['proposal'] ?></td>
                                                             <td><?= $data['sks'] ?></td>
                                                             <td>{{ $data['status'] ? 'telah disetujui' : 'belum disetujui' }}</td>
