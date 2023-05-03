@@ -78,6 +78,7 @@ class UserSeeder extends Seeder
             'no_telp' => '983385',
             'username' => 'mahasiswa',
             'sks' => '144',
+            'alamat' => 'jl banjarsari no 51',
             'email' => 'mahasiswa@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => 1
