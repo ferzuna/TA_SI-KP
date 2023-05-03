@@ -45,7 +45,7 @@ class KoorController extends Controller
 
     public function approved($id)
     { 
-        Permohonan::where('id', $id)->first()->update([
+        Permohonan::find($id)->update([
             'status' => 1,
         ]);
         return redirect('/koordinator/permohonan');
