@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
+use App\Http\Middleware\Koor;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreKoorRequest;
 use App\Http\Requests\UpdateKoorRequest;
 
@@ -30,8 +32,12 @@ class KoorController extends Controller
 
     public function permohonan()
     {
-        $mymahasiswa = Permohonan::where('status', 0)->get();
-        $mymahasiswa1 = Permohonan::where('status', 1)->get();
+        $mymahasiswa = Permohonan::rightJoin('Users', function($join) {
+            $join->on('permohonans.NIM', '=', 'users.NIM');
+        })->where('permohonans.status', 0)->get();
+        $mymahasiswa1 = User::rightJoin('Permohonans', function($join) {
+            $join->on('users.NIM', '=', 'permohonans.NIM');
+        })->where('permohonans.status', 1)->get();
         return view('koordinator.permohonan', [
             'mymahasiswa' => $mymahasiswa,
             'mymahasiswa1' => $mymahasiswa1,
