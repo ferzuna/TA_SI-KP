@@ -46,7 +46,7 @@ class DosenController extends Controller
     
 
     public function halamanpendaftaran(){
-        $mymahasiswa = User::leftJoin('Pendaftarans', function($join) {
+        $mymahasiswa = User::leftJoin('pendaftarans', function($join) {
             $join->on('users.NIM', '=', 'pendaftarans.NIM');
         })->where('dosbing', Auth::user()->name)->get();
         return view('dosen.pendaftaran', [
@@ -55,7 +55,7 @@ class DosenController extends Controller
     }
 
     public function bimbingan(){
-        $bimbingan = Bimbingan::leftJoin('Users', function($join) {
+        $bimbingan = Bimbingan::leftJoin('users', function($join) {
             $join->on('bimbingans.NIM', '=', 'users.NIM');
         })->get();
         return view('dosen.bimbingan', [
@@ -64,7 +64,7 @@ class DosenController extends Controller
     }
 
     public function allmhs(){
-        $mymahasiswa = Pendaftaran::leftJoin('Users', function($join) {
+        $mymahasiswa = Pendaftaran::leftJoin('users', function($join) {
             $join->on('pendaftarans.NIM', '=', 'Users.NIM');
         })
         ->get();
@@ -77,7 +77,7 @@ class DosenController extends Controller
         // $seminar = DB::table('users')
         // ->join('pendaftarans', 'users.NIM', '=', 'pendaftarans.NIM')
         // ->join('penilaians', 'users.NIM', '=', 'penilaians.NIM')
-        $seminar = Pendaftaran::leftJoin('Users', function($join) {
+        $seminar = Pendaftaran::leftJoin('users', function($join) {
             $join->on('pendaftarans.NIM', '=', 'Users.NIM');
         })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
         ->where('dosbing', Auth::user()->name)->get();
@@ -159,7 +159,7 @@ class DosenController extends Controller
     {
         $search = $request->search;
         // $mymahasiswa = User::where('name', 'like', "%".$search."%")->where('role_id', 1)->paginate();
-        $mymahasiswa = User::leftJoin('Pendaftarans', function($join){
+        $mymahasiswa = User::leftJoin('pendaftarans', function($join){
             $join->on('users.NIM', '=', 'pendaftarans.NIM');  
         })->where('name', 'like', "%".$search."%")->where('role_id', 1)->where('dosbing', Auth::user()->name)->paginate();
         return view('dosen.list-mahasiswa', [
