@@ -32,12 +32,11 @@ class KoorController extends Controller
 
     public function permohonan()
     {
-        $mymahasiswa = Permohonan::rightJoin('Users', function($join) {
-            $join->on('permohonans.NIM', '=', 'users.NIM');
-        })->where('permohonans.status', 0)->get();
-        $mymahasiswa1 = User::rightJoin('Permohonans', function($join) {
-            $join->on('users.NIM', '=', 'permohonans.NIM');
-        })->where('permohonans.status', 1)->get();
+        $mymahasiswa = Permohonan::join('Users', 'permohonans.NIM', '=', 'users.NIM')->where('permohonans.status', 0)->get();
+        $mymahasiswa1 = Permohonan::join('Users', 'permohonans.NIM', '=', 'users.NIM')->where('permohonans.status', 1)->get();
+        // $mymahasiswa1 = User::rightJoin('Permohonans', function($join) {
+        //     $join->on('users.NIM', '=', 'permohonans.NIM');
+        // })->where('permohonans.status', 1)->get();
         return view('koordinator.permohonan', [
             'mymahasiswa' => $mymahasiswa,
             'mymahasiswa1' => $mymahasiswa1,
