@@ -65,7 +65,7 @@ class DosenController extends Controller
 
     public function allmhs(){
         $mymahasiswa = Pendaftaran::leftJoin('users', function($join) {
-            $join->on('pendaftarans.NIM', '=', 'Users.NIM');
+            $join->on('pendaftarans.NIM', '=', 'users.NIM');
         })
         ->get();
         return view('dosen.list-mahasiswa', [
@@ -78,7 +78,7 @@ class DosenController extends Controller
         // ->join('pendaftarans', 'users.NIM', '=', 'pendaftarans.NIM')
         // ->join('penilaians', 'users.NIM', '=', 'penilaians.NIM')
         $seminar = Pendaftaran::leftJoin('users', function($join) {
-            $join->on('pendaftarans.NIM', '=', 'Users.NIM');
+            $join->on('pendaftarans.NIM', '=', 'users.NIM');
         })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
         ->where('dosbing', Auth::user()->name)->get();
         return view('dosen.jadwal', [

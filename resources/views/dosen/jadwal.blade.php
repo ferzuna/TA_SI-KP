@@ -54,12 +54,6 @@
                         <div class="col" style="width: 505px;">
                             <h1 class="h3 mb-2 text-gray-800">Jadwal Pelaksanaan Seminar KP</h1>
                         </div>
-                        <div class="col"> <button
-                                class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
-                                type="button" style="margin-right: 2px; margin-bottom: 8px;" data-toggle="modal"
-                                data-target="#addsantri">Add
-                                Santri<i class="fas fa-plus-circle edit-icon"></i></button>
-                        </div>
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
