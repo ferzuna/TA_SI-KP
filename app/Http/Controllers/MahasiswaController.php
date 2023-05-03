@@ -347,7 +347,7 @@ class MahasiswaController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $file = $request->file('imageUpload')->store('avatar-images/mahasiswa');
+            $file = $request->file('imageUpload')->store('./public/avatar-images/mahasiswa');
         }
 
 
