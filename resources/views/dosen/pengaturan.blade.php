@@ -127,11 +127,11 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group focused">
-                                                        <label class="form-control-label" for="name">NIM<span
+                                                        <label class="form-control-label" for="name">NIP<span
                                                                 class="small text-danger">*</span></label>
                                                         <input type="number" id="name" class="form-control"
-                                                            name="NIM" placeholder="NIM"
-                                                            value="{{ old('nim', Auth::user()->NIM) }}">
+                                                            name="NIP" placeholder="NIP"
+                                                            value="{{ old('NIP', Auth::user()->NIP) }}">
                                                     </div>
                                                 </div>
                                             </div>

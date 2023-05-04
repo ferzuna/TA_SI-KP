@@ -42,10 +42,15 @@
                         <div class="col" style="width: 505px;">
                             <h1 class="h3 mb-2 text-gray-800">List Bimbingan Mahasiswa</h1>
                         </div>
+                        <div class="col"> <button
+                                class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
+                                type="button" style="margin-right: 2px; margin-bottom: 8px;" data-toggle="modal"
+                                data-target="#addsantri">Tambah Data<i class="fas fa-plus-circle edit-icon"></i></button>
+                        </div>
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Santri</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
