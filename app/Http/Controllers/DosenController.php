@@ -182,7 +182,7 @@ class DosenController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $file = $request->file('imageUpload')->store('avatar-images/mahasiswa');
+            $file = $request->file('imageUpload')->store('./public/avatar-images/dosen');
         }
 
         User::find(Auth::user()->id)->update([

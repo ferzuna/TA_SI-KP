@@ -8,11 +8,9 @@ use App\Models\Infomagang;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\Mahasiswa;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAdminRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\UpdateAdminRequest;
 
 class AdminController extends Controller
 {
@@ -158,6 +156,11 @@ class AdminController extends Controller
         Infomagang::find($id)->delete();
         return redirect('/admin/info-magang')->with('success', 'magang deleted');
     }
+    public function mhsdestroy($id)
+    {
+        User::find($id)->delete();
+        return redirect('/admin/list-mahasiswa')->with('success', 'mahasiswa deleted');
+    }
 
     public function setting(Request $request)
     {
@@ -187,4 +190,5 @@ class AdminController extends Controller
         ]);
         return redirect('/admin')->with('success', 'Profil Berhasil Diperbarui');
     }
+
 }
