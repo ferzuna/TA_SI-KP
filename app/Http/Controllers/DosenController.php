@@ -55,7 +55,7 @@ class DosenController extends Controller
     }
 
     public function bimbingan(){
-        $bimbingan = Bimbingan::leftJoin('users', function($join) {
+        $bimbingan = User::rightJoin('bimbingans', function($join) {
             $join->on('bimbingans.NIM', '=', 'users.NIM');
         })->get();
         return view('dosen.bimbingan', [

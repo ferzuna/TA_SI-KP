@@ -53,14 +53,18 @@ class KoorController extends Controller
 
     public function sudah_dinilai()
     {
-        // $sudah_ttd = Penilaian::where('status', 1)->get();
-        return view('koordinator.sudah-dinilai');
+        $datas = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 1)->get();
+        return view('koordinator.sudah-dinilai', [
+            'datas' => $datas,
+        ]);
     }
 
     public function belum_dinilai()
     {
-        // $belum_ttd = Penilaian::where('role_id', 1)->count();
-        return view('koordinator.belum-dinilai');
+        $datas = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 0)->get();
+        return view('koordinator.belum-dinilai', [
+            'datas' => $datas,
+        ]);
     }
 
     public function create()

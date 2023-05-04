@@ -127,9 +127,6 @@
                             digital
                             dan entrepreneurship yang menjadi santri mahir dalam teknologi serta mampu beradaptasi dengan
                             perkembangan zaman.</p>
-                        <a target="_blank" rel="nofollow" href="https://ponpesdarulilmimeteseh.com/">Website Utama Ponpes
-                            Darul
-                            Ilmi →</a>
                     </div>
                 </div>
 
