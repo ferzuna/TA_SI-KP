@@ -45,7 +45,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('dosen.bimbingan') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Bimbingan Seminar') }}</span>
+            <span>{{ __('Bimbingan Laporan') }}</span>
         </a>
     </li>
 

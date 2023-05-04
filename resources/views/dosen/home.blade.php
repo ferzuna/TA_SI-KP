@@ -128,9 +128,6 @@
                         <p class="text-justify">Kerja Praktik (KP) merupakan salah satu syarat kelulusan yang harus ditempuh
                             oleh mahasiswa, salah satunya pada Departemen Teknik Komputer Universitas Diponegoro (Undip).
                             Tujuan KP adalah memperkenalkan mahasiswa pada situasi di dunia kerja yang sesungguhnya</p>
-                        <a target="_blank" rel="nofollow" href="https://ponpesdarulilmimeteseh.com/">Website Utama Ponpes
-                            Darul
-                            Ilmi →</a>
                     </div>
                 </div>
 

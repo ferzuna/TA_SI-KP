@@ -265,6 +265,8 @@ class MahasiswaController extends Controller
             'a2' => 'max:255',
             'b2' => 'max:255',
             'b3' => 'max:255',
+            'b4' => 'max:255',
+            'b5' => 'max:255',
         ]);
         $nim = Auth::user()->NIM;
         $data = Penilaian::where('NIM', $nim)->first();
@@ -276,6 +278,8 @@ class MahasiswaController extends Controller
                 'a2' => $request->a2,
                 'b2' => $request->b2,
                 'b3' => $request->b3,
+                'b4' => $request->b4,
+                'b5' => $request->b5,
                 'status' => 0,
             ]);
         } else {
@@ -289,6 +293,8 @@ class MahasiswaController extends Controller
                 'a2' => $request->a2,
                 'b2' => $request->b2,
                 'b3' => $request->b3,
+                'b4' => $request->b4,
+                'b5' => $request->b5,
                 'status' => 0,
             ]);
         }

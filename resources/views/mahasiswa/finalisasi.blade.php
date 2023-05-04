@@ -37,6 +37,14 @@
                                 <label for="b3">Form KP B-3</label>
                                 <input class="form-control" type="text" name="b3" value="{{ isset($data['b3']) ? $data['b3'] : '' }}">
                             </div>
+                            <div class="form-group">
+                                <label for="b4">Form KP B-4</label>
+                                <input class="form-control" type="text" name="b4" value="{{ isset($data['b4']) ? $data['b4'] : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="b5">Form KP B-5</label>
+                                <input class="form-control" type="text" name="b5" value="{{ isset($data['b5']) ? $data['b5'] : '' }}">
+                            </div>
                         </div>
                         <div class="py-2">
                             <button type="submit" class="btn btn-light btn-outline-dark">Submit</button>
