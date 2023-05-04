@@ -55,7 +55,7 @@
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Santri</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">List data</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -68,6 +68,7 @@
                                             <th>KP-B3</th>
                                             <th>Bukti Seminar (10)</th>
                                             <th>Laporan KP</th>
+                                            <th>Status</th>
                                             <th>Manage</th>
                                         </tr>
                                     </thead>
@@ -80,6 +81,7 @@
                                                 <td><?= $data['b3'] ?></td>
                                                 <td><?= $data['survey'] ?></td>
                                                 <td><?= $data['jadwal'] ?></td>
+                                                <td>{{ isset($data['status'])?$data['status']:'' }}</td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>
@@ -193,6 +195,7 @@
                                             <td><strong>KP-B3</strong></td>
                                             <td><strong>Bukti Seminar (10)</strong></td>
                                             <td><strong>Laporan KP</strong></td>
+                                            <td><strong>Status</strong></td>
                                             <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
