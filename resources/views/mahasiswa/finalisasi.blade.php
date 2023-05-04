@@ -6,7 +6,7 @@
             <div class="py-3">
                 <form action="{{ route('finalisasi.store') }}" method="post">
                     <div class="row">
-                        <h2 class="py-3"><b>Halaman pengumpulan berkas bimbingan kp</b></h2>
+                        <h2 class="py-3"><b>Halaman Finalisasi Berkas Penilaian KP</b></h2>
 
                         @csrf
                         <div class="col-lg-4 col-md-6">

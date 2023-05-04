@@ -166,15 +166,6 @@
                                                             value="{{ old('no_telp', Auth::user()->no_telp) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group focused">
-                                                        <label class="form-control-label" for="current_password">Jumlah
-                                                            SKSk</label>
-                                                        <input type="number" id="current_password" class="form-control"
-                                                            name="sks" placeholder="Jumlah SKSk"
-                                                            value="{{ old('sks', Auth::user()->sks) }}">
-                                                    </div>
-                                                </div>
                                             </div>
 
                                             <div class="row">
