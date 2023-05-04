@@ -56,6 +56,7 @@ Route::group(['middleware' => 'admin'], function () {
     })->name('bobot-list');
     Route::get('/admin/list-mahasiswa', [AdminController::class, 'allmhs'])->name('admin.list-mahasiswa');
     Route::post('/admin/list-mahasiswa/search', [AdminController::class, 'search'])->name('admin.search');
+    Route::post('/admin/list-mahasiswa/destroy/{id}', [AdminController::class, 'mhsdestroy'])->name('admin.mhsdestroy');
     Route::get('/admin/berkas-nilai', [AdminController::class, 'berkas'])->name('admin.berkas-nilai');
     Route::get('/admin/pengaturan', function () {
         return view('admin.pengaturan');
