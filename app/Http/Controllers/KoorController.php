@@ -53,7 +53,9 @@ class KoorController extends Controller
 
     public function sudah_dinilai()
     {
-        $datas = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 1)->get();
+        $datas = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')
+        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 1)->get();
         return view('koordinator.sudah-dinilai', [
             'datas' => $datas,
         ]);
@@ -61,7 +63,10 @@ class KoorController extends Controller
 
     public function belum_dinilai()
     {
-        $datas = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 0)->get();
+        $datas = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')
+        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 0)->get();
+        // dd($datas);
         return view('koordinator.belum-dinilai', [
             'datas' => $datas,
         ]);
