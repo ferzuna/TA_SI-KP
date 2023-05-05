@@ -40,7 +40,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">List Bimbingan Mahasiswa</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Informasi Magang</h1>
                         </div>
                         <div class="col"> <button
                                 class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
