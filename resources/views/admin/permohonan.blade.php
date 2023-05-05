@@ -84,7 +84,7 @@
                                             <td><?= $data['name'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
-                                                <td><?= $data['proposal'] ?></td>
+                                                <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
                                                 <td><?= $data['sks'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"

@@ -67,16 +67,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="jadwal-seminar">Ruangan Seminar</label>
-                                <select class="form-select input-border" name="ruangan" id=""
-                                    aria-label="Default select example">
-
-                                    <option id="" value="Ruangan E-201">Ruangan E-201
-                                    </option>
-                                    <option id="" value="Ruangan A-201">Ruangan A-201
-                                    </option>
-                                    <option id="" value="Lab. Jarkom">Lab. Jarkom
-                                    </option>
-                                </select>
+                                <input class="form-control" type="text" name="ruangan" id=""
+                                    value="{{ isset($data['ruangan']) ? $data['ruangan'] : '' }}">
                             </div>
                         </div>
 

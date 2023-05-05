@@ -94,7 +94,7 @@
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
                                                             <td><?= $data['perusahaan'] ?></td>
-                                                            <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
+                                                            <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
                                                             <td><?= $data['sks'] ?></td>
                                                             <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                             <td><i class="fas fa-check-circle" style="padding-left: 9px;"
@@ -289,7 +289,7 @@
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
                                                             <td><?= $data['perusahaan'] ?></td>
-                                                            <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
+                                                            <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
                                                             <td><?= $data['sks'] ?></td>
                                                             <td>{{ $data['status'] ? 'telah disetujui' : 'belum disetujui' }}</td>
                                                             <td><i class="fas fa-check-circle" style="padding-left: 9px;"
