@@ -32,17 +32,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('koordinator.belum-dinilai') }}">
+        <a class="nav-link" href="{{ route('koordinator.penilaian') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Daftar Berkas yang Belum
-                                                                                                                                                                di Tanda Tangan') }}</span>
-        </a>
-    </li>
-    <!-- Nav Item - Santri -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('koordinator.sudah-dinilai') }}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Daftar Berkas yang Sudah di Tandatangan') }}</span>
+            <span>{{ __('Penilaian KP') }}</span>
         </a>
     </li>
 
