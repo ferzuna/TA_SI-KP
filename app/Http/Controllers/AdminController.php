@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Bimbingan;
 use App\Models\Penilaian;
 use App\Models\Infomagang;
 use App\Models\Permohonan;
+use App\Models\Pendaftaran;
+use App\Models\Penjadwalan;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -95,7 +99,9 @@ class AdminController extends Controller
      */
     public function permohonan()
     {
-        $permohonan = Permohonan::all();
+        $permohonan = User::rightjoin('permohonans', 'permohonans.NIM', '=', 'users.NIM')->get();
+        // $permohonan = Permohonan::leftjoin('users', 'permohonans.NIM', '=', 'users.NIM')->get();
+        // $permohonan = Permohonan::all();
         return view('admin.permohonan', [
             'permohonan' => $permohonan,
         ]);
@@ -158,7 +164,13 @@ class AdminController extends Controller
     }
     public function mhsdestroy($id)
     {
+        $mhs = User::find($id);
         User::find($id)->delete();
+        Permohonan::where('NIM', $mhs['NIM'])->first()->delete();
+        Bimbingan::where('NIM', $mhs['NIM'])->first()->delete();
+        Penilaian::where('NIM', $mhs['NIM'])->first()->delete();
+        Pendaftaran::where('NIM', $mhs['NIM'])->first()->delete();
+        Penjadwalan::where('NIM', $mhs['NIM'])->first()->delete();
         return redirect('/admin/list-mahasiswa')->with('success', 'mahasiswa deleted');
     }
 
@@ -191,4 +203,12 @@ class AdminController extends Controller
         return redirect('/admin')->with('success', 'Profil Berhasil Diperbarui');
     }
 
+    public function berkasakhir($id){
+        $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
+        ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
+        ->join('penilaians', 'users.NIM', 'penilaians.NIM')->where('users.id', $id)->get();
+        return view('admin.berkasakhir', [
+            'mhs' => $mhs,
+        ]);
+    }
 }
