@@ -62,8 +62,8 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.pengaturan');
     })->name('admin.pengaturan');
     Route::post('/admin/pengaturan', [AdminController::class, 'setting'])->name('admin.setting');
-    // Route::get('/admin/berkas-nilai/berkas-akhir/{id}', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
-    Route::get('/admin/berkas-nilai/berkas-akhir', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
+    Route::get('/admin/berkas-nilai/berkas-akhir/{id}', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
+    // Route::get('/admin/berkas-nilai/berkas-akhir', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
 });
 
 // dosen
