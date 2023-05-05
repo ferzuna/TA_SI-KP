@@ -63,9 +63,9 @@
                     <div class="col-md-12">
                         <ul id="tabs" class="nav nav-tabs nav-fill">
                             <li class="nav-item"><a href="#home1" data-target="#home1" data-toggle="tab"
-                                    class="nav-link active">Belum disetujui</a></li>
+                                    class="nav-link active">Belum Dinilai</a></li>
                             <li class="nav-item"><a href="#profile1" data-target="#profile1" data-toggle="tab"
-                                    class="nav-link ">Sudah disetujui</a></li>
+                                    class="nav-link ">Sudah Dinilai</a></li>
                         </ul>
                         <div id="tabsContent" class="tab-content p-5 border border-top-0 rounded">
                             <div id="home1" class="tab-pane fade active show">
@@ -90,7 +90,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($datas as $data)
+                                                    @foreach ($datasudah as $data)
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
@@ -244,7 +244,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($datas as $data)
+                                                    @foreach ($databelum as $data)
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>

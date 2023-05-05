@@ -203,12 +203,15 @@ class AdminController extends Controller
         return redirect('/admin')->with('success', 'Profil Berhasil Diperbarui');
     }
 
-    public function berkasakhir($id){
-        $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
-        ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
-        ->join('penilaians', 'users.NIM', 'penilaians.NIM')->where('users.id', $id)->get();
-        return view('admin.berkasakhir', [
-            'mhs' => $mhs,
-        ]);
+    public function berkasakhir(){
+        return view('admin.berkas-akhir');
     }
+    // public function berkasakhir($id){
+    //     $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
+    //     ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
+    //     ->join('penilaians', 'users.NIM', 'penilaians.NIM')->where('users.id', $id)->get();
+    //     return view('admin.berkasakhir', [
+    //         'mhs' => $mhs,
+    //     ]);
+    // }
 }
