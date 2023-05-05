@@ -62,6 +62,7 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.pengaturan');
     })->name('admin.pengaturan');
     Route::post('/admin/pengaturan', [AdminController::class, 'setting'])->name('admin.setting');
+    Route::get('/admin/berkas-nilai/berkasakhir/{id}', [AdminController::class, 'berkasakhir'])->name('admin.berkasakhir');
 });
 
 // dosen
@@ -105,8 +106,8 @@ Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator', [KoorController::class, 'index'])->name('koordinator');
     Route::get('/koordinator/permohonan', [KoorController::class, 'permohonan'])->name('koordinator.permohonan');
     Route::post('/koordinator/permohonan/approved/{id}', [KoorController::class, 'approved'])->name('koordinator.approved');
-    Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
-    Route::get('/koordinator/belum-dinilai', [KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
+    // Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
+    Route::get('/koordinator/penilaian', [KoorController::class, 'penilaian'])->name('koordinator.penilaian');
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');
