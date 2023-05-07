@@ -235,14 +235,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($bimbingan as $data)
+                                                @foreach ($bimbingan1 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['NIM'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
                                                         <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
                                                         <td><?= $data['sks'] ?></td>
-                                                        <td>{{ $data['status'] ? 'telah disetujui' : 'belum disetujui' }}</td>
+                                                        <td>{{ $data['status'] }}</td>
                                                         <td><i class="fas fa-check-circle" style="padding-left: 9px;"
                                                                 type="button" data-toggle="modal"
                                                                 data-target="#approve<?= $data['id'] ?>"></i>
@@ -376,7 +376,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="{{ route('koordinator.approved', $data['id']) }}">
+                                                                            action="{{ route('dosen.setujuilaporan', $data['id']) }}">
                                                                             @csrf
                                                                             <h6>Apakah Anda Yakin?</h6>
                                                                             <input type="submit"
@@ -430,14 +430,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($bimbingan as $data)
+                                                @foreach ($bimbingan2 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['NIM'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
                                                         <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
                                                         <td><?= $data['sks'] ?></td>
-                                                        <td>{{ $data['status'] ? 'telah disetujui' : 'belum disetujui' }}</td>
+                                                        <td>{{ $data['status'] }}</td>
                                                         <td><i class="fas fa-check-circle" style="padding-left: 9px;"
                                                                 type="button" data-toggle="modal"
                                                                 data-target="#approve<?= $data['id'] ?>"></i>
@@ -464,7 +464,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
-                                                                        <form method="POST" action="">
+                                                                        <form method="POST" action="{{ route('dosen.setujuilaporan', $data['id']) }}">
                                                                             @csrf
                                                                             <input type="text"
                                                                                 class="border rounded-0 form-control"
@@ -571,7 +571,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="{{ route('koordinator.approved', $data['id']) }}">
+                                                                            action="{{ route('dosen.setujuilaporan', $data['id']) }}">
                                                                             @csrf
                                                                             <h6>Apakah Anda Yakin?</h6>
                                                                             <input type="submit"

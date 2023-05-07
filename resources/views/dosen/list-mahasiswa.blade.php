@@ -84,7 +84,7 @@
                                                 <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
-                                                <td> status</td>
+                                                <td><?= $data['status'] ?></td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>

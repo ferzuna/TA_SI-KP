@@ -75,11 +75,10 @@
                                         @foreach ($mymahasiswa as $data)
                                             <tr>
                                                 <td><?= $data['name'] ?></td>
-                                                <td><?= $data['NIM'] ?></td>
+                                                <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td><?= $data['a1'] ?></td>
                                                 <td><?= $data['bukti'] ?></td>
-                                                <td><?= $data['username'] ?></td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>

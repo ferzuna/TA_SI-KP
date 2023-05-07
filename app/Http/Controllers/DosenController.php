@@ -57,16 +57,37 @@ class DosenController extends Controller
     public function bimbingan(){
         $bimbingan = User::rightJoin('bimbingans', function($join) {
             $join->on('bimbingans.NIM', '=', 'users.NIM');
-        })->get();
+        })->join('permohonans', 'users.NIM', 'permohonans.NIM')
+        ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
+        'b1', 'b2', 'b3', 'proposal', 'dosbing')->where('bimbingans.status', '')->where('dosbing', Auth::user()->name)->get();
+        $bimbingan1 = User::rightJoin('bimbingans', function($join) {
+            $join->on('bimbingans.NIM', '=', 'users.NIM');
+        })->join('permohonans', 'users.NIM', 'permohonans.NIM')
+        ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
+        'b1', 'b2', 'b3', 'proposal', 'dosbing')->where('bimbingans.status', 'revisi')->where('dosbing', Auth::user()->name)->get();
+        $bimbingan2 = User::rightJoin('bimbingans', function($join) {
+            $join->on('bimbingans.NIM', '=', 'users.NIM');
+        })->join('permohonans', 'users.NIM', 'permohonans.NIM')
+        ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
+        'b1', 'b2', 'b3', 'proposal', 'dosbing')
+        ->where('bimbingans.status', 'acc')->where('dosbing', Auth::user()->name)->get();
         return view('dosen.bimbingan', [
             'bimbingan'=>$bimbingan,
+            'bimbingan1'=>$bimbingan1,
+            'bimbingan2'=>$bimbingan2,
+        ]);
+    }
+
+    public function setujuilaporan($id){
+        Bimbingan::find($id)->update([
+            'status' => 'acc',
         ]);
     }
 
     public function allmhs(){
         $mymahasiswa = Pendaftaran::leftJoin('users', function($join) {
             $join->on('pendaftarans.NIM', '=', 'users.NIM');
-        })
+        })->select('users.NIM', 'users.name', 'semester', 'no_telp', 'perusahaan', 'users.status as status', 'users.id as id')
         ->get();
         return view('dosen.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa,
@@ -74,9 +95,6 @@ class DosenController extends Controller
     }
 
     public function jadwalseminar(){
-        // $seminar = DB::table('users')
-        // ->join('pendaftarans', 'users.NIM', '=', 'pendaftarans.NIM')
-        // ->join('penilaians', 'users.NIM', '=', 'penilaians.NIM')
         $seminar = Pendaftaran::leftJoin('users', function($join) {
             $join->on('pendaftarans.NIM', '=', 'users.NIM');
         })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
