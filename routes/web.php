@@ -79,6 +79,7 @@ Route::group(['middleware' => 'dosen'], function () {
         return view('dosen.pengaturan');
     })->name('dosen.pengaturan');
     Route::post('/dosen/pengaturan', [DosenController::class, 'setting'])->name('dosen.setting');
+    Route::post('/dosen/setujuilaporan/{id}', [DosenController::class, 'setujuilaporan'])->name('dosen.setujuilaporan');
 });
 
 // mahasiswa
@@ -109,6 +110,7 @@ Route::group(['middleware' => 'koor'], function () {
     Route::post('/koordinator/permohonan/approved/{id}', [KoorController::class, 'approved'])->name('koordinator.approved');
     // Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
     Route::get('/koordinator/penilaian', [KoorController::class, 'penilaian'])->name('koordinator.penilaian');
+    Route::post('/koordinator/penilaian/approved/{id}', [KoorController::class, 'penilaianapproved'])->name('koordinator.penilaianapproved');
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');

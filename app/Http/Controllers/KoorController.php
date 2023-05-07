@@ -53,17 +53,28 @@ class KoorController extends Controller
 
     public function penilaian()
     {
-        $datasudah = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')
+        $datasudah = Penilaian::rightjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 1)->get();
-        $databelum = User::rightjoin('penilaians', 'users.NIM', '=', 'penilaians.NIM')
+        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->where('penilaians.status', 1)->get();
+        $databelum = Penilaian::rightjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')->where('penilaians.status', 0)->get();
+        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->where('penilaians.status', 0)->get();
         // dd($datas);
         return view('koordinator.penilaian', [
             'datasudah' => $datasudah,
             'databelum' => $databelum,
         ]);
+    }
+
+    public function penilaianapproved($id){
+        Penilaian::find($id)->update([
+            'status' => 1,
+        ]);
+        return redirect('/koordinator/penilaian');
     }
 
     public function create()
