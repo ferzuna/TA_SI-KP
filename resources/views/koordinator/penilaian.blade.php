@@ -90,7 +90,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($datasudah as $data)
+                                                    @foreach ($databelum as $data)
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
@@ -100,101 +100,38 @@
                                                             <td><?= $data['b5'] ?></td>
                                                             <td></td>
                                                             <td><?= $data['status'] ?></td>
-                                                            <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
-                                                                    type="button" data-toggle="modal"
-                                                                    data-target="#edit<?= $data['id'] ?>"></i>
-                                                                <i class="material-icons icondelete" style="padding-left: 8px;"
-                                                                    type="button" data-toggle="modal"
-                                                                    data-target="#deletemas<?= $data['id'] ?>">delete</i>
+                                                            <td style="display:flex">
+                                                                <div class="icon-wrap" data-target="tooltip" data-placement="top" title="Setujui">
+                                                                    <i class="fas fa-check-circle" style="padding-left: 9px;"
+                                                                        type="button" data-toggle="modal"
+                                                                        data-target="#approve<?= $data['id'] ?>"></i>
+                                                                </div>
                                                             </td>
                                                         </tr>
-                                                        <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <!-- approved -->
+                                                        <div class="modal fade" id="approve<?= $data['id'] ?>"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title">Edit Santri</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                            aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="col-md-6">
-                                                                            <form method="POST" action="">
-                                                                                @csrf
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Nama" name="nama"
-                                                                                    value="<?= $data['nama'] ?>" />
-                                                                                <select type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Gender" name="gender" />
-                                                                                <option
-                                                                                    <?= $data['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
-                                                                                    value="Laki - Laki">Laki - Laki</option>
-                                                                                <option
-                                                                                    <?= $data['gender'] == 'Perempuan' ? 'selected' : '' ?>
-                                                                                    value="Perempuan">Perempuan</option>
-                                                                                </select>
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Alamat" name="alamat"
-                                                                                    value="<?= $data['alamat'] ?>" />
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Perguruan Tinggi" name="pt"
-                                                                                    value="<?= $data['pt'] ?>" />
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    placeholder="Jurusan"
-                                                                                    style="margin-bottom: 15px;width: 440px;"
-                                                                                    name="jurusan" value="<?= $data['jurusan'] ?>" />
-                                                                                <select type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Status" name="status" />
-                                                                                <option
-                                                                                    <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                                    value="Aktif">Aktif</option>
-                                                                                <option
-                                                                                    <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                                    value="Tidak Aktif">Tidak Aktif</option>
-                                                                                </select>
-                                                                                <input type="submit" class="btn btn-success"
-                                                                                    value="Save Changes" name="update"></input>
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Close</button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title">Delete Santri</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                            aria-label="Close">
+                                                                        <h5 class="modal-title">Setujui Data</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="col-md-6">
                                                                             <form method="POST"
-                                                                                action="{{-- route('santri.destroy',$data['id']) --}}">
+                                                                                action="{{ route('koordinator.approved', $data['id']) }}">
                                                                                 @csrf
                                                                                 <h6>Apakah Anda Yakin?</h6>
-                                                                                <input type="submit" class="btn btn-success"
-                                                                                    value="Okay" name="delete"></input>
-                                                                                <button type="button" class="btn btn-secondary"
+                                                                                <input type="submit"
+                                                                                    class="btn btn-success" value="Okay"
+                                                                                    name="approve"></input>
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
                                                                                     data-dismiss="modal">Close</button>
                                                                             </form>
                                                                         </div>
@@ -240,11 +177,10 @@
                                                         <th>KP-B5</th>
                                                         <th>Form Nilai KP</th>
                                                         <th>Status</th>
-                                                        <th>Manage</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($databelum as $data)
+                                                    @foreach ($datasudah as $data)
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
@@ -254,108 +190,7 @@
                                                             <td><?= $data['b5'] ?></td>
                                                             <td></td>
                                                             <td><?= $data['status'] ?></td>
-                                                            <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
-                                                                    type="button" data-toggle="modal"
-                                                                    data-target="#edit<?= $data['id'] ?>"></i>
-                                                                <i class="material-icons icondelete" style="padding-left: 8px;"
-                                                                    type="button" data-toggle="modal"
-                                                                    data-target="#deletemas<?= $data['id'] ?>">delete</i>
-                                                            </td>
                                                         </tr>
-                                                        <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title">Edit Santri</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                            aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="col-md-6">
-                                                                            <form method="POST" action="">
-                                                                                @csrf
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Nama" name="nama"
-                                                                                    value="<?= $data['nama'] ?>" />
-                                                                                <select type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Gender" name="gender" />
-                                                                                <option
-                                                                                    <?= $data['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
-                                                                                    value="Laki - Laki">Laki - Laki</option>
-                                                                                <option
-                                                                                    <?= $data['gender'] == 'Perempuan' ? 'selected' : '' ?>
-                                                                                    value="Perempuan">Perempuan</option>
-                                                                                </select>
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Alamat" name="alamat"
-                                                                                    value="<?= $data['alamat'] ?>" />
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Perguruan Tinggi" name="pt"
-                                                                                    value="<?= $data['pt'] ?>" />
-                                                                                <input type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    placeholder="Jurusan"
-                                                                                    style="margin-bottom: 15px;width: 440px;"
-                                                                                    name="jurusan" value="<?= $data['jurusan'] ?>" />
-                                                                                <select type="text"
-                                                                                    class="border rounded-0 form-control"
-                                                                                    style="width: 440px;margin-bottom: 15px;"
-                                                                                    placeholder="Status" name="status" />
-                                                                                <option
-                                                                                    <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                                    value="Aktif">Aktif</option>
-                                                                                <option
-                                                                                    <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                                    value="Tidak Aktif">Tidak Aktif</option>
-                                                                                </select>
-                                                                                <input type="submit" class="btn btn-success"
-                                                                                    value="Save Changes" name="update"></input>
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Close</button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title">Delete Santri</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                            aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="col-md-6">
-                                                                            <form method="POST"
-                                                                                action="{{-- route('santri.destroy',$data['id']) --}}">
-                                                                                @csrf
-                                                                                <h6>Apakah Anda Yakin?</h6>
-                                                                                <input type="submit" class="btn btn-success"
-                                                                                    value="Okay" name="delete"></input>
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Close</button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
@@ -368,7 +203,6 @@
                                                         <td><strong>KP-B5</strong></td>
                                                         <td><strong>Form Nilai KP</strong></td>
                                                         <td><strong>Status</strong></td>
-                                                        <td><strong>Manage</strong></td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
