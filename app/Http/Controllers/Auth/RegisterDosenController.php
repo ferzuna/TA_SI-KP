@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterDosenController extends Controller
 {
@@ -75,7 +76,8 @@ class RegisterDosenController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => 4,
         ];
-        User::create($validateddata)->assignRole('dosen');
-        return redirect('/login');
+        $user = User::create($validateddata)->assignRole('dosen');
+        Auth::login($user);
+        return redirect('/dosen');
     }
 }

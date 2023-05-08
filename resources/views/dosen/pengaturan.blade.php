@@ -152,7 +152,10 @@
                                                                 class="small text-danger">*</span></label>
                                                         <input type="email" id="email" class="form-control"
                                                             name="email" placeholder="Email"
-                                                            value="{{ old('email', Auth::user()->email) }}">
+                                                            value="{{ old('email', Auth::user()->email) }}" hidden>
+                                                        <input type="email" id="email" class="form-control"
+                                                            name="email" placeholder="Email"
+                                                            value="{{ old('email', Auth::user()->email) }}" disabled>
                                                     </div>
                                                 </div>
                                             </div>
