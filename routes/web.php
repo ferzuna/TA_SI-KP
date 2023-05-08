@@ -42,7 +42,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // admin
-Route::group(['middleware' => 'admin','verified'], function () {
+Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/info-magang', [AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
     Route::post('/admin/info-magang/store', [AdminController::class, 'addinfomagang'])->name('addinfomagang');
@@ -69,7 +69,7 @@ Route::group(['middleware' => 'admin','verified'], function () {
 });
 
 // dosen
-Route::group(['middleware' => 'dosen'], function () {
+Route::group(['middleware' => ['dosen', 'verified']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
