@@ -32,17 +32,17 @@ Route::get('/dokumen', function () {
 Route::get('/info-magang', [AdminController::class, 'infomagangdepan'])->name('info-magang');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/register-dosen', [RegisterDosenController::class, 'index'])->name('register-dosen');
 Route::post('/register-dosen', [RegisterDosenController::class, 'store'])->name('register-dosen-store');
 
-// Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // admin
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => 'admin','verified'], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/info-magang', [AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
     Route::post('/admin/info-magang/store', [AdminController::class, 'addinfomagang'])->name('addinfomagang');
@@ -83,7 +83,7 @@ Route::group(['middleware' => 'dosen'], function () {
 });
 
 // mahasiswa
-Route::group(['middleware' => 'mahasiswa'], function () {
+Route::group(['middleware' => ['mahasiswa','verified']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');

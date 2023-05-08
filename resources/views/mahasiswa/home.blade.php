@@ -101,7 +101,9 @@
                                             <br>
                                             <span>Teknik Komputer S1</span>
                                             <br>
-                                            <span>Semester 8</span>
+                                            @if (isset(Auth::user()->semester))    
+                                            <span>Semester {{Auth::user()->semester}}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
