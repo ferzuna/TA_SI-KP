@@ -114,7 +114,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="{{-- route('santri.update',$data['id']) --}}">
+                                                                            action="{{ route('dosen.editbimbingan',$data['id']) }}">
                                                                             @csrf
                                                                             <input type="text"
                                                                                 class="border rounded-0 form-control"
@@ -152,11 +152,11 @@
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Status" name="status" />
                                                                             <option
-                                                                                <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                                value="Aktif">Aktif</option>
+                                                                                <?= $data['status'] == 'revisi' ? 'selected' : '' ?>
+                                                                                value="revisi">revisi</option>
                                                                             <option
-                                                                                <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                                value="Tidak Aktif">Tidak Aktif</option>
+                                                                                <?= $data['status'] == 'acc' ? 'selected' : '' ?>
+                                                                                value="acc">ACC</option>
                                                                             </select>
                                                                             <input type="submit" class="btn btn-success"
                                                                                 value="Save Changes" name="update"></input>
@@ -505,11 +505,11 @@
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Status" name="status" />
                                                                             <option
-                                                                                <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                                value="Aktif">Aktif</option>
+                                                                                <?= $data['status'] == 'revisi' ? 'selected' : '' ?>
+                                                                                value="revisi">revisi</option>
                                                                             <option
-                                                                                <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                                value="Tidak Aktif">Tidak Aktif
+                                                                                <?= $data['status'] == 'acc' ? 'selected' : '' ?>
+                                                                                value="acc">ACC
                                                                             </option>
                                                                             </select>
                                                                             <input type="submit"

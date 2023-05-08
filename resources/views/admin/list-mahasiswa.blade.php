@@ -105,7 +105,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
-                                                                <form method="POST" action="">
+                                                                <form method="POST" action="{{ route('admin.editmahasiswa', $data['id']) }}">
                                                                     @csrf
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="NIM">NIM</label>
@@ -120,7 +120,7 @@
                                                                         <input type="text"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
-                                                                            placeholder="Nama" name="nama"
+                                                                            placeholder="Nama" name="name"
                                                                             value="<?= $data['name'] ?>" />
                                                                     </div>
                                                                     <div class="form-group">

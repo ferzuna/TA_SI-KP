@@ -82,6 +82,7 @@ class DosenController extends Controller
         Bimbingan::find($id)->update([
             'status' => 'acc',
         ]);
+        return redirect('/dosen/bimbingan');
     }
 
     public function allmhs(){
@@ -212,5 +213,12 @@ class DosenController extends Controller
             'new_password' => $request->new_password,
         ]);
         return redirect('/dosen')->with('success', 'Profil Berhasil Diperbarui');
+    }
+
+    public function editbimbingan(Request $request, $id){
+        Bimbingan::find($id)->update([
+            'status' => $request->status,
+        ]);
+        return redirect('/dosen/bimbingan');
     }
 }
