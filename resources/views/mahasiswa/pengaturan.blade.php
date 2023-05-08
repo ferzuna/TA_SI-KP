@@ -164,7 +164,7 @@
                                                             Telepon</label>
                                                         <input type="number" id="confirm_password" class="form-control"
                                                             name="no_telp" placeholder="No. Telepon"
-                                                            value="{{ old('no_telp', Auth::user()->no_telp) }}">
+                                                            value="{{ old('no_telp', Auth::user()->no_telp) }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -194,7 +194,7 @@
                                                             for="confirm_password">Alamat</label>
                                                         <input type="text area" id="confirm_password"
                                                             class="form-control" name="alamat" placeholder="Alamat Anda"
-                                                            value="{{ old('alamat', Auth::user()->alamat) }}">
+                                                            value="{{ old('alamat', Auth::user()->alamat) }}" required>
                                                     </div>
                                                 </div>
 

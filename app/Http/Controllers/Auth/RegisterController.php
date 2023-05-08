@@ -83,10 +83,10 @@ class RegisterController extends Controller
     }
 
     // ini biar user yg register ga auto login
-    public function register(Request $request){
-        $this->validator($request->all())->validate();
-        event(new Registered($user = $this->create($request->all())));
-        return $this->registered($request, $user)
-        ?: redirect()->route('login')->with('success');
-    }
+    // public function register(Request $request){
+    //     $this->validator($request->all())->validate();
+    //     event(new Registered($user = $this->create($request->all())));
+    //     return $this->registered($request, $user)
+    //     ?: redirect()->route('login')->with('success');
+    // }
 }
