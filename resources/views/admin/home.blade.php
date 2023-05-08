@@ -2,7 +2,7 @@
 
 @section('section')
     <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Manajemen Data Mahasantri') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Informasi Kerja Praktik') }}</h1>
 
         @if (session('success'))
             <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Santri Aktif</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mahasiswa Aktif</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">aktif</div>
                             </div>
                             <div class="col-auto">

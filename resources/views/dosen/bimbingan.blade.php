@@ -58,7 +58,7 @@
                                 class="nav-link active">Belum Diperiksa</a></li>
                         <li class="nav-item"><a href="#profile1" data-target="#profile1" data-toggle="tab"
                                 class="nav-link ">Revisi</a></li>
-                        <li class="nav-item"><a href="#profile2" data-target="#profile1" data-toggle="tab"
+                        <li class="nav-item"><a href="#profile2" data-target="#profile2" data-toggle="tab"
                                 class="nav-link ">ACC</a></li>
                     </ul>
                     <div id="tabsContent" class="tab-content p-5 border border-top-0 rounded">
@@ -464,7 +464,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
-                                                                        <form method="POST" action="{{ route('dosen.setujuilaporan', $data['id']) }}">
+                                                                        <form method="POST" action="{{ route('dosen.editbimbingan', $data['id']) }}">
                                                                             @csrf
                                                                             <input type="text"
                                                                                 class="border rounded-0 form-control"
