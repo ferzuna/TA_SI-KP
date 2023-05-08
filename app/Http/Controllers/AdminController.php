@@ -76,7 +76,9 @@ class AdminController extends Controller
         // $data = Penilaian::all();
         $data = Penilaian::leftJoin('users', function ($join) {
             $join->on('penilaians.NIM', '=', 'users.NIM');
-        })->get();
+        })
+        ->select('users.id as id', 'users.name as name', 'users.NIM as NIM', 'users.semester as semester', 'penilaians.status')
+        ->get();
         return view('admin.berkas-nilai', [
             'datas' => $data,
         ]);
@@ -99,7 +101,8 @@ class AdminController extends Controller
      */
     public function permohonan()
     {
-        $permohonan = User::rightjoin('permohonans', 'permohonans.NIM', '=', 'users.NIM')->get();
+        $permohonan = Permohonan::join('users', 'permohonans.NIM', '=', 'users.NIM')
+        ->select('permohonans.id as id', 'users.name as name', 'users.NIM as NIM', 'perusahaan', 'proposal', 'users.sks as sks', 'permohonans.status as status')->get();
         // $permohonan = Permohonan::leftjoin('users', 'permohonans.NIM', '=', 'users.NIM')->get();
         // $permohonan = Permohonan::all();
         return view('admin.permohonan', [
@@ -209,10 +212,30 @@ class AdminController extends Controller
     public function berkasakhir($id){
         $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
         ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
-        ->join('penilaians', 'users.NIM', 'penilaians.NIM')->where('users.id', $id)->first();
+        ->join('penilaians', 'users.NIM', 'penilaians.NIM')
+        ->where('users.id', $id)->first();
         // dd($mhs);
         return view('admin.berkas-akhir', [
             'mhs' => $mhs,
         ]);
+    }
+
+    public function editpermohonan(Request $request, $id){
+        Permohonan::find($id)->update([
+            'perusahaan' => $request->perusahaan,
+            'proposal' => $request->proposal,         
+        ]);
+        return redirect('/admin/permohonan');
+    }
+
+    public function editmahasiswa(Request $request, $id){
+        User::find($id)->update([
+            'NIM' => $request->NIM,
+            'name' => $request->name,
+            'semester' => $request->semester,
+            'no_telp' => $request->no_telp,
+            'sks' => $request->sks,
+        ]);
+        return redirect('/admin/list-mahasiswa');
     }
 }

@@ -63,6 +63,8 @@ Route::group(['middleware' => 'admin'], function () {
     })->name('admin.pengaturan');
     Route::post('/admin/pengaturan', [AdminController::class, 'setting'])->name('admin.setting');
     Route::get('/admin/berkas-nilai/berkas-akhir/{id}', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
+    Route::post('/admin/permohonan/edit/{id}', [AdminController::class, 'editpermohonan'])->name('admin.editpermohonan');
+    Route::post('/admin/list-mahasiswa/edit/{id}', [AdminController::class, 'editmahasiswa'])->name('admin.editmahasiswa');
     // Route::get('/admin/berkas-nilai/berkas-akhir', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
 });
 
@@ -80,6 +82,7 @@ Route::group(['middleware' => 'dosen'], function () {
     })->name('dosen.pengaturan');
     Route::post('/dosen/pengaturan', [DosenController::class, 'setting'])->name('dosen.setting');
     Route::post('/dosen/setujuilaporan/{id}', [DosenController::class, 'setujuilaporan'])->name('dosen.setujuilaporan');
+    Route::post('/dosen/bimbingan/editbimbingan/{id}', [DosenController::class, 'editbimbingan'])->name('dosen.editbimbingan');
 });
 
 // mahasiswa

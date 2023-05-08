@@ -67,6 +67,7 @@
                                             <th>Nama</th>
                                             <th>Nama Perusahaan</th>
                                             <th>Tanggal</th>
+                                            <th>Ruangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,6 +76,7 @@
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td><?= $data['waktu_seminar'] ?></td>
+                                                <td><?= $data['ruangan'] ?></td>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
@@ -179,6 +181,7 @@
                                             <td><strong>Nama</strong></td>
                                             <td><strong>Nama Perusahaan</strong></td>
                                             <td><strong>Tanggal</strong></td>
+                                            <td><strong>Ruangan</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>
