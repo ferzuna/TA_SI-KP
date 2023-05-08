@@ -113,7 +113,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
-                                                                <form method="POST" action="">
+                                                                <form method="POST" action="{{ route('admin.editpermohonan', $data['id']) }}">
                                                                     @csrf
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="nama">Nama</label>
