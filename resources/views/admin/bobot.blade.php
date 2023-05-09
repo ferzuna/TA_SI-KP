@@ -25,17 +25,23 @@
 
             @foreach ($alldosen as $dosen)
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-1">
+                    @if ($dosen['status'])
+                    <div class="card border-left-primary shadow h-100 py-1" style="background-color:rgba(0,255,0,0.3);">
+                    @else
+                    <div class="card border-left-primary shadow h-100 py-1" style="background-color:rgba(255,0,0,0.3);">
+                    @endif
+                    
                         <div class="card-body">
                             <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="h5 font-weight-bold text-primary mb-3">{{ $dosen['name'] }}</div>
+                                        <div class="h4 font-weight-bold text-primary">{{ $dosen['name'] }}</div>
+                                        <p class="h6 font-weight-bold text-primary mb-3">NIP: {{ $dosen['NIP'] }}</p>
                                         <strong>Kuota Bimbingan : <span>{{ $dosen['kuota_bimbingan'] }}</span></strong>
                                         <br>
                                         <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
                                         <br>
-                                        <strong>Status : <span>{{ $dosen['status'] }}</span></strong>
+                                        <strong>Status : <span>{{ $dosen['status'] ? 'Aktif' : 'Tidak Aktif'}}</span></strong>
 
 
                                     </div>
