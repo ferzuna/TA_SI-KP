@@ -32,7 +32,6 @@ class PermohonanController extends Controller
                 'proposal' => $request->proposal,
                 'mulai' => $request->mulai,
                 'selesai' => $request->selesai,
-                'status'=> false,
             ]);
         }else{
         $contact = [

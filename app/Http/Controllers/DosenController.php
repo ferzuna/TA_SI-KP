@@ -39,6 +39,7 @@ class DosenController extends Controller
     public function kuotabimbingan(Request $request, $id){
         User::find($id)->update([
             'kuota_bimbingan' => $request->kuota,
+            'status' => $request->status,
         ]);
 
         return redirect('/admin/bobot')->with('success', 'Data updated');
