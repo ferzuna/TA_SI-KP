@@ -24,7 +24,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs = User::where('name', Auth::user()->name)->first();
+        $mhs = User::where('email', Auth::user()->email)->first();
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         // $permohonan->updated_at = Carbon::parse('2021-03-16 08:27:00')->locale('id');
@@ -41,7 +41,7 @@ class MahasiswaController extends Controller
 
     public function pendaftaran()
     {
-        $all = User::where('role_id', 4)->get();
+        $all = User::where('role_id', 4)->where('status', 1)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $alldosen = [];
         $dp = "";
@@ -53,7 +53,7 @@ class MahasiswaController extends Controller
         }
 
         if (isset($pendaftaran['dosbing'])) {
-            $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->get();
+            $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->where('status', 1)->get();
             $dp = $pendaftaran['dosbing'];
         }
         foreach ($all as $dosen) {

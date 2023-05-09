@@ -71,9 +71,10 @@ class RegisterDosenController extends Controller
             'NIP' => $request->NIP,
             'email' => $request->email,
             'bobot_bimbingan' => 0,
-            'kuota_bimbingan' => 0,
+            'kuota_bimbingan' => 5,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'status' => 1,
             'role_id' => 4,
         ];
         $user = User::create($validateddata)->assignRole('dosen');
