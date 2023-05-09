@@ -185,7 +185,7 @@
                                                             for="semester">Semester</label>
                                                         <input type="number" id="semester" class="form-control"
                                                             name="semester" placeholder="Semester"
-                                                            value="{{ old('semester', Auth::user()->semester) }}">
+                                                            value="{{ old('semester', Auth::user()->semester) }}" required>
                                                     </div>
                                                 </div>
                                             </div>
