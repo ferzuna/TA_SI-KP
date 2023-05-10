@@ -118,6 +118,7 @@ Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');
+    Route::post('/koordinator/pengaturan', [KoorController::class, 'setting'])->name('koordinator.setting');
 });
 
 
