@@ -9,18 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex justify-content-between">
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item my-auto">
-                        <a class="nav-link" aria-current="page" href="{{ route('permohonan') }}">Permohonan KP</a>
-                    </li>
-                    <li class="nav-item my-auto">
-                        <a class="nav-link" href="{{ route('pendaftaran') }}">Pendaftaran KP</a>
-                    </li>
-                    <li class="nav-item my-auto">
-                        <a class="nav-link" href="{{ route('pengumpulan') }}">Pengumpulan Berkas</a>
-                    </li>
-                    <li class="nav-item my-auto">
-                        <a class="nav-link" href="{{ route('finalisasi') }}">Finalisasi Berkas</a>
-                    </li>
+                    
 
                 </ul>
             </div>
@@ -46,10 +35,26 @@
                         </li>
                     @endif
                 @else
+                <li class="nav-item my-auto">
+                    <a class="nav-link" aria-current="page" href="{{ route('permohonan') }}">Permohonan KP</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="{{ route('pendaftaran') }}">Pendaftaran KP</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="{{ route('pengumpulan') }}">Pengumpulan Berkas</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="{{ route('finalisasi') }}">Finalisasi Berkas</a>
+                </li>
+                <li class="nav-item">
+                    <div class="divider-vertical"></div>
+                </li>
                     <li class="nav-item dropdown no-arrow" role="presentation" style="list-style-type: none">
-                        <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                                aria-expanded="false" href="#"><span
-                                    class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::user()->name }}</span>
+                        <div class="nav-item dropdown no-arrow">
+                            <a class="dropdown-toggle nav-link" data-toggle="dropdown"
+                                aria-expanded="false" href="#">
+                                
                                 @if (Auth::user()->image)
                                     {{-- <div id="imagePreview"
                                         style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
@@ -73,6 +78,7 @@
                                         data-initial="{{ Auth::user()->name[0] }}">
                                     </figure>
                                 @endif
+                                <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::user()->name }}</span>
                             </a>
                             <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                 <a class="dropdown-item" href="{{ route('logout') }}"

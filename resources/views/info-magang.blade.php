@@ -20,9 +20,9 @@
                                     <thead>
                                         <tr>
                                             <th>Perusahaan</th>
-                                            <th>Posisi</th>
-                                            <th>Durasi</th>
-                                            <th>Requirement</th>
+                                            <th style="text-align:center">Posisi</th>
+                                            <th style="text-align:center">Durasi</th>
+                                            <th style="text-align:center">Requirement</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,14 +129,6 @@
                                             </div>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td><strong>Perusahaan</strong></td>
-                                            <td><strong>Posisi</strong></td>
-                                            <td><strong>Durasi</strong></td>
-                                            <td><strong>Requirement</strong></td>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
