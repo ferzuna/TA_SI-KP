@@ -214,6 +214,9 @@ class AdminController extends Controller
         $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
         ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
         ->join('penilaians', 'users.NIM', 'penilaians.NIM')
+        ->select('users.id', 'users.name', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.bukti', 'bimbingans.laporan',
+         'bimbingans.makalah', 'pendaftarans.a1', 'bimbingans.b1', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.a2',
+          'penilaians.b4', 'penilaians.b5')
         ->where('users.id', $id)->first();
         // dd($mhs);
         return view('admin.berkas-akhir', [

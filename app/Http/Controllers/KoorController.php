@@ -53,15 +53,15 @@ class KoorController extends Controller
 
     public function penilaian()
     {
-        $datasudah = Penilaian::rightjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
         ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
         ->where('penilaians.status', 1)->get();
-        $databelum = Penilaian::rightjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'bimbingans.b1', 'penilaians.b5', 'penilaians.status as status')
         ->where('penilaians.status', 0)->get();
         // dd($datas);
         return view('koordinator.penilaian', [

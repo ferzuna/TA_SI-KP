@@ -59,6 +59,7 @@ class UserSeeder extends Seeder
             'role_id' => 4,
             'kuota_bimbingan' => 4,
             'bobot_bimbingan' => 0,
+            'status' => '1',
         ]);
         $dosen2->assignRole('dosen');
         
