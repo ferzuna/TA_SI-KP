@@ -102,7 +102,8 @@ class AdminController extends Controller
     public function permohonan()
     {
         $permohonan = Permohonan::join('users', 'permohonans.NIM', '=', 'users.NIM')
-        ->select('permohonans.id as id', 'users.name as name', 'users.NIM as NIM', 'perusahaan', 'proposal', 'users.sks as sks', 'permohonans.status as status')->get();
+        ->select('permohonans.id as id', 'users.name as name', 'users.NIM as NIM', 'perusahaan', 'proposal', 'users.sks as sks', 'permohonans.status as status')
+        ->orderBy('permohonans.updated_at', 'desc')->get();
         // $permohonan = Permohonan::leftjoin('users', 'permohonans.NIM', '=', 'users.NIM')->get();
         // $permohonan = Permohonan::all();
         return view('admin.permohonan', [
@@ -237,5 +238,10 @@ class AdminController extends Controller
             'sks' => $request->sks,
         ]);
         return redirect('/admin/list-mahasiswa');
+    }
+
+    public function deletepermohonan($id){
+        Permohonan::find($id)->delete();
+        return redirect('/admin/permohonan');
     }
 }

@@ -80,12 +80,17 @@
                                                 <td><a href='/admin/berkas-nilai/berkas-akhir/<?= $data['id'] ?>'>detail berkas</a></td>
                                                 <td><?= $data['username'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
-                                                <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#edit<?= $data['id'] ?>"></i>
-                                                    <i class="material-icons icondelete" style="padding-left: 8px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#deletemas<?= $data['id'] ?>">delete</i>
+                                                <td style="display:flex">
+                                                    <div style="margin-right:10px" class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="fas fa-edit iconedit" style="padding-left: 9px;"
+                                                            type="button" data-toggle="modal"
+                                                            data-target="#edit<?= $data['id'] ?>"></i>
+                                                    </div>
+                                                    <div class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                                        <i class="fas fa-trash" style="padding-left: 8px;"
+                                                            type="button" data-toggle="modal"
+                                                            data-target="#deletemas<?= $data['id'] ?>"></i>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"

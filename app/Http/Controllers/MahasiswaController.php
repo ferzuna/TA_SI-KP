@@ -100,6 +100,26 @@ class MahasiswaController extends Controller
                 'bukti' => $request->bukti,
                 'dosbing' => $request->dosbing,
             ]);
+            $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+            $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+            $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
+            if(isset($status3)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Selesai KP'
+                ]);
+            }else if(isset($status2)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Bimbingan KP'
+                ]);
+            }else if(isset($status1)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Pendaftaran KP'
+                ]);
+            }else{
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Permohonan KP'
+                ]);
+            }
         }
 
         $semua = User::where('role_id', 4)->get();
@@ -228,8 +248,29 @@ class MahasiswaController extends Controller
                 'waktu_seminar' => $request->jadwal,
                 'ruangan' => $request->ruangan,
             ]);
+
+            $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+            $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+            $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
+            if(isset($status3)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Selesai KP'
+                ]);
+            }else if(isset($status2)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Bimbingan KP'
+                ]);
+            }else if(isset($status1)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Pendaftaran KP'
+                ]);
+            }else{
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Permohonan KP'
+                ]);
+            }
         }
-        return redirect('/mahasiswa/pengumpulan')->with('success', 'pengumpulan berkas created!');
+        return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
     }
 
     public function pengumpulan()
@@ -301,6 +342,27 @@ class MahasiswaController extends Controller
                 'b5' => $request->b5,
                 'status' => 0,
             ]);
+
+            $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+            $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+            $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
+            if(isset($status3)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Selesai KP'
+                ]);
+            }else if(isset($status2)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Bimbingan KP'
+                ]);
+            }else if(isset($status1)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Pendaftaran KP'
+                ]);
+            }else{
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Permohonan KP'
+                ]);
+            }
         }
         return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
     }
