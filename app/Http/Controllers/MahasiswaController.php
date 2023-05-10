@@ -52,9 +52,9 @@ class MahasiswaController extends Controller
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
 
-        if (isset($pendaftaran['dosbing'])) {
-            $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->where('status', 1)->get();
-            $dp = $pendaftaran['dosbing'];
+        if (isset($pendaftaran['NIP'])) {
+            $all = User::where('role_id', 4)->where('NIP', '!=', $pendaftaran['NIP'])->where('status', 1)->get();
+            $dp = User::where('NIP', $pendaftaran['NIP'])->first();
         }
         foreach ($all as $dosen) {
             if($dosen['kuota_bimbingan'] != 0){
@@ -90,14 +90,14 @@ class MahasiswaController extends Controller
             Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
                 'a1' => $request->a1,
                 'bukti' => $request->bukti,
-                'dosbing' => $request->dosbing,
+                'NIP' => $request->dosbing,
             ]);
         } else {
             Pendaftaran::create([
                 'NIM' => Auth::user()->NIM,
                 'a1' => $request->a1,
                 'bukti' => $request->bukti,
-                'dosbing' => $request->dosbing,
+                'NIP' => $request->dosbing,
             ]);
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
             $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
@@ -128,7 +128,7 @@ class MahasiswaController extends Controller
         foreach ($all as $bimbingan) {
             $k++;
             if ($bimbingan['role_id'] == 4) {
-                $bobot = Pendaftaran::where('dosbing', $bimbingan['name'])->get();
+                $bobot = Pendaftaran::where('NIP', $bimbingan['NIP'])->get();
                 $jumlah = count($bobot);
                 User::find($k)->update([
                     'bobot_bimbingan' => $jumlah,
@@ -230,9 +230,9 @@ class MahasiswaController extends Controller
                 'a1' => $request->a1,
             ]);
         } else {
-            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
+            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Bimbingan::create([
-                'NIP' => User::where('name', $dosbing)->first()['NIP'],
+                'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
@@ -243,7 +243,7 @@ class MahasiswaController extends Controller
                 'status' => '',
             ]);
             Penjadwalan::create([
-                'NIP' => User::where('name', $dosbing)->first()['NIP'],
+                'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
                 'jadwal' => $request->jadwal,
                 'ruangan' => $request->ruangan,
@@ -335,9 +335,9 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
             ]);
         } else {
-            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
+            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Penilaian::create([
-                'NIP' => User::where('name', $dosbing)->first()['NIP'],
+                'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
                 'kehadiran' => $request->kehadiran,
                 'a2' => $request->a2,
