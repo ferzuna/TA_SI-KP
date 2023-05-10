@@ -7,7 +7,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">List Bimbingan Laporan</h1>
+                            <h1 class="h3 mb-2 text-gray-800"><b>List Bimbingan Laporan</b></h1>
                         </div>
                     </div>
                     <ul id="tabs" class="nav nav-tabs nav-fill">
@@ -18,7 +18,7 @@
                         <li class="nav-item"><a href="#profile2" data-target="#profile2" data-toggle="tab"
                                 class="nav-link ">ACC</a></li>
                     </ul>
-                    <div id="tabsContent" class="tab-content p-5 border border-top-0 rounded">
+                    <div id="tabsContent" class="tab-content tabs-border rounded">
                         <div id="home1" class="tab-pane fade active show">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">

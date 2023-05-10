@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-lg-4 order-lg-2">
 
-                                <div class="card shadow mb-4 card-border">
+                                <div class="card shadow mb-4 card-border-pengaturan">
                                     {{-- <div class="card-profile-image mt-4">
     
                                     </div> --}}
@@ -100,7 +100,7 @@
 
                                 <div class="card shadow mb-4" style="border-radius:20px 20px 20px 20px; border:2px solid black">
 
-                                    <div class="card-header py-3" style="background-color: #FF8422; border-radius:20px 20px 0px 0px" >
+                                    <div class="card-header py-3" style="background-color: #FF8422; border-radius:20px 20px 0px 0px;" >
                                         <h4 class="m-0 font-weight-bold" style="color:black">Pengaturan</h4>
                                     </div>
 

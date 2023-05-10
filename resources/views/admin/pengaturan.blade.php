@@ -6,7 +6,6 @@
             <div id="content">
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">{{ __('Pengaturan') }}</h1>
 
                     @if (session('success'))
                         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -31,7 +30,7 @@
                         <div class="row">
                             <div class="col-lg-4 order-lg-2">
 
-                                <div class="card shadow mb-4">
+                                <div class="card shadow mb-4 card-border-pengaturan">
                                     
 
                                     <div class="avatar-upload">
@@ -94,10 +93,10 @@
 
                             <div class="col-lg-8 order-lg-1">
 
-                                <div class="card shadow mb-4">
+                                <div class="card card-border shadow mb-4">
 
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                                    <div class="card-header-primary card-header-border py-3" style="background-color: #FF8422; border-radius:20px 20px 0px 0px;" >
+                                        <h4 class="m-0 font-weight-bold px-3" style="color:black">Pengaturan</h4>
                                     </div>
 
                                     <div class="card-body">
@@ -108,7 +107,7 @@
 
                                         <input type="hidden" name="_method" value="POST">
 
-                                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                                        <h6 class="heading-small mb-4">User information</h6>
 
                                         <div class="pl-lg-4">
                                             <div class="row">

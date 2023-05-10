@@ -50,7 +50,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">Daftar Nilai dan Berkas</h1>
+                            <h1 class="h3 mb-2 text-gray-800"><b>Daftar Nilai dan Berkas</b></h1>
                         </div>
                     </div>
                     <div class="card shadow mb-4">
