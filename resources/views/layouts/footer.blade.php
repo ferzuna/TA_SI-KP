@@ -55,6 +55,8 @@
             height:40px;
             border:2px solid #C0B8EB;
             border-radius:50%;
+            display:flex;
+            justify-content:center
             ">
                 <a href="https://tekkom.ft.undip.ac.id/" class="twitter" target="_blank">
                     <img style="

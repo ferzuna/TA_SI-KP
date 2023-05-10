@@ -33,17 +33,29 @@
                                 <input class="form-control" type="text" name="b1"
                                     value="{{ isset($data['b1']) ? $data['b1'] : '' }}">
                             </div>
-                            @if (isset($data->status))
+                            @if (isset($data['status']))
                                 <div class="form-group">
                                     <label for="jadwal-seminar"><b>Status</b></label>
                                     <select class="form-select input-border" name="ruangan" id=""
                                         aria-label="Default select example">
-                                        <option id="" value="Sudah Revisi">Sudah Revisi
+                                        <option <?= $data['status'] == 'revisi' ? 'selected' : '' ?> id="" value="belum revisi">Belum Revisi
                                         </option>
-                                        <option id="" value="Revisi">Belum Revisi
+                                        <option <?= $data['status'] == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
+                                        </option>
+                                        <option <?= $data['status'] == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
                                         </option>
                                     </select>
                                 </div>
+                                
+                            @elseif($data['status'] == 'acc')
+                            <div class="form-group">
+                                <label for="jadwal-seminar"><b>Status</b></label>
+                                <select class="form-select input-border" name="ruangan" id=""
+                                    aria-label="Default select example" disabled>
+                                    <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="sudah direvisi">acc
+                                    </option>
+                                </select>
+                            </div>
                             @endif
                         </div>
                         <div class="col-lg-4 col-md-6">
