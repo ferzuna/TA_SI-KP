@@ -35,27 +35,24 @@
                             </div>
                             @if (isset($data['status']))
                                 <div class="form-group">
-                                    <label for="jadwal-seminar"><b>Status</b></label>
-                                    <select class="form-select input-border" name="ruangan" id=""
-                                        aria-label="Default select example">
-                                        <option <?= $data['status'] == 'revisi' ? 'selected' : '' ?> id="" value="belum revisi">Belum Revisi
+                                    <label for="status"><b>Status</b></label>
+                                    @if($data['status']=='acc')
+                                    <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
+                                        <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                         </option>
-                                        <option <?= $data['status'] == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
+                                    </select>
+                                    @else
+                                    <select class="form-select input-border" name="status" id=""
+                                        aria-label="Default select example">
+                                        <option <?= $data['status'] == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
                                         </option>
                                         <option <?= $data['status'] == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
                                         </option>
                                     </select>
+                                    @endif
+                                    
                                 </div>
                                 
-                            @elseif($data['status'] == 'acc')
-                            <div class="form-group">
-                                <label for="jadwal-seminar"><b>Status</b></label>
-                                <select class="form-select input-border" name="ruangan" id=""
-                                    aria-label="Default select example" disabled>
-                                    <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="sudah direvisi">acc
-                                    </option>
-                                </select>
-                            </div>
                             @endif
                         </div>
                         <div class="col-lg-4 col-md-6">
