@@ -1,7 +1,7 @@
 @extends('mahasiswa.layouts.main')
 
 @section('section')
-    <div class="wrapper">
+    <div class="wrapper" style="height:90vh">
         @if (session('status'))
             <div class="container justify-content-center alert-wrap">
                 <div class="row">
@@ -39,12 +39,12 @@
                         @csrf
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="perusahaan">Nama Perusahaan</label>
+                                <label for="perusahaan"><b>Nama Perusahaan</b></label>
                                 <input class="form-control" type="text" name="perusahaan"
                                     value="{{ isset($data['perusahaan']) ? $data['perusahaan'] : '' }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="proposal">Proposal Perusahaan</label>
+                                <label for="proposal"><b>Proposal Perusahaan</b></label>
                                 <input class="form-control" type="text" name="proposal"
                                     value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
@@ -52,19 +52,19 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="jadwal-seminar">Tanggal Mulai</label>
+                                <label for="jadwal-seminar"><b>Tanggal Mulai</b></label>
                                 <input class="form-control" type="date" name="mulai" placeholder="dd-mm-yyyy" id=""
                                     value="{{ isset($data['mulai']) ? $data['mulai'] : '' }}">
                             </div>
                             <div class="form-group">
-                                <label for="jadwal-seminar">Tanggal Selesai</label>
+                                <label for="jadwal-seminar"><b>Tanggal Selesai</b></label>
                                 <input class="form-control" type="date" name="selesai" id=""
                                     value="{{ isset($data['selesai']) ? $data['selesai'] : '' }}">
                             </div>
                             
                         </div>
                         <div class="py-2">
-                            <button type="submit" class="btn btn-light btn-outline-dark">Submit</button>
+                            <button type="submit" class="btn btn-light btn-outline-dark btn-submit"><b>Submit</b></button>
                         </div>
                     </div>
                 </form>
