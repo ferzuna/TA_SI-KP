@@ -124,7 +124,7 @@
                                                                     <div class="modal-body">
                                                                         <div class="col-md-6">
                                                                             <form method="POST"
-                                                                                action="{{ route('koordinator.approved', $data['id']) }}">
+                                                                                action="{{ route('koordinator.penilaianapproved', $data['id']) }}">
                                                                                 @csrf
                                                                                 <h6>Apakah Anda Yakin?</h6>
                                                                                 <input type="submit"
