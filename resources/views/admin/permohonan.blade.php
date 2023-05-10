@@ -193,7 +193,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
+                                                                    action="{{ route('admin.deletepermohonan',$data['id']) }}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
