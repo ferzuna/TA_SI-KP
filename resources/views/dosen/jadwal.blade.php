@@ -32,7 +32,7 @@
                                             <tr>
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
-                                                <td><?= $data['waktu_seminar'] ?></td>
+                                                <td><?= $data['jadwal'] ?></td>
                                                 <td><?= $data['ruangan'] ?></td>
                                                 </td>
                                             </tr>
