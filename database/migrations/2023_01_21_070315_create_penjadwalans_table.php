@@ -18,7 +18,7 @@ class CreatePenjadwalansTable extends Migration
             $table->string('NIP');
             $table->string('NIM');
             $table->string('ruangan')->nullable();
-            $table->string('waktu_seminar')->nullable();
+            $table->dateTime('jadwal')->nullable();
             $table->timestamps();
         });
     }

@@ -39,7 +39,6 @@ class PermohonanController extends Controller
             ]);
         }else{
         $contact = [
-            'name' => Auth::user()->name,
             'NIM' => Auth::user()->NIM,
             'email' => Auth::user()->email,
             'perusahaan' => $request->perusahaan,
