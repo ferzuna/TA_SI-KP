@@ -43,16 +43,26 @@
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/ -->
             </div>
         </div>
-        <div class="social-links text-center text-md-right pt-3 pt-md-0">
-            <a href="https://www.tiktok.com/@ponpesdarulilmimeteseh" class="twitter">
+        <div style="display: flex; justify-content:space-around" class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="https://web.facebook.com/dept.siskom.undip" class="facebook">
                 <img inline src="{{ asset('img/socmed/facebook.svg') }}">
             </a>
-            <a href="#" class="facebook">
+            <a href="https://www.instagram.com/tekom_undip/" class="instagram" style="margin:0px 5px">
                 <img inline src="{{ asset('img/socmed/instagram.svg') }}">
             </a>
-            <a href="https://www.instagram.com/pp_darulilmimeteseh" class="instagram" target="_blank">
-                <img inline src="{{ asset('img/socmed/twitter.svg') }}">
-            </a>
+            <div style="
+            width:40px;
+            height:40px;
+            border:2px solid #C0B8EB;
+            border-radius:50%;
+            ">
+                <a href="https://tekkom.ft.undip.ac.id/" class="twitter" target="_blank">
+                    <img style="
+                        width:25px;
+                        heihgt:25px;
+                        margin-top:5px" inline src="{{ asset('img/socmed/internet.png') }}">
+                </a>
+            </div>
             <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
             <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
         </div>

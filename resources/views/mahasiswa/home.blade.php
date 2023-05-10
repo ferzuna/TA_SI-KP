@@ -40,14 +40,14 @@
                     <div class="col-lg-4">
                         <div class="biodata-card">
                             <div class="card">
-                                <div class="card-content">
-                                    <div class="card-header">
+                                <div class="card-content" >
+                                    <div class="card-header" style="background-color: #012E67; color:white">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="d-flex justify-content-end">
                                                     <a href="{{ route('mahasiswa.pengaturan') }}">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                        <span>{{ __('Ubah Profil') }}</span>
+                                                        <i class="fas fa-fw fa-cog" style="color:white"></i>
+                                                        <span style="color: white">{{ __('Ubah Profil') }}</span>
                                                     </a>
                                                 </div>
                                                 <div class="col-md-4 col-12 d-flex justify-content-center">
@@ -95,7 +95,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="card-footer text-center">
+                                        <div class="card-footer text-center" style="background-color: #012E67; color:white">
                                             <span>Departemen Teknik Komputer
                                             </span>
                                             <br>
@@ -156,61 +156,69 @@
         <div class="menu-mahasiswa">
             <div class="container-fluid">
                 <h2 class="title text-center">
-                    Layanan
+                    <strong style="border-bottom: 5px solid #012E67; padding: 10px;">Layanan</strong>
                 </h2>
                 <div class="wrap">
                     <div class="row my-2">
                         <div class="col-lg-6">
-                            <div class="card h-100">
-                                <a href="{{ route('permohonan') }}" class="link-dark">
-                                    <div class="card-content">
-                                        <h4 class="text-center">Permohonan KP</h4>
-                                        <p style="margin-top:2em">Pengajuan proposal dan surat permohonan KP untuk di TTD
-                                            Kepala
-                                            Departemen lalu diberikan
-                                            kepaada perusahaan</p>
-                                    </div>
-                                </a>
+                            <div class="m-3">
+                                <div class="menu-wrap">
+                                        <a href="{{ route('permohonan') }}" class="link-dark">
+                                            <div class="card-content">
+                                                <h3 class="text-center"><b>Permohonan KP</b></h3>
+                                                <p style="margin-top:2em; font-size:16px">Pengajuan proposal dan surat permohonan KP untuk di TTD
+                                                    Kepala
+                                                    Departemen lalu diberikan
+                                                    kepaada perusahaan</p>
+                                            </div>
+                                        </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="card h-100">
-                                <a href="{{ route('pendaftaran') }}" class="link-dark">
-                                    <div class="card-content">
-                                        <h4 class="text-center">Pendaftaran KP</h4>
-                                        <p style="margin-top:2em">Pengajuan pendaftaran KP serta pemilihan dosen pembimbing
-                                            KP setelah diterima di perusahaan</p>
-                                    </div>
-                                </a>
+                            <div class="m-3">
+                                <div class="menu-wrap">
+                                        <a href="{{ route('pendaftaran') }}" class="link-dark">
+                                            <div class="card-content">
+                                                <h3 class="text-center"><b>Pendaftaran KP</b></h3>
+                                                <p style="margin-top:2em; font-size:16px">Pengajuan pendaftaran KP serta pemilihan dosen pembimbing
+                                                    KP setelah diterima di perusahaan</p>
+                                            </div>
+                                        </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="card h-100">
-                                <a href="{{ route('pengumpulan') }}" class="link-dark">
-                                    <div class="card-content">
-                                        <h4 class="text-center">Pengumpulan Berkas</h4>
-                                        <p style="margin-top:2em">Pengumpulan berkas yang berkairan dengan magang yang peru
-                                            ditanda
-                                            tangan diikumpulkan disini
-                                        </p>
-                                    </div>
-                                </a>
+                            <div class="m-3">
+                                <div class="menu-wrap">
+                                    <a href="{{ route('pengumpulan') }}" class="link-dark">
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Pengumpulan Berkas</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan berkas yang berkairan dengan magang yang peru
+                                                ditanda
+                                                tangan diikumpulkan disini
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="card h-100">
-                                <a href="{{ route('finalisasi') }}" class="link-dark">
-                                    <div class="card-content">
-                                        <h4 class="text-center">Finalisasi Berkas</h4>
-                                        <p style="margin-top:2em">Pengumpulan semua berkas yang perlu ditanda tangan dosen
-                                            dan
-                                            juga
-                                            pengumpulan lainnya
-                                        </p>
-                                    </div>
-                                </a>
+                            <div class="m-3">
+                                <div class="menu-wrap">
+                                    <a href="{{ route('finalisasi') }}" class="link-dark">
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Finalisasi Berkas</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan semua berkas yang perlu ditanda tangan dosen
+                                                dan
+                                                juga
+                                                pengumpulan lainnya
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

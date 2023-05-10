@@ -6,7 +6,6 @@
             <div id="content">
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">{{ __('Pengaturan') }}</h1>
 
                     @if (session('success'))
                         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -27,11 +26,11 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('mahasiswa.setting') }}" method="post" enctype="multipart/form-data">
+                    <form class="py-5" action="{{ route('mahasiswa.setting') }}" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-4 order-lg-2">
 
-                                <div class="card shadow mb-4">
+                                <div class="card shadow mb-4 card-border">
                                     {{-- <div class="card-profile-image mt-4">
     
                                     </div> --}}
@@ -99,10 +98,10 @@
 
                             <div class="col-lg-8 order-lg-1">
 
-                                <div class="card shadow mb-4">
+                                <div class="card shadow mb-4" style="border-radius:20px 20px 20px 20px; border:2px solid black">
 
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                                    <div class="card-header py-3" style="background-color: #FF8422; border-radius:20px 20px 0px 0px" >
+                                        <h4 class="m-0 font-weight-bold" style="color:black">Pengaturan</h4>
                                     </div>
 
                                     <div class="card-body">
@@ -113,7 +112,7 @@
 
                                         <input type="hidden" name="_method" value="POST">
 
-                                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                                        <h6 class="heading-small mb-4">User information</h6>
 
                                         <div class="pl-lg-4">
                                             <div class="row">
@@ -236,7 +235,7 @@
                                         <div class="pl-lg-4">
                                             <div class="row">
                                                 <div class="col text-center">
-                                                    <button id="submitBtn" type="submit" class="btn btn-primary">Save
+                                                    <button id="submitBtn" type="submit" class="btn btn-primary" style="background-color:#001A41 !important">Save
                                                         Changes</button>
                                                 </div>
                                             </div>
