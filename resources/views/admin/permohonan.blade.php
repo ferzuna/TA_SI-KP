@@ -84,15 +84,20 @@
                                             <td><?= $data['name'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
-                                                <td><?= $data['proposal'] ?></td>
+                                                <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
                                                 <td><?= $data['sks'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
-                                                <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#edit<?= $data['id'] ?>"></i>
-                                                    <i class="material-icons icondelete" style="padding-left: 8px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#deletemas<?= $data['id'] ?>">delete</i>
+                                                <td style="display:flex">
+                                                    <div style="margin-right:10px" class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="fas fa-edit iconedit" style="padding-left: 9px;"
+                                                            type="button" data-toggle="modal"
+                                                            data-target="#edit<?= $data['id'] ?>"></i>
+                                                    </div>
+                                                    <div class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                                        <i class="fas fa-trash" style="padding-left: 8px;"
+                                                            type="button" data-toggle="modal"
+                                                            data-target="#deletemas<?= $data['id'] ?>"></i>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
@@ -100,7 +105,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit Santri</h5>
+                                                            <h5 class="modal-title">Edit Data</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -108,50 +113,62 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
-                                                                <form method="POST" action="">
+                                                                <form method="POST" action="{{ route('admin.editpermohonan', $data['id']) }}">
                                                                     @csrf
-                                                                    <input type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Nama" name="nama"
-                                                                        value="<?= $data['nama'] ?>" />
-                                                                    <select type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Gender" name="gender" />
-                                                                    <option
-                                                                        <?= $data['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
-                                                                        value="Laki - Laki">Laki - Laki</option>
-                                                                    <option
-                                                                        <?= $data['gender'] == 'Perempuan' ? 'selected' : '' ?>
-                                                                        value="Perempuan">Perempuan</option>
-                                                                    </select>
-                                                                    <input type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Alamat" name="alamat"
-                                                                        value="<?= $data['alamat'] ?>" />
-                                                                    <input type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Perguruan Tinggi" name="pt"
-                                                                        value="<?= $data['pt'] ?>" />
-                                                                    <input type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        placeholder="Jurusan"
-                                                                        style="margin-bottom: 15px;width: 440px;"
-                                                                        name="jurusan" value="<?= $data['jurusan'] ?>" />
-                                                                    <select type="text"
-                                                                        class="border rounded-0 form-control"
-                                                                        style="width: 440px;margin-bottom: 15px;"
-                                                                        placeholder="Status" name="status" />
-                                                                    <option
-                                                                        <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                        value="Aktif">Aktif</option>
-                                                                    <option
-                                                                        <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                        value="Tidak Aktif">Tidak Aktif</option>
-                                                                    </select>
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label" for="nama">Nama</label>
+                                                                        <input type="text"
+                                                                            class="border rounded-0 form-control"
+                                                                            style="width: 440px;margin-bottom: 15px;"
+                                                                            placeholder="NIM" name="NIM"
+                                                                            value="<?= $data['NIM'] ?>" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label" for="NIM">NIM</label>
+                                                                        <input type="text"
+                                                                            class="border rounded-0 form-control"
+                                                                            style="width: 440px;margin-bottom: 15px;"
+                                                                            placeholder="Nama" name="nama"
+                                                                            value="<?= $data['name'] ?>" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label" for="proposal">Proposal</label>
+                                                                        <input type="text"
+                                                                            class="border rounded-0 form-control"
+                                                                            style="width: 440px;margin-bottom: 15px;"
+                                                                            placeholder="Proposal" name="proposal"
+                                                                            value="<?= $data['proposal'] ?>" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label" for="perusahaan">Perusahaan</label>
+                                                                        <input type="text"
+                                                                            class="border rounded-0 form-control"
+                                                                            style="width: 440px;margin-bottom: 15px;"
+                                                                            placeholder="Perusahaan" name="perusahaan"
+                                                                            value="<?= $data['perusahaan'] ?>" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label" for="sks">Jumlah SKS</label>
+                                                                        <input type="text"
+                                                                            class="border rounded-0 form-control"
+                                                                            style="width: 440px;margin-bottom: 15px;"
+                                                                            placeholder="Jumlah SKS" name="sks"
+                                                                            value="<?= $data['sks'] ?>" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label" for="sks">Status</label>
+                                                                        <select type="text"
+                                                                            class="border rounded-0 form-control"
+                                                                            style="width: 440px;margin-bottom: 15px;"
+                                                                            placeholder="Status" name="status">
+                                                                        <option
+                                                                            <?= $data['status'] == '0' ? 'selected' : '' ?>
+                                                                            value="Aktif">Belum Disetujui</option>
+                                                                        <option
+                                                                            <?= $data['status'] == '1' ? 'selected' : '' ?>
+                                                                            value="Tidak Aktif">Disetujui</option>
+                                                                        </select>
+                                                                    </div>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>
                                                                     <button type="button" class="btn btn-secondary"

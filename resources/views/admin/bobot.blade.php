@@ -25,18 +25,23 @@
 
             @foreach ($alldosen as $dosen)
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-1">
+                    @if ($dosen['status'])
+                    <div class="card border-left-primary shadow h-100 py-1" style="background-color:rgba(0,255,0,0.3);">
+                    @else
+                    <div class="card border-left-primary shadow h-100 py-1" style="background-color:rgba(255,0,0,0.3);">
+                    @endif
+                    
                         <div class="card-body">
                             <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="h5 font-weight-bold text-primary mb-3">{{ $dosen['name'] }}</div>
-                                        <strong>NIP : <span>{{ $dosen['NIP'] }}</span></strong>
-                                        <br>
+                                        <div class="h4 font-weight-bold text-primary">{{ $dosen['name'] }}</div>
+                                        <p class="h6 font-weight-bold text-primary mb-3">NIP: {{ $dosen['NIP'] }}</p>
                                         <strong>Kuota Bimbingan : <span>{{ $dosen['kuota_bimbingan'] }}</span></strong>
                                         <br>
                                         <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
                                         <br>
+                                        <strong>Status : <span>{{ $dosen['status'] ? 'Aktif' : 'Tidak Aktif'}}</span></strong>
 
 
                                     </div>
@@ -64,14 +69,6 @@
                                                 <input type="text" disabled class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Nama"
                                                     name="nama" value="<?= $dosen['name'] ?>" />
-                                                {{-- <select type="text" class="border rounded-0 form-control"
-                                                    style="width: 440px;margin-bottom: 15px;" placeholder="Gender"
-                                                    name="gender" />
-                                                <option <?= $dosen['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
-                                                    value="Laki - Laki">Laki - Laki</option>
-                                                <option <?= $dosen['gender'] == 'Perempuan' ? 'selected' : '' ?>
-                                                    value="Perempuan">Perempuan</option>
-                                                </select> --}}
                                                 <label class="p-0" for="nama">Kuota Bimbingan</label>
                                                 <input type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Alamat"
@@ -82,10 +79,10 @@
                                                 <select type="text" class="border rounded-0 form-control"
                                                     style="width: 440px;margin-bottom: 15px;" placeholder="Status"
                                                     name="status" />
-                                                <option <?= $dosen['status'] == 'Aktif' ? 'selected' : '' ?> value="Aktif">
+                                                <option <?= $dosen['status'] == 1 ? 'selected' : '' ?> value="1">
                                                     Aktif</option>
-                                                <option <?= $dosen['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                    value="Tidak Aktif">Tidak Aktif</option>
+                                                <option <?= $dosen['status'] == 0 ? 'selected' : '' ?>
+                                                    value="0">Tidak Aktif</option>
                                                 </select>
                                                 <input type="submit" class="btn btn-success" value="Save Changes"
                                                     name="update"></input>

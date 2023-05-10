@@ -153,7 +153,10 @@
                                                                 class="small text-danger">*</span></label>
                                                         <input type="email" id="email" class="form-control"
                                                             name="email" placeholder="Email"
-                                                            value="{{ old('email', Auth::user()->email) }}">
+                                                            value="{{ old('email', Auth::user()->email) }}" hidden>
+                                                        <input type="email" id="email" class="form-control"
+                                                            name="email" placeholder="Email"
+                                                            value="{{ old('email', Auth::user()->email) }}" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,7 +167,7 @@
                                                             Telepon</label>
                                                         <input type="number" id="confirm_password" class="form-control"
                                                             name="no_telp" placeholder="No. Telepon"
-                                                            value="{{ old('no_telp', Auth::user()->no_telp) }}">
+                                                            value="{{ old('no_telp', Auth::user()->no_telp) }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -182,7 +185,7 @@
                                                             for="semester">Semester</label>
                                                         <input type="number" id="semester" class="form-control"
                                                             name="semester" placeholder="Semester"
-                                                            value="{{ old('semester', Auth::user()->semester) }}">
+                                                            value="{{ old('semester', Auth::user()->semester) }}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -194,7 +197,7 @@
                                                             for="confirm_password">Alamat</label>
                                                         <input type="text area" id="confirm_password"
                                                             class="form-control" name="alamat" placeholder="Alamat Anda"
-                                                            value="{{ old('alamat', Auth::user()->alamat) }}">
+                                                            value="{{ old('alamat', Auth::user()->alamat) }}" required>
                                                     </div>
                                                 </div>
 

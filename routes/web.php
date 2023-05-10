@@ -32,11 +32,11 @@ Route::get('/dokumen', function () {
 Route::get('/info-magang', [AdminController::class, 'infomagangdepan'])->name('info-magang');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/register-dosen', [RegisterDosenController::class, 'index'])->name('register-dosen');
 Route::post('/register-dosen', [RegisterDosenController::class, 'store'])->name('register-dosen-store');
 
-// Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -62,10 +62,14 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.pengaturan');
     })->name('admin.pengaturan');
     Route::post('/admin/pengaturan', [AdminController::class, 'setting'])->name('admin.setting');
+    Route::get('/admin/berkas-nilai/berkas-akhir/{id}', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
+    Route::post('/admin/permohonan/edit/{id}', [AdminController::class, 'editpermohonan'])->name('admin.editpermohonan');
+    Route::post('/admin/list-mahasiswa/edit/{id}', [AdminController::class, 'editmahasiswa'])->name('admin.editmahasiswa');
+    // Route::get('/admin/berkas-nilai/berkas-akhir', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
 });
 
 // dosen
-Route::group(['middleware' => 'dosen'], function () {
+Route::group(['middleware' => ['dosen', 'verified']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
@@ -77,10 +81,12 @@ Route::group(['middleware' => 'dosen'], function () {
         return view('dosen.pengaturan');
     })->name('dosen.pengaturan');
     Route::post('/dosen/pengaturan', [DosenController::class, 'setting'])->name('dosen.setting');
+    Route::post('/dosen/setujuilaporan/{id}', [DosenController::class, 'setujuilaporan'])->name('dosen.setujuilaporan');
+    Route::post('/dosen/bimbingan/editbimbingan/{id}', [DosenController::class, 'editbimbingan'])->name('dosen.editbimbingan');
 });
 
 // mahasiswa
-Route::group(['middleware' => 'mahasiswa'], function () {
+Route::group(['middleware' => ['mahasiswa','verified']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
@@ -105,8 +111,9 @@ Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator', [KoorController::class, 'index'])->name('koordinator');
     Route::get('/koordinator/permohonan', [KoorController::class, 'permohonan'])->name('koordinator.permohonan');
     Route::post('/koordinator/permohonan/approved/{id}', [KoorController::class, 'approved'])->name('koordinator.approved');
-    Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
-    Route::get('/koordinator/belum-dinilai', [KoorController::class, 'belum_dinilai'])->name('koordinator.belum-dinilai');
+    // Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
+    Route::get('/koordinator/penilaian', [KoorController::class, 'penilaian'])->name('koordinator.penilaian');
+    Route::post('/koordinator/penilaian/approved/{id}', [KoorController::class, 'penilaianapproved'])->name('koordinator.penilaianapproved');
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');

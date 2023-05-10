@@ -76,8 +76,8 @@
                                             <tr>
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['NIM'] ?></td>
-                                                <td><?= $data['angkatan'] ?></td>
-                                                <td><?= $data['no_telp'] ?></td>
+                                                <td><?= $data['semester'] ?></td>
+                                                <td><a href='/admin/berkas-nilai/berkas-akhir/<?= $data['id'] ?>'>detail berkas</a></td>
                                                 <td><?= $data['username'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"

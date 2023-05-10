@@ -24,7 +24,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs = User::where('name', Auth::user()->name)->first();
+        $mhs = User::where('email', Auth::user()->email)->first();
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         // $permohonan->updated_at = Carbon::parse('2021-03-16 08:27:00')->locale('id');
@@ -41,7 +41,7 @@ class MahasiswaController extends Controller
 
     public function pendaftaran()
     {
-        $all = User::where('role_id', 4)->get();
+        $all = User::where('role_id', 4)->where('status', 1)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $alldosen = [];
         $dp = "";
@@ -53,7 +53,7 @@ class MahasiswaController extends Controller
         }
 
         if (isset($pendaftaran['dosbing'])) {
-            $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->get();
+            $all = User::where('role_id', 4)->where('name', '!=', $pendaftaran['dosbing'])->where('status', 1)->get();
             $dp = $pendaftaran['dosbing'];
         }
         foreach ($all as $dosen) {
@@ -205,6 +205,7 @@ class MahasiswaController extends Controller
 
             Penjadwalan::where('NIM', $nim)->first()->update([
                 'waktu_seminar' => $request->jadwal,
+                'ruangan' => $request->ruangan
             ]);
         } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['dosbing'];
@@ -225,6 +226,7 @@ class MahasiswaController extends Controller
                 'NIP' => User::where('name', $dosbing)->first()['NIP'],
                 'NIM' => Auth::user()->NIM,
                 'waktu_seminar' => $request->jadwal,
+                'ruangan' => $request->ruangan,
             ]);
         }
         return redirect('/mahasiswa/pengumpulan')->with('success', 'pengumpulan berkas created!');
@@ -237,7 +239,9 @@ class MahasiswaController extends Controller
         if (!isset($perusahaan)) {
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
-        $data = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+        $data = Bimbingan::join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
+        ->select('bimbingans.id', 'penjadwalans.ruangan as ruangan', 'bimbingans.NIM', 'bimbingans.jadwal', 'a1', 'b1', 'b2', 'b3', 'bimbingans.survey', 'laporan', 'makalah')
+        ->where('bimbingans.NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.pengumpulan', [
             'data' => $data,
         ]);

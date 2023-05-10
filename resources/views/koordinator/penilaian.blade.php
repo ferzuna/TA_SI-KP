@@ -52,7 +52,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">Halaman Permohonan KP</h1>
+                            <h1 class="h3 mb-2 text-gray-800">Halaman Penilaian KP</h1>
                         </div>
                         {{-- <div class="col"> <button
                                 class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
@@ -63,41 +63,44 @@
                     <div class="col-md-12">
                         <ul id="tabs" class="nav nav-tabs nav-fill">
                             <li class="nav-item"><a href="#home1" data-target="#home1" data-toggle="tab"
-                                    class="nav-link active">Belum disetujui</a></li>
+                                    class="nav-link active">Belum Dinilai</a></li>
                             <li class="nav-item"><a href="#profile1" data-target="#profile1" data-toggle="tab"
-                                    class="nav-link ">Sudah disetujui</a></li>
+                                    class="nav-link ">Sudah Dinilai</a></li>
                         </ul>
                         <div id="tabsContent" class="tab-content p-5 border border-top-0 rounded">
                             <div id="home1" class="tab-pane fade active show">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Data belum disetujui</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered data" id="dataTable" width="100%"
-                                                cellspacing="0">
+                                            <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                         <th>Nama</th>
                                                         <th>NIM</th>
                                                         <th>Perusahaan</th>
-                                                        <th>Proposal</th>
-                                                        <th>SKSk</th>
+                                                        <th>KP-A1</th>
+                                                        <th>KP-B1</th>
+                                                        <th>KP-B5</th>
+                                                        <th>Form Nilai KP</th>
                                                         <th>Status</th>
                                                         <th>Manage</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($mymahasiswa as $data)
+                                                    @foreach ($databelum as $data)
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
                                                             <td><?= $data['perusahaan'] ?></td>
-                                                            <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
-                                                            <td><?= $data['sks'] ?></td>
-                                                            <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
-                                                            <td style="display:flex;">
+                                                            <td><?= $data['a1'] ?></td>
+                                                            <td><?= $data['b1'] ?></td>
+                                                            <td><?= $data['b5'] ?></td>
+                                                            <td></td>
+                                                            <td><?= $data['status'] ?></td>
+                                                            <td style="display:flex">
                                                                 <div class="icon-wrap" data-target="tooltip" data-placement="top" title="Setujui">
                                                                     <i class="fas fa-check-circle" style="padding-left: 9px;"
                                                                         type="button" data-toggle="modal"
@@ -143,8 +146,10 @@
                                                         <td><strong>Nama</strong></td>
                                                         <td><strong>NIM</strong></td>
                                                         <td><strong>Perusahaan</strong></td>
-                                                        <td><strong>Proposal</strong></td>
-                                                        <td><strong>SKSk</strong></td>
+                                                        <td><strong>KP-A1</strong></td>
+                                                        <td><strong>KP-B1</strong></td>
+                                                        <td><strong>KP-B5</strong></td>
+                                                        <td><strong>Form Nilai KP</strong></td>
                                                         <td><strong>Status</strong></td>
                                                         <td><strong>Manage</strong></td>
                                                     </tr>
@@ -157,33 +162,35 @@
                             <div id="profile1" class="tab-pane fade">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Data sudah disetujui</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered data" id="dataTable" width="100%"
-                                                cellspacing="0">
+                                            <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                         <th>Nama</th>
                                                         <th>NIM</th>
                                                         <th>Perusahaan</th>
-                                                        <th>Proposal</th>
-                                                        <th>SKSk</th>
+                                                        <th>KP-A1</th>
+                                                        <th>KP-B1</th>
+                                                        <th>KP-B5</th>
+                                                        <th>Form Nilai KP</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($mymahasiswa1 as $data)
+                                                    @foreach ($datasudah as $data)
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
                                                             <td><?= $data['perusahaan'] ?></td>
-                                                            <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['proposal'] ?>"><?= $data['proposal'] ?></a></td>
-                                                            <td><?= $data['sks'] ?></td>
-                                                            <td>{{ $data['status'] ? 'telah disetujui' : 'belum disetujui' }}</td>
+                                                            <td><?= $data['a1'] ?></td>
+                                                            <td><?= $data['b1'] ?></td>
+                                                            <td><?= $data['b5'] ?></td>
+                                                            <td></td>
+                                                            <td><?= $data['status'] ?></td>
                                                         </tr>
-                                                        
                                                     @endforeach
                                                 </tbody>
                                                 <tfoot>
@@ -191,8 +198,10 @@
                                                         <td><strong>Nama</strong></td>
                                                         <td><strong>NIM</strong></td>
                                                         <td><strong>Perusahaan</strong></td>
-                                                        <td><strong>Proposal</strong></td>
-                                                        <td><strong>SKSk</strong></td>
+                                                        <td><strong>KP-A1</strong></td>
+                                                        <td><strong>KP-B1</strong></td>
+                                                        <td><strong>KP-B5</strong></td>
+                                                        <td><strong>Form Nilai KP</strong></td>
                                                         <td><strong>Status</strong></td>
                                                     </tr>
                                                 </tfoot>
@@ -203,7 +212,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
