@@ -222,7 +222,7 @@ class MahasiswaController extends Controller
             ]);
 
             Penjadwalan::where('NIM', $nim)->first()->update([
-                'waktu_seminar' => $request->jadwal,
+                'jadwal' => $request->jadwal,
                 'ruangan' => $request->ruangan
             ]);
 
@@ -245,7 +245,7 @@ class MahasiswaController extends Controller
             Penjadwalan::create([
                 'NIP' => User::where('name', $dosbing)->first()['NIP'],
                 'NIM' => Auth::user()->NIM,
-                'waktu_seminar' => $request->jadwal,
+                'jadwal' => $request->jadwal,
                 'ruangan' => $request->ruangan,
             ]);
             Pendaftaran::where('NIM', $nim)->first()->update([
@@ -284,7 +284,7 @@ class MahasiswaController extends Controller
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
         $data = Bimbingan::join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
-        ->select('bimbingans.id', 'penjadwalans.ruangan as ruangan', 'bimbingans.NIM', 'bimbingans.jadwal', 'pendaftarans.a1 as a1', 'b1', 'b2', 'b3', 'bimbingans.survey', 'laporan', 'makalah')
+        ->select('bimbingans.id', 'penjadwalans.ruangan as ruangan', 'bimbingans.NIM', 'penjadwalans.jadwal', 'pendaftarans.a1 as a1', 'b1', 'b2', 'b3', 'bimbingans.survey', 'laporan', 'makalah')
         ->where('bimbingans.NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.pengumpulan', [
             'data' => $data,
@@ -298,9 +298,9 @@ class MahasiswaController extends Controller
         if (!isset($perusahaan)) {
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
-        $data = Penilaian::leftJoin('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
-        ->where('penilaians.NIM', Auth::user()->NIM)
-        ->select('penilaian.id', 'bimbingans.laporan', 'bimbingans.makalah', 'kehadiran', 'penilaians.a2', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.b4', 'penilaians.b5')->first();
+        $data = Bimbingan::leftJoin('penilaians', 'bimbingans.NIM', '=', 'penilaians.NIM')
+        ->where('bimbingans.NIM', Auth::user()->NIM)
+        ->select('penilaians.id', 'bimbingans.laporan', 'bimbingans.makalah', 'kehadiran', 'penilaians.a2', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.b4', 'penilaians.b5')->first();
         return view('mahasiswa.finalisasi', [
             'data' => $data,
         ]);
@@ -344,6 +344,12 @@ class MahasiswaController extends Controller
                 'b4' => $request->b4,
                 'b5' => $request->b5,
                 'status' => 0,
+            ]);
+            Bimbingan::where('NIM', $nim)->first()->update([
+                'makalah' => $request->makalah,
+                'laporan' => $request->laporan,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
             ]);
             // apakah bimbingan perlu dibuaat juga??
 
