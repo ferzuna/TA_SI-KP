@@ -117,7 +117,7 @@
                             </div>
                             <div class="media-right">
                                 Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal :
-                                {{ isset($jadwal['jadwal']) ? $jadwal['jadwal'] : '' }}
+                                {{ isset($penjadwalan['jadwal']) ? $penjadwalan['jadwal'] : '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -125,7 +125,7 @@
 
                             </div>
                             <div class="media-right">
-                                Dosen Pembimbing : {{ isset($pendaftaran['dosbing']) ? $pendaftaran['dosbing'] : '' }}
+                                Dosen Pembimbing : {{ isset($dosbing['name']) ? $dosbing['name'] : '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -134,7 +134,7 @@
                             </div>
                             <div class="media-right">
                                 Pelaksanaan Kerja Praktik dilaksanakan di :
-                                {{ isset($pendaftaran['perusahaan']) ? $pendaftaran['perusahaan'] : '' }}
+                                {{ isset($permohonan['perusahaan']) ? $permohonan['perusahaan'] : '' }}
                             </div>
                         </div>
                         <div class="banner">

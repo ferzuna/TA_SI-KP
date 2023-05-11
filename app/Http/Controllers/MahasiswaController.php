@@ -27,14 +27,18 @@ class MahasiswaController extends Controller
         $mhs = User::where('email', Auth::user()->email)->first();
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
-        // $permohonan->updated_at = Carbon::parse('2021-03-16 08:27:00')->locale('id');
-        // $permohonan->updated_at->settings(['formatFunction' => 'translatedFormat']);
+        $dosbing = Pendaftaran::leftJoin('users', 'pendaftarans.NIP', '=', 'users.NIP')
+        ->select('users.name')
+        ->where('pendaftarans.NIM', Auth::user()->NIM)->first();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        $penjadwalan = Penjadwalan::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.home', [
             "mhs" => $mhs,
             "jadwal" => $bimbingan,
             "pendaftaran" => $pendaftaran,
             "permohonan" => $permohonan,
+            "penjadwalan" => $penjadwalan,
+            "dosbing" => $dosbing,
         ]);
         
     }
@@ -121,10 +125,18 @@ class MahasiswaController extends Controller
             }
         }
 
-        $semua = User::where('role_id', 4)->get();
+        // update bobot bimbingan pada user
+        $nyoba = Pendaftaran::where('NIP', $request->dosbing)->get();
+        $jumlah = count($nyoba);
+        User::where('NIP', $request->dosbing)->first()->update([
+            'bobot_bimbingan' => $jumlah,
+        ]);
+        // definisikan variabel
+        $semua = User::where('role_id', 4)->where('status', '1')->get();
         $all = User::all();
         $k = 0;
 
+        // update bobot bimbingan yang ga dipilih
         foreach ($all as $bimbingan) {
             $k++;
             if ($bimbingan['role_id'] == 4) {
@@ -136,6 +148,7 @@ class MahasiswaController extends Controller
             }
         }
 
+        // untuk menghitung kuota bimbingan dan bobot bimbingan
         $bobotbimbingan = 0;
         $kuotabimbingan = 0;
         $i = 0;
@@ -151,15 +164,23 @@ class MahasiswaController extends Controller
                 $kuotabimbingan += $bimbingan['kuota_bimbingan'];
             }
         }
-        if ($bobotbimbingan >= $kuotabimbingan) {
+
+        // pengondisian untuk update bobot bimbingan dosen
+        if ($bobotbimbingan >= $kuotabimbingan){
             foreach ($all as $bimbingan) {
                 $i++;
-                if ($bimbingan['role_id'] == 4) {
+                if ($bimbingan['role_id'] == 4 && $bimbingan['status'] == '1') {
                     User::find($i)->update([
                         'bobot_bimbingan' => 0,
                     ]);
                 }
             }
+        }else{
+            $apaan = User::where('NIP', $request->dosbing)->first();
+            $ini = $apaan['bobot_bimbingan'] % $apaan['kuota_bimbingan'];
+            User::where('NIP', $request->dosbing)->first()->update([
+                'bobot_bimbingan' => $ini,
+            ]);
         }
 
         return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
