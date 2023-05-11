@@ -66,7 +66,6 @@
                                             <th>NIM</th>
                                             <th>Semester</th>
                                             <th>Berkas</th>
-                                            <th>Nilai</th>
                                             <th>Status</th>
                                             <th>Manage</th>
                                         </tr>
@@ -78,14 +77,13 @@
                                                 <td><?= $data['NIM'] ?></td>
                                                 <td><?= $data['semester'] ?></td>
                                                 <td><a href='/admin/berkas-nilai/berkas-akhir/<?= $data['id'] ?>'>detail berkas</a></td>
-                                                <td><?= $data['username'] ?></td>
                                                 <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                 <td style="display:flex">
-                                                    <div style="margin-right:10px" class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                    {{-- <div style="margin-right:10px" class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Edit">
                                                         <i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                             type="button" data-toggle="modal"
                                                             data-target="#edit<?= $data['id'] ?>"></i>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Hapus">
                                                         <i class="fas fa-trash" style="padding-left: 8px;"
                                                             type="button" data-toggle="modal"
@@ -93,7 +91,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
+                                            {{-- <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
                                                 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -159,13 +157,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1"
                                                 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Delete Santri</h5>
+                                                            <h5 class="modal-title">Delete Data Berkas</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -195,7 +193,6 @@
                                             <td><strong>NIM</strong></td>
                                             <td><strong>Semester</strong></td>
                                             <td><strong>Berkas</strong></td>
-                                            <td><strong>Nilai</strong></td>
                                             <td><strong>Status</strong></td>
                                             <td><strong>Manage</strong></td>
                                         </tr>

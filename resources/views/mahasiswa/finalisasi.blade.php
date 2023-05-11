@@ -21,11 +21,6 @@
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
-                                <label for="kehadiran"><b>Form Bukti Kehadiran</b></label>
-                                <input class="form-control" type="text" name="kehadiran" value="{{ isset($data['kehadiran']) ? $data['kehadiran'] : '' }}">
-                                <div class="form-text">Input link Google Drive dokumen terkait</div>
-                            </div>
-                            <div class="form-group">
                                 <label for="a2"><b>Form KP A-2</b></label>
                                 <input class="form-control" type="text" name="a2" value="{{ isset($data['a2']) ? $data['a2'] : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
