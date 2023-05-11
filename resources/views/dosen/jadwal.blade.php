@@ -23,6 +23,7 @@
                                         <tr>
                                             <th>Nama</th>
                                             <th>Nama Perusahaan</th>
+                                            <th>Bukti Seminar (10)</th>
                                             <th>Tanggal</th>
                                             <th>Ruangan</th>
                                         </tr>
@@ -32,6 +33,7 @@
                                             <tr>
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
+                                                <td style="max-width: 200px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['kehadiran'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['kehadiran'] ?></a></td>
                                                 <td><?= $data['jadwal'] ?></td>
                                                 <td><?= $data['ruangan'] ?></td>
                                                 </td>
@@ -104,39 +106,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="deletemas<?= $data['id'] ?>" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Delete Santri</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="col-md-6">
-                                                                <form method="POST"
-                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
-                                                                    @csrf
-                                                                    <h6>Apakah Anda Yakin?</h6>
-                                                                    <input type="submit" class="btn btn-success"
-                                                                        value="Okay" name="delete"></input>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Close</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td><strong>Nama</strong></td>
                                             <td><strong>Nama Perusahaan</strong></td>
+                                            <td><strong>Bukti Seminar (10)</strong></td>
                                             <td><strong>Tanggal</strong></td>
                                             <td><strong>Ruangan</strong></td>
                                         </tr>

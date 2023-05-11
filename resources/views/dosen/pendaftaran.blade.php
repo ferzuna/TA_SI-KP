@@ -34,14 +34,11 @@
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
-                                                <td><a href="<?= $data['a1'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['a1'] ?></a></td>
-                                                <td ><a href="<?= $data['bukti'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['bukti'] ?></a></td>
+                                                <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['a1'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['a1'] ?></a></td>
+                                                <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['bukti'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['bukti'] ?></a></td>
                                                 <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                         type="button" data-toggle="modal"
                                                         data-target="#edit<?= $data['id'] ?>"></i>
-                                                    <i class="material-icons icondelete" style="padding-left: 8px;"
-                                                        type="button" data-toggle="modal"
-                                                        data-target="#deletemas<?= $data['id'] ?>">delete</i>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"

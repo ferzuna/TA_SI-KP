@@ -26,8 +26,7 @@
                                         <input type="text" class="border rounded-0 form-control"
                                             style="width: 440px;margin-bottom: 15px;" placeholder="Durasi"
                                             name="durasi" />
-                                        <input type="text" class="border rounded-0 form-control" placeholder="Requirement"
-                                            style="margin-bottom: 15px;width: 440px;" name="requirement" />
+                                        <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control"></textarea>
                                         <input type="submit" class="btn btn-success" value="Save Changes"
                                             name="submit"></input>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -125,11 +124,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="requirement">Requirement</label>
-                                                                        <input type="text"
-                                                                            class="border rounded-0 form-control"
-                                                                            placeholder="requirement"
-                                                                            style="margin-bottom: 15px;width: 440px;"
-                                                                            name="requirement" value="<?= $data['requirement'] ?>" />
+                                                                    <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control"></textarea>
                                                                     </div>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>
