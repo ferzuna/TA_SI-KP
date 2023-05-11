@@ -131,7 +131,7 @@
                                                                 class="small text-danger">*</span></label>
                                                         <input type="number" id="name" class="form-control"
                                                             name="NIM" placeholder="NIM"
-                                                            value="{{ old('nim', Auth::user()->NIM) }}">
+                                                            value="{{ old('nim', Auth::user()->NIM) }}" disabled>
                                                     </div>
                                                 </div>
                                             </div>
