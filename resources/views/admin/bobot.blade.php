@@ -34,7 +34,7 @@
                 @endif
                 
                     <div class="card-body">
-                        <a href="{{ route('bobot-list') }}" class="text-decoration-none text-dark">
+                        <a href="{{ route('bobot-list', $dosen['id']) }}" class="text-decoration-none text-dark">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="h4 font-weight-bold text-primary">{{ $dosen['name'] }}</div>
