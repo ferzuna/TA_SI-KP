@@ -68,7 +68,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 // dosen
-Route::group(['middleware' => ['dosen', 'verified']], function () {
+Route::group(['middleware' => ['dosen']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
@@ -85,7 +85,7 @@ Route::group(['middleware' => ['dosen', 'verified']], function () {
 });
 
 // mahasiswa
-Route::group(['middleware' =>[ 'mahasiswa','verified']], function () {
+Route::group(['middleware' =>[ 'mahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
