@@ -41,4 +41,22 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pendaftaran(){
+        return $this->hasOne(Pendaftaran::class, 'NIM', 'NIM')->latest();
+    }
+    public function permohonan(){
+        return $this->hasOne(Permohonan::class, 'NIM', 'NIM')->latest();
+    }
+    public function bimbingan(){
+        return $this->hasOne(Bimbingan::class, 'NIM', 'NIM')->latest();
+    }
+    public function penilaian(){
+        return $this->hasOne(Penilaian::class, 'NIM', 'NIM')->latest();
+    }
+    public function penjadwalan(){
+        return $this->hasOne(Penjadwalan::class, 'NIM', 'NIM')->latest();
+    }
+
+    
 }
