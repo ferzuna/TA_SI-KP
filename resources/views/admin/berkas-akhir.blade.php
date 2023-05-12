@@ -28,14 +28,8 @@
                     @endif
 
                     <div class="row">
-
                         <div class="col-lg-4 order-lg-2">
-
-                        <div class="card shadow mb-4">
-                                    {{-- <div class="card-profile-image mt-4">
-    
-                                    </div> --}}
-
+                            <div class="card shadow mb-4">
                                     <div class="avatar-upload">
                                         <div class="avatar-preview">
                                             @if ($mhs['image'])
@@ -64,10 +58,8 @@
 
                                         
                                     </div>
-                                </div>
-
+                            </div>
                         </div>
-
                         <div class="col-lg-8 order-lg-1">
 
                             <div class="card shadow mb-4">
@@ -184,7 +176,6 @@
                             </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
