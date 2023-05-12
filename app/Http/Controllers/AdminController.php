@@ -102,7 +102,8 @@ class AdminController extends Controller
     public function permohonan()
     {
         $permohonan = Permohonan::join('users', 'permohonans.NIM', '=', 'users.NIM')
-        ->select('permohonans.id as id', 'users.name as name', 'users.NIM as NIM', 'perusahaan', 'proposal', 'users.sks as sks', 'permohonans.status as status')->get();
+        ->select('permohonans.id as id', 'users.name as name', 'users.NIM as NIM', 'perusahaan', 'proposal', 'users.sks as sks', 'permohonans.status as status')
+        ->orderBy('permohonans.updated_at', 'desc')->get();
         // $permohonan = Permohonan::leftjoin('users', 'permohonans.NIM', '=', 'users.NIM')->get();
         // $permohonan = Permohonan::all();
         return view('admin.permohonan', [
@@ -192,7 +193,7 @@ class AdminController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $file = $request->file('imageUpload')->store('avatar-images/mahasiswa');
+            $file = $request->file('imageUpload')->store('./public/avatar-images/admin');
         }
 
         User::find(Auth::user()->id)->update([
@@ -213,6 +214,9 @@ class AdminController extends Controller
         $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
         ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
         ->join('penilaians', 'users.NIM', 'penilaians.NIM')
+        ->select('users.id', 'users.name', 'users.semester','users.image', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.bukti', 'bimbingans.laporan',
+         'bimbingans.makalah', 'pendaftarans.a1', 'bimbingans.b1', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.a2',
+          'penilaians.b4', 'penilaians.b5')
         ->where('users.id', $id)->first();
         // dd($mhs);
         return view('admin.berkas-akhir', [
@@ -237,5 +241,10 @@ class AdminController extends Controller
             'sks' => $request->sks,
         ]);
         return redirect('/admin/list-mahasiswa');
+    }
+
+    public function deletepermohonan($id){
+        Permohonan::find($id)->delete();
+        return redirect('/admin/permohonan');
     }
 }

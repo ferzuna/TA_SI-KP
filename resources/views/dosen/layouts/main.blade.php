@@ -27,7 +27,7 @@
     <div id="wrapper" class="app-koordinator">
         @include('dosen.layouts.navbar')
         <div id="content-wrapper" class="d-flex flex-column">
-            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="border-bottom:2px solid black">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
                         id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                     <ul class="nav navbar-nav flex-nowrap ml-auto">

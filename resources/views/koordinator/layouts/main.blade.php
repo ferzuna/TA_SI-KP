@@ -28,7 +28,7 @@
     <div class="app-koordinator">
         @include('koordinator.layouts.navbar')
         <div id="content-wrapper" class="d-flex flex-column" style="width: 100%">
-            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="border-bottom:2px solid black">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
                         id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                     <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -51,9 +51,29 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         data-toggle="dropdown" aria-expanded="false" href="#"><span
                                             class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::user()->name }}</span>
-                                        <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                            data-initial="{{ Auth::user()->name[0] }}">
-                                        </figure>
+                                        @if (Auth::user()->image)
+                                            {{-- <div id="imagePreview"
+                                                style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
+                                            </div> --}}
+                                            <figure class="img-profile rounded-circle avatar font-weight-bold"
+                                                style="background-image: url({{ asset('storage/' . Auth::user()->image) }});
+                                                object-fit: fill;
+                                                background-size: cover;
+                                                background-repeat: no-repeat;
+                                                background-position: center;
+                                                width: 45px;
+                                                height: 45px;
+                                                border-radius: 50%;
+                                                overflow: hidden;
+                                                opacity: 1;
+                                                display: inline-flex;
+                                                vertical-align: middle;">
+                                            </figure>
+                                        @else()
+                                            <figure class="img-profile rounded-circle avatar font-weight-bold"
+                                                data-initial="{{ Auth::user()->name[0] }}">
+                                            </figure>
+                                        @endif
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -116,7 +136,7 @@
     });
     </script>
 
-
+    @yield('script')
 </body>
 
 </html>

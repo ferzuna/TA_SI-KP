@@ -61,3 +61,57 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
+  .avatar-border {
+    border-radius:20px 20px 20px 20px; 
+    border:2px solid black
+  }
+
+  .welcome-koordinator .banner .media-right {
+    display: block;
+    background-color: white;
+    border: 2px solid black;
+    padding: 15px 1em;
+    border-left: 4em solid #032E42;
+    border-radius: 5px 0px 0px 5px;
+    margin: 2em 0px
+  }
+
+  .notif-border {
+    border-right:1px solid black !important;
+    border-top:1px solid black !important;
+  }
+
+  .card-border {
+    border-radius:20px 20px 20px 20px !important; 
+    border:2px solid black !important;
+  }
+
+  .card-border-pengaturan {
+    border-top: 15px solid black !important;
+    border-bottom: 15px solid black !important;
+    border-left: 2px solid black !important;
+    border-right: 2px solid black !important;
+    border-radius: 25px !important;
+  }
+  .card-header-border {
+    background-color: #FA6560; 
+    border-radius:20px 20px 0px 0px; 
+    border-bottom: 2px solid black;
+  }
+
+  .card-header-border-about {
+    background-color: #436C34;
+    border-radius:20px 20px 0px 0px; 
+    border-bottom: 2px solid black;
+  }
+
+  #bobot {
+    border-right: 10px solid black;
+  }
+
+  .nav-link.active {
+    color: white !important;
+    background-color: #436C34 !important;
+  }
+

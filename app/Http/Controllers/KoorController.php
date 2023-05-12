@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
+use Illuminate\Http\Request;
 use App\Http\Middleware\Koor;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreKoorRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateKoorRequest;
 
 class KoorController extends Controller
@@ -53,15 +55,17 @@ class KoorController extends Controller
 
     public function penilaian()
     {
-        $datasudah = Penilaian::rightjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
+        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
         ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
         ->where('penilaians.status', 1)->get();
-        $databelum = Penilaian::rightjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.a1', 'bimbingans.b1', 'penilaians.b5', 'penilaians.status as status')
         ->where('penilaians.status', 0)->get();
         // dd($datas);
         return view('koordinator.penilaian', [
@@ -75,6 +79,35 @@ class KoorController extends Controller
             'status' => 1,
         ]);
         return redirect('/koordinator/penilaian');
+    }
+
+    public function setting(Request $request)
+    {
+        $this->validate($request, [
+            'imageUpload' => 'image|file|max:5120',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'email' => 'required|email',
+        ]);
+
+        if ($request->file('imageUpload') == null) {
+            $file = $request->oldImage;
+        } elseif ($request->file('imageUpload')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $file = $request->file('imageUpload')->store('./public/avatar-images/koor');
+        }
+
+        User::find(Auth::user()->id)->update([
+
+            'image' => $file,
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'new_password' => $request->new_password,
+        ]);
+        return redirect('/admin')->with('success', 'Profil Berhasil Diperbarui');
     }
 
     public function create()

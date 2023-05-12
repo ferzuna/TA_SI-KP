@@ -65,11 +65,12 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/berkas-nilai/berkas-akhir/{id}', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
     Route::post('/admin/permohonan/edit/{id}', [AdminController::class, 'editpermohonan'])->name('admin.editpermohonan');
     Route::post('/admin/list-mahasiswa/edit/{id}', [AdminController::class, 'editmahasiswa'])->name('admin.editmahasiswa');
+    Route::post('/admin/permohonan/delete/{id}', [AdminController::class, 'deletepermohonan'])->name('admin.deletepermohonan');
     // Route::get('/admin/berkas-nilai/berkas-akhir', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
 });
 
 // dosen
-Route::group(['middleware' => ['dosen', 'verified']], function () {
+Route::group(['middleware' => 'dosen'], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
@@ -86,7 +87,7 @@ Route::group(['middleware' => ['dosen', 'verified']], function () {
 });
 
 // mahasiswa
-Route::group(['middleware' => ['mahasiswa','verified']], function () {
+Route::group(['middleware' => 'mahasiswa'], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
@@ -117,6 +118,7 @@ Route::group(['middleware' => 'koor'], function () {
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');
+    Route::post('/koordinator/pengaturan', [KoorController::class, 'setting'])->name('koordinator.setting');
 });
 
 

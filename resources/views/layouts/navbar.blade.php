@@ -6,19 +6,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0">
+            <ul class="navbar-nav">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dokumen') }}">Dokumen KP</a>
-                </li>
             </ul>
-            <div class="btn-login">
-                <a href="{{ route('login') }}">
-                    <button type="button" class="btn btn-light" style="border-radius: 24px">
-                        <div style="padding: 0px 10px; font-size: 14px; font-weight: 600">Login</div>
-                    </button>
-                </a>
-            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dokumen') }}" style="">Dokumen KP</a>
+                </li>
+                <li class="nav-item">
+                    <div class="divider-vertical"></div>
+                </li>
+                <div class="btn-login">
+                    <a href="{{ route('login') }}">
+                        <button type="button" class="btn btn-light" style="border-radius: 10px; background-color:#0B87BA">
+                            <div style="padding: 0px 15px; font-size: 14px; font-weight: 600; color:aliceblue">Login</div>
+                        </button>
+                    </a>
+                </div>
+            </ul>
         </div>
     </div>
 </nav>

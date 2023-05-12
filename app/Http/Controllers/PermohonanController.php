@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Bimbingan;
+use App\Models\Penilaian;
 use App\Models\Permohonan;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\Controller;
 
 class PermohonanController extends Controller
 {
@@ -35,7 +39,6 @@ class PermohonanController extends Controller
             ]);
         }else{
         $contact = [
-            'name' => Auth::user()->name,
             'NIM' => Auth::user()->NIM,
             'email' => Auth::user()->email,
             'perusahaan' => $request->perusahaan,
@@ -45,6 +48,27 @@ class PermohonanController extends Controller
             'status'=> false,
         ];
         Permohonan::create($contact);
+
+        $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+        $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
+        if(isset($status3)){
+            User::where('NIM', Auth::user()->NIM)->first()->update([
+                'status' => 'Selesai KP'
+            ]);
+        }else if(isset($status2)){
+            User::where('NIM', Auth::user()->NIM)->first()->update([
+                'status' => 'Bimbingan KP'
+            ]);
+        }else if(isset($status1)){
+            User::where('NIM', Auth::user()->NIM)->first()->update([
+                'status' => 'Pendaftaran KP'
+            ]);
+        }else{
+            User::where('NIM', Auth::user()->NIM)->first()->update([
+                'status' => 'Permohonan KP'
+            ]);
+        }
     }
 
         try {

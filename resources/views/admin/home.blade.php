@@ -2,7 +2,16 @@
 
 @section('section')
     <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Sistem Informasi Kerja Praktik') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800"><b>{{ __('Sistem Informasi Kerja Praktik') }}</b></h1>
+        <div class="welcome-koordinator banner media-right">
+            <div class="banner">
+                <div class="media-right">
+                    Anda telah Log In
+                </div>
+            </div>
+            
+        </div>
+        
 
         @if (session('success'))
             <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -23,15 +32,16 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-left-primary border-bottom-primary shadow h-100 py-2 notif-border">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Mahasiswa Aktif</div>
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Mahasiswa Bimbingan
+                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">aktif</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-user-alt fa-2x text-gray-300"></i>
+                                <i class="fas fa-user-alt fa-2x"></i>
                             </div>
                         </div>
                     </div>
@@ -40,11 +50,12 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
+                <div class="card border-left-success border-bottom-success shadow h-100 py-2 notif-border">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Santri Tidak Aktif
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Berkas yang Belum di
+                                    Tanda Tangan
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">noaktif</div>
                             </div>
@@ -58,15 +69,16 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
+                <div class="card border-left-info border-bottom-info shadow h-100 py-2 notif-border">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Santri Putra</div>
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Berkas yang sudah di
+                                    tanda tangan</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">putra</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-male fa-2x text-gray-300"></i>
+                                <i class="fas fa-male fa-2x"></i>
                             </div>
                         </div>
                     </div>
@@ -75,11 +87,12 @@
 
             <!-- Users -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card border-left-warning border-bottom-warning shadow h-100 py-2 notif-border">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Santri Putri</div>
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Jadwal Seminar KP
+                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">putri</div>
                             </div>
                             <div class="col-auto">
@@ -95,14 +108,14 @@
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header-primary py-3">
-                        <h6 class="m-0 font-weight-bold text-gray-100">Welcome</h6>
+                <div class="card card-border shadow mb-4">
+                    <div class="card-header-primary card-header-border py-3">
+                        <h4 class="m-0 font-weight-bold px-3" style="color:black">Welcome</h4>
                     </div>
                     <div class="card-body">
                         <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
-                            <b>Selamat Datang Fadzil </b></br></br>
-                            Anda telah login sebagai Administrator, Silahkan menggunakan menu di panel kiri.
+                            <b>Selamat Datang {{Auth::user()->name}} </b></br></br>
+                            Anda telah login sebagai Admin, Silahkan menggunakan menu di panel kiri.
                         </div>
                     </div>
                 </div>
@@ -112,21 +125,18 @@
             <div class="col-lg-6 mb-4">
 
                 <!-- Illustrations -->
-                <div class="card shadow mb-4">
-                    <div class="card-header-success py-3">
-                        <h6 class="m-0 font-weight-bold text-gray-100">About</h6>
+                <div class="card card-border shadow mb-4">
+                    <div class="card-header-primary card-header-border-about py-3">
+                        <h4 class="m-0 font-weight-bold px-3" style="color:black">About</h4>
                     </div>
                     <div class="card-body">
                         <div class="text-center">
-                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 card-border p-3" style="width: 25rem;"
                                 src="{{ asset('img/logoUndip.svg') }}" alt="">
                         </div>
-                        <p class="text-justify">Pondok Pesantren Darul Ilmi ini didirikan pada tahun 2018. Berawal dari
-                            kontrak
-                            asrama hingga dapat membangun bangunan pesantren pada tahun 2020. Pesantren modern berbasis
-                            digital
-                            dan entrepreneurship yang menjadi santri mahir dalam teknologi serta mampu beradaptasi dengan
-                            perkembangan zaman.</p>
+                        <p class="text-justify">Kerja Praktik (KP) merupakan salah satu syarat kelulusan yang harus ditempuh
+                            oleh mahasiswa, salah satunya pada Departemen Teknik Komputer Universitas Diponegoro (Undip).
+                            Tujuan KP adalah memperkenalkan mahasiswa pada situasi di dunia kerja yang sesungguhnya</p>
                     </div>
                 </div>
 

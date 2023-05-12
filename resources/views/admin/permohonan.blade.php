@@ -52,7 +52,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800">Halaman Permohonan KP</h1>
+                            <h1 class="h3 mb-2 text-gray-800"><b>Halaman Permohonan KP</b></h1>
                         </div>
                         {{-- <div class="col"> <button
                                 class="btn btn-outline-success btn-sm float-none float-sm-none add-another-btn"
@@ -193,7 +193,7 @@
                                                         <div class="modal-body">
                                                             <div class="col-md-6">
                                                                 <form method="POST"
-                                                                    action="{{-- route('santri.destroy',$data['id']) --}}">
+                                                                    action="{{ route('admin.deletepermohonan',$data['id']) }}">
                                                                     @csrf
                                                                     <h6>Apakah Anda Yakin?</h6>
                                                                     <input type="submit" class="btn btn-success"
