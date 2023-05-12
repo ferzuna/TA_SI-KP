@@ -77,7 +77,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group focused">
                                                         <label class="form-control-label" for="name">Nama</label>
-                                                        <div class="form-control">{{ $mhs['name'] }}</div>
+                                                        <div class="form-control" style="overflow-y:hidden; white-space: nowrap;">{{ $mhs['name'] }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">

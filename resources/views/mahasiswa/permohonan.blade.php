@@ -54,12 +54,12 @@
                             <div class="form-group">
                                 <label for="jadwal-seminar"><b>Tanggal Mulai</b></label>
                                 <input class="form-control" type="date" name="mulai" placeholder="dd-mm-yyyy" id=""
-                                    value="{{ isset($data['mulai']) ? $data['mulai'] : '' }}">
+                                    value="{{ isset($data['mulai']) ? $data['mulai'] : '' }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="jadwal-seminar"><b>Tanggal Selesai</b></label>
                                 <input class="form-control" type="date" name="selesai" id=""
-                                    value="{{ isset($data['selesai']) ? $data['selesai'] : '' }}">
+                                    value="{{ isset($data['selesai']) ? $data['selesai'] : '' }}" required>
                             </div>
                             
                         </div>

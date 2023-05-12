@@ -120,16 +120,16 @@
                                                                         <input type="text"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
-                                                                            placeholder="NIM" name="NIM"
-                                                                            value="<?= $data['NIM'] ?>" />
+                                                                            placeholder="Nama" name="name"
+                                                                            value="<?= $data['name'] ?>" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="NIM">NIM</label>
-                                                                        <input type="text"
+                                                                        <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
-                                                                            placeholder="Nama" name="nama"
-                                                                            value="<?= $data['name'] ?>" />
+                                                                            placeholder="NIM" name="NIM"
+                                                                            value="<?= $data['NIM'] ?>" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="proposal">Proposal</label>
@@ -155,7 +155,7 @@
                                                                             placeholder="Jumlah SKS" name="sks"
                                                                             value="<?= $data['sks'] ?>" />
                                                                     </div>
-                                                                    <div class="form-group">
+                                                                    {{-- <div class="form-group">
                                                                         <label class="form-control-label" for="sks">Status</label>
                                                                         <select type="text"
                                                                             class="border rounded-0 form-control"
@@ -168,7 +168,7 @@
                                                                             <?= $data['status'] == '1' ? 'selected' : '' ?>
                                                                             value="Tidak Aktif">Disetujui</option>
                                                                         </select>
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>
                                                                     <button type="button" class="btn btn-secondary"
@@ -210,7 +210,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td><strong>Nama</strong></td>
+                                            <td><strong>NIM</strong></td>
                                             <td><strong>NIM</strong></td>
                                             <td><strong>Perusahaan</strong></td>
                                             <td><strong>Proposal</strong></td>
