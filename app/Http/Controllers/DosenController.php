@@ -64,29 +64,30 @@ class DosenController extends Controller
         ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
         ->join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
         ->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
-        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP')->where('bimbingans.status', '')->where('pendaftarans.NIP', Auth::user()->NIP)->get();
+        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP', 'bimbingans.laporan')->where('bimbingans.status', null)->where('pendaftarans.NIP', Auth::user()->NIP)->get();
         $bimbingan1 = Bimbingan::leftJoin('users', function($join) {
             $join->on('bimbingans.NIM', '=', 'users.NIM');
         })->join('permohonans', 'users.NIM', 'permohonans.NIM')
         ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
         ->join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
         ->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
-        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP')->where('bimbingans.status', 'revisi')->where('pendaftarans.NIP', Auth::user()->NIP)->get();
+        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP', 'bimbingans.laporan')->where('bimbingans.status', 'revisi')->where('pendaftarans.NIP', Auth::user()->NIP)->get();
         $bimbingan3 = Bimbingan::leftJoin('users', function($join) {
             $join->on('bimbingans.NIM', '=', 'users.NIM');
         })->join('permohonans', 'users.NIM', 'permohonans.NIM')
         ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
         ->join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
         ->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
-        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP')->where('bimbingans.status', 'sudah direvisi')->where('pendaftarans.NIP', Auth::user()->NIP)->get();
+        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP', 'bimbingans.laporan')->where('bimbingans.status', 'sudah direvisi')->where('pendaftarans.NIP', Auth::user()->NIP)->get();
         $bimbingan2 = Bimbingan::leftJoin('users', function($join) {
             $join->on('bimbingans.NIM', '=', 'users.NIM');
         })->join('permohonans', 'users.NIM', 'permohonans.NIM')
         ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
         ->join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
         ->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
-        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP')
+        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP', 'bimbingans.laporan')
         ->where('bimbingans.status', 'acc')->where('pendaftarans.NIP', Auth::user()->NIP)->get();
+        // dd($bimbingan);
         return view('dosen.bimbingan', [
             'bimbingan'=>$bimbingan,
             'bimbingan1'=>$bimbingan1,
@@ -119,6 +120,7 @@ class DosenController extends Controller
             $join->on('pendaftarans.NIM', '=', 'users.NIM');
         })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
         ->join('permohonans', 'pendaftarans.NIM', '=', 'permohonans.NIM')
+        ->join('penilaians', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->where('pendaftarans.NIP', Auth::user()->NIP)->get();
         return view('dosen.jadwal', [
             'seminar' => $seminar,

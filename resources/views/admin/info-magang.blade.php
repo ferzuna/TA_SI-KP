@@ -124,7 +124,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="requirement">Requirement</label>
-                                                                    <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control"></textarea>
+                                                                    <textarea style="margin-bottom: 15px;width: 440px;" value="<?= $data['requirements'] ?>" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control" ></textarea>
                                                                     </div>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>

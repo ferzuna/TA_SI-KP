@@ -109,7 +109,7 @@
                                                                     @csrf
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="NIM">NIM</label>
-                                                                        <input type="text"
+                                                                        <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="NIM" name="NIM"
@@ -125,7 +125,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="semester">Semester</label>
-                                                                        <input type="text"
+                                                                        <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Semester" name="semester"
@@ -133,7 +133,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="no_telp">No Telepon</label>
-                                                                        <input type="text"
+                                                                        <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="No Telpon" name="no_telp"
@@ -141,7 +141,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="sks">Jumlah SKS</label>
-                                                                        <input type="text"
+                                                                        <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             placeholder="Jumlah SKS"
                                                                             style="margin-bottom: 15px;width: 440px;"

@@ -49,7 +49,7 @@
                             <li class="nav-item dropdown no-arrow" role="presentation">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         data-toggle="dropdown" aria-expanded="false" href="#"><span
-                                            class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::user()->name }}</span>
+                                            class="d-none d-lg-inline mr-2 text-gray-600 small">{{ substr(Auth::user()->name, 0,  20) }}</span>
                                             @if (Auth::user()->image)
                                             {{-- <div id="imagePreview"
                                                 style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
