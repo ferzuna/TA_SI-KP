@@ -68,7 +68,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 // dosen
-Route::group(['middleware' => ['dosen']], function () {
+Route::group(['middleware' => ['dosen', 'verified']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
