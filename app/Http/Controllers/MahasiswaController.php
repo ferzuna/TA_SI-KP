@@ -182,7 +182,12 @@ class MahasiswaController extends Controller
         }else{
             foreach ($semua as $bimbingan){
                 $ini = $bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'];
-                if ($ini == 0){
+                if($ini == 0 && $bimbingan['bobot_bimbingan'] == 0){
+                    User::where('NIP', $bimbingan['NIP'])->first()->update([
+                        'bobot_bimbingan' => 0,
+                    ]);
+                }
+                else if ($ini == 0){
                     User::where('NIP', $bimbingan['NIP'])->first()->update([
                         'bobot_bimbingan' => $bimbingan['kuota_bimbingan'],
                     ]);
