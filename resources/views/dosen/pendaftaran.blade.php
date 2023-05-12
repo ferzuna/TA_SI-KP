@@ -25,7 +25,7 @@
                                             <th>KP-A1</th>
 
                                             <th>Surat Diterima</th>
-                                            {{-- <th>Manage</th> --}}
+                                            <th>Manage</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -121,7 +121,7 @@
                                             <td><strong>Nama Perusahaan</strong></td>
                                             <td><strong>KP-A1</strong></td>
                                             <td><strong>Surat Diterima</strong></td>
-                                            {{-- <td><strong>Manage</strong></td> --}}
+                                            <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>
