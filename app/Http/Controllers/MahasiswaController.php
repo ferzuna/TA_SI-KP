@@ -194,7 +194,7 @@ class MahasiswaController extends Controller
             }
         }
 // dd($semua);
-        return redirect('/mahasiswa/pendaftaran')->with('success', 'pendaftaran created!');
+        return redirect('/mahasiswa/pendaftaran')->with('status', 'pendaftaran created!');
     }
 
     public function exportPdf()
@@ -330,7 +330,7 @@ class MahasiswaController extends Controller
                 ]);
             }
         }
-        return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
+        return redirect('/mahasiswa/pengumpulan')->with('status', 'pengumpulan berkas created!');
     }
 
     public function pengumpulan()
@@ -430,7 +430,7 @@ class MahasiswaController extends Controller
                 ]);
             }
         }
-        return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
+        return redirect('/mahasiswa/finalisasi')->with('status', 'finalisasi berkas created!');
     }
 
     public function setting(Request $request)
