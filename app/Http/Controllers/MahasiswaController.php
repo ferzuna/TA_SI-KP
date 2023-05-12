@@ -126,32 +126,37 @@ class MahasiswaController extends Controller
         }
 
         // update bobot bimbingan pada user
-        $nyoba = Pendaftaran::where('NIP', $request->dosbing)->get();
-        $jumlah = count($nyoba);
-        User::where('NIP', $request->dosbing)->first()->update([
-            'bobot_bimbingan' => $jumlah,
-        ]);
+        // $nyoba = Pendaftaran::where('NIP', $request->dosbing)->get();
+        // $jumlah = count($nyoba);
+        // User::where('NIP', $request->dosbing)->first()->update([
+        //     'bobot_bimbingan' => $jumlah,
+        // ]);
         // definisikan variabel
         $semua = User::where('role_id', 4)->where('status', '1')->get();
-        $all = User::all();
-        $k = 0;
 
         // update bobot bimbingan yang ga dipilih
-        foreach ($all as $bimbingan) {
-            $k++;
-            if ($bimbingan['role_id'] == 4) {
-                $bobot = Pendaftaran::where('NIP', $bimbingan['NIP'])->get();
-                $jumlah = count($bobot);
-                User::find($k)->update([
-                    'bobot_bimbingan' => $jumlah,
-                ]);
-            }
+        // foreach ($all as $bimbingan) {
+        //     $k++;
+        //     if ($bimbingan['role_id'] == 4) {
+        //         $bobot = Pendaftaran::where('NIP', $bimbingan['NIP'])->get();
+        //         $jumlah = count($bobot);
+        //         User::find($k)->update([
+        //             'bobot_bimbingan' => $jumlah,
+        //         ]);
+        //     }
+        // }
+        foreach($semua as $bimbingan){
+            $bobot = Pendaftaran::where('NIP', $bimbingan['NIP'])->get();
+            $jumlah = count($bobot);
+            User::where('NIP', $bimbingan['NIP'])->first()->update([
+                'bobot_bimbingan' => $jumlah
+            ]);
         }
-
         // untuk menghitung kuota bimbingan dan bobot bimbingan
         $bobotbimbingan = 0;
         $kuotabimbingan = 0;
         $i = 0;
+        $semua = User::where('role_id', 4)->where('status', '1')->get();
         foreach ($semua as $bimbingan) {
             if ($bimbingan['bobot_bimbingan'] == 0) {
                 $bobotbimbingan += $bimbingan['bobot_bimbingan'];
@@ -164,32 +169,32 @@ class MahasiswaController extends Controller
                 $kuotabimbingan += $bimbingan['kuota_bimbingan'];
             }
         }
-
+// dd($bobotbimbingan);
         // pengondisian untuk update bobot bimbingan dosen
         if ($bobotbimbingan >= $kuotabimbingan){
-            foreach ($all as $bimbingan) {
-                $i++;
+            foreach ($semua as $bimbingan) {
                 if ($bimbingan['role_id'] == 4 && $bimbingan['status'] == '1') {
-                    User::find($i)->update([
+                    User::where('NIP', $bimbingan['NIP'])->first()->update([
                         'bobot_bimbingan' => 0,
                     ]);
                 }
             }
         }else{
-            $apaan = User::where('NIP', $request->dosbing)->first();
-            $ini = $apaan['bobot_bimbingan'] % $apaan['kuota_bimbingan'];
-            if ($ini == 0){
-                User::where('NIP', $request->dosbing)->first()->update([
-                    'bobot_bimbingan' => $apaan['kuota_bimbingan'],
-                ]);
-            }else{
-                User::where('NIP', $request->dosbing)->first()->update([
-                    'bobot_bimbingan' => $ini,
-                ]);
+            foreach ($semua as $bimbingan){
+                $ini = $bimbingan['bobot_bimbingan'] % $bimbingan['kuota_bimbingan'];
+                if ($ini == 0){
+                    User::where('NIP', $bimbingan['NIP'])->first()->update([
+                        'bobot_bimbingan' => $bimbingan['kuota_bimbingan'],
+                    ]);
+                }else{
+                    User::where('NIP', $bimbingan['NIP'])->first()->update([
+                        'bobot_bimbingan' => $ini,
+                    ]);
+                }
             }
         }
-
-        return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
+// dd($semua);
+        return redirect('/mahasiswa/pendaftaran')->with('success', 'pendaftaran created!');
     }
 
     public function exportPdf()
