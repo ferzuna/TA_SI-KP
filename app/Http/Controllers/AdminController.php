@@ -247,4 +247,16 @@ class AdminController extends Controller
         Permohonan::find($id)->delete();
         return redirect('/admin/permohonan');
     }
+
+    public function bobotlist($id){
+        $find = User::find($id);
+        $datas = Pendaftaran::leftJoin('permohonans', 'pendaftarans.NIM', '=', 'permohonans.NIM')
+        ->join('users', 'pendaftarans.NIM', '=', 'users.NIM')
+        ->select('users.name', 'permohonans.perusahaan', 'users.semester', 'users.status', 'users.NIM', 'users.id')
+        ->where('pendaftarans.NIP', $find['NIP'])->get();
+        return view('admin.bobot-list', [
+            'datas' => $datas,
+            'dosen' => $find['name'],
+        ]);
+    }
 }
