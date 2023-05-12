@@ -21,7 +21,7 @@ class CreatePenilaiansTable extends Migration
             $table->string('a2')->nullable();
             $table->string('b4')->nullable();
             $table->string('b5')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
