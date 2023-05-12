@@ -51,7 +51,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/bobot', [DosenController::class, 'bobotdosen'])->name('bobot');
     Route::get('/admin/permohonan', [AdminController::class, 'permohonan'])->name('admin.permohonan');
     Route::post('/admin/bobot/update/{id}', [DosenController::class, 'kuotabimbingan'])->name('kuota');
-    Route::get('/admin/bobot/bobot-list/{id}', [AdminController::class, 'bobotlist'])->name('bobot-list');
+    Route::get('/admin/bobot/bobot-list/{id}', [AdminController::class, 'bobotlist'])->name('admin.bobot-list');
     Route::get('/admin/list-mahasiswa', [AdminController::class, 'allmhs'])->name('admin.list-mahasiswa');
     Route::post('/admin/list-mahasiswa/search', [AdminController::class, 'search'])->name('admin.search');
     Route::post('/admin/list-mahasiswa/destroy/{id}', [AdminController::class, 'mhsdestroy'])->name('admin.mhsdestroy');
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 // dosen
-Route::group(['middleware' => ['dosen']], function () {
+Route::group(['middleware' => ['dosen', 'verified']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
@@ -85,7 +85,7 @@ Route::group(['middleware' => ['dosen']], function () {
 });
 
 // mahasiswa
-Route::group(['middleware' =>[ 'mahasiswa','verified']], function () {
+Route::group(['middleware' =>[ 'mahasiswa', 'verified']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
