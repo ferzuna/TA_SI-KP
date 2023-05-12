@@ -60,6 +60,7 @@
                                 <label for="b1"><b>KP B1</b></label>
                                 <input class="form-control" type="text" name="b1"
                                     value="{{ isset($data['b1']) ? $data['b1'] : '' }}">
+                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>

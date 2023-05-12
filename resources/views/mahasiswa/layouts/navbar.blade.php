@@ -78,7 +78,7 @@
                                         data-initial="{{ Auth::user()->name[0] }}">
                                     </figure>
                                 @endif
-                                <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::user()->name }}</span>
+                                <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ substr(Auth::user()->name, 0,  20) }}</span>
                             </a>
                             <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
