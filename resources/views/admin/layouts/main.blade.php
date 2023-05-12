@@ -18,15 +18,15 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
-    <!-- tambahan untuk logout -->
+    <!-- ini tambahan buat logout -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body>
-    <div class="app-koordinator">
+    <div id="wrapper" class="app-koordinator">
         @include('admin.layouts.navbar')
-        <div id="content-wrapper" class="d-flex flex-column" style="width: 100%">
+        <div id="content-wrapper" class="d-flex flex-column">
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="border-bottom:2px solid black">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
                         id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
@@ -107,6 +107,7 @@
                                 </div>
                             </li> --}}
                         @endguest
+
                     </ul>
                 </div>
             </nav>
@@ -118,6 +119,7 @@
     </div>
     @include('admin.layouts.footer')
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -134,9 +136,9 @@
     });
     </script>
 
+
+
     @yield('script')
-
-
 </body>
 
 </html>

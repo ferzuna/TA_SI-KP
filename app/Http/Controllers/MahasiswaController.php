@@ -194,7 +194,7 @@ class MahasiswaController extends Controller
             }
         }
 // dd($semua);
-        return redirect('/mahasiswa/pendaftaran')->with('success', 'pendaftaran created!');
+        return redirect('/mahasiswa/pendaftaran')->with('status', 'pendaftaran created!');
     }
 
     public function exportPdf()
@@ -243,7 +243,9 @@ class MahasiswaController extends Controller
         ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
+        $penilaian = Penilaian::where('NIM', $nim)->first();
         if (isset($data)) {
+            $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Bimbingan::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
@@ -262,6 +264,17 @@ class MahasiswaController extends Controller
             Pendaftaran::where('NIM', $nim)->first()->update([
                 'a1' => $request->a1,
             ]);
+            if(isset($penilaian)){
+                Penilaian::where('NIM', $nim)->first()->update([
+                    'kehadiran' => $request->kehadiran,
+                ]);
+            }else{
+                Penilaian::create([
+                    'NIP' => $dosbing,
+                    'NIM' => Auth::user()->NIM,
+                    'kehadiran' => $request->kehadiran
+                ]);
+            }
         } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Bimbingan::create([
@@ -273,7 +286,6 @@ class MahasiswaController extends Controller
                 'b2' => $request->b2,
                 'b3' => $request->b3,
                 'survey' => $request->survey,
-                'status' => '',
             ]);
             Penjadwalan::create([
                 'NIP' => $dosbing,
@@ -284,6 +296,18 @@ class MahasiswaController extends Controller
             Pendaftaran::where('NIM', $nim)->first()->update([
                 'a1' => $request->a1,
             ]);
+
+            if(isset($penilaian)){
+                Penilaian::where('NIM', $nim)->first()->update([
+                    'kehadiran' => $request->kehadiran,
+                ]);
+            }else{
+                Penilaian::create([
+                    'NIP' => $dosbing,
+                    'NIM' => Auth::user()->NIM,
+                    'kehadiran' => $request->kehadiran
+                ]);
+            }
 
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
             $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
@@ -306,7 +330,7 @@ class MahasiswaController extends Controller
                 ]);
             }
         }
-        return redirect('/mahasiswa')->with('success', 'pengumpulan berkas created!');
+        return redirect('/mahasiswa/pengumpulan')->with('status', 'pengumpulan berkas created!');
     }
 
     public function pengumpulan()
@@ -356,7 +380,6 @@ class MahasiswaController extends Controller
         $data = Penilaian::where('NIM', $nim)->first();
         if (isset($data)) {
             Penilaian::where('NIM', $nim)->first()->update([
-                'kehadiran' => $request->kehadiran,
                 'a2' => $request->a2,
                 'b4' => $request->b4,
                 'b5' => $request->b5,
@@ -373,7 +396,6 @@ class MahasiswaController extends Controller
             Penilaian::create([
                 'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
-                'kehadiran' => $request->kehadiran,
                 'a2' => $request->a2,
                 'b4' => $request->b4,
                 'b5' => $request->b5,
@@ -408,7 +430,7 @@ class MahasiswaController extends Controller
                 ]);
             }
         }
-        return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
+        return redirect('/mahasiswa/finalisasi')->with('status', 'finalisasi berkas created!');
     }
 
     public function setting(Request $request)

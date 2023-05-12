@@ -2,6 +2,34 @@
 
 @section('section')
     <div class="wrapper">
+        @if (session('status'))
+            <div class="container justify-content-center alert-wrap">
+                <div class="row">
+                    <div class="col-lg-8 col-xl-8 col-md-10 mx-auto mt-5">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Pesan Terkirim! </strong> &nbsp; {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="container justify-content-center alert-wrap">
+                <div class="row">
+                    <div class="col-lg-8 col-xl-8 col-md-10 mx-auto">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Pesan Anda gagal Terkirim</strong> &nbsp; {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" style="color: #181818">&times;</span>
+                              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="container">
             <div class="py-3">
                 <form action="{{ route('bimbingan.store') }}" method="post">
