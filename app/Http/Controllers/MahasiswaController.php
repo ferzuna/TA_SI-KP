@@ -178,9 +178,15 @@ class MahasiswaController extends Controller
         }else{
             $apaan = User::where('NIP', $request->dosbing)->first();
             $ini = $apaan['bobot_bimbingan'] % $apaan['kuota_bimbingan'];
-            User::where('NIP', $request->dosbing)->first()->update([
-                'bobot_bimbingan' => $ini,
-            ]);
+            if ($ini == 0){
+                User::where('NIP', $request->dosbing)->first()->update([
+                    'bobot_bimbingan' => $apaan['kuota_bimbingan'],
+                ]);
+            }else{
+                User::where('NIP', $request->dosbing)->first()->update([
+                    'bobot_bimbingan' => $ini,
+                ]);
+            }
         }
 
         return redirect('/mahasiswa')->with('success', 'pendaftaran created!');
