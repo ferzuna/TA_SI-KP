@@ -25,7 +25,45 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('dosen.home');
+        $mymahasiswa = Pendaftaran::leftJoin('users', function($join) {
+            $join->on('pendaftarans.NIM', '=', 'users.NIM');
+        })->join('permohonans', 'pendaftarans.NIM', '=', 'permohonans.NIM')
+        ->select('users.NIM', 'users.name', 'semester', 'no_telp', 'permohonans.perusahaan', 'users.status as status', 'users.id as id')
+        ->where('pendaftarans.NIP', Auth::user()->NIP)
+        ->count();
+
+        $bimbingan = Bimbingan::leftJoin('users', function($join) {
+            $join->on('bimbingans.NIM', '=', 'users.NIM');
+        })->join('permohonans', 'users.NIM', 'permohonans.NIM')
+        ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
+        ->join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
+        ->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
+        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP', 'bimbingans.laporan')->where('bimbingans.status', null)->where('pendaftarans.NIP', Auth::user()->NIP)->count();
+
+        $bimbingan1 = Bimbingan::leftJoin('users', function($join) {
+            $join->on('bimbingans.NIM', '=', 'users.NIM');
+        })->join('permohonans', 'users.NIM', 'permohonans.NIM')
+        ->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
+        ->join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')
+        ->select('bimbingans.id', 'users.name as name', 'bimbingans.NIM as NIM', 'bimbingans.status as status', 'permohonans.perusahaan as perusahaan', 'sks', 'survey', 'jadwal',
+        'b1', 'b2', 'b3', 'proposal', 'pendaftarans.NIP', 'bimbingans.laporan')->where('bimbingans.status', 'revisi')->where('pendaftarans.NIP', Auth::user()->NIP)->count();
+
+        $seminar = Pendaftaran::leftJoin('users', function($join) {
+            $join->on('pendaftarans.NIM', '=', 'users.NIM');
+        })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
+        ->join('permohonans', 'pendaftarans.NIM', '=', 'permohonans.NIM')
+        ->join('penilaians', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        ->where('pendaftarans.NIP', Auth::user()->NIP)
+        ->orderBy('penjadwalans.jadwal', 'desc')->first();
+
+        // dd($seminar->jadwal);
+
+        return view('dosen.home', [
+            "mymahasiswa" => $mymahasiswa,
+            "bimbingan" =>$bimbingan,
+            "bimbingan1" =>$bimbingan1,
+            "seminar" => $seminar,
+        ]);
     }
 
     public function bobotdosen(){
