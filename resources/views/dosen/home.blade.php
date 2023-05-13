@@ -38,7 +38,7 @@
                             <div class="col mr-2">
                                 <div class="text-md font-weight-bold text-uppercase mb-1">Mahasiswa Bimbingan
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">aktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$mymahasiswa}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user-alt fa-2x"></i>
@@ -54,10 +54,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Berkas yang Belum di
-                                    Tanda Tangan
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Laporan Belum Diperiksa
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">noaktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$bimbingan}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user-alt-slash fa-2x text-gray-300"></i>
@@ -73,9 +72,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Berkas yang sudah di
-                                    tanda tangan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">putra</div>
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Laporan yang sudah direvisi</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$bimbingan1}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-male fa-2x"></i>
@@ -93,7 +91,7 @@
                             <div class="col mr-2">
                                 <div class="text-md font-weight-bold text-uppercase mb-1">Jadwal Seminar KP
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">putri</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$seminar->jadwal}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-female fa-2x text-gray-300"></i>
