@@ -71,6 +71,10 @@
                                 <div class="form-group">
                                     <label for="status"><b>Status</b></label>
                                     @if($data['status']=='acc')
+                                    <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
+                                        <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                        </option>
+                                    </select>
                                     <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
                                         <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                         </option>
