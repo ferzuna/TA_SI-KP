@@ -18,8 +18,10 @@ class PermohonanController extends Controller
 
     public function index()
     {
+        $mhs = User::where('email', Auth::user()->email)->first();
         $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.permohonan', [
+            'mhs' => $mhs,
             'data'=>$data
         ]);
     }

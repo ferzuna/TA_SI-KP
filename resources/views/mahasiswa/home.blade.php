@@ -175,6 +175,8 @@
                                 </div>
                             </div>
                         </div>
+                        @if(isset($mhs->mhspermohonan))
+
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
@@ -188,8 +190,24 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                        <div>
+                                            <div class="card-content">
+                                                <h3 class="text-center"><b>Pendaftaran KP</b></h3>
+                                                <p style="margin-top:2em; font-size:16px">Pengajuan pendaftaran KP serta pemilihan dosen pembimbing
+                                                    KP setelah diterima di perusahaan</p>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="row">
+                        @if(isset($mhs->mhspendaftaran))
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
@@ -205,6 +223,24 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                    <div>
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Pengumpulan Berkas</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan berkas yang berkairan dengan magang yang peru
+                                                ditanda
+                                                tangan diikumpulkan disini
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if(isset($mhs->mhsbimbingan))
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
@@ -221,6 +257,24 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                    <div>
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Finalisasi Berkas</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan semua berkas yang perlu ditanda tangan dosen
+                                                dan
+                                                juga
+                                                pengumpulan lainnya
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
