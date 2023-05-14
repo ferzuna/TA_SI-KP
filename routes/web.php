@@ -113,6 +113,7 @@ Route::group(['middleware' => 'koor'], function () {
     // Route::get('/koordinator/sudah-dinilai', [KoorController::class, 'sudah_dinilai'])->name('koordinator.sudah-dinilai');
     Route::get('/koordinator/penilaian', [KoorController::class, 'penilaian'])->name('koordinator.penilaian');
     Route::post('/koordinator/penilaian/approved/{id}', [KoorController::class, 'penilaianapproved'])->name('koordinator.penilaianapproved');
+    Route::get('/koordinator/penilaian/berkas-akhir/{id}', [KoorController::class, 'berkasakhir'])->name('koordinator.berkas-akhir');
     Route::get('/koordinator/pengaturan', function () {
         return view('koordinator.pengaturan');
     })->name('koordinator.pengaturan');
