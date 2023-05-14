@@ -22,8 +22,22 @@ class KoorController extends Controller
      */
     public function index()
     {
-        $mahasiswa_aktif = User::where('role_id', 1)->count();
-        return view('koordinator.home', compact('mahasiswa_aktif'));
+        $mymahasiswa = User::rightjoin('permohonans', 'users.NIM', '=', 'permohonans.NIM')->where('permohonans.status', 0)->count();
+        $mymahasiswa1 = User::rightjoin('permohonans', 'users.NIM', '=', 'permohonans.NIM')->where('permohonans.status', 1)->count();
+        $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
+        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->where('penilaians.status', 0)->count();
+        $mymahasiswaselesai = User::where('role_id', 1)->where('status', 'Selesai KP')->count();
+
+        return view('koordinator.home', [
+            "mymahasiswa" => $mymahasiswa,
+            "mymahasiswa1" => $mymahasiswa1,
+            "databelum" => $databelum,
+            "mymahasiswaselesai" => $mymahasiswaselesai,
+        ]);
     }
 
     /**
@@ -59,13 +73,13 @@ class KoorController extends Controller
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
         ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
         ->where('penilaians.status', 1)->get();
         $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
         ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.a1', 'bimbingans.b1', 'penilaians.b5', 'penilaians.status as status')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'bimbingans.b1', 'penilaians.b5', 'penilaians.status as status')
         ->where('penilaians.status', 0)->get();
         // dd($datas);
         return view('koordinator.penilaian', [
@@ -79,6 +93,20 @@ class KoorController extends Controller
             'status' => 1,
         ]);
         return redirect('/koordinator/penilaian');
+    }
+
+    public function berkasakhir($id) {
+        $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
+        ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
+        ->join('penilaians', 'users.NIM', 'penilaians.NIM')
+        ->select('users.id', 'users.name', 'users.semester','users.image', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.bukti', 'bimbingans.laporan',
+         'bimbingans.makalah', 'pendaftarans.a1', 'bimbingans.b1', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.a2',
+          'penilaians.b4', 'penilaians.b5')
+        ->where('penilaians.id', $id)->first();
+        // dd($mhs);
+        return view('koordinator.berkas-akhir', [
+            'mhs' => $mhs,
+        ]);
     }
 
     public function setting(Request $request)

@@ -25,7 +25,24 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $mymahasiswa = User::where('role_id', 1)->whereIn('status', ['Permohonan KP', 'Pendaftaran KP','Bimbingan KP'])->count();
+        $mydosen = User::where('role_id', 4)->count();
+        $permohonan = Permohonan::join('users', 'permohonans.NIM', '=', 'users.NIM')
+        ->select('permohonans.id as id', 'users.name as name', 'users.NIM as NIM', 'perusahaan', 'proposal', 'users.sks as sks', 'permohonans.status as status')
+        ->orderBy('permohonans.updated_at', 'desc')->count();
+        $data = Penilaian::leftJoin('users', function ($join) {
+            $join->on('penilaians.NIM', '=', 'users.NIM');
+        })->select('users.id as id', 'users.name as name', 'users.NIM as NIM', 'users.semester as semester', 'penilaians.status')
+        ->count();
+
+        // dd($mymahasiswa);
+
+        return view('admin.home', [
+            "mymahasiswa" => $mymahasiswa,
+            "mydosen" => $mydosen,
+            "permohonan" => $permohonan,
+            "data" => $data
+        ]);
     }
     public function search(Request $request)
     {

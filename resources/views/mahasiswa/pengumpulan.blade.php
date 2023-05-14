@@ -41,19 +41,19 @@
                             <div class="form-group">
                                 <label for="laporan"><b>Laporan</b></label>
                                 <input class="form-control" type="text" name="laporan"
-                                    value="{{ isset($data['laporan']) ? $data['laporan'] : '' }}">
+                                    value="{{ isset($data['laporan']) ? $data['laporan'] : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="makalah"><b>Makalah</b></label>
                                 <input class="form-control" type="text" name="makalah"
-                                    value="{{ isset($data['makalah']) ? $data['makalah'] : '' }}">
+                                    value="{{ isset($data['makalah']) ? $data['makalah'] : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
-                                <label for=makalah><b>KP A1</b></label>
+                                <label for=a1><b>KP A1</b></label>
                                 <input class="form-control" type="text" name=a1
-                                    value="{{ isset($data['a1']) ? $data['a1'] : '' }}">
+                                    value="{{ isset($data['a1']) ? $data['a1'] : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">

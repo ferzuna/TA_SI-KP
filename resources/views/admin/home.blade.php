@@ -36,9 +36,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Mahasiswa Bimbingan
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Jumlah Mahasiswa
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">aktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mymahasiswa }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user-alt fa-2x"></i>
@@ -54,10 +54,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Berkas yang Belum di
-                                    Tanda Tangan
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Jumlah Dosen
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">noaktif</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$mydosen}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user-alt-slash fa-2x text-gray-300"></i>
@@ -73,9 +72,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Berkas yang sudah di
-                                    tanda tangan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">putra</div>
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Jumlah Permohonan</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$permohonan}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-male fa-2x"></i>
@@ -91,9 +89,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Jadwal Seminar KP
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Daftar Berkas Akhir KP
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">putri</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$data}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-female fa-2x text-gray-300"></i>
