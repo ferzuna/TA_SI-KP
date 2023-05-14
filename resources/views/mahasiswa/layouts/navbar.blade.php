@@ -39,13 +39,23 @@
                     <a class="nav-link" aria-current="page" href="{{ route('permohonan') }}">Permohonan KP</a>
                 </li>
                 <li class="nav-item my-auto">
+                    @if(isset($mhs->mhspermohonan))
                     <a class="nav-link" href="{{ route('pendaftaran') }}">Pendaftaran KP</a>
+                    @else
+                    
+                    @endif
                 </li>
                 <li class="nav-item my-auto">
+                    @if(isset($mhs->mhspendaftaran))
                     <a class="nav-link" href="{{ route('pengumpulan') }}">Pengumpulan Berkas</a>
+                    @else
+                    @endif
                 </li>
                 <li class="nav-item my-auto">
+                    @if(isset($mhs->mhspengumpulan))
                     <a class="nav-link" href="{{ route('finalisasi') }}">Finalisasi Berkas</a>
+                    @else
+                    @endif
                 </li>
                 <li class="nav-item">
                     <div class="divider-vertical"></div>
