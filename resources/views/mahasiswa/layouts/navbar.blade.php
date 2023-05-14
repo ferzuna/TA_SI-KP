@@ -52,7 +52,7 @@
                     @endif
                 </li>
                 <li class="nav-item my-auto">
-                    @if(isset($mhs->mhspengumpulan))
+                    @if(isset($mhs->mhsbimbingan))
                     <a class="nav-link" href="{{ route('finalisasi') }}">Finalisasi Berkas</a>
                     @else
                     @endif

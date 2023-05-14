@@ -37,6 +37,7 @@ class MahasiswaController extends Controller
 
     public function pendaftaran()
     {
+        $mhs = User::where('email', Auth::user()->email)->first();
         $all = User::where('role_id', 4)->where('status', 1)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $alldosen = [];
@@ -62,6 +63,7 @@ class MahasiswaController extends Controller
             }
         }
         return view('mahasiswa.pendaftaran', [
+            "mhs" => $mhs,
             "alldosen" => $alldosen,
             "pendaftaran" => $pendaftaran,
             "dp" => $dp,
@@ -332,6 +334,7 @@ class MahasiswaController extends Controller
 
     public function pengumpulan()
     {
+        $mhs = User::where('email', Auth::user()->email)->first();
         // untuk memastikan apakah user sudah melakukan proses permohonan kerja praktik
         $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if (!isset($perusahaan)) {
@@ -342,12 +345,14 @@ class MahasiswaController extends Controller
         ->select('bimbingans.id', 'penjadwalans.ruangan as ruangan', 'bimbingans.NIM', 'penjadwalans.jadwal', 'pendaftarans.a1 as a1', 'b1', 'b2', 'b3', 'bimbingans.survey', 'laporan', 'makalah', 'bimbingans.status', 'penilaians.kehadiran')
         ->where('bimbingans.NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.pengumpulan', [
+            "mhs" => $mhs,
             'data' => $data,
         ]);
     }
 
     public function finalisasi()
     {
+        $mhs = User::where('email', Auth::user()->email)->first();
         // untuk memastikan apakah user sudah melakukan proses permohonan kerja praktik
         $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if (!isset($perusahaan)) {
@@ -357,6 +362,7 @@ class MahasiswaController extends Controller
         ->where('bimbingans.NIM', Auth::user()->NIM)
         ->select('penilaians.id', 'bimbingans.laporan', 'bimbingans.makalah', 'kehadiran', 'penilaians.a2', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.b4', 'penilaians.b5')->first();
         return view('mahasiswa.finalisasi', [
+            "mhs" => $mhs,
             'data' => $data,
         ]);
     }

@@ -240,7 +240,7 @@
                             </div>
                         </div>
                         @endif
-                        @if(isset($mhs->mhsfinalisasi))
+                        @if(isset($mhs->mhsbimbingan))
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
