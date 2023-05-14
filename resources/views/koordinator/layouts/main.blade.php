@@ -12,22 +12,21 @@
     <title>Kerja Praktik - Teknik Komputer</title>
 
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/koordinator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
-    <!-- tambahan untuk logout -->
+    <!-- ini tambahan buat logout -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 </head>
 
 <body>
-    <div class="app-koordinator">
+    <div id="wrapper" class="app-koordinator">
         @include('koordinator.layouts.navbar')
-        <div id="content-wrapper" class="d-flex flex-column" style="width: 100%">
+        <div id="content-wrapper" class="d-flex flex-column">
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="border-bottom:2px solid black">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
                         id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
@@ -51,7 +50,7 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         data-toggle="dropdown" aria-expanded="false" href="#"><span
                                             class="d-none d-lg-inline mr-2 text-gray-600 small">{{ substr(Auth::user()->name, 0,  20) }}</span>
-                                        @if (Auth::user()->image)
+                                            @if (Auth::user()->image)
                                             {{-- <div id="imagePreview"
                                                 style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
                                             </div> --}}
@@ -108,6 +107,7 @@
                                 </div>
                             </li> --}}
                         @endguest
+
                     </ul>
                 </div>
             </nav>
@@ -119,13 +119,13 @@
     </div>
     @include('koordinator.layouts.footer')
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
-
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">
@@ -135,6 +135,8 @@
         $('.data').DataTable();
     });
     </script>
+
+
 
     @yield('script')
 </body>
