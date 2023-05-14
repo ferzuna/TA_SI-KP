@@ -7,7 +7,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col" style="width: 505px;">
-                            <h1 class="h3 mb-2 text-gray-800"><b>Pendaftaran KP</b></h1>
+                            <h1 class="h3 mb-2 text-gray-800"><b>Permohonan KP</b></h1>
                         </div>
                     </div>
                     <ul id="tabs" class="nav nav-tabs nav-fill">
