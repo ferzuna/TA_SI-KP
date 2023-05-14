@@ -68,6 +68,7 @@
                                             <th>Semester</th>
                                             <th>No. telp</th>
                                             <th>Jumlah SKSk</th>
+                                            <th>Status</th>
                                             <th>Manage</th>
                                         </tr>
                                     </thead>
@@ -79,6 +80,7 @@
                                                 <td><?= $data['semester'] ?></td>
                                                 <td><?= $data['no_telp'] ?></td>
                                                 <td><?= $data['sks'] ?></td>
+                                                <td><?= isset($data['status']) ? $data['status'] : 'Belum Mendaftar'?></td>
                                                 <td style="display: flex">
                                                     <div style="margin-right:10px" class="icon-wrap" data-toggle="tooltip" data-placement="top" title="Edit">
                                                         <i class="fas fa-edit iconedit" style="padding-left: 9px;"
@@ -193,6 +195,7 @@
                                             <td><strong>Semester</strong></td>
                                             <td><strong>No. telp</strong></td>
                                             <td><strong>Jumlah SKSk</strong></td>
+                                            <td><strong>Status</strong></td>
                                             <td><strong>Manage</strong></td>
                                         </tr>
                                     </tfoot>
