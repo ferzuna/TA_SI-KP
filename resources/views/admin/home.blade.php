@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-md font-weight-bold text-uppercase mb-1">Jumlah Mahasiswa
+                                <div class="text-md font-weight-bold text-uppercase mb-1">Mahasiswa Sedang KP
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $mymahasiswa }}</div>
                             </div>
