@@ -1,7 +1,7 @@
 @extends('mahasiswa.layouts.main')
 
 @section('section')
-    <div class="wrapper" style="height:90vh">
+    <div class="wrapper">
         @if (session('status'))
             <div class="container justify-content-center alert-wrap">
                 <div class="row">
