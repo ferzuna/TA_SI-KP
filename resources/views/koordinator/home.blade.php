@@ -74,7 +74,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-md font-weight-bold text-uppercase mb-1">Berkas akhir yang belum dinilai</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$datasudah}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$databelum}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-male fa-2x"></i>
