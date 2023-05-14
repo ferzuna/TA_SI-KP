@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>
-                                <input class="form-control" type="text" name="kehadiran" value="{{ isset($data['kehadiran']) ? $data['kehadiran'] : '' }} required">
+                                <input class="form-control" type="text" name="kehadiran" value="{{ isset($data['kehadiran']) ? $data['kehadiran'] : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             @if (isset($data['status']))
