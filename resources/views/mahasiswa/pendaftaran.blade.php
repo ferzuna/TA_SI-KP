@@ -2,6 +2,7 @@
 
 @section('section')
     <div class="wrapper" style="height:90vh">
+        {{-- @dd($mhs) --}}
         @if (session('status'))
             <div class="container justify-content-center alert-wrap">
                 <div class="row">

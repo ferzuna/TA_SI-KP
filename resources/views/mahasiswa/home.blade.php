@@ -16,8 +16,8 @@
                     </div>
                         @endif
                         
-                        @if (isset($permohonan->status))
-                        @if ($permohonan->status == 1)
+                        @if (isset($mhs->mhspermohonan->status))
+                        @if ($mhs->mhspermohonan->status == 1)
                         <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP untuk Perusahaan <a href="{{ route('export-pdf') }}">disini</a>, untuk Fakultas <a href="{{ route('permohonan-fakultas') }}">disini</a>.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="color: #181818">&times;</span>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="media-right">
                                 Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal :
-                                {{ isset($penjadwalan['jadwal']) ? $penjadwalan['jadwal'] : '' }}
+                                {{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -134,7 +134,7 @@
                             </div>
                             <div class="media-right">
                                 Pelaksanaan Kerja Praktik dilaksanakan di :
-                                {{ isset($permohonan['perusahaan']) ? $permohonan['perusahaan'] : '' }}
+                                {{ isset($mhs->mhspermohonan->perusahaan) ? $mhs->mhspermohonan->perusahaan : '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -175,6 +175,8 @@
                                 </div>
                             </div>
                         </div>
+                        @if(isset($mhs->mhspermohonan))
+
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
@@ -188,8 +190,24 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                        <div>
+                                            <div class="card-content">
+                                                <h3 class="text-center"><b>Pendaftaran KP</b></h3>
+                                                <p style="margin-top:2em; font-size:16px">Pengajuan pendaftaran KP serta pemilihan dosen pembimbing
+                                                    KP setelah diterima di perusahaan</p>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="row">
+                        @if(isset($mhs->mhspendaftaran))
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
@@ -205,6 +223,24 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                    <div>
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Pengumpulan Berkas</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan berkas yang berkairan dengan magang yang peru
+                                                ditanda
+                                                tangan diikumpulkan disini
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if(isset($mhs->mhsbimbingan))
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
@@ -221,6 +257,24 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                    <div>
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Finalisasi Berkas</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan semua berkas yang perlu ditanda tangan dosen
+                                                dan
+                                                juga
+                                                pengumpulan lainnya
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
