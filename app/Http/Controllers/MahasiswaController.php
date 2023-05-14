@@ -25,19 +25,11 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mhs = User::where('email', Auth::user()->email)->first();
-        $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();
-        $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         $dosbing = Pendaftaran::leftJoin('users', 'pendaftarans.NIP', '=', 'users.NIP')
         ->select('users.name')
         ->where('pendaftarans.NIM', Auth::user()->NIM)->first();
-        $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
-        $penjadwalan = Penjadwalan::where('NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.home', [
             "mhs" => $mhs,
-            "jadwal" => $bimbingan,
-            "pendaftaran" => $pendaftaran,
-            "permohonan" => $permohonan,
-            "penjadwalan" => $penjadwalan,
             "dosbing" => $dosbing,
         ]);
         

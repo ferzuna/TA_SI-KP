@@ -16,8 +16,8 @@
                     </div>
                         @endif
                         
-                        @if (isset($permohonan->status))
-                        @if ($permohonan->status == 1)
+                        @if (isset($mhs->mhspermohonan->status))
+                        @if ($mhs->mhspermohonan->status == 1)
                         <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP untuk Perusahaan <a href="{{ route('export-pdf') }}">disini</a>, untuk Fakultas <a href="{{ route('permohonan-fakultas') }}">disini</a>.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="color: #181818">&times;</span>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="media-right">
                                 Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal :
-                                {{ isset($penjadwalan['jadwal']) ? $penjadwalan['jadwal'] : '' }}
+                                {{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : '' }}
                             </div>
                         </div>
                         <div class="banner">
@@ -134,7 +134,7 @@
                             </div>
                             <div class="media-right">
                                 Pelaksanaan Kerja Praktik dilaksanakan di :
-                                {{ isset($permohonan['perusahaan']) ? $permohonan['perusahaan'] : '' }}
+                                {{ isset($mhs->mhspermohonan->perusahaan) ? $mhs->mhspermohonan->perusahaan : '' }}
                             </div>
                         </div>
                         <div class="banner">
