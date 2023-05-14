@@ -91,7 +91,7 @@
                             <div class="col mr-2">
                                 <div class="text-md font-weight-bold text-uppercase mb-1">Jadwal Seminar KP
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ Carbon\Carbon::parse($seminar->jadwal)->isoFormat('dddd, D MMMM Y | hh:mm') }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($seminar->jadwal) ? Carbon\Carbon::parse($seminar->jadwal)->isoFormat('dddd, D MMMM Y | hh:mm') : "0" }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-female fa-2x text-gray-300"></i>

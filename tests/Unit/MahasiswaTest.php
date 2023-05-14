@@ -26,6 +26,34 @@ class MahasiswaTest extends TestCase
         $this->assertTrue(true);
     }
 
+    public function testStrlen()
+{
+    $length = strlen('hello');
+    $this->assertEquals(5, $length);
+}
+public function testGetFullName()
+{
+    $user = new User;
+    $user->first_name = 'John';
+    $user->last_name = 'Doe';
+    $this->assertEquals('John', $user->first_name);
+}
+
+public function testSetujuiLaporan()
+{
+    $bimbingan = Bimbingan::factory()->create();
+    $id = $bimbingan->id;
+    $this->get('/dosen/setujui-laporan/' . $id);
+
+    $this->assertDatabaseHas('bimbingans', [
+        'id' => $id,
+        'status' => 'acc'
+    ]);
+    // $this->assertResponseRedirects('/dosen/bimbingan');
+}
+
+
+
 
 
 
