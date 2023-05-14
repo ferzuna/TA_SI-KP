@@ -5,49 +5,6 @@
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
 
-                {{-- Floating Modal --}}
-                {{-- <div class="modal fade" id="addsantri" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Add Data</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="col-md-6">
-                                    <form method="POST" action="">
-                                        @csrf
-                                        <input type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Nama" name="nama" />
-                                        <select type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Gender" name="gender" />
-                                        <option value="Laki - Laki" selected>Laki - Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
-                                        </select>
-                                        <input type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Alamat" name="alamat" />
-                                        <input type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Perguruan Tinggi"
-                                            name="pt" />
-                                        <input type="text" class="border rounded-0 form-control" placeholder="Jurusan"
-                                            style="margin-bottom: 15px;width: 440px;" name="jurusan" />
-                                        <select type="text" class="border rounded-0 form-control"
-                                            style="width: 440px;margin-bottom: 15px;" placeholder="Status" name="status" />
-                                        <option value="Aktif" selected>Aktif</option>
-                                        <option value="Tidak Aktif">Tidak Aktif</option>
-                                        </select>
-                                        <input type="submit" class="btn btn-success" value="Save Changes"
-                                            name="submit"></input>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
                 <div class="container-fluid">
                     <div class="row">
@@ -80,26 +37,20 @@
                                                     <tr>
                                                         <th>Nama</th>
                                                         <th>NIM</th>
-                                                        <th>Perusahaan</th>
-                                                        <th>KP-A1</th>
-                                                        <th>KP-B1</th>
-                                                        <th>KP-B5</th>
-                                                        <th>Form Nilai KP</th>
+                                                        <th>Semester</th>
+                                                        <th>Berkas</th>
                                                         <th>Status</th>
                                                         <th>Manage</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($databelum as $data)
-                                                        <tr>
+                                                        <tr> 
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
-                                                            <td><?= $data['perusahaan'] ?></td>
-                                                            <td><?= $data['a1'] ?></td>
-                                                            <td><?= $data['b1'] ?></td>
-                                                            <td><?= $data['b5'] ?></td>
-                                                            <td></td>
-                                                            <td><?= $data['status'] ?></td>
+                                                            <td><?= $data['semester'] ?></td>
+                                                            <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                            <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                             <td style="display:flex">
                                                                 <div class="icon-wrap" data-target="tooltip" data-placement="top" title="Setujui">
                                                                     <i class="fas fa-check-circle" style="padding-left: 9px;"
@@ -129,7 +80,7 @@
                                                                                 <h6>Apakah Anda Yakin?</h6>
                                                                                 <input type="submit"
                                                                                     class="btn btn-success" value="Okay"
-                                                                                    name="approve"></input>
+                                                                                    name="koordinator.penilaianapproved"></input>
                                                                                 <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-dismiss="modal">Close</button>
@@ -145,11 +96,8 @@
                                                     <tr>
                                                         <td><strong>Nama</strong></td>
                                                         <td><strong>NIM</strong></td>
-                                                        <td><strong>Perusahaan</strong></td>
-                                                        <td><strong>KP-A1</strong></td>
-                                                        <td><strong>KP-B1</strong></td>
-                                                        <td><strong>KP-B5</strong></td>
-                                                        <td><strong>Form Nilai KP</strong></td>
+                                                        <td><strong>Semester</strong></td>
+                                                        <td><strong>Berkas</strong></td>
                                                         <td><strong>Status</strong></td>
                                                         <td><strong>Manage</strong></td>
                                                     </tr>
@@ -171,11 +119,8 @@
                                                     <tr>
                                                         <th>Nama</th>
                                                         <th>NIM</th>
-                                                        <th>Perusahaan</th>
-                                                        <th>KP-A1</th>
-                                                        <th>KP-B1</th>
-                                                        <th>KP-B5</th>
-                                                        <th>Form Nilai KP</th>
+                                                        <th>Semester</th>
+                                                        <th>Berkas</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
@@ -184,12 +129,9 @@
                                                         <tr>
                                                             <td><?= $data['name'] ?></td>
                                                             <td><?= $data['NIM'] ?></td>
-                                                            <td><?= $data['perusahaan'] ?></td>
-                                                            <td><?= $data['a1'] ?></td>
-                                                            <td><?= $data['b1'] ?></td>
-                                                            <td><?= $data['b5'] ?></td>
-                                                            <td></td>
-                                                            <td><?= $data['status'] ?></td>
+                                                            <td><?= $data['semester'] ?></td>
+                                                            <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                            <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -197,11 +139,8 @@
                                                     <tr>
                                                         <td><strong>Nama</strong></td>
                                                         <td><strong>NIM</strong></td>
-                                                        <td><strong>Perusahaan</strong></td>
-                                                        <td><strong>KP-A1</strong></td>
-                                                        <td><strong>KP-B1</strong></td>
-                                                        <td><strong>KP-B5</strong></td>
-                                                        <td><strong>Form Nilai KP</strong></td>
+                                                        <td><strong>Semester</strong></td>
+                                                        <td><strong>Berkas</strong></td>
                                                         <td><strong>Status</strong></td>
                                                     </tr>
                                                 </tfoot>
