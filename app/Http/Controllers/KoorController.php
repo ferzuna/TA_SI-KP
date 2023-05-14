@@ -24,18 +24,18 @@ class KoorController extends Controller
     {
         $mymahasiswa = User::rightjoin('permohonans', 'users.NIM', '=', 'permohonans.NIM')->where('permohonans.status', 0)->count();
         $mymahasiswa1 = User::rightjoin('permohonans', 'users.NIM', '=', 'permohonans.NIM')->where('permohonans.status', 1)->count();
-        $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
         ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
         ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
         ->select('penilaians.id', 'users.name', 'users.NIM', 'perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
-        ->where('penilaians.status', 1)->count();
+        ->where('penilaians.status', 0)->count();
         $mymahasiswaselesai = User::where('role_id', 1)->where('status', 'Selesai KP')->count();
 
         return view('koordinator.home', [
             "mymahasiswa" => $mymahasiswa,
             "mymahasiswa1" => $mymahasiswa1,
-            "datasudah" => $datasudah,
+            "databelum" => $databelum,
             "mymahasiswaselesai" => $mymahasiswaselesai,
         ]);
     }
