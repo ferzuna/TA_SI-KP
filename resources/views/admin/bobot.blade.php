@@ -43,6 +43,8 @@
                                     <br>
                                     <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
                                     <br>
+                                    <strong>Jumlah Bimbingan: <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
+                                    <br>
                                     <strong>Status : <span>{{ $dosen['status'] ? 'Aktif' : 'Tidak Aktif'}}</span></strong>
 
 
@@ -52,6 +54,9 @@
                         <br>
                         <span type="button" data-toggle="modal" data-target="#edit<?= $dosen['id'] ?>"><i
                                 class="p-0 fas fa-edit iconedit" style="padding-left: 9px;"></i> Edit </span>
+
+                        <span type="button" data-toggle="modal" data-target="#edit<?= $dosen['id'] ?>"><i
+                                    class="p-0 fas fa-trash" style="padding-left: 9px;"></i> Edit </span>        
                     </div>
                     <div class="modal fade" id="edit<?= $dosen['id'] ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,7 +77,7 @@
                                                 style="width: 440px;margin-bottom: 15px;" placeholder="Nama"
                                                 name="nama" value="<?= $dosen['name'] ?>" />
                                             <label class="p-0" for="nama">Kuota Bimbingan</label>
-                                            <input type="text" class="border rounded-0 form-control"
+                                            <input type="number" class="border rounded-0 form-control"
                                                 style="width: 440px;margin-bottom: 15px;" placeholder="Alamat"
                                                 name="kuota" value="<?= $dosen['kuota_bimbingan'] ?>" />
 

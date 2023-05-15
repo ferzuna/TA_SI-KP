@@ -51,15 +51,9 @@
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
-                                <label for=a1><b>KP A1</b></label>
-                                <input class="form-control" type="text" name=a1
-                                    value="{{ isset($data['a1']) ? $data['a1'] : '' }}" required>
-                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="b1"><b>KP B1</b></label>
-                                <input class="form-control" type="text" name="b1"
-                                    value="{{ isset($data['b1']) ? $data['b1'] : '' }}">
+                                <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
+                                <input class="form-control" type="text" name="survey"
+                                    value="{{ isset($data['survey']) ? $data['survey'] : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
@@ -94,23 +88,23 @@
                             @endif
                         </div>
                         <div class="col-lg-4 col-md-6">
-
+                            @if (isset($mhs->mhsbimbingan->status) && $mhs->mhsbimbingan->status == 'acc') 
                             <div class="form-group">
-                                <label for="b2"><b>KP B2</b></label>
+                                <label for="b1"><b>Form Permohonan Seminar (KP B1)</b></label>
+                                <input class="form-control" type="text" name="b1"
+                                    value="{{ isset($data['b1']) ? $data['b1'] : '' }}">
+                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="b2"><b>Form Kehadiran Peserta Seminar (KP B2)</b></label>
                                 <input class="form-control" type="text" name="b2"
                                     value="{{ isset($data['b2']) ? $data['b2'] : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
-                                <label for="b3"><b>KP B3</b></label>
+                                <label for="b3"><b>Form Nilai Kerja Praktik (KP B3)</b></label>
                                 <input class="form-control" type="text" name="b3"
                                     value="{{ isset($data['b3']) ? $data['b3'] : '' }}">
-                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
-                                <input class="form-control" type="text" name="survey"
-                                    value="{{ isset($data['survey']) ? $data['survey'] : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
@@ -124,6 +118,8 @@
                                     value="{{ isset($data['ruangan']) ? $data['ruangan'] : '' }}">
                                     <div class="form-text">Input Ruangan yang ingin digunakan. Contoh: Ruangan A-201</div>
                             </div>
+                            @endif
+                            
                         </div>
 
 
