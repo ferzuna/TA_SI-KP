@@ -33,6 +33,7 @@
                                                 <tr>
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
+                                                    <th>Makalah KP</th>
                                                     <th>KP-B1</th>
                                                     <th>KP-B2</th>
                                                     <th>KP-B3</th>
@@ -46,6 +47,7 @@
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
@@ -111,6 +113,7 @@
                                                 <tr>
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
+                                                    <td><strong>Makalah KP</strong></td>
                                                     <td><strong>KP-B1</strong></td>
                                                     <td><strong>KP-B2</strong></td>
                                                     <td><strong>KP-B3</strong></td>
@@ -136,6 +139,7 @@
                                                 <tr>
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
+                                                    <th>Makalah KP</th>
                                                     <th>KP-B1</th>
                                                     <th>KP-B2</th>
                                                     <th>KP-B3</th>
@@ -149,6 +153,7 @@
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
@@ -213,6 +218,7 @@
                                                 <tr>
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
+                                                    <td><strong>Makalah KP</strong></td>
                                                     <td><strong>KP-B1</strong></td>
                                                     <td><strong>KP-B2</strong></td>
                                                     <td><strong>KP-B3</strong></td>
@@ -238,6 +244,7 @@
                                                 <tr>
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
+                                                    <th>Makalah KP</th>
                                                     <th>KP-B1</th>
                                                     <th>KP-B2</th>
                                                     <th>KP-B3</th>
@@ -251,6 +258,7 @@
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
@@ -315,6 +323,7 @@
                                                 <tr>
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
+                                                    <td><strong>Makalah KP</strong></td>
                                                     <td><strong>KP-B1</strong></td>
                                                     <td><strong>KP-B2</strong></td>
                                                     <td><strong>KP-B3</strong></td>
@@ -340,6 +349,7 @@
                                                 <tr>
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
+                                                    <th>Makalah KP</th>
                                                     <th>KP-B1</th>
                                                     <th>KP-B2</th>
                                                     <th>KP-B3</th>
@@ -353,6 +363,7 @@
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
@@ -417,6 +428,7 @@
                                                 <tr>
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
+                                                    <td><strong>Makalah KP</strong></td>
                                                     <td><strong>KP-B1</strong></td>
                                                     <td><strong>KP-B2</strong></td>
                                                     <td><strong>KP-B3</strong></td>
