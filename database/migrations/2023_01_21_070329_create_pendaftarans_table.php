@@ -19,6 +19,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('bukti')->nullable();
             $table->string('a1')->nullable();
             $table->string('NIP')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

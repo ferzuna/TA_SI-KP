@@ -22,6 +22,7 @@ class CreatePenilaiansTable extends Migration
             $table->string('b4')->nullable();
             $table->string('b5')->nullable();
             $table->string('status')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

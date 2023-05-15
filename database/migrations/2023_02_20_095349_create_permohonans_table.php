@@ -22,6 +22,7 @@ class CreatePermohonansTable extends Migration
             $table->boolean('status')->nullable();
             $table->date('mulai')->nullable();
             $table->date('selesai')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
