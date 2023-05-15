@@ -45,7 +45,7 @@
                                             <tbody>
                                                 @foreach ($bimbingan as $data)
                                                     <tr>
-                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
@@ -80,7 +80,7 @@
                                                                                 class="border rounded-0 form-control"
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Nama" name="name"
-                                                                                value="<?= $data['name'] ?>" disabled/>
+                                                                                value="<?= $data->bimbinganmhs->name ?>" disabled/>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="status">Status</label>
@@ -151,7 +151,7 @@
                                             <tbody>
                                                 @foreach ($bimbingan1 as $data)
                                                     <tr>
-                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
@@ -186,7 +186,7 @@
                                                                                 class="border rounded-0 form-control"
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Nama" name="name"
-                                                                                value="<?= $data['name'] ?>" disabled/>
+                                                                                value="<?= $data->bimbinganmhs->name ?>" disabled/>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="status">Status</label>
@@ -256,7 +256,7 @@
                                             <tbody>
                                                 @foreach ($bimbingan3 as $data)
                                                     <tr>
-                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
@@ -291,7 +291,7 @@
                                                                                 class="border rounded-0 form-control"
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Nama" name="name"
-                                                                                value="<?= $data['name'] ?>" disabled/>
+                                                                                value="<?= $data->bimbinganmhs->name ?>" disabled/>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="status">Status</label>
@@ -361,7 +361,7 @@
                                             <tbody>
                                                 @foreach ($bimbingan2 as $data)
                                                     <tr>
-                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
@@ -396,7 +396,7 @@
                                                                                 class="border rounded-0 form-control"
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Nama" name="name"
-                                                                                value="<?= $data['name'] ?>" disabled/>
+                                                                                value="<?= $data->bimbinganmhs->name ?>" disabled/>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="status">Status</label>

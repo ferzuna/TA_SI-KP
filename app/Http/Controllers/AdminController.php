@@ -250,6 +250,22 @@ class AdminController extends Controller
     }
 
     public function editmahasiswa(Request $request, $id){
+        $mhs = User::find($id);
+        $mhs->mhspermohonan->update([
+            'NIM' => $request->NIM
+        ]);
+        $mhs->mhspenjadwalan->update([
+            'NIM' => $request->NIM
+        ]);
+        $mhs->mhspendaftaran->update([
+            'NIM' => $request->NIM
+        ]);
+        $mhs->mhsbimbingan->update([
+            'NIM' => $request->NIM
+        ]);
+        $mhs->mhspenilaian->update([
+            'NIM' => $request->NIM
+        ]);
         User::find($id)->update([
             'NIM' => $request->NIM,
             'name' => $request->name,
