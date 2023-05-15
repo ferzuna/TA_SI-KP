@@ -34,7 +34,7 @@
                                                 <td><?= $data['name'] ?></td>
                                                 <td><?= $data['perusahaan'] ?></td>
                                                 <td style="max-width: 200px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['kehadiran'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['kehadiran'] ?></a></td>
-                                                <td><?= $data['jadwal'] ?></td>
+                                                <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | hh:mm') : '' ?>  </td>
                                                 <td><?= $data['ruangan'] ?></td>
                                                 </td>
                                             </tr>

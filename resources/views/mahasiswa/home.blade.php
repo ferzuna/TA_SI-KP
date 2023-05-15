@@ -240,7 +240,7 @@
                             </div>
                         </div>
                         @endif
-                        @if(isset($mhs->mhsbimbingan))
+                        @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' )
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
