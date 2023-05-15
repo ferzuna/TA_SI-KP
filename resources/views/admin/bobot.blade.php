@@ -43,7 +43,7 @@
                                     <br>
                                     <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
                                     <br>
-                                    <strong>Jumlah Bimbingan: <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
+                                    <strong>Jumlah Bimbingan: <span>{{ isset($dosen->dosenpendaftaran) ? $dosen->dosenpendaftaran->count() : 0 }}</span></strong>
                                     <br>
                                     <strong>Status : <span>{{ $dosen['status'] ? 'Aktif' : 'Tidak Aktif'}}</span></strong>
 

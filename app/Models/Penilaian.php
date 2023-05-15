@@ -11,4 +11,12 @@ class Penilaian extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = ['id'];
+
+    public function penilaianmhs(){
+        return $this->hasOne(User::class, 'NIM', 'NIM');
+    }
+
+    public function penilaiandosen(){
+        return $this->hasOne(User::class, 'NIP', 'NIP');
+    }
 }
