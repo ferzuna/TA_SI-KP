@@ -24,6 +24,7 @@ class CreateBimbingansTable extends Migration
             $table->string('b2')->nullable();
             $table->string('b3')->nullable();
             $table->string('survey')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
