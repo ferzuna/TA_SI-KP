@@ -7,7 +7,7 @@
                     <div class="col-lg-1">
 
                     </div>
-                    <div class="col-lg-6 col-md-12 d-flex my-auto">
+                    <div class="d-md-none d-lg-block col-lg-6 col-md-12 d-flex my-auto">
                         <div class="footer-contact">
                             <img src="{{ asset('img/Logo.svg') }}" alt="Teknik Komputer Undip">
                         </div>
