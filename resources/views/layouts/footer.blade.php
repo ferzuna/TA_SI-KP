@@ -14,7 +14,7 @@
                             <div class="col-lg-6 col-12 footer-links">
                                 <h5 style="font-weight: 700">Services</h5>
                                 <ul>
-                                    <li><a href="#">Dokumen KP</a></li>
+                                    <li><a href="{{ route('dokumen') }}">Dokumen KP</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-3 col-md-6 footer-links">
