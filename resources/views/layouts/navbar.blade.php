@@ -16,13 +16,16 @@
                 <li class="nav-item">
                     <div class="divider-vertical"></div>
                 </li>
-                <div class="btn-login">
-                    <a href="{{ route('login') }}">
-                        <button type="button" class="btn btn-light" style="border-radius: 10px; background-color:#0B87BA">
-                            <div style="padding: 0px 15px; font-size: 14px; font-weight: 600; color:aliceblue">Login</div>
-                        </button>
-                    </a>
-                </div>
+                <li class="nav-item">
+                    <div class="btn-login">
+                        <a href="{{ route('login') }}">
+                            <button type="button" class="btn btn-light" style="border-radius: 10px; background-color:#0B87BA">
+                                <div style="padding: 0px 15px; font-size: 14px; font-weight: 600; color:aliceblue">Login</div>
+                            </button>
+                        </a>
+                    </div>
+                </li>
+                
             </ul>
         </div>
     </div>

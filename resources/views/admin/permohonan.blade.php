@@ -149,7 +149,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="sks">Jumlah SKS</label>
-                                                                        <input type="text"
+                                                                        <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Jumlah SKS" name="sks"
