@@ -41,44 +41,44 @@
                             <div class="form-group">
                                 <label for="laporan"><b>Laporan</b></label>
                                 <input class="form-control" type="text" name="laporan"
-                                    value="{{ isset($data['laporan']) ? $data['laporan'] : '' }}" required>
+                                    value="{{ isset($mhs->mhsbimbingan->laporan) ? $mhs->mhsbimbingan->laporan : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="makalah"><b>Makalah</b></label>
                                 <input class="form-control" type="text" name="makalah"
-                                    value="{{ isset($data['makalah']) ? $data['makalah'] : '' }}" required>
+                                    value="{{ isset($mhs->mhsbimbingan->makalah) ? $mhs->mhsbimbingan->makalah : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
                                 <input class="form-control" type="text" name="survey"
-                                    value="{{ isset($data['survey']) ? $data['survey'] : '' }}">
+                                    value="{{ isset($mhs->mhsbimbingan->survey) ? $mhs->mhsbimbingan->survey : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>
-                                <input class="form-control" type="text" name="kehadiran" value="{{ isset($data['kehadiran']) ? $data['kehadiran'] : '' }}">
+                                <input class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenilaian->kehadiran) ? $mhs->mhspenilaian->kehadiran : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
-                            @if (isset($data['status']))
+                            @if (isset($mhs->mhsbimbingan->status))
                                 <div class="form-group">
                                     <label for="status"><b>Status</b></label>
-                                    @if($data['status']=='acc')
+                                    @if($mhs->mhsbimbingan->status=='acc')
                                     <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
-                                        <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                        <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                         </option>
                                     </select>
                                     <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
-                                        <option <?= $data['status'] == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                        <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                         </option>
                                     </select>
                                     @else
                                     <select class="form-select input-border" name="status" id=""
                                         aria-label="Default select example">
-                                        <option <?= $data['status'] == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
+                                        <option <?= $mhs->mhsbimbingan->status == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
                                         </option>
-                                        <option <?= $data['status'] == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
+                                        <option <?= $mhs->mhsbimbingan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
                                         </option>
                                     </select>
                                     @endif
@@ -92,30 +92,30 @@
                             <div class="form-group">
                                 <label for="b1"><b>Form Permohonan Seminar (KP B1)</b></label>
                                 <input class="form-control" type="text" name="b1"
-                                    value="{{ isset($data['b1']) ? $data['b1'] : '' }}">
+                                    value="{{ isset($mhs->mhsbimbingan->b1) ? $mhs->mhsbimbingan->b1 : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b2"><b>Form Kehadiran Peserta Seminar (KP B2)</b></label>
                                 <input class="form-control" type="text" name="b2"
-                                    value="{{ isset($data['b2']) ? $data['b2'] : '' }}">
+                                    value="{{ isset($mhs->mhsbimbingan->b2) ? $mhs->mhsbimbingan->b2 : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b3"><b>Form Nilai Kerja Praktik (KP B3)</b></label>
                                 <input class="form-control" type="text" name="b3"
-                                    value="{{ isset($data['b3']) ? $data['b3'] : '' }}">
+                                    value="{{ isset($mhs->mhsbimbingan->b3) ? $mhs->mhsbimbingan->b3 : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="jadwal-seminar"><b>Jadwal Seminar</b></label>
                                 <input class="form-control" type="datetime-local" name="jadwal" id=""
-                                    value="{{ isset($data['jadwal']) ? $data['jadwal'] : '' }}">
+                                    value="{{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="jadwal-seminar"><b>Ruangan Seminar</b></label>
                                 <input class="form-control" type="text" name="ruangan" id=""
-                                    value="{{ isset($data['ruangan']) ? $data['ruangan'] : '' }}">
+                                    value="{{ isset($mhs->mhspenjadwalan->ruangan) ? $mhs->mhspenjadwalan->ruangan : '' }}">
                                     <div class="form-text">Input Ruangan yang ingin digunakan. Contoh: Ruangan A-201</div>
                             </div>
                             @endif

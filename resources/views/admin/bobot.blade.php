@@ -43,7 +43,7 @@
                                     <br>
                                     <strong>Bobot Bimbingan : <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
                                     <br>
-                                    <strong>Jumlah Bimbingan: <span>{{ $dosen['bobot_bimbingan'] }}</span></strong>
+                                    <strong>Jumlah Bimbingan: <span>{{ isset($dosen->dosenpendaftaran) ? $dosen->dosenpendaftaran->count() : 0 }}</span></strong>
                                     <br>
                                     <strong>Status : <span>{{ $dosen['status'] ? 'Aktif' : 'Tidak Aktif'}}</span></strong>
 
@@ -55,8 +55,8 @@
                         <span type="button" data-toggle="modal" data-target="#edit<?= $dosen['id'] ?>"><i
                                 class="p-0 fas fa-edit iconedit" style="padding-left: 9px;"></i> Edit </span>
 
-                        <span type="button" data-toggle="modal" data-target="#edit<?= $dosen['id'] ?>"><i
-                                    class="p-0 fas fa-trash" style="padding-left: 9px;"></i> Edit </span>        
+                        <span style="margin-left: 2em" type="button" data-toggle="modal" data-target="#deletemas<?= $dosen['id'] ?>"><i
+                                    class="p-0 fas fa-trash" style="padding-left: 9px;"></i> Hapus </span>        
                     </div>
                     <div class="modal fade" id="edit<?= $dosen['id'] ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,6 +93,34 @@
                                             </select>
                                             <input type="submit" class="btn btn-success" value="Save Changes"
                                                 name="update"></input>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="deletemas<?= $dosen['id'] ?>" tabindex="-1"
+                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete Data</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-6">
+                                        <form method="POST"
+                                            {{-- action="{{ route('admin.mhsdestroy',$data['id']) }}" --}}
+                                            >
+                                            @csrf
+                                            <h6>Apakah Anda Yakin?</h6>
+                                            <input type="submit" class="btn btn-success"
+                                                value="Okay" name="delete"></input>
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
                                         </form>

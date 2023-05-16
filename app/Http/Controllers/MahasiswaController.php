@@ -72,6 +72,7 @@ class MahasiswaController extends Controller
 
     public function pendaftaranstore(Request $request)
     {
+        // dd($request);
         $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         $ini = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
 
@@ -221,7 +222,6 @@ class MahasiswaController extends Controller
         $this->validate($request, [
             'makalah' => 'max:255',
             'laporan' => 'max:255',
-            'a1' => 'max:255',
             'b1' => 'max:255',
             'b2' => 'max:255',
             'b3' => 'max:255',
@@ -248,9 +248,6 @@ class MahasiswaController extends Controller
                 'ruangan' => $request->ruangan
             ]);
 
-            Pendaftaran::where('NIM', $nim)->first()->update([
-                'a1' => $request->a1,
-            ]);
             if(isset($penilaian)){
                 Penilaian::where('NIM', $nim)->first()->update([
                     'kehadiran' => $request->kehadiran,
@@ -279,9 +276,6 @@ class MahasiswaController extends Controller
                 'NIM' => Auth::user()->NIM,
                 'jadwal' => $request->jadwal,
                 'ruangan' => $request->ruangan,
-            ]);
-            Pendaftaran::where('NIM', $nim)->first()->update([
-                'a1' => $request->a1,
             ]);
 
             if(isset($penilaian)){
@@ -328,13 +322,8 @@ class MahasiswaController extends Controller
         if (!isset($perusahaan)) {
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
-        $data = Bimbingan::join('penjadwalans', 'bimbingans.NIM', '=', 'penjadwalans.NIM')->join('pendaftarans', 'bimbingans.NIM', '=', 'pendaftarans.NIM')
-        ->join('penilaians', 'bimbingans.NIM', 'penilaians.NIM')
-        ->select('bimbingans.id', 'penjadwalans.ruangan as ruangan', 'bimbingans.NIM', 'penjadwalans.jadwal', 'pendaftarans.a1 as a1', 'b1', 'b2', 'b3', 'bimbingans.survey', 'laporan', 'makalah', 'bimbingans.status', 'penilaians.kehadiran')
-        ->where('bimbingans.NIM', Auth::user()->NIM)->first();
         return view('mahasiswa.pengumpulan', [
             "mhs" => $mhs,
-            'data' => $data,
         ]);
     }
 

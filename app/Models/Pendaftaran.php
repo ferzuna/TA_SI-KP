@@ -11,4 +11,12 @@ class Pendaftaran extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = ['id'];
+
+    public function pendaftaranmhs(){
+        return $this->hasOne(User::class, 'NIM', 'NIM');
+    }
+
+    public function pendaftarandosen(){
+        return $this->hasOne(User::class, 'NIP', 'NIP');
+    }
 }
