@@ -14,13 +14,12 @@
                             <div class="col-lg-6 col-12 footer-links">
                                 <h5 style="font-weight: 700">Services</h5>
                                 <ul>
-                                    <li><a href="#">Dokumen KP</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-3 col-md-6 footer-links">
                                 <h5 style="font-weight: 700">Contact Us</h5>
                                 <ul>
-                                    <li><a href="#">Email : tekkom@undip.ac.id</a></li>
+                                    <li><a href="mailto:tekkom@undip.ac.id">Email : tekkom@undip.ac.id</a></li>
                                     <li><a href="#">No. Telepon: (024) 76480609</a></li>
                                 </ul>
                             </div>
