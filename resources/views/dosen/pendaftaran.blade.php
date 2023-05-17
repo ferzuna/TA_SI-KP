@@ -36,7 +36,6 @@
                                                     <th>Manage</th>
                                                 </tr>
                                             </thead>
-                                            @dd($mymahasiswa)
                                             <tbody>
                                                 @foreach ($mymahasiswa as $data)
                                                     <tr>
@@ -130,7 +129,6 @@
                                                         <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['bukti'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['bukti'] ?></a></td>
                                                         
                                                     </tr>
-                                                    {{-- Approved --}}
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
