@@ -120,7 +120,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($mymahasiswa as $data)
+                                                @foreach ($mymahasiswa1 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['semester'] ?></td>
