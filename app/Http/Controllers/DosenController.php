@@ -95,6 +95,13 @@ class DosenController extends Controller
         ]);
     }
 
+    public function setujuipendaftaran($id){
+        Pendaftaran::find($id)->update([
+            'status' => 1
+        ]);
+        return redirect('/dosen/pendaftaran');
+    }
+
     public function bimbingan(){
         $user = User::where('NIP', Auth::user()->NIP)->first();
         $bimbingan = $user->dosenbimbingan->where('status', null);
