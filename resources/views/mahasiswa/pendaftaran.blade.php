@@ -54,6 +54,14 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="dosen"><b>Dosen Pilihan :</b></label>
+                                @if (isset($mhs->mhspendaftaran->status) && $mhs->mhspendaftaran->status == 1)
+                                <select class="form-select input-border" name="dosbing" id="" aria-label="Default select example" hidden>
+                                    <option id="" value="{{ isset($dp['NIP']) ? $dp['NIP'] : '' }}">{{ isset($dp['name']) ? $dp['name'] : '' }}</option>
+                                </select>
+                                <select class="form-select input-border" name="dosbing" id="" aria-label="Default select example" disabled>
+                                    <option id="" value="{{ isset($dp['NIP']) ? $dp['NIP'] : '' }}">{{ isset($dp['name']) ? $dp['name'] : '' }}</option>
+                                </select>
+                                @else
                                 <select class="form-select input-border" name="dosbing" id=""
                                     aria-label="Default select example" required>
                                         <option id="" value="{{ isset($dp['NIP']) ? $dp['NIP'] : '' }}">{{ isset($dp['name']) ? $dp['name'] : '' }}</option>
@@ -62,6 +70,10 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @endif
+                                
+                                
+                                
                                 <div class="form-text">Dosen yang tertera merupakan dosen yang tersedia</div>
                             </div>
                         </div>
