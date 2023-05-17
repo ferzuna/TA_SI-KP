@@ -64,6 +64,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/admin/permohonan/edit/{id}', [AdminController::class, 'editpermohonan'])->name('admin.editpermohonan');
     Route::post('/admin/list-mahasiswa/edit/{id}', [AdminController::class, 'editmahasiswa'])->name('admin.editmahasiswa');
     Route::post('/admin/permohonan/delete/{id}', [AdminController::class, 'deletepermohonan'])->name('admin.deletepermohonan');
+    Route::post('/admin/berkas-nilai/delete/{id}', [AdminController::class, 'deleteberkas'])->name('admin.deleteberkas');
     // Route::get('/admin/berkas-nilai/berkas-akhir', [AdminController::class, 'berkasakhir'])->name('admin.berkas-akhir');
 });
 
