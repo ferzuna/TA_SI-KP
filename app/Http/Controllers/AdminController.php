@@ -187,11 +187,12 @@ class AdminController extends Controller
     {
         $mhs = User::find($id);
         User::find($id)->delete();
-        Permohonan::where('NIM', $mhs['NIM'])->first()->delete();
-        Bimbingan::where('NIM', $mhs['NIM'])->first()->delete();
-        Penilaian::where('NIM', $mhs['NIM'])->first()->delete();
-        Pendaftaran::where('NIM', $mhs['NIM'])->first()->delete();
-        Penjadwalan::where('NIM', $mhs['NIM'])->first()->delete();
+
+        isset($mhs->mhspermohonan) ? $mhs->mhspermohonan->delete() : null;
+        isset($mhs->mhspendaftaran) ? $mhs->mhspendaftaran->delete() : null;
+        isset($mhs->mhsbimbingan) ? $mhs->mhsbimbingan->delete() : null;
+        isset($mhs->mhspenjadwalan) ? $mhs->mhspenjadwalan->delete() : null;
+        isset($mhs->mhspenilaian) ? $mhs->mhspenilaian->delete() : null;
         return redirect('/admin/list-mahasiswa')->with('success', 'mahasiswa deleted');
     }
 
@@ -242,10 +243,39 @@ class AdminController extends Controller
     }
 
     public function editpermohonan(Request $request, $id){
+        $nimmhs = Permohonan::find($id)->first()->NIM;
+        $user = User::where('NIM', $nimmhs)->first();
+        User::where('NIM', $nimmhs)->update([
+            'name' => $request->name,
+            'NIM' => $request->NIM,
+            'sks' => $request->sks,
+        ]);
         Permohonan::find($id)->update([
             'perusahaan' => $request->perusahaan,
-            'proposal' => $request->proposal,         
+            'proposal' => $request->proposal,    
+            'NIM' => $request->NIM     
         ]);
+        if(isset($user->mhspendaftaran)){
+            $user->mhspendaftaran->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($user->mhsbimbingan)){
+            $user->mhsbimbingan->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($user->mhspenjadwalan)){
+            $user->mhspenjadwalan->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($user->mhspenilaian)){
+            $user->mhspenilaian->update([
+                'NIM' => $request->NIM
+            ]);
+    }
+
         return redirect('/admin/permohonan');
     }
 
@@ -291,5 +321,15 @@ class AdminController extends Controller
             'datas' => $datas,
             'dosen' => $find['name'],
         ]);
+    }
+
+    public function deleteberkas($id){
+        $user = User::find($id);
+        isset($user->mhspermohonan) ? $user->mhspermohonan->delete() : null;
+        isset($user->mhspendaftaran) ? $user->mhspendaftaran->delete() : null;
+        isset($user->mhsbimbingan) ? $user->mhsbimbingan->delete() : null;
+        isset($user->mhspenjadwalan) ? $user->mhspenjadwalan->delete() : null;
+        isset($user->mhspenilaian) ? $user->mhspenilaian->delete() : null;
+        return redirect('/admin/berkas-nilai');
     }
 }

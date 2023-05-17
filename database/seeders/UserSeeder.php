@@ -33,6 +33,7 @@ class UserSeeder extends Seeder
             'role_id' => 4,
             'kuota_bimbingan' => 4,
             'bobot_bimbingan' => 0,
+            'status' => '1',
         ]);
         $dosen->assignRole('dosen');
         
@@ -46,6 +47,7 @@ class UserSeeder extends Seeder
             'role_id' => 4,
             'kuota_bimbingan' => 4,
             'bobot_bimbingan' => 0,
+            'status' => '1',
         ]);
         $dosen1->assignRole('dosen');
         
@@ -85,7 +87,46 @@ class UserSeeder extends Seeder
             'role_id' => 1
         ]);
         $mahasiswa->assignRole('mahasiswa');
-
+        $mahasiswa1 = User::create([
+            'NIM' => '21120119150002',
+            'name' => 'mahasiswa1',
+            'semester' => '8',
+            'no_telp' => '983385',
+            'username' => 'mahasiswa1',
+            'sks' => '144',
+            'alamat' => 'jl banjarsari no 51',
+            'email' => 'mahasiswa1@gmail.com',
+            'password' => bcrypt('password'),
+            'role_id' => 1
+        ]);
+        $mahasiswa1->assignRole('mahasiswa');
+        $mahasiswa2 = User::create([
+            'NIM' => '21120119150003',
+            'name' => 'mahasiswa2',
+            'semester' => '8',
+            'no_telp' => '983385',
+            'username' => 'mahasiswa2',
+            'sks' => '144',
+            'alamat' => 'jl banjarsari no 51',
+            'email' => 'mahasiswa2@gmail.com',
+            'password' => bcrypt('password'),
+            'role_id' => 1
+        ]);
+        $mahasiswa2->assignRole('mahasiswa');
+        $mahasiswa3 = User::create([
+            'NIM' => '21120119150004',
+            'name' => 'mahasiswa3',
+            'semester' => '8',
+            'no_telp' => '983385',
+            'username' => 'mahasiswa3',
+            'sks' => '144',
+            'alamat' => 'jl banjarsari no 51',
+            'email' => 'mahasiswa3@gmail.com',
+            'password' => bcrypt('password'),
+            'role_id' => 1
+        ]);
+        $mahasiswa3->assignRole('mahasiswa');
+        
         
     }
 }
