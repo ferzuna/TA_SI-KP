@@ -274,28 +274,38 @@ class AdminController extends Controller
             $user->mhspenilaian->update([
                 'NIM' => $request->NIM
             ]);
-    }
+        }
 
         return redirect('/admin/permohonan');
     }
 
     public function editmahasiswa(Request $request, $id){
         $mhs = User::find($id);
-        $mhs->mhspermohonan->update([
-            'NIM' => $request->NIM
-        ]);
-        $mhs->mhspenjadwalan->update([
-            'NIM' => $request->NIM
-        ]);
-        $mhs->mhspendaftaran->update([
-            'NIM' => $request->NIM
-        ]);
-        $mhs->mhsbimbingan->update([
-            'NIM' => $request->NIM
-        ]);
-        $mhs->mhspenilaian->update([
-            'NIM' => $request->NIM
-        ]);
+        if(isset($mhs->mhspermohonan)){
+            $mhs->mhspermohonan->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($mhs->mhspenjadwalan)){
+            $mhs->mhspenjadwalan->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($mhs->mhspendaftaran)){
+            $mhs->mhspendaftaran->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($mhs->mhsbimbingan)){
+            $mhs->mhsbimbingan->update([
+                'NIM' => $request->NIM
+            ]);
+        }
+        if(isset($mhs->mhspenilaian)){
+            $mhs->mhspenilaian->update([
+                'NIM' => $request->NIM
+            ]);
+        }
         User::find($id)->update([
             'NIM' => $request->NIM,
             'name' => $request->name,
