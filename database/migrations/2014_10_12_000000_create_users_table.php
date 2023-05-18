@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('NIM')->unique()->nullable(); //mahasiswa
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('username');
+            $table->string('username')->unique()->nullable();
             $table->string('password');
             $table->string('alamat')->nullable(); //dosen
             $table->integer('kuota_bimbingan')->nullable(); //dosen
