@@ -75,6 +75,7 @@ Route::group(['middleware' => ['dosen', 'verified']], function () {
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
     Route::post('/dosen/list-mahasiswa/destroy/{id}', [DosenController::class, 'mahasiswadestroy'])->name('listmahasiswa.destroy');
     Route::get('/dosen/pendaftaran', [DosenController::class, 'halamanpendaftaran'])->name('dosen.pendaftaran');
+    Route::post('/dosen/setujuipendaftaran/{id}', [DosenController::class, 'setujuipendaftaran'])->name('dosen.setujuipendaftaran');
     Route::get('/dosen/bimbingan', [DosenController::class, 'bimbingan'])->name('dosen.bimbingan');
     Route::get('/dosen/jadwal', [DosenController::class, 'jadwalseminar'])->name('dosen.jadwal');
     Route::get('/dosen/pengaturan', function () {

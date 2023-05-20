@@ -88,11 +88,24 @@ class DosenController extends Controller
         $mymahasiswa = User::leftJoin('pendaftarans', function($join) {
             $join->on('users.NIM', '=', 'pendaftarans.NIM');
         })->join('permohonans', 'users.NIM', '=', 'permohonans.NIM')
-        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'pendaftarans.bukti')
-        ->where('pendaftarans.NIP', Auth::user()->NIP)->get();
+        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'pendaftarans.bukti', 'pendaftarans.status')
+        ->where('pendaftarans.NIP', Auth::user()->NIP)->where('pendaftarans.status', 0)->get();
+        $mymahasiswa1 = User::leftJoin('pendaftarans', function($join) {
+            $join->on('users.NIM', '=', 'pendaftarans.NIM');
+        })->join('permohonans', 'users.NIM', '=', 'permohonans.NIM')
+        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'pendaftarans.bukti', 'pendaftarans.status')
+        ->where('pendaftarans.NIP', Auth::user()->NIP)->where('pendaftarans.status', 1)->get();
         return view('dosen.pendaftaran', [
             'mymahasiswa' => $mymahasiswa,
+            'mymahasiswa1' => $mymahasiswa1
         ]);
+    }
+
+    public function setujuipendaftaran($id){
+        Pendaftaran::find($id)->update([
+            'status' => 1
+        ]);
+        return redirect('/dosen/pendaftaran');
     }
 
     public function bimbingan(){
