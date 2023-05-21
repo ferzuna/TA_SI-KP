@@ -239,8 +239,8 @@ class DosenController extends Controller
     {
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
+            'username' => 'required|string|max:25',
             'email' => 'required|email',
         ]);
 

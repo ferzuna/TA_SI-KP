@@ -15,13 +15,13 @@ class CreatePenilaiansTable extends Migration
     {
         Schema::create('penilaians', function (Blueprint $table) {
             $table->id();
-            $table->string('NIP');
-            $table->string('NIM');
+            $table->string('NIP')->length(20);
+            $table->string('NIM')->length(20);
             $table->string('kehadiran')->nullable();
             $table->string('a2')->nullable();
             $table->string('b4')->nullable();
             $table->string('b5')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->nullable()->length(15);
             $table->softDeletes();
             $table->timestamps();
         });
