@@ -15,9 +15,9 @@ class CreatePenjadwalansTable extends Migration
     {
         Schema::create('penjadwalans', function (Blueprint $table) {
             $table->id();
-            $table->string('NIP');
-            $table->string('NIM');
-            $table->string('ruangan')->nullable();
+            $table->string('NIP')->length(20);
+            $table->string('NIM')->length(20);
+            $table->string('ruangan')->nullable()->length(15);
             $table->dateTime('jadwal')->nullable();
             $table->softDeletes();
             $table->timestamps();
