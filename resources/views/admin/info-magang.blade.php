@@ -16,7 +16,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <form method="POST" action="{{ route('addinfomagang') }}">
                                         @csrf
                                         <input type="text" class="border rounded-0 form-control"
@@ -26,7 +26,7 @@
                                         <input type="text" class="border rounded-0 form-control"
                                             style="width: 440px;margin-bottom: 15px;" placeholder="Durasi"
                                             name="durasi" />
-                                        <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control"></textarea>
+                                        <textarea id="summernote" style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control"></textarea>
                                         <input type="submit" class="btn btn-success" value="Save Changes"
                                             name="submit"></input>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -95,7 +95,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-12">
                                                                 <form method="POST" action="{{ route('infomagang.update', $data['id']) }}">
                                                                     @csrf
                                                                     <div class="form-group">
@@ -124,7 +124,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="requirement">Requirement</label>
-                                                                    <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control" ><?= $data['requirement'] ?></textarea>
+                                                                    <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="requirement" class="border rounded-0 form-control summernote" ><?= $data['requirement'] ?></textarea>
                                                                     </div>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>
@@ -182,4 +182,20 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $('#summernote').summernote({
+        placeholder: 'Requirement yang dibutuhkan',
+        tabsize: 2,
+        height: 100
+      });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+    </script>
 @endsection

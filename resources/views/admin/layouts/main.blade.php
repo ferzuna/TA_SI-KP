@@ -12,6 +12,7 @@
     <title>Kerja Praktik - Teknik Komputer</title>
 
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/koordinator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
@@ -128,11 +129,17 @@
     <script src="{{ asset('js/theme.js') }}"></script>
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">
     </script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('.data').DataTable();
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#summernote').summernote();
     });
     </script>
 
