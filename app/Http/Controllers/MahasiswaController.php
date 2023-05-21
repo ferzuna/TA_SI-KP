@@ -82,7 +82,7 @@ class MahasiswaController extends Controller
         $this->validate($request, [
             'a1' => 'required|string|max:255',
             'bukti' => 'max:255',
-            'dosbing' => 'required|string|max:255',
+            'dosbing' => 'required|string|max:20',
         ]);
         // pengondisian untuk data yang sudah ada
         if (isset($ini)) {
@@ -226,7 +226,7 @@ class MahasiswaController extends Controller
             'b2' => 'max:255',
             'b3' => 'max:255',
             'survey' => 'max:255',
-            'ruangan' => 'max:255'
+            'ruangan' => 'max:15'
         ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
@@ -417,13 +417,13 @@ class MahasiswaController extends Controller
     {
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
             'NIM' => 'required|digits:14',
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:25',
             'email' => 'required|email',
             'no_telp' => 'required|digits_between:1,20',
             'sks' => 'required|digits_between:1,3',
-            'alamat' => 'required|string|max:255',
+            'alamat' => 'required|string|max:50',
             'semester' => 'required|digits_between:1,2',
         ]);
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();

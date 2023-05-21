@@ -60,10 +60,10 @@ class RegisterDosenController extends Controller
 
     public function store(Request $request){
         $validateddata = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'NIP' => ['required', 'string', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:50'],
+            'NIP' => ['required', 'string', 'max:20', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:25', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
         $validateddata = [
