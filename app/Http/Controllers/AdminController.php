@@ -200,8 +200,8 @@ class AdminController extends Controller
     {
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
+            'username' => 'required|string|max:25',
             'email' => 'required|email',
         ]);
 
@@ -243,6 +243,12 @@ class AdminController extends Controller
     }
 
     public function editpermohonan(Request $request, $id){
+        $this->validate($request, [
+            'name' => 'string|max:50',
+            'NIM' => 'string|max:20',
+            'sks' => 'digits_between:1,3',
+            'perusahaan' => 'string|max:50'
+        ]);
         $nimmhs = Permohonan::find($id)->first()->NIM;
         $user = User::where('NIM', $nimmhs)->first();
         User::where('NIM', $nimmhs)->update([
@@ -341,5 +347,10 @@ class AdminController extends Controller
         isset($user->mhspenjadwalan) ? $user->mhspenjadwalan->delete() : null;
         isset($user->mhspenilaian) ? $user->mhspenilaian->delete() : null;
         return redirect('/admin/berkas-nilai');
+    }
+
+    public function deletedosen($id){
+        User::find($id)->delete();
+        return redirect('/admin/bobot');
     }
 }

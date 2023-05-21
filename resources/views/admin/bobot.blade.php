@@ -115,7 +115,7 @@
                                 <div class="modal-body">
                                     <div class="col-md-6">
                                         <form method="POST"
-                                            {{-- action="{{ route('admin.mhsdestroy',$data['id']) }}" --}}
+                                            action="{{ route('admin.deletedosen',$dosen['id']) }}"
                                             >
                                             @csrf
                                             <h6>Apakah Anda Yakin?</h6>

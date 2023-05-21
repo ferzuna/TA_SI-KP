@@ -15,10 +15,10 @@ class CreatePendaftaransTable extends Migration
     {
         Schema::create('pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->string('NIM');
+            $table->string('NIM')->length(20);
             $table->string('bukti')->nullable();
             $table->string('a1')->nullable();
-            $table->string('NIP')->nullable();
+            $table->string('NIP')->nullable()->length(20);
             $table->boolean('status')->default(0)->nullable();
             $table->softDeletes();
             $table->timestamps();
