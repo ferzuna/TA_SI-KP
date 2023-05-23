@@ -74,11 +74,11 @@
                                                                             @csrf
                                                                             <h6>Apakah Anda Yakin?</h6>
                                                                             <input type="submit"
-                                                                                class="btn btn-success" value="Okay"
+                                                                                class="btn btn-success" value="Ya"
                                                                                 name="approve"></input>
                                                                             <button type="button"
                                                                                 class="btn btn-secondary"
-                                                                                data-dismiss="modal">Close</button>
+                                                                                data-dismiss="modal">Tidak</button>
                                                                         </form>
                                                                     </div>
                                                                 </div>
