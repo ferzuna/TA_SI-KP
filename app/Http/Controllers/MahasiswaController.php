@@ -293,7 +293,7 @@ class MahasiswaController extends Controller
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
             $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
             $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
-            if(isset($status3)){
+            if(isset($status3['a2'])){
                 User::where('NIM', Auth::user()->NIM)->first()->update([
                     'status' => 'Selesai KP'
                 ]);
