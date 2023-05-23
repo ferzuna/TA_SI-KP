@@ -388,10 +388,10 @@ class MahasiswaController extends Controller
                 'b3' => $request->b3,
             ]);
             // apakah bimbingan perlu dibuaat juga??
-
-            $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
-            $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
-            $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
+        }
+        $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+        $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+        $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
             if(isset($status3)){
                 User::where('NIM', Auth::user()->NIM)->first()->update([
                     'status' => 'Selesai KP'
@@ -409,7 +409,6 @@ class MahasiswaController extends Controller
                     'status' => 'Permohonan KP'
                 ]);
             }
-        }
         return redirect('/mahasiswa/finalisasi')->with('status', 'finalisasi berkas created!');
     }
 
