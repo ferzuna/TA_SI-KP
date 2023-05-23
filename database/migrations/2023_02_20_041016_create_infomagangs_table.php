@@ -18,7 +18,7 @@ class CreateInfomagangsTable extends Migration
             $table->string('perusahaan')->nullable();
             $table->string('posisi')->nullable();
             $table->string('durasi')->nullable();
-            $table->string('requirement')->nullable();
+            $table->text('requirement')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
