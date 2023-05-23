@@ -287,31 +287,11 @@ class AdminController extends Controller
 
     public function editmahasiswa(Request $request, $id){
         $mhs = User::find($id);
-        if(isset($mhs->mhspermohonan)){
-            $mhs->mhspermohonan->update([
-                'NIM' => $request->NIM
-            ]);
-        }
-        if(isset($mhs->mhspenjadwalan)){
-            $mhs->mhspenjadwalan->update([
-                'NIM' => $request->NIM
-            ]);
-        }
-        if(isset($mhs->mhspendaftaran)){
-            $mhs->mhspendaftaran->update([
-                'NIM' => $request->NIM
-            ]);
-        }
-        if(isset($mhs->mhsbimbingan)){
-            $mhs->mhsbimbingan->update([
-                'NIM' => $request->NIM
-            ]);
-        }
-        if(isset($mhs->mhspenilaian)){
-            $mhs->mhspenilaian->update([
-                'NIM' => $request->NIM
-            ]);
-        }
+        isset($mhs->mhspermohonan) ? $mhs->mhspermohonan->update(['NIM' => $request->NIM]) : null;
+        isset($mhs->mhspenjadwalan) ? $mhs->mhspenjadwalan->update(['NIM' => $request->NIM]) : null;
+        isset($mhs->mhspendaftaran) ? $mhs->mhspendaftaran->update(['NIM' => $request->NIM]) : null;
+        isset($mhs->mhsbimbingan) ? $mhs->mhsbimbingan->update(['NIM' => $request->NIM]) : null;
+        isset($mhs->mhspenilaian) ? $mhs->mhspenilaian->update(['NIM' => $request->NIM]) : null;
         User::find($id)->update([
             'NIM' => $request->NIM,
             'name' => $request->name,
