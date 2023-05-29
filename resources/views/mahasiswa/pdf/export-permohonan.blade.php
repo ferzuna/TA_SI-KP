@@ -145,12 +145,12 @@
          <span style="line-height: 150%;">Fakultas Teknik</span>
          <br>
          <span style="line-height: 150%;">Universitas Diponegoro</span>
-         <div style="position:absolute; z-index:-2; margin-top:-5px; margin-bottom:-2em">
+         {{-- <div style="position:absolute; z-index:-2; margin-top:-5px; margin-bottom:-2em">
             <img src="{{asset('img/TTD pak adian.png')}}" alt="" style="
             width:100%;
             height:125px;
             ">
-         </div>
+         </div> --}}
          <br>
          <br>
          <br>
