@@ -64,7 +64,39 @@
                             
                         </div>
                         <div class="py-2">
-                            <button type="submit" class="btn btn-light btn-outline-dark btn-submit"><b>Submit</b></button>
+                            @if (isset($mhs->mhspermohonan))
+                                <div class="btn btn-light btn-outline-dark btn-submit" data-toggle="modal"
+                                data-target="#approve"><b>Update</b></div>
+                                {{-- Approve --}}
+                                <div class="modal fade" id="approve"
+                                    tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Konfirmasi Ubah Data</h5>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-md-12">                     
+                                                    <h6>Proses akan dimulai dari awal apabila anda mengubah data permohonan KP. Apakah Anda yakin ingin mengubahnya?</h6>
+                                                    <input type="submit"
+                                                        class="btn btn-success" value="Ya"
+                                                        name="approve"></input>
+                                                    <button type="button"
+                                                        class="btn btn-secondary"
+                                                        data-dismiss="modal">Tidak</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <button type="submit" class="btn btn-light btn-outline-dark btn-submit"><b>Submit</b></button>
+                            @endif
                         </div>
                     </div>
                 </form>

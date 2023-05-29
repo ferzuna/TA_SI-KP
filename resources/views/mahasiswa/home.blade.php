@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(isset($mhs->mhspermohonan))
+                        @if(isset($mhs->mhspermohonan) && $mhs->mhspermohonan->status == 1)
 
                         <div class="col-lg-6">
                             <div class="m-3">

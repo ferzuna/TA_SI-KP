@@ -39,7 +39,7 @@
                     <a class="nav-link" aria-current="page" href="{{ route('permohonan') }}">Permohonan KP</a>
                 </li>
                 <li class="nav-item my-auto">
-                    @if(isset($mhs->mhspermohonan))
+                    @if(isset($mhs->mhspermohonan) && $mhs->mhspermohonan->status == 1)
                     <a class="nav-link" href="{{ route('pendaftaran') }}">Pendaftaran KP</a>
                     @else
                     
