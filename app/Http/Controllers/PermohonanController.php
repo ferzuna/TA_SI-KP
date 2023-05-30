@@ -28,7 +28,7 @@ class PermohonanController extends Controller
     public function sendPermohonan(Request $request)
     {
         $this->validate($request, [
-            'perusahaan' => 'required|string|max:255',
+            'perusahaan' => 'required|string|max:50',
             // 'proposal' => 'string|max:255',
         ]);
         $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
