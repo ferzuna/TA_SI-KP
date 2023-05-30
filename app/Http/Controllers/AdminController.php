@@ -79,6 +79,11 @@ class AdminController extends Controller
 
     public function addinfomagang(Request $request)
     {
+        $this->validate($request, [
+            'perusahaan' => 'required|string|max:255',
+            'posisi' => 'required|string|max:255',
+            'durasi' => 'required|string|max:255',
+        ]);
         Infomagang::create([
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
@@ -163,6 +168,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'perusahaan' => 'required|string|max:255',
+            'posisi' => 'required|string|max:255',
+            'durasi' => 'required|string|max:255',
+        ]);
         Infomagang::find($id)->update([
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
