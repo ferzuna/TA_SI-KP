@@ -129,6 +129,10 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="NIM" name="NIM"
+                                                                            oninput="limitInputLength(this, 14)"
+                                                                            maxlength="14"
+                                                                            pattern="[0-9]{14}"
+                                                                            title="Digit yang diterima hanya 14 digit."
                                                                             value="<?= $data['NIM'] ?>" />
                                                                     </div>
                                                                     <div class="form-group">
@@ -153,6 +157,9 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Jumlah SKS" name="sks"
+                                                                            oninput="limitInputLength(this, 3)"
+                                                                            pattern="[0-9]{3}"
+                                                                            maxlength="3"
                                                                             value="<?= $data['sks'] ?>" />
                                                                     </div>
                                                                     {{-- <div class="form-group">
@@ -227,4 +234,14 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+@endsection
+
+@section('script')
+    <script>
+    function limitInputLength(element, maxLength) {
+        if (element.value.length > maxLength) {
+            element.value = element.value.slice(0, maxLength);
+        }
+    }
+    </script>
 @endsection

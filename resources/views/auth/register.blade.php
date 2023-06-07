@@ -33,7 +33,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('NIM') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="NIM" type="text"
+                                    <input id="NIM" type="text" pattern="^21120.*$" title="Masukkan NIM Departemen Teknik Komputer"
                                         class="form-control @error('NIM') is-invalid @enderror" name="NIM"
                                         value="{{ old('NIM') }}" required autocomplete="NIM" autofocus>
 
@@ -67,7 +67,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Jumlah SKS Kumulatif') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="sks" type="text"
+                                    <input id="sks" type="number"
                                         class="form-control @error('sks') is-invalid @enderror" name="sks"
                                         value="{{ old('sks') }}" required autocomplete="sks" autofocus>
 

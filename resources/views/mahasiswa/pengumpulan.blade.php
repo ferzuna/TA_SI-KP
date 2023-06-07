@@ -40,25 +40,25 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="laporan"><b>Laporan</b></label>
-                                <input class="form-control" type="text" name="laporan"
+                                <input id="laporan-input" class="form-control" type="text" name="laporan"
                                     value="{{ isset($mhs->mhsbimbingan->laporan) ? $mhs->mhsbimbingan->laporan : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="makalah"><b>Makalah</b></label>
-                                <input class="form-control" type="text" name="makalah"
+                                <input id="makalah-input" class="form-control" type="text" name="makalah"
                                     value="{{ isset($mhs->mhsbimbingan->makalah) ? $mhs->mhsbimbingan->makalah : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
-                                <input class="form-control" type="text" name="survey"
+                                <input id="survey-input" class="form-control" type="text" name="survey"
                                     value="{{ isset($mhs->mhsbimbingan->survey) ? $mhs->mhsbimbingan->survey : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>
-                                <input class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenilaian->kehadiran) ? $mhs->mhspenilaian->kehadiran : '' }}">
+                                <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenilaian->kehadiran) ? $mhs->mhspenilaian->kehadiran : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             @if (isset($mhs->mhsbimbingan->status))
@@ -91,19 +91,19 @@
                             @if (isset($mhs->mhsbimbingan->status) && $mhs->mhsbimbingan->status == 'acc') 
                             <div class="form-group">
                                 <label for="b1"><b>Form Permohonan Seminar (KP B1)</b></label>
-                                <input class="form-control" type="text" name="b1"
+                                <input id="b1-input" class="form-control" type="text" name="b1"
                                     value="{{ isset($mhs->mhsbimbingan->b1) ? $mhs->mhsbimbingan->b1 : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b2"><b>Form Kehadiran Peserta Seminar (KP B2)</b></label>
-                                <input class="form-control" type="text" name="b2"
+                                <input id="b2-input" class="form-control" type="text" name="b2"
                                     value="{{ isset($mhs->mhsbimbingan->b2) ? $mhs->mhsbimbingan->b2 : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b3"><b>Form Nilai Kerja Praktik (KP B3)</b></label>
-                                <input class="form-control" type="text" name="b3"
+                                <input id="b3-input" class="form-control" type="text" name="b3"
                                     value="{{ isset($mhs->mhsbimbingan->b3) ? $mhs->mhsbimbingan->b3 : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
@@ -134,4 +134,18 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+    const inputs = document.querySelectorAll('#laporan-input, #makalah-input, #survey-input, #kehadiran-input, #b1-input, #b2-input, #b3-input');
+    const linkRegex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/;
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const isValidLink = linkRegex.test(input.value);
+            input.setCustomValidity(isValidLink ? '' : 'Please enter a valid link (e.g., https://drive.google.com)');
+        });
+    });
+    </script>
 @endsection
