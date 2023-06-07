@@ -211,8 +211,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
             'name' => 'required|string|max:50',
-            'username' => 'required|string|max:25',
-            'email' => 'required|email',
+            'username' => 'required|string|max:25|unique:users,username',
+            'email' => 'required|email|unique:users,email',
         ]);
 
         if ($request->file('imageUpload') == null) {
@@ -255,7 +255,7 @@ class AdminController extends Controller
     public function editpermohonan(Request $request, $id){
         $this->validate($request, [
             'name' => 'string|max:50',
-            'NIM' => 'string|max:20',
+            'NIM' => 'string|max:20|unique:users,NIM',
             'sks' => 'digits_between:1,3',
             'perusahaan' => 'string|max:50'
         ]);
@@ -296,6 +296,13 @@ class AdminController extends Controller
     }
 
     public function editmahasiswa(Request $request, $id){
+        $this->validate($request, [
+            'NIM' => 'string|max:20|unique:users,NIM',
+            'name' => 'string|max:50',
+            'semester' => 'string|max:2',
+            'no_telp' => 'string|max:20',
+            'sks' => 'string|max:4'
+        ]);
         $mhs = User::find($id);
         isset($mhs->mhspermohonan) ? $mhs->mhspermohonan->update(['NIM' => $request->NIM]) : null;
         isset($mhs->mhspenjadwalan) ? $mhs->mhspenjadwalan->update(['NIM' => $request->NIM]) : null;
