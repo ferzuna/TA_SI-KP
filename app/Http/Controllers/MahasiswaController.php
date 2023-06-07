@@ -417,14 +417,29 @@ class MahasiswaController extends Controller
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
             'name' => 'required|string|max:50',
-            'NIM' => 'required|digits:14|unique:users,NIM',
-            'username' => 'required|string|max:25|unique:users,username',
-            'email' => 'required|email|unique:users,email',
+            'NIM' => 'required|digits:14',
+            'username' => 'required|string|max:25',
+            'email' => 'required|email',
             'no_telp' => 'required|digits_between:1,20',
             'sks' => 'required|digits_between:1,3',
             'alamat' => 'required|string|max:50',
             'semester' => 'required|digits_between:1,2',
         ]);
+        if($request->username != Auth::user()->username){
+            $this->validate($request,[
+                'username' => 'unique:users,username'
+            ]);
+        }
+        if($request->email != Auth::user()->email){
+            $this->validate($request,[
+                'email' => 'unique:users,email'
+            ]);
+        }
+        if($request->NIM != Auth::user()->NIM){
+            $this->validate($request,[
+                'NIM' => 'unique:users,NIM'
+            ]);
+        }
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();

@@ -240,10 +240,19 @@ class DosenController extends Controller
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
             'name' => 'required|string|max:50',
-            'username' => 'required|string|max:25|unique:users,username',
-            'email' => 'required|email|unique:users,email',
+            'username' => 'required|string|max:25',
+            'email' => 'required|email',
         ]);
-
+        if($request->username != Auth::user()->username){
+            $this->validate($request,[
+                'username' => 'unique:users,username'
+            ]);
+        }
+        if($request->email != Auth::user()->email){
+            $this->validate($request,[
+                'email' => 'unique:users,email'
+            ]);
+        }
         if ($request->file('imageUpload') == null) {
             $file = $request->oldImage;
         } elseif ($request->file('imageUpload')) {
