@@ -40,13 +40,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="a1"><b>KP A1</b></label>
-                                <input class="form-control" type="text" name="a1"
+                                <input id="a1-input" class="form-control" type="text" name="a1"
                                     value="{{ isset($pendaftaran['a1']) ? $pendaftaran['a1'] : '' }}" required>
                                 <div class="form-text">Input link Folder Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="diterima"><b>Email/Surat Diterima KP</b></label>
-                                <input class="form-control" type="text" name="bukti"
+                                <input id="bukti-input" class="form-control" type="text" name="bukti"
                                     value="{{ isset($pendaftaran['bukti']) ? $pendaftaran['bukti'] : '' }}" required>
                                 <div class="form-text">Input link Folder Google Drive dokumen terkait</div>
                             </div>
@@ -85,4 +85,18 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+    const inputs = document.querySelectorAll('#a1-input, #bukti-input');
+    const linkRegex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/;
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const isValidLink = linkRegex.test(input.value);
+            input.setCustomValidity(isValidLink ? '' : 'Please enter a valid link (e.g., http://drive.google.com)');
+        });
+    });
+    </script>
 @endsection

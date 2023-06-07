@@ -45,9 +45,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="proposal"><b>Proposal Perusahaan</b></label>
-                                <input class="form-control" type="text" name="proposal"
+                                <input id="proposal-input" class="form-control" type="text" name="proposal"
                                     value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}">
-                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
+                                    <div class="form-text">Input link Google Drive dokumen terkait dan berikan akses untuk mengedit</div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -103,4 +103,22 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        const proposalInput = document.getElementById('proposal-input');
+        const linkRegex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/;
+
+        proposalInput.addEventListener('input', function() {
+            const inputValue = this.value;
+            const isValidLink = linkRegex.test(inputValue);
+
+            if (isValidLink) {
+                this.setCustomValidity(''); // Clear any previous validation error message
+            } else {
+                this.setCustomValidity('Please enter a valid link'); // Set validation error message
+            }
+        });
+    </script>
 @endsection
