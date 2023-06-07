@@ -255,7 +255,7 @@ class AdminController extends Controller
     public function editpermohonan(Request $request, $id){
         $this->validate($request, [
             'name' => 'string|max:50',
-            'NIM' => 'string|max:20',
+            'NIM' => 'string|max:20|unique:users,NIM',
             'sks' => 'digits_between:1,3',
             'perusahaan' => 'string|max:50'
         ]);
@@ -296,6 +296,13 @@ class AdminController extends Controller
     }
 
     public function editmahasiswa(Request $request, $id){
+        $this->validate($request, [
+            'NIM' => 'string|max:20|unique:users,NIM',
+            'name' => 'string|max:50',
+            'semester' => 'string|max:2',
+            'no_telp' => 'string|max:20',
+            'sks' => 'string|max:4'
+        ]);
         $mhs = User::find($id);
         isset($mhs->mhspermohonan) ? $mhs->mhspermohonan->update(['NIM' => $request->NIM]) : null;
         isset($mhs->mhspenjadwalan) ? $mhs->mhspenjadwalan->update(['NIM' => $request->NIM]) : null;
