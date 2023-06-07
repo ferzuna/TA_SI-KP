@@ -121,7 +121,7 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Nama" name="name"
-                                                                            value="<?= $data['name'] ?>" />
+                                                                            value="<?= $data['name'] ?>" required/>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="NIM">NIM</label>
@@ -133,7 +133,7 @@
                                                                             maxlength="14"
                                                                             pattern="[0-9]{14}"
                                                                             title="Digit yang diterima hanya 14 digit."
-                                                                            value="<?= $data['NIM'] ?>" />
+                                                                            value="<?= $data['NIM'] ?>"required />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="proposal">Proposal</label>
@@ -149,7 +149,7 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Perusahaan" name="perusahaan"
-                                                                            value="<?= $data['perusahaan'] ?>" />
+                                                                            value="<?= $data['perusahaan'] ?>" required/>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="sks">Jumlah SKS</label>
@@ -160,7 +160,7 @@
                                                                             oninput="limitInputLength(this, 3)"
                                                                             pattern="[0-9]{3}"
                                                                             maxlength="3"
-                                                                            value="<?= $data['sks'] ?>" />
+                                                                            value="<?= $data['sks'] ?>" required/>
                                                                     </div>
                                                                     {{-- <div class="form-group">
                                                                         <label class="form-control-label" for="sks">Status</label>
