@@ -273,7 +273,7 @@ class AdminController extends Controller
                 'NIM' => 'unique:users,NIM'
             ]);
         }
-        $nimmhs = Permohonan::find($id)->first()->NIM;
+        $nimmhs = Permohonan::find($id)->NIM;
         $user = User::where('NIM', $nimmhs)->first();
         User::where('NIM', $nimmhs)->update([
             'name' => $request->name,
@@ -313,8 +313,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'NIM' => 'string|max:20',
             'name' => 'string|max:50',
-            'semester' => 'string|max:2',
-            'no_telp' => 'string|max:20',
+            'semester' => 'max:2',
+            'no_telp' => 'max:20',
             'sks' => 'string|max:4'
         ]);
         if($request->NIM != User::find($id)->NIM){
