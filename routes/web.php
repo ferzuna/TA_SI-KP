@@ -88,7 +88,7 @@ Route::group(['middleware' => ['dosen', 'verified']], function () {
 });
 
 // mahasiswa
-Route::group(['middleware' =>[ 'mahasiswa', 'verified']], function () {
+Route::group(['middleware' =>[ 'mahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
