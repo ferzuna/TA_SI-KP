@@ -417,9 +417,9 @@ class MahasiswaController extends Controller
         $this->validate($request, [
             'imageUpload' => 'image|file|max:5120',
             'name' => 'required|string|max:50',
-            'NIM' => 'required|digits:14',
-            'username' => 'required|string|max:25',
-            'email' => 'required|email',
+            'NIM' => 'required|digits:14|unique:users,NIM',
+            'username' => 'required|string|max:25|unique:users,username',
+            'email' => 'required|email|unique:users,email',
             'no_telp' => 'required|digits_between:1,20',
             'sks' => 'required|digits_between:1,3',
             'alamat' => 'required|string|max:50',
