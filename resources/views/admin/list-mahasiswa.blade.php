@@ -115,7 +115,11 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="NIM" name="NIM"
-                                                                            value="<?= $data['NIM'] ?>" />
+                                                                            oninput="limitInputLength(this, 14)"
+                                                                            maxlength="14"
+                                                                            pattern="[0-9]{14}"
+                                                                            title="Digit yang diterima hanya 14 digit."
+                                                                            value="<?= $data['NIM'] ?>" required/>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="nama">Nama</label>
@@ -123,7 +127,7 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Nama" name="name"
-                                                                            value="<?= $data['name'] ?>" />
+                                                                            value="<?= $data['name'] ?>" required/>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="semester">Semester</label>
@@ -146,8 +150,11 @@
                                                                         <input type="number"
                                                                             class="border rounded-0 form-control"
                                                                             placeholder="Jumlah SKS"
+                                                                            oninput="limitInputLength(this, 3)"
+                                                                            maxlength="3"
+                                                                            pattern="[0-9]{3}"
                                                                             style="margin-bottom: 15px;width: 440px;"
-                                                                            name="sks" value="<?= $data['sks'] ?>" />
+                                                                            name="sks" value="<?= $data['sks'] ?>" required />
                                                                     </div>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>
@@ -207,4 +214,14 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+@endsection
+
+@section('script')
+<script>
+    function limitInputLength(element, maxLength) {
+        if (element.value.length > maxLength) {
+            element.value = element.value.slice(0, maxLength);
+        }
+    }
+</script>
 @endsection

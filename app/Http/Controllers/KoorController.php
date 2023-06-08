@@ -117,7 +117,16 @@ class KoorController extends Controller
             'username' => 'required|string|max:25',
             'email' => 'required|email',
         ]);
-
+        if($request->username != Auth::user()->username){
+            $this->validate($request,[
+                'username' => 'unique:users,username'
+            ]);
+        }
+        if($request->email != Auth::user()->email){
+            $this->validate($request,[
+                'email' => 'unique:users,email'
+            ]);
+        }
         if ($request->file('imageUpload') == null) {
             $file = $request->oldImage;
         } elseif ($request->file('imageUpload')) {
@@ -135,7 +144,7 @@ class KoorController extends Controller
             'email' => $request->email,
             'new_password' => $request->new_password,
         ]);
-        return redirect('/admin')->with('success', 'Profil Berhasil Diperbarui');
+        return redirect('/koordinator')->with('success', 'Profil Berhasil Diperbarui');
     }
 
     public function create()

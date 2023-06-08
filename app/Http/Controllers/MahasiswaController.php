@@ -425,6 +425,21 @@ class MahasiswaController extends Controller
             'alamat' => 'required|string|max:50',
             'semester' => 'required|digits_between:1,2',
         ]);
+        if($request->username != Auth::user()->username){
+            $this->validate($request,[
+                'username' => 'unique:users,username'
+            ]);
+        }
+        if($request->email != Auth::user()->email){
+            $this->validate($request,[
+                'email' => 'unique:users,email'
+            ]);
+        }
+        if($request->NIM != Auth::user()->NIM){
+            $this->validate($request,[
+                'NIM' => 'unique:users,NIM'
+            ]);
+        }
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
         $permohonan = Permohonan::where('NIM', Auth::user()->NIM)->first();
         $bimbingan = Bimbingan::where('NIM', Auth::user()->NIM)->first();

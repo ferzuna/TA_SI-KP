@@ -79,6 +79,11 @@ class AdminController extends Controller
 
     public function addinfomagang(Request $request)
     {
+        $this->validate($request, [
+            'perusahaan' => 'required|string|max:255',
+            'posisi' => 'required|string|max:255',
+            'durasi' => 'required|string|max:255',
+        ]);
         Infomagang::create([
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
@@ -163,6 +168,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'perusahaan' => 'required|string|max:255',
+            'posisi' => 'required|string|max:255',
+            'durasi' => 'required|string|max:255',
+        ]);
         Infomagang::find($id)->update([
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
@@ -204,7 +214,16 @@ class AdminController extends Controller
             'username' => 'required|string|max:25',
             'email' => 'required|email',
         ]);
-
+        if($request->username != Auth::user()->username){
+            $this->validate($request,[
+                'username' => 'unique:users,username'
+            ]);
+        }
+        if($request->email != Auth::user()->email){
+            $this->validate($request,[
+                'email' => 'unique:users,email'
+            ]);
+        }
         if ($request->file('imageUpload') == null) {
             $file = $request->oldImage;
         } elseif ($request->file('imageUpload')) {
@@ -249,7 +268,12 @@ class AdminController extends Controller
             'sks' => 'digits_between:1,3',
             'perusahaan' => 'string|max:50'
         ]);
-        $nimmhs = Permohonan::find($id)->first()->NIM;
+        if($request->NIM != Permohonan::find($id)->NIM){
+            $this->validate($request,[
+                'NIM' => 'unique:users,NIM'
+            ]);
+        }
+        $nimmhs = Permohonan::find($id)->NIM;
         $user = User::where('NIM', $nimmhs)->first();
         User::where('NIM', $nimmhs)->update([
             'name' => $request->name,
@@ -286,6 +310,18 @@ class AdminController extends Controller
     }
 
     public function editmahasiswa(Request $request, $id){
+        $this->validate($request, [
+            'NIM' => 'string|max:20',
+            'name' => 'string|max:50',
+            'semester' => 'max:2',
+            'no_telp' => 'max:20',
+            'sks' => 'string|max:4'
+        ]);
+        if($request->NIM != User::find($id)->NIM){
+            $this->validate($request,[
+                'NIM' => 'unique:users,NIM'
+            ]);
+        }
         $mhs = User::find($id);
         isset($mhs->mhspermohonan) ? $mhs->mhspermohonan->update(['NIM' => $request->NIM]) : null;
         isset($mhs->mhspenjadwalan) ? $mhs->mhspenjadwalan->update(['NIM' => $request->NIM]) : null;
