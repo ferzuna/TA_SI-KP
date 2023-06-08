@@ -135,6 +135,9 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Semester" name="semester"
+                                                                            oninput="limitInputLength(this, 2)"
+                                                                            maxlength="2"
+                                                                            pattern="[0-9]{2}"
                                                                             value="<?= $data['semester'] ?>" />
                                                                     </div>
                                                                     <div class="form-group">

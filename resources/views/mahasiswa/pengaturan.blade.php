@@ -178,6 +178,9 @@
                                                             SKSk</label>
                                                         <input type="number" id="current_password" class="form-control"
                                                             name="sks" placeholder="Jumlah SKSk"
+                                                            oninput="limitInputLength(this, 3)"
+                                                            maxlength="3"
+                                                            pattern="[0-9]{3}"
                                                             value="{{ old('sks', Auth::user()->sks) }}">
                                                     </div>
                                                 </div>
@@ -187,6 +190,9 @@
                                                             for="semester">Semester</label>
                                                         <input type="number" id="semester" class="form-control"
                                                             name="semester" placeholder="Semester"
+                                                            oninput="limitInputLength(this, 2)"
+                                                            maxlength="2"
+                                                            pattern="[0-9]{2}"
                                                             value="{{ old('semester', Auth::user()->semester) }}" required>
                                                     </div>
                                                 </div>
@@ -277,5 +283,13 @@
         $("#imageUpload").change(function() {
             readURL(this);
         });
+    </script>
+
+    <script>
+        function limitInputLength(element, maxLength) {
+        if (element.value.length > maxLength) {
+            element.value = element.value.slice(0, maxLength);
+        }
+    }
     </script>
 @endsection
