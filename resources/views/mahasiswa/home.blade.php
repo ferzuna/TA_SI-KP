@@ -207,7 +207,7 @@
                         @endif
                     </div>
                     <div class="row">
-                        @if(isset($mhs->mhspendaftaran && $mhs->mhspermohonan->status == 1))
+                        @if(isset($mhs->mhspendaftaran) && $mhs->mhspermohonan->status == 1)
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
