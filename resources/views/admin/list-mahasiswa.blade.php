@@ -119,7 +119,7 @@
                                                                             maxlength="14"
                                                                             pattern="[0-9]{14}"
                                                                             title="Digit yang diterima hanya 14 digit."
-                                                                            value="<?= $data['NIM'] ?>" />
+                                                                            value="<?= $data['NIM'] ?>" required/>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="nama">Nama</label>
@@ -127,7 +127,7 @@
                                                                             class="border rounded-0 form-control"
                                                                             style="width: 440px;margin-bottom: 15px;"
                                                                             placeholder="Nama" name="name"
-                                                                            value="<?= $data['name'] ?>" />
+                                                                            value="<?= $data['name'] ?>" required/>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="form-control-label" for="semester">Semester</label>
@@ -154,7 +154,7 @@
                                                                             maxlength="3"
                                                                             pattern="[0-9]{3}"
                                                                             style="margin-bottom: 15px;width: 440px;"
-                                                                            name="sks" value="<?= $data['sks'] ?>" />
+                                                                            name="sks" value="<?= $data['sks'] ?>" required />
                                                                     </div>
                                                                     <input type="submit" class="btn btn-success"
                                                                         value="Save Changes" name="update"></input>

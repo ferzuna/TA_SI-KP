@@ -78,7 +78,7 @@
                                                 name="nama" value="<?= $dosen['name'] ?>" />
                                             <label class="p-0" for="nama">Kuota Bimbingan</label>
                                             <input type="number" class="border rounded-0 form-control"
-                                                style="width: 440px;margin-bottom: 15px;" placeholder="Alamat"
+                                                style="width: 440px;margin-bottom: 15px;" placeholder="Kuota Bimbingan"
                                                 name="kuota" value="<?= $dosen['kuota_bimbingan'] ?>" />
 
 
