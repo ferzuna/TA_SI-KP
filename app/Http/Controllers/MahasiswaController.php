@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class MahasiswaController extends Controller
 {
@@ -424,6 +425,7 @@ class MahasiswaController extends Controller
             'sks' => 'required|digits_between:1,3',
             'alamat' => 'required|string|max:50',
             'semester' => 'required|digits_between:1,2',
+            'new_password' => 'required_with:password_confirmation|same:password_confirmation'
         ]);
         if($request->username != Auth::user()->username){
             $this->validate($request,[
@@ -483,20 +485,35 @@ class MahasiswaController extends Controller
         }
 
 
-
-        User::find(Auth::user()->id)->update([
-
-            'image' => $file,
-            'name' => $request->name,
-            'NIM' => $request->NIM,
-            'username' => $request->username,
-            'email' => $request->email,
-            'no_telp' => $request->no_telp,
-            'sks' => $request->sks,
-            'semester' => $request->semester,
-            'alamat' => $request->alamat,
-            'new_password' => $request->new_password,
-        ]);
+        if(isset($request->new_password)){
+            if (!Hash::check($request->current_password, Auth::user()->password)) {
+                return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect']);
+            }
+            User::find(Auth::user()->id)->update([
+                'image' => $file,
+                'name' => $request->name,
+                'NIM' => $request->NIM,
+                'username' => $request->username,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp,
+                'sks' => $request->sks,
+                'semester' => $request->semester,
+                'alamat' => $request->alamat,
+                'password' => Hash::make($request->new_password),
+            ]);
+        }else{
+            User::find(Auth::user()->id)->update([
+                'image' => $file,
+                'name' => $request->name,
+                'NIM' => $request->NIM,
+                'username' => $request->username,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp,
+                'sks' => $request->sks,
+                'semester' => $request->semester,
+                'alamat' => $request->alamat,
+            ]);
+        }
         return redirect('/mahasiswa')->with('success', 'finalisasi berkas created!');
     }
 

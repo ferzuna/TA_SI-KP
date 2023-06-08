@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="title-desc">
-                            <h1 class="welcome-title"">Sistem Informasi Kerja Praktik Teknik Komputer</h1>
+                            <h1 class="welcome-title">Sistem Informasi Kerja Praktik Teknik Komputer</h1>
                             <p class="welcome-desc">
                                 Sistem Informasi KP ini merupakan aplikasi yang dibuat untuk
                                 membantu Mahasiswa, Dosen, dan juga Tenaga Pendidik
