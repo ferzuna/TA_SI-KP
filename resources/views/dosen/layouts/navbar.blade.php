@@ -53,7 +53,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('dosen.jadwal') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>{{ __('Jadwal Pelaksanaan KP') }}</span>
+            <span>{{ __('Pelaksanaan Seminar KP') }}</span>
         </a>
     </li>
 
