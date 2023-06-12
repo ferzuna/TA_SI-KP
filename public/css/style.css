@@ -23,6 +23,14 @@ nav .collapse {
     justify-content: space-between;
 }
 
+@media screen and (max-width: 768px) {
+    nav .collapse {
+        display: flex;
+        justify-content: start !important;
+        margin-left: 20px;
+    }
+}
+
 nav .btn-login {
     margin: 0px 20px;
 }
