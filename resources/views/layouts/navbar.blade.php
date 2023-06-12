@@ -3,13 +3,16 @@
         <a class="navbar-brand" href="/"><img src="{{ asset('img/Logo.svg') }}" alt="Teknik Komputer Undip"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
+            <div class="d-flex justify-content-start">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    
 
-            </ul>
-            <ul class="navbar-nav ml-auto">
+                </ul>
+            </div>
+            <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dokumen') }}" style="">Dokumen KP</a>
                 </li>
@@ -30,3 +33,4 @@
         </div>
     </div>
 </nav>
+

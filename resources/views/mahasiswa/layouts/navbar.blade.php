@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('mahasiswa') }}"><img src="{{ asset('img/Logo.svg') }}"
                 alt="Teknik Komputer Undip"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     
 
@@ -66,9 +66,6 @@
                                 aria-expanded="false" href="#">
                                 
                                 @if (Auth::user()->image)
-                                    {{-- <div id="imagePreview"
-                                        style="background-image: url({{ asset('storage/' . Auth::user()->image) }});">
-                                    </div> --}}
                                     <figure class="img-profile rounded-circle avatar font-weight-bold"
                                         style="background-image: url({{ asset('storage/' . Auth::user()->image) }});
                                         object-fit: fill;
@@ -127,3 +124,25 @@
         </div>
     </div>
 </nav>
+
+<script>
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    // Function to handle the media query changes
+    const handleMediaQueryChange = (mediaQuery) => {
+    const element = document.getElementById('navbarSupportedContent'); // Replace 'your-element-id' with the actual ID of your element
+
+    if (mediaQuery.matches) {
+        // Add the class when the media query matches
+        element.classList.add('toggled'); // Replace 'your-class-name' with the name of your desired class
+    } else {
+        // Remove the class when the media query doesn't match
+        element.classList.remove('toggled');
+    }
+    };
+
+    // Initially, call the handler function once
+    handleMediaQueryChange(mediaQuery);
+
+    // Attach the handler function to the media query change event
+    mediaQuery.addListener(handleMediaQueryChange);
+</script>

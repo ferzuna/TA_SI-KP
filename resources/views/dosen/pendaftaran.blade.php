@@ -16,7 +16,7 @@
                         <li class="nav-item"><a href="#profile1" data-target="#profile1" data-toggle="tab"
                                 class="nav-link ">Sudah disetujui</a></li>
                     </ul>
-                    <div id="tabsContent" class="tab-content p-5 border border-top-0 rounded">
+                    <div id="tabsContent" class="tab-content border border-top-0 rounded">
                         <div id="home1" class="tab-pane fade active show">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
