@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" style="height: auto !important"
         href="/">
-        <img src="{{ asset('img/Logo-Navbar.svg') }}" alt="">
+        <img style="width:95%" src="{{ asset('img/Logo-Navbar.svg') }}" alt="">
     </a>
 
     <!-- Divider -->
@@ -73,3 +73,25 @@
     </div>
 
 </ul>
+
+<script>
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    // Function to handle the media query changes
+    const handleMediaQueryChange = (mediaQuery) => {
+    const element = document.getElementById('accordionSidebar'); // Replace 'your-element-id' with the actual ID of your element
+
+    if (mediaQuery.matches) {
+        // Add the class when the media query matches
+        element.classList.add('toggled'); // Replace 'your-class-name' with the name of your desired class
+    } else {
+        // Remove the class when the media query doesn't match
+        element.classList.remove('toggled');
+    }
+    };
+
+    // Initially, call the handler function once
+    handleMediaQueryChange(mediaQuery);
+
+    // Attach the handler function to the media query change event
+    mediaQuery.addListener(handleMediaQueryChange);
+</script>
