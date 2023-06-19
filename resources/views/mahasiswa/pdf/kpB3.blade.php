@@ -19,7 +19,7 @@
 
 
    * {
-    font-size: 11pt;
+    font-size: 10pt;
    }
     .head {
       display: grid;
@@ -59,6 +59,11 @@
         justify-content: center;
         align-items: center;
     }
+
+    .spelled {
+      padding: 0px 5px;
+      text-transform: capitalize;
+    }
     
     .footer {
       margin: 0 4em;
@@ -67,18 +72,14 @@
     .footer .times {
       text-align: right;
       padding-right: 10px;
-      margin-bottom: 2vh;
     }
     
-    .footer .menyetujui {
-      text-indent: 4em;
-    }
 
     .ttd-wrap {
         display: grid;
         grid-template-columns: auto auto auto auto;
         grid-gap: 5px;
-        justify-content: space-between !important;
+        justify-content: right !important;
     }
 
     .ttd {
@@ -121,22 +122,27 @@
     <section class="body">
       <div class="tujuan">
         <div class="no-surat">
-            <h4 style="margin-bottom: 0">FORM PERMOHONAN KERJA PRAKTIK (KP-A1)</h4>
+            <h4 style="margin-bottom: 0">FORM NILAI KERJA PRAKTIK (KP-B3)</h4>
         </div>
          <ul style="list-style-type: none; padding: 0;">
-            <li style="padding-bottom:0.25em;"> Dengan ini Saya,</li>
-            <li style="padding-bottom:0.25em;"> Nama <span style="margin-left: 30px;">: {{Auth::user()->name}}</li>
-            <li style="padding-bottom:0.25em;"> NIM <span style="margin-left: 36px;">: {{Auth::user()->NIM}}</li>
+            <li style="padding-bottom:0.25em;"> Dengan ini Saya sebagai dosen pembimbing kerja praktek,</li>
+            <li style="padding-bottom:0.25em;"> Nama <span style="margin-left: 30px;">: </li>
+            <li style="padding-bottom:0.25em;"> NIP <span style="margin-left: 41px;">: </li>
          </ul>
       </div>
 
       <div class="isi">
-    
          <ul style="list-style-type: none; padding: 0;">
-            <li style="padding-bottom:0.25em;"> Ingin mengajukan permohonan Kerja Praktek di: </li>
-            <li style="padding-bottom:0.25em;"> Instansi/Perusahaan <span style="margin-left: 12px;">: </span></li>
-            <li style="padding-bottom:0.25em;"> Topik Kerja Praktek <span style="margin-left: 9px;">: </span></li>
-            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 97px;">: 15 Desember 2023 s/d 23 Februari 2024</span></li>
+            <li style="padding-bottom:0.25em;"> Memberikan nilai kepada mahasiswa : </li>
+            <li style="padding-bottom:0.25em;"> Nama <span style="margin-left: 40px;">: {{Auth::user()->name}}</span></li>
+            <li style="padding-bottom:0.25em;"> NIM <span style="margin-left: 46px;">: {{Auth::user()->NIM}}</span></li>
+            <li style="padding-bottom:0.25em;"> Judul KP <span style="margin-left: 24px;">: </span></li>
+         </ul>
+
+         <ul style="list-style-type: none; padding: 0;">
+            <li style="padding-bottom:0.25em;"> Adapun perincian nilai adalah sebagai berikut : </li>
+            <li style="padding-bottom:0.25em;"> Nilai Seminar Kerja Praktik <span style="margin-left: 25px;">: <span style="margin-left:10px">88</span></span> <span style="margin-left: 10px;">( <span class="spelled">{{$spelled}}</span>)*</span></li>
+            <li style="padding-bottom:0.25em;"> Nilai Laporan Kerja Praktik <span style="margin-left: 26px;">: <span style="margin-left:10px">88</span></span> <span style="margin-left: 10px;">( <span class="spelled">{{$spelled}}</span>)* </span></li>
          </ul>
       </div>
     </section>
@@ -144,24 +150,7 @@
         <div class="times">
             <span style="line-height: 100%;">Semarang, 15 Desember 2023</span>
         </div>
-        <div class="menyetujui">
-            <span>Menyetujui,</span>
-        </div>
         <div class="ttd-wrap">
-            <div class="ttd">
-               {{-- <div style="position:absolute; z-index:-2; margin-top:-5px; margin-bottom:-2em">
-                  <img src="{{asset('img/TTD pak adian.png')}}" alt="" style="
-                  width:100%;
-                  height:125px;
-                  ">
-               </div> --}}
-               <p class="user">Koordinator KP</p>
-               <br>
-               <br>
-               <br>
-               <span class="user" style="line-height: 150%;">Arseto Satriyo Nugroho, S.T., M.Eng.</span>
-            </div>
-
             <div class="ttd">
                 {{-- <div style="position:absolute; z-index:-2; margin-top:-5px; margin-bottom:-2em">
                    <img src="{{asset('img/TTD pak adian.png')}}" alt="" style="
@@ -169,26 +158,20 @@
                    height:125px;
                    ">
                 </div> --}}
-                <p class="user">Dosen Pembimbing KP</p>
+                <p class="user">Dosen Pembimbing</p>
                 <br>
                 <br>
                 <br>
                 <span class="user" style="line-height: 150%;">Patricia Evericho Mountaines, S.T., M.Cs.</span>
             </div>
-
-            <div class="ttd">
-                {{-- <div style="position:absolute; z-index:-2; margin-top:-5px; margin-bottom:-2em">
-                   <img src="{{asset('img/TTD pak adian.png')}}" alt="" style="
-                   width:100%;
-                   height:125px;
-                   ">
-                </div> --}}
-                <p class="user">Pemohon</p>
-                <br>
-                <br>
-                <br>
-                <span class="user" style="line-height: 150%;">Indriawan Muhammad Akbar</span>
-            </div>
+        </div>
+        <div>
+         <span>* : <span>
+            Nilai dalam angka dan huruf , misalnya 88 (=delapan puluh delapan=)
+            <br>
+            Score: 80 s.d. 100 = A; 70 s.d. 79 = B; 60 s.d. 69 = C</span>
+         <br>
+         </span>
         </div>
     </section>
 </body>
