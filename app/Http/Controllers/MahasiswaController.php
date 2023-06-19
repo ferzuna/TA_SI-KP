@@ -218,6 +218,14 @@ class MahasiswaController extends Controller
         // return $pdf->download('permohonanKP-' . Auth::user()->name . '.pdf');
     }
 
+    public function kpA1() {
+        return view('mahasiswa.pdf.kpA1');
+    }
+
+    public function kpB1() {
+        return view('mahasiswa.pdf.kpB1');
+    }
+
     public function bimbinganstore(Request $request)
     {
         $this->validate($request, [
