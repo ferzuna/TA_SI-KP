@@ -42,7 +42,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 // admin
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => ['admin', 'preventBackAfterLogout']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/info-magang', [AdminController::class, 'infomagangcreate'])->name('admin.info-magang');
     Route::post('/admin/info-magang/store', [AdminController::class, 'addinfomagang'])->name('addinfomagang');
@@ -70,7 +70,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 // dosen
-Route::group(['middleware' => ['dosen', 'verified']], function () {
+Route::group(['middleware' => ['dosen', 'verified', 'preventBackAfterLogout']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
@@ -88,7 +88,7 @@ Route::group(['middleware' => ['dosen', 'verified']], function () {
 });
 
 // mahasiswa
-Route::group(['middleware' =>[ 'mahasiswa', 'verified']], function () {
+Route::group(['middleware' =>[ 'mahasiswa', 'verified', 'preventBackAfterLogout']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');
@@ -109,7 +109,7 @@ Route::group(['middleware' =>[ 'mahasiswa', 'verified']], function () {
 });
 
 // koordinator
-Route::group(['middleware' => 'koor'], function () {
+Route::group(['middleware' => ['koor', 'preventBackAfterLogout']], function () {
     Route::get('/koordinator', [KoorController::class, 'index'])->name('koordinator');
     Route::get('/koordinator/permohonan', [KoorController::class, 'permohonan'])->name('koordinator.permohonan');
     Route::post('/koordinator/permohonan/approved/{id}', [KoorController::class, 'approved'])->name('koordinator.approved');
