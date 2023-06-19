@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'dosen' => \App\Http\Middleware\Dosen::class,
         'koor' => \App\Http\Middleware\Koor::class,
         'welcome' => \App\Http\Middleware\Welcome::class,
+        'preventBackAfterLogout' => \App\Http\Middleware\PreventBackAfterLogout::class,
     ];
 }

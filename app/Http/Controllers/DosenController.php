@@ -11,6 +11,7 @@ use App\Http\Middleware\Dosen;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
@@ -242,6 +243,7 @@ class DosenController extends Controller
             'name' => 'required|string|max:50',
             'username' => 'required|string|max:25',
             'email' => 'required|email',
+            'new_password' => 'required_with:password_confirmation|same:password_confirmation'
         ]);
         if($request->username != Auth::user()->username){
             $this->validate($request,[
@@ -262,14 +264,25 @@ class DosenController extends Controller
             $file = $request->file('imageUpload')->store('./public/avatar-images/dosen');
         }
 
-        User::find(Auth::user()->id)->update([
-
-            'image' => $file,
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'new_password' => $request->new_password,
-        ]);
+        if(isset($request->new_password)){
+            if (!Hash::check($request->current_password, Auth::user()->password)) {
+                return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect']);
+            }
+            User::find(Auth::user()->id)->update([
+                'image' => $file,
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->new_password),
+            ]);
+        }else{
+            User::find(Auth::user()->id)->update([
+                'image' => $file,
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+            ]);
+        }
         return redirect('/dosen')->with('success', 'Profil Berhasil Diperbarui');
     }
 
