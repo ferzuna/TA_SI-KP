@@ -18,9 +18,9 @@
    }
 
 
-   /* * {
+   * {
     font-size: 11pt;
-   } */
+   }
     .head {
       display: grid;
       grid-template-columns: auto auto auto auto;

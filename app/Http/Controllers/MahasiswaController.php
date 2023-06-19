@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use NumberFormatter;
 use Illuminate\Support\Facades\Hash;
 
 class MahasiswaController extends Controller
@@ -224,6 +225,21 @@ class MahasiswaController extends Controller
 
     public function kpB1() {
         return view('mahasiswa.pdf.kpB1');
+    }
+
+    
+
+    public function kpB3() {
+        function numberToWords($number)
+        {
+            $formatter = new NumberFormatter('id', NumberFormatter::SPELLOUT);
+            return $formatter->format($number);
+        }
+        $number = 88;
+        $spelled = numberToWords($number);
+        return view('mahasiswa.pdf.kpB3', [
+            'spelled' => $spelled
+        ]);
     }
 
     public function bimbinganstore(Request $request)
