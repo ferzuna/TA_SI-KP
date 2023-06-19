@@ -39,9 +39,14 @@
                         @csrf
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="perusahaan"><b>Nama Perusahaan</b></label>
+                                <label for="perusahaan"><b>Nama Perusahaan/Instansi</b></label>
                                 <input class="form-control" type="text" name="perusahaan"
                                     value="{{ isset($data['perusahaan']) ? $data['perusahaan'] : '' }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat"><b>Alamat Perusahaan/Instansi</b></label>
+                                <input class="form-control" type="text" name="alamat"
+                                    value="{{ isset($data['alamat']) ? $data['alamat'] : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="proposal"><b>Proposal Perusahaan</b></label>
@@ -49,6 +54,7 @@
                                     value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait dan berikan akses untuk mengedit</div>
                             </div>
+                            
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
