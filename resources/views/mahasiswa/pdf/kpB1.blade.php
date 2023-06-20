@@ -134,8 +134,8 @@
     
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.25em;"> Ingin mengajukan permohonan seminar Kerja Praktek di: </li>
-            <li style="padding-bottom:0.25em;"> Ruang <span style="margin-left: 25px;">: </span></li>
-            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 26px;">: </span></li>
+            <li style="padding-bottom:0.25em;"> Ruang <span style="margin-left: 25px;">: {{ $jadwal->ruangan }}</span></li>
+            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 26px;">: {{ $jadwal->jadwal }}</span></li>
          </ul>
       </div>
     </section>
@@ -158,7 +158,7 @@
                <br>
                <br>
                <br>
-               <span class="user" style="line-height: 150%;">Arseto Satriyo Nugroho, S.T., M.Eng.</span>
+               <span class="user" style="line-height: 150%;">{{ $koor->name }}</span>
             </div>
 
             <div class="ttd">
@@ -172,7 +172,7 @@
                 <br>
                 <br>
                 <br>
-                <span class="user" style="line-height: 150%;">Patricia Evericho Mountaines, S.T., M.Cs.</span>
+                <span class="user" style="line-height: 150%;">{{ $dosen->name }}</span>
             </div>
 
             <div class="ttd">
@@ -186,7 +186,7 @@
                 <br>
                 <br>
                 <br>
-                <span class="user" style="line-height: 150%;">Indriawan Muhammad Akbar</span>
+                <span class="user" style="line-height: 150%;">{{ $user->name }}</span>
             </div>
         </div>
     </section>

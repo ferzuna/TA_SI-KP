@@ -126,8 +126,8 @@
         </div>
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.25em;"> Dengan ini Saya sebagai dosen pembimbing kerja praktek,</li>
-            <li style="padding-bottom:0.25em;"> Nama <span style="margin-left: 30px;">: </li>
-            <li style="padding-bottom:0.25em;"> NIP <span style="margin-left: 41px;">: </li>
+            <li style="padding-bottom:0.25em;"> Nama <span style="margin-left: 30px;">: {{ $dosbing->name }}</li>
+            <li style="padding-bottom:0.25em;"> NIP <span style="margin-left: 41px;">: {{ $dosbing->NIP }}</li>
          </ul>
       </div>
 
@@ -162,7 +162,7 @@
                 <br>
                 <br>
                 <br>
-                <span class="user" style="line-height: 150%;">Patricia Evericho Mountaines, S.T., M.Cs.</span>
+                <span class="user" style="line-height: 150%;">{{ $dosbing->name }}</span>
             </div>
         </div>
         <div>

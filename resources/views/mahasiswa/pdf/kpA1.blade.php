@@ -134,9 +134,9 @@
     
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.25em;"> Ingin mengajukan permohonan Kerja Praktek di: </li>
-            <li style="padding-bottom:0.25em;"> Instansi/Perusahaan <span style="margin-left: 12px;">: </span></li>
+            <li style="padding-bottom:0.25em;"> Instansi/Perusahaan <span style="margin-left: 12px;">: {{ $permohonan->perusahaan }}</span></li>
             <li style="padding-bottom:0.25em;"> Topik Kerja Praktek <span style="margin-left: 9px;">: </span></li>
-            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 97px;">: 15 Desember 2023 s/d 23 Februari 2024</span></li>
+            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 97px;">: {{ $permohonan->mulai }} s/d {{ $permohonan->selesai }}</span></li>
          </ul>
       </div>
     </section>
@@ -159,7 +159,7 @@
                <br>
                <br>
                <br>
-               <span class="user" style="line-height: 150%;">Arseto Satriyo Nugroho, S.T., M.Eng.</span>
+               <span class="user" style="line-height: 150%;">{{ $koor->name }}</span>
             </div>
 
             <div class="ttd">
@@ -173,7 +173,7 @@
                 <br>
                 <br>
                 <br>
-                <span class="user" style="line-height: 150%;">Patricia Evericho Mountaines, S.T., M.Cs.</span>
+                <span class="user" style="line-height: 150%;">{{ $dosen->name }}</span>
             </div>
 
             <div class="ttd">
@@ -187,7 +187,7 @@
                 <br>
                 <br>
                 <br>
-                <span class="user" style="line-height: 150%;">Indriawan Muhammad Akbar</span>
+                <span class="user" style="line-height: 150%;">{{ $user->name }}</span>
             </div>
         </div>
     </section>

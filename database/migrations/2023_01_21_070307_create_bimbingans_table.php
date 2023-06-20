@@ -18,6 +18,7 @@ class CreateBimbingansTable extends Migration
             $table->string('NIP')->length(20);
             $table->string('NIM')->length(20);
             $table->string('status')->nullable()->length(20);
+            $table->string('judul')->nullable();
             $table->string('makalah')->nullable();
             $table->string('laporan')->nullable();
             $table->string('b1')->nullable();

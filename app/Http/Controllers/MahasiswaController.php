@@ -220,11 +220,31 @@ class MahasiswaController extends Controller
     }
 
     public function kpA1() {
-        return view('mahasiswa.pdf.kpA1');
+        $user = Auth::user();
+        $nipdosen = Pendaftaran::where('NIM', $user->NIM)->first()->NIP;
+        $dosen = User::where('NIP', $nipdosen)->first();
+        $koor = User::where('role_id', 2)->first();
+        $permohonan = Permohonan::where('NIM', $user->NIM)->first();
+        return view('mahasiswa.pdf.kpA1', [
+            'user' => $user,
+            'dosen' => $dosen,
+            'koor' => $koor,
+            'permohonan' => $permohonan,
+        ]);
     }
 
     public function kpB1() {
-        return view('mahasiswa.pdf.kpB1');
+        $jadwal = Penjadwalan::where('NIM', Auth::user()->NIM)->first();
+        $user = Auth::user();
+        $nipdosen = Pendaftaran::where('NIM', $user->NIM)->first()->NIP;
+        $dosen = User::where('NIP', $nipdosen)->first();
+        $koor = User::where('role_id', 2)->first();
+        return view('mahasiswa.pdf.kpB1', [
+            'jadwal' => $jadwal,
+            'dosen' => $dosen,
+            'user' => $user,
+            'koor'=> $koor,
+        ]);
     }
 
     
@@ -237,8 +257,11 @@ class MahasiswaController extends Controller
         }
         $number = 88;
         $spelled = numberToWords($number);
+        $dosen = Pendaftaran::where('NIM', Auth::user()->NIM)->first()->NIP;
+        $dosbing = User::where('NIP', $dosen)->first();
         return view('mahasiswa.pdf.kpB3', [
-            'spelled' => $spelled
+            'spelled' => $spelled,
+            'dosbing' => $dosbing,
         ]);
     }
 
