@@ -89,12 +89,12 @@ class DosenController extends Controller
         $mymahasiswa = User::leftJoin('pendaftarans', function($join) {
             $join->on('users.NIM', '=', 'pendaftarans.NIM');
         })->join('permohonans', 'users.NIM', '=', 'permohonans.NIM')
-        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'pendaftarans.bukti', 'pendaftarans.status')
+        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.topik_kp', 'pendaftarans.bukti', 'pendaftarans.status')
         ->where('pendaftarans.NIP', Auth::user()->NIP)->where('pendaftarans.status', 0)->get();
         $mymahasiswa1 = User::leftJoin('pendaftarans', function($join) {
             $join->on('users.NIM', '=', 'pendaftarans.NIM');
         })->join('permohonans', 'users.NIM', '=', 'permohonans.NIM')
-        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'pendaftarans.bukti', 'pendaftarans.status')
+        ->select('pendaftarans.id', 'users.name', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.topik_kp', 'pendaftarans.bukti', 'pendaftarans.status')
         ->where('pendaftarans.NIP', Auth::user()->NIP)->where('pendaftarans.status', 1)->get();
         return view('dosen.pendaftaran', [
             'mymahasiswa' => $mymahasiswa,

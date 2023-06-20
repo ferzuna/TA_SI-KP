@@ -34,10 +34,7 @@
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
                                                     <th>Makalah KP</th>
-                                                    <th>KP-B1</th>
-                                                    <th>KP-B2</th>
-                                                    <th>KP-B3</th>
-                                                    <th>Survey</th>
+                                                    <th>Judul Laporan</th>
                                                     <th>Status</th>
                                                     <th>Manage</th>
                                                 </tr>
@@ -48,10 +45,7 @@
                                                         <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['survey'] ?>"><?= $data['survey'] ?></a></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><?= $data['judul'] ?></td>
                                                         <td>belum diperiksa</td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                                 type="button" data-toggle="modal"
@@ -114,10 +108,7 @@
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
                                                     <td><strong>Makalah KP</strong></td>
-                                                    <td><strong>KP-B1</strong></td>
-                                                    <td><strong>KP-B2</strong></td>
-                                                    <td><strong>KP-B3</strong></td>
-                                                    <td><strong>Survey</strong></td>
+                                                    <td><strong>Judul Laporan</strong></td>
                                                     <td><strong>Status</strong></td>
                                                     <td><strong>Manage</strong></td>
                                                 </tr>
@@ -140,10 +131,7 @@
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
                                                     <th>Makalah KP</th>
-                                                    <th>KP-B1</th>
-                                                    <th>KP-B2</th>
-                                                    <th>KP-B3</th>
-                                                    <th>Survey Perusahaan</th>
+                                                    <th>Judul Laporan</th>
                                                     <th>Status</th>
                                                     <th>Manage</th>
                                                 </tr>
@@ -154,10 +142,7 @@
                                                         <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['survey'] ?>"><?= $data['survey'] ?></a></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><?= $data['judul'] ?></td>
                                                         <td>{{ isset($data['status'])?$data['status']:'' }}</td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                                 type="button" data-toggle="modal"
@@ -219,10 +204,7 @@
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
                                                     <td><strong>Makalah KP</strong></td>
-                                                    <td><strong>KP-B1</strong></td>
-                                                    <td><strong>KP-B2</strong></td>
-                                                    <td><strong>KP-B3</strong></td>
-                                                    <td><strong>Survey Perusahaan</strong></td>
+                                                    <td><strong>Judul Laporan</strong></td>
                                                     <td><strong>Status</strong></td>
                                                     <td><strong>Manage</strong></td>
                                                 </tr>
@@ -245,10 +227,7 @@
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
                                                     <th>Makalah KP</th>
-                                                    <th>KP-B1</th>
-                                                    <th>KP-B2</th>
-                                                    <th>KP-B3</th>
-                                                    <th>Survey Perusahaan</th>
+                                                    <th>Judul Laporan</th>
                                                     <th>Status</th>
                                                     <th>Manage</th>
                                                 </tr>
@@ -259,10 +238,7 @@
                                                         <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['survey'] ?>"><?= $data['survey'] ?></a></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><?= $data['judul'] ?></td>
                                                         <td>{{ isset($data['status'])?$data['status']:'' }}</td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                                 type="button" data-toggle="modal"
@@ -324,10 +300,7 @@
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
                                                     <td><strong>Makalah KP</strong></td>
-                                                    <td><strong>KP-B1</strong></td>
-                                                    <td><strong>KP-B2</strong></td>
-                                                    <td><strong>KP-B3</strong></td>
-                                                    <td><strong>Survey Perusahaan</strong></td>
+                                                    <td><strong>Judul Laporan</strong></td>
                                                     <td><strong>Status</strong></td>
                                                     <td><strong>Manage</strong></td>
                                                 </tr>
@@ -350,10 +323,7 @@
                                                     <th>Nama</th>
                                                     <th>Laporan KP</th>
                                                     <th>Makalah KP</th>
-                                                    <th>KP-B1</th>
-                                                    <th>KP-B2</th>
-                                                    <th>KP-B3</th>
-                                                    <th>Survey Perusahaan</th>
+                                                    <th>Judul Laporan</th>
                                                     <th>Status</th>
                                                     <th>Manage</th>
                                                 </tr>
@@ -364,10 +334,7 @@
                                                         <td><?= $data->bimbinganmhs->name ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['laporan'] ?>"><?= $data['laporan'] ?></td>
                                                         <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['makalah'] ?>"><?= $data['makalah'] ?></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b1'] ?>"><?= $data['b1'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b2'] ?>"><?= $data['b2'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['b3'] ?>"><?= $data['b3'] ?></a></td>
-                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><a target="_blank" href="<?= $data['survey'] ?>"><?= $data['survey'] ?></a></td>
+                                                        <td style="max-width: 120px !important; overflow-x:scroll; white-space: nowrap;"><?= $data['judul'] ?></td>
                                                         <td>{{ isset($data['status'])?$data['status']:'' }}</td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
                                                                 type="button" data-toggle="modal"
@@ -429,10 +396,7 @@
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Laporan KP</strong></td>
                                                     <td><strong>Makalah KP</strong></td>
-                                                    <td><strong>KP-B1</strong></td>
-                                                    <td><strong>KP-B2</strong></td>
-                                                    <td><strong>KP-B3</strong></td>
-                                                    <td><strong>Survey Perusahaan</strong></td>
+                                                    <td><strong>Judul Laporan</strong></td>
                                                     <td><strong>Status</strong></td>
                                                     <td><strong>Manage</strong></td>
                                                 </tr>

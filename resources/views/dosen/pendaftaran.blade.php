@@ -30,7 +30,7 @@
                                                     <th>Nama</th>
                                                     <th>Semester</th>
                                                     <th>Nama Perusahaan</th>
-                                                    <th>KP-A1</th>
+                                                    <th>Topik KP</th>
         
                                                     <th>Email/Surat Diterima</th>
                                                     <th>Manage</th>
@@ -42,7 +42,7 @@
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['semester'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
-                                                        <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['a1'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['a1'] ?></a></td>
+                                                        <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><?= $data['topik_kp'] ?></td>
                                                         <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['bukti'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['bukti'] ?></a></td>
                                                         <td style="display:flex">
                                                             <div class="icon-wrap" data-target="tooltip" data-placement="top" title="Setujui">
@@ -90,7 +90,7 @@
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>Semester</strong></td>
                                                     <td><strong>Nama Perusahaan</strong></td>
-                                                    <td><strong>KP-A1</strong></td>
+                                                    <td><strong>Topik KP</strong></td>
                                                     <td><strong>Email/Surat Diterima</strong></td>
                                                     <td><strong>Manage</strong></td>
                                                 </tr>
@@ -113,7 +113,7 @@
                                                     <th>Nama</th>
                                                     <th>Semester</th>
                                                     <th>Nama Perusahaan</th>
-                                                    <th>KP-A1</th>
+                                                    <th>Topik KP</th>
         
                                                     <th>Email/Surat Diterima</th>
                                                     {{-- <th>Manage</th> --}}
@@ -125,7 +125,7 @@
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['semester'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
-                                                        <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['a1'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['a1'] ?></a></td>
+                                                        <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><?= $data['topik_kp'] ?></td>
                                                         <td style="max-width: 300px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['bukti'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['bukti'] ?></a></td>
                                                         
                                                     </tr>
