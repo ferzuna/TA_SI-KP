@@ -244,6 +244,35 @@
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
+                                    <a href="{{ route('penjadwalan') }}" class="link-dark">
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Penjadwalan Seminar</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Penjadwalan seminar yang dilakukan untuk menentukan waktu dan tempat dapat dilakukan disini.
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                    <div>
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Penjadwalan Seminar</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Penjadwalan seminar yang dilakukan untuk menentukan waktu dan tempat dapat dilakukan disini.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' && $mhs->mhspermohonan->status == 1)
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap">
                                     <a href="{{ route('finalisasi') }}" class="link-dark">
                                         <div class="card-content">
                                             <h3 class="text-center"><b>Finalisasi Berkas</b></h3>

@@ -101,6 +101,8 @@ Route::group(['middleware' =>[ 'mahasiswa',  'preventBackAfterLogout']], functio
     Route::get('mahasiswa/permohonan-fakultas', [MahasiswaController::class, 'permohonanFakultas'])->name('permohonan-fakultas');
     Route::get('/mahasiswa/pengumpulan', [MahasiswaController::class, 'pengumpulan'])->name('pengumpulan');
     Route::post('/mahasiswa/pengumpulan/store', [MahasiswaController::class, 'bimbinganstore'])->name('bimbingan.store');
+    Route::get('/mahasiswa/penjadwalan', [MahasiswaController::class, 'penjadwalan'])->name('penjadwalan');
+
     Route::get('/mahasiswa/finalisasi', [MahasiswaController::class, 'finalisasi'])->name('finalisasi');
     Route::post('/mahasiswa/finalisasi/store', [MahasiswaController::class, 'finalisasistore'])->name('finalisasi.store');
     Route::get('/mahasiswa/pengaturan', function () {

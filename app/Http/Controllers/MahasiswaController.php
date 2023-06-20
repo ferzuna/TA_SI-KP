@@ -375,6 +375,10 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    public function penjadwalan() {
+        return view('mahasiswa.penjadwalan');
+    }
+
     public function finalisasi()
     {
         $mhs = User::where('email', Auth::user()->email)->first();
