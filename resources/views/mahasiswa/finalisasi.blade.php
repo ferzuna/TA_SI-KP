@@ -40,17 +40,17 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="laporan"><b>Laporan KP Final</b></label>
-                                <input id="laporan-input" class="form-control" type="text" name="laporan" value="{{ isset($data['laporan']) ? $data['laporan'] : '' }}">
+                                <input id="laporan-input" class="form-control" type="text" name="laporan" value="{{ isset($mhs->mhsbimbingan->laporan) ? $mhs->mhsbimbingan->laporan : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for=makalah><b>Makalah KP final</b></label>
-                                <input id="makalah-input" class="form-control" type="text" name=makalah value="{{ isset($data['makalah']) ? $data['makalah'] : '' }}">
+                                <input id="makalah-input" class="form-control" type="text" name=makalah value="{{ isset($mhs->mhsbimbingan->makalah) ? $mhs->mhsbimbingan->makalah : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="a2"><b>Form Presensi dan Nilai Lapangan (KP-A2)</b></label>
-                                <input id="a2-input" class="form-control" type="text" name="a2" value="{{ isset($data['a2']) ? $data['a2'] : '' }}">
+                                <input id="a2-input" class="form-control" type="text" name="a2" value="{{ isset($mhs->mhspenilaian->a2) ? $mhs->mhspenilaian->a2 : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
 
@@ -58,22 +58,22 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="b2"><b>Form Presensi Seminar  (KP-B2)</b></label>
-                                <input id="b2-input" class="form-control" type="text" name="b2" value="{{ isset($data['b2']) ? $data['b2'] : '' }}">
+                                <input id="b2-input" class="form-control" type="text" name="b2" value="{{ isset($mhs->mhspenilaian->b2) ? $mhs->mhspenilaian->b2 : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b3"><b>Form Nilai Seminar (KP-B3)</b></label>
-                                <input id="b3-input" class="form-control" type="text" name="b3" value="{{ isset($data['b3']) ? $data['b3'] : '' }}">
+                                <input id="b3-input" class="form-control" type="text" name="b3" value="{{ isset($mhs->mhspenilaian->b3) ? $mhs->mhspenilaian->b3 : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b4"><b>Form Tugas Terlambat (KP-B4)</b></label>
-                                <input id="b4-input" class="form-control" type="text" name="b4" value="{{ isset($data['b4']) ? $data['b4'] : '' }}">
+                                <input id="b4-input" class="form-control" type="text" name="b4" value="{{ isset($mhs->mhspenilaian->b4) ? $mhs->mhspenilaian->b4 : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="b5"><b>Surat Izin Perkuliahan Saat KP (KP-B5)</b></label>
-                                <input id="b5-input" class="form-control" type="text" name="b5" value="{{ isset($data['b5']) ? $data['b5'] : '' }}">
+                                <input id="b5-input" class="form-control" type="text" name="b5" value="{{ isset($mhs->mhspenilaian->b5) ? $mhs->mhspenilaian->b5 : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                         </div>
