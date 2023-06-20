@@ -18,6 +18,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('NIM')->length(20);
             $table->string('bukti')->nullable();
             $table->string('a1')->nullable();
+            $table->string('topik_kp')->nullable();
             $table->string('NIP')->nullable()->length(20);
             $table->boolean('status')->default(0)->nullable();
             $table->softDeletes();

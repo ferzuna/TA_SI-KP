@@ -70,7 +70,7 @@ Route::group(['middleware' => ['admin', 'preventBackAfterLogout']], function () 
 });
 
 // dosen
-Route::group(['middleware' => ['dosen', 'verified', 'preventBackAfterLogout']], function () {
+Route::group(['middleware' => ['dosen', 'preventBackAfterLogout']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen')->middleware('dosen');
     Route::get('/dosen/list-mahasiswa', [DosenController::class, 'allmhs'])->name('dosen.list-mahasiswa');
     Route::post('/dosen/list-mahasiswa/search', [DosenController::class, 'search'])->name('dosen.search');
@@ -88,7 +88,7 @@ Route::group(['middleware' => ['dosen', 'verified', 'preventBackAfterLogout']], 
 });
 
 // mahasiswa
-Route::group(['middleware' =>[ 'mahasiswa', 'verified', 'preventBackAfterLogout']], function () {
+Route::group(['middleware' =>[ 'mahasiswa',  'preventBackAfterLogout']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/mahasiswa/pendaftaran', [MahasiswaController::class, 'pendaftaran'])->name('pendaftaran');
     Route::post('/mahasiswa/pendaftaran/store', [MahasiswaController::class, 'pendaftaranstore'])->name('pendaftaran.store');

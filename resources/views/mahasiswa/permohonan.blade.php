@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label for="alamat"><b>Alamat Perusahaan/Instansi</b></label>
                                 <input class="form-control" type="text" name="alamat"
-                                    value="{{ isset($data['alamat']) ? $data['alamat'] : '' }}">
+                                    value="{{ isset($data['alamatins']) ? $data['alamatins'] : '' }}">
                             </div>
                             <div class="form-group">
                                 <label for="proposal"><b>Proposal Perusahaan</b></label>
