@@ -17,8 +17,11 @@ class CreatePenilaiansTable extends Migration
             $table->id();
             $table->string('NIP')->length(20);
             $table->string('NIM')->length(20);
-            $table->string('kehadiran')->nullable();
+            $table->string('a1')->nullable();
             $table->string('a2')->nullable();
+            $table->string('b1')->nullable();
+            $table->string('b2')->nullable();
+            $table->string('b3')->nullable();
             $table->string('b4')->nullable();
             $table->string('b5')->nullable();
             $table->string('status')->nullable()->length(15);

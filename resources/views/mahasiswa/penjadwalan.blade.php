@@ -32,7 +32,7 @@
         @endif
         <div class="container">
             <div class="py-3">
-                <form action="{{ route('bimbingan.store') }}" method="post">
+                <form action="{{ route('penjadwalan.store') }}" method="post">
                     <div class="row">
 
                         <h2 style="margin-bottom:2em"><b>Halaman Penjadwalan Seminar KP</b></h2>
@@ -54,21 +54,15 @@
                             
                         </div>
                         <div class="col-lg-4 col-md-6">
-                            {{-- <div class="form-group">
-                                <label for="b2"><b>Form Kehadiran Peserta Seminar (KP B2)</b></label>
-                                <input id="b2-input" class="form-control" type="text" name="b2"
-                                    value="{{ isset($mhs->mhsbimbingan->b2) ? $mhs->mhsbimbingan->b2 : '' }}">
-                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
                                 <input id="survey-input" class="form-control" type="text" name="survey"
-                                    value="{{ isset($mhs->mhsbimbingan->survey) ? $mhs->mhsbimbingan->survey : '' }}">
+                                    value="{{ isset($mhs->mhspenjadwalan->survey) ? $mhs->mhspenjadwalan->survey : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>
-                                <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenilaian->kehadiran) ? $mhs->mhspenilaian->kehadiran : '' }}">
+                                <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenjadwalan->kehadiran) ? $mhs->mhspenjadwalan->kehadiran : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                         </div>

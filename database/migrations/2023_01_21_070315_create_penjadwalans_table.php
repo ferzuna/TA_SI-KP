@@ -18,7 +18,10 @@ class CreatePenjadwalansTable extends Migration
             $table->string('NIP')->length(20);
             $table->string('NIM')->length(20);
             $table->string('ruangan')->nullable()->length(15);
+            $table->string('kehadiran')->nullable();
+            $table->string('survey')->nullable();
             $table->dateTime('jadwal')->nullable();
+            $table->boolean('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

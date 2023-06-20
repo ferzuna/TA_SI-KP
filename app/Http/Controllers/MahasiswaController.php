@@ -82,21 +82,21 @@ class MahasiswaController extends Controller
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
         $this->validate($request, [
-            'a1' => 'required|string|max:255',
+            'topik_kp' => 'required|string|max:255',
             'bukti' => 'max:255',
             'dosbing' => 'required|string|max:20',
         ]);
         // pengondisian untuk data yang sudah ada
         if (isset($ini)) {
             Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
-                'a1' => $request->a1,
+                'topik_kp' => $request->topik_kp,
                 'bukti' => $request->bukti,
                 'NIP' => $request->dosbing,
             ]);
         } else {
             Pendaftaran::create([
                 'NIM' => Auth::user()->NIM,
-                'a1' => $request->a1,
+                'topik_kp' => $request->topik_kp,
                 'bukti' => $request->bukti,
                 'NIP' => $request->dosbing,
             ]);
@@ -269,12 +269,8 @@ class MahasiswaController extends Controller
     {
         $this->validate($request, [
             'makalah' => 'max:255',
+            'judul' => 'max:255',
             'laporan' => 'max:255',
-            'b1' => 'max:255',
-            'b2' => 'max:255',
-            'b3' => 'max:255',
-            'survey' => 'max:255',
-            'ruangan' => 'max:15'
         ]);
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
@@ -282,66 +278,25 @@ class MahasiswaController extends Controller
         if (isset($data)) {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Bimbingan::where('NIM', $nim)->first()->update([
+                'judul' => $request->judul,
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
-                'b1' => $request->b1,
-                'b2' => $request->b2,
-                'b3' => $request->b3,
-                'survey' => $request->survey,
                 'status' => $request->status,
             ]);
-
-            Penjadwalan::where('NIM', $nim)->first()->update([
-                'jadwal' => $request->jadwal,
-                'ruangan' => $request->ruangan
-            ]);
-
-            if(isset($penilaian)){
-                Penilaian::where('NIM', $nim)->first()->update([
-                    'kehadiran' => $request->kehadiran,
-                ]);
-            }else{
-                Penilaian::create([
-                    'NIP' => $dosbing,
-                    'NIM' => Auth::user()->NIM,
-                    'kehadiran' => $request->kehadiran
-                ]);
-            }
         } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Bimbingan::create([
                 'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
+                'judul' => $request->judul,
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
-                'b1' => $request->b1,
-                'b2' => $request->b2,
-                'b3' => $request->b3,
-                'survey' => $request->survey,
             ]);
-            Penjadwalan::create([
-                'NIP' => $dosbing,
-                'NIM' => Auth::user()->NIM,
-                'jadwal' => $request->jadwal,
-                'ruangan' => $request->ruangan,
-            ]);
-
-            if(isset($penilaian)){
-                Penilaian::where('NIM', $nim)->first()->update([
-                    'kehadiran' => $request->kehadiran,
-                ]);
-            }else{
-                Penilaian::create([
-                    'NIP' => $dosbing,
-                    'NIM' => Auth::user()->NIM,
-                    'kehadiran' => $request->kehadiran
-                ]);
-            }
 
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
             $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
             $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
-            if(isset($status3['a2'])){
+            if(isset($status3)){
                 User::where('NIM', Auth::user()->NIM)->first()->update([
                     'status' => 'Selesai KP'
                 ]);
@@ -361,6 +316,59 @@ class MahasiswaController extends Controller
         }
         return redirect('/mahasiswa/pengumpulan')->with('status', 'pengumpulan berkas created!');
     }
+    public function penjadwalanstore(Request $request)
+    {
+        $this->validate($request, [
+            'kehadiran' => 'max:255',
+            'survey' => 'max:255',
+            'ruangan' => 'max:15',
+        ]);
+        $nim = Auth::user()->NIM;
+        $pendaftaran = Pendaftaran::where('NIM', $nim)->first();
+        $data = Bimbingan::where('NIM', $nim)->first();
+        $penilaian = Penilaian::where('NIM', $nim)->first();
+        $penjadwalan = Penjadwalan::where('NIM', $nim)->first();
+        if (isset($penjadwalan)) {
+            Penjadwalan::where('NIM', $nim)->first()->update([
+                'jadwal' => $request->jadwal,
+                'kehadiran' => $request->kehadiran,
+                'ruangan' => $request->ruangan,
+                'survey' => $request->survey,
+                'status' => $request->status,
+            ]);
+        } else {
+            Penjadwalan::create([
+                'NIP' => $pendaftaran->NIP,
+                'NIM' => Auth::user()->NIM,
+                'jadwal' => $request->jadwal,
+                'ruangan' => $request->ruangan,
+                'kehadiran' => $request->kehadiran,
+                'survey' => $request->survey,
+            ]);
+
+            $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
+            $status2 = Bimbingan::where('NIM', Auth::user()->NIM)->first();
+            $status3 = Penilaian::where('NIM', Auth::user()->NIM)->first();
+            if(isset($status3)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Selesai KP'
+                ]);
+            }else if(isset($status2)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Bimbingan KP'
+                ]);
+            }else if(isset($status1)){
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Pendaftaran KP'
+                ]);
+            }else{
+                User::where('NIM', Auth::user()->NIM)->first()->update([
+                    'status' => 'Permohonan KP'
+                ]);
+            }
+        }
+        return redirect('/mahasiswa/penjadwalan')->with('status', 'penjadwalan berkas created!');
+    }
 
     public function pengumpulan()
     {
@@ -376,7 +384,10 @@ class MahasiswaController extends Controller
     }
 
     public function penjadwalan() {
-        return view('mahasiswa.penjadwalan');
+        $mhs = User::where('NIM', Auth::user()->NIM)->first();
+        return view('mahasiswa.penjadwalan', [
+            'mhs' => $mhs,
+        ]);
     }
 
     public function finalisasi()
@@ -387,12 +398,8 @@ class MahasiswaController extends Controller
         if (!isset($perusahaan)) {
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
-        $data = Bimbingan::leftJoin('penilaians', 'bimbingans.NIM', '=', 'penilaians.NIM')
-        ->where('bimbingans.NIM', Auth::user()->NIM)
-        ->select('penilaians.id', 'bimbingans.laporan', 'bimbingans.makalah', 'kehadiran', 'penilaians.a2', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.b4', 'penilaians.b5')->first();
         return view('mahasiswa.finalisasi', [
             "mhs" => $mhs,
-            'data' => $data,
         ]);
     }
 
@@ -401,7 +408,6 @@ class MahasiswaController extends Controller
         $this->validate($request, [
             'makalah' => 'max:255',
             'laporan' => 'max:255',
-            'kehadiran' => 'max:255',
             'a2' => 'max:255',
             'b2' => 'max:255',
             'b3' => 'max:255',
@@ -415,13 +421,13 @@ class MahasiswaController extends Controller
                 'a2' => $request->a2,
                 'b4' => $request->b4,
                 'b5' => $request->b5,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
                 'status' => 0,
             ]);
             Bimbingan::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
-                'b2' => $request->b2,
-                'b3' => $request->b3,
             ]);
         } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
@@ -431,13 +437,13 @@ class MahasiswaController extends Controller
                 'a2' => $request->a2,
                 'b4' => $request->b4,
                 'b5' => $request->b5,
+                'b2' => $request->b2,
+                'b3' => $request->b3,
                 'status' => 0,
             ]);
             Bimbingan::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,
                 'laporan' => $request->laporan,
-                'b2' => $request->b2,
-                'b3' => $request->b3,
             ]);
             // apakah bimbingan perlu dibuaat juga??
         }
