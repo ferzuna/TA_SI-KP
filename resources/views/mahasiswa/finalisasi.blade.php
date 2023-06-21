@@ -49,6 +49,11 @@
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
+                                <label for="a1"><b>Form Presensi dan Nilai Lapangan (KP-A1)</b></label>
+                                <input id="a1-input" class="form-control" type="text" name="a1" value="{{ isset($mhs->mhspenilaian->a1) ? $mhs->mhspenilaian->a1 : '' }}">
+                                <div class="form-text">Input link Google Drive dokumen terkait</div>
+                            </div>
+                            <div class="form-group">
                                 <label for="a2"><b>Form Presensi dan Nilai Lapangan (KP-A2)</b></label>
                                 <input id="a2-input" class="form-control" type="text" name="a2" value="{{ isset($mhs->mhspenilaian->a2) ? $mhs->mhspenilaian->a2 : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
@@ -56,6 +61,11 @@
 
                         </div>
                         <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
+                                <label for="b1"><b>Form Permohonan Seminar  (KP-B1)</b></label>
+                                <input id="b1-input" class="form-control" type="text" name="b1" value="{{ isset($mhs->mhspenilaian->b1) ? $mhs->mhspenilaian->b1 : '' }}">
+                                <div class="form-text">Input link Google Drive dokumen terkait</div>
+                            </div>
                             <div class="form-group">
                                 <label for="b2"><b>Form Presensi Seminar  (KP-B2)</b></label>
                                 <input id="b2-input" class="form-control" type="text" name="b2" value="{{ isset($mhs->mhspenilaian->b2) ? $mhs->mhspenilaian->b2 : '' }}">
