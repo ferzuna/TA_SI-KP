@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Bimbingan;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
+use App\Models\Penjadwalan;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Dosen;
 use Illuminate\Support\Facades\DB;
@@ -144,15 +145,22 @@ class DosenController extends Controller
     }
 
     public function jadwalseminar(){
-        $seminar = Pendaftaran::leftJoin('users', function($join) {
-            $join->on('pendaftarans.NIM', '=', 'users.NIM');
-        })->leftJoin('penjadwalans', 'pendaftarans.NIM', '=', 'penjadwalans.NIM')
-        ->join('permohonans', 'pendaftarans.NIM', '=', 'permohonans.NIM')
-        ->join('penilaians', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->where('pendaftarans.NIP', Auth::user()->NIP)->get();
+        $seminar = Penjadwalan::leftJoin('users', function($join) {
+            $join->on('penjadwalans.NIM', '=', 'users.NIM');
+        })
+        ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan')
+        ->where('penjadwalans.NIP', Auth::user()->NIP)->get();
         return view('dosen.jadwal', [
             'seminar' => $seminar,
         ]);
+    }
+
+    public function setujuijadwalseminar($id){
+        Penjadwalan::find($id)->update([
+            'status' => true,
+        ]);
+        return redirect(route('dosen.jadwal'));
     }
     /**
      * Show the form for creating a new resource.
