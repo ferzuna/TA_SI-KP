@@ -65,6 +65,30 @@
                                 <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenjadwalan->kehadiran) ? $mhs->mhspenjadwalan->kehadiran : '' }}">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
+                            @if (isset($mhs->mhspenjadwalan->status))
+                            <div class="form-group">
+                                <label for="status"><b>Status</b></label>
+                                @if($mhs->mhspenjadwalan->status=='acc')
+                                <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
+                                    <option <?= $mhs->mhspenjadwalan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                    </option>
+                                </select>
+                                <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
+                                    <option <?= $mhs->mhspenjadwalan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                    </option>
+                                </select>
+                                @else
+                                <select class="form-select input-border" name="status" id=""
+                                    aria-label="Default select example">
+                                    <option <?= $mhs->mhspenjadwalan->status == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
+                                    </option>
+                                    <option <?= $mhs->mhspenjadwalan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
+                                    </option>
+                                </select>
+                                @endif
+                                
+                            </div>
+                            @endif
                         </div>
 
 
