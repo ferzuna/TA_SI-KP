@@ -24,6 +24,8 @@ class CreatePenilaiansTable extends Migration
             $table->string('b3')->nullable();
             $table->string('b4')->nullable();
             $table->string('b5')->nullable();
+            $table->integer('nilai_seminar')->nullable();
+            $table->integer('nilai_laporan')->nullable();
             $table->string('status')->nullable()->length(15);
             $table->softDeletes();
             $table->timestamps();

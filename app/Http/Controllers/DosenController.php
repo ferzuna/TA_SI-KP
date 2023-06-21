@@ -138,6 +138,7 @@ class DosenController extends Controller
         })->join('permohonans', 'pendaftarans.NIM', '=', 'permohonans.NIM')
         ->select('users.NIM', 'users.name', 'semester', 'no_telp', 'permohonans.perusahaan', 'users.status as status', 'users.id as id')
         ->where('pendaftarans.NIP', Auth::user()->NIP)
+        ->where('pendaftarans.status', true)
         ->get();
         return view('dosen.list-mahasiswa', [
             "mymahasiswa" => $mymahasiswa,
@@ -145,20 +146,49 @@ class DosenController extends Controller
     }
 
     public function jadwalseminar(){
-        $seminar = Penjadwalan::leftJoin('users', function($join) {
+        $seminar1 = Penjadwalan::leftJoin('users', function($join) {
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
         })
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
-        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan')
-        ->where('penjadwalans.NIP', Auth::user()->NIP)->get();
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
+        ->where('penjadwalans.NIP', Auth::user()->NIP)
+        ->where('penjadwalans.status', null)
+        ->get();
+        $seminar2 = Penjadwalan::leftJoin('users', function($join) {
+            $join->on('penjadwalans.NIM', '=', 'users.NIM');
+        })
+        ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
+        ->where('penjadwalans.NIP', Auth::user()->NIP)
+        ->where('penjadwalans.status', '0')
+        ->get();
+        $seminar3 = Penjadwalan::leftJoin('users', function($join) {
+            $join->on('penjadwalans.NIM', '=', 'users.NIM');
+        })
+        ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
+        ->where('penjadwalans.NIP', Auth::user()->NIP)
+        ->where('penjadwalans.status', '1')
+        ->get();
+        $seminar4 = Penjadwalan::leftJoin('users', function($join) {
+            $join->on('penjadwalans.NIM', '=', 'users.NIM');
+        })
+        ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
+        ->where('penjadwalans.NIP', Auth::user()->NIP)
+        ->where('penjadwalans.status', '2')
+        ->get();
         return view('dosen.jadwal', [
-            'seminar' => $seminar,
+            'seminar1' => $seminar1,
+            'seminar2' => $seminar2,
+            'seminar3' => $seminar3,
+            'seminar4' => $seminar4,
         ]);
     }
 
-    public function setujuijadwalseminar($id){
+    public function setujuijadwalseminar(Request $request, $id){
         Penjadwalan::find($id)->update([
-            'status' => true,
+            'status' => $request->status,
         ]);
         return redirect(route('dosen.jadwal'));
     }

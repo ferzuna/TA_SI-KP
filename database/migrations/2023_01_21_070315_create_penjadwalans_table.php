@@ -21,7 +21,7 @@ class CreatePenjadwalansTable extends Migration
             $table->string('kehadiran')->nullable();
             $table->string('survey')->nullable();
             $table->dateTime('jadwal')->nullable();
-            $table->boolean('status')->nullable();
+            $table->string('status')->nullable()->length(2);
             $table->softDeletes();
             $table->timestamps();
         });
