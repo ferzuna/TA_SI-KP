@@ -72,15 +72,13 @@ class KoorController extends Controller
     {
         $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
         ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'penilaians.a1', 'penilaians.b1', 'b5', 'penilaians.status as status')
         ->where('penilaians.status', 1)->get();
         $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
         ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
         ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'bimbingans.b1', 'penilaians.b5', 'penilaians.status as status')
+        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'penilaians.a1', 'penilaians.b1', 'penilaians.b5', 'penilaians.status as status')
         ->where('penilaians.status', 0)->get();
         // dd($datas);
         return view('koordinator.penilaian', [
@@ -98,10 +96,10 @@ class KoorController extends Controller
 
     public function berkasakhir($id) {
         $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
-        ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
+        ->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
         ->join('penilaians', 'users.NIM', 'penilaians.NIM')
         ->select('users.id', 'users.name', 'users.semester','users.image', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.bukti', 'bimbingans.laporan',
-         'bimbingans.makalah', 'pendaftarans.a1', 'bimbingans.b1', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.a2',
+         'bimbingans.makalah', 'penilaians.a1', 'penilaians.b1', 'penilaians.b2', 'penilaians.b3', 'penilaians.a2',
           'penilaians.b4', 'penilaians.b5')
         ->where('penilaians.id', $id)->first();
         // dd($mhs);
