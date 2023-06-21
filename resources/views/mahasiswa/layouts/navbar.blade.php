@@ -53,6 +53,12 @@
                 </li>
                 <li class="nav-item my-auto">
                     @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' && $mhs->mhspermohonan->status == 1)
+                    <a class="nav-link" href="{{ route('penjadwalan') }}">Penjadwalan Seminar</a>
+                    @else
+                    @endif
+                </li>
+                <li class="nav-item my-auto">
+                    @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' && $mhs->mhspermohonan->status == 1)
                     <a class="nav-link" href="{{ route('finalisasi') }}">Finalisasi Berkas</a>
                     @else
                     @endif
