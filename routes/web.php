@@ -79,6 +79,7 @@ Route::group(['middleware' => ['dosen', 'preventBackAfterLogout']], function () 
     Route::post('/dosen/setujuipendaftaran/{id}', [DosenController::class, 'setujuipendaftaran'])->name('dosen.setujuipendaftaran');
     Route::get('/dosen/bimbingan', [DosenController::class, 'bimbingan'])->name('dosen.bimbingan');
     Route::get('/dosen/jadwal', [DosenController::class, 'jadwalseminar'])->name('dosen.jadwal');
+    Route::post('/dosen/setujuijadwal', [DosenController::class, 'setujuijadwalseminar'])->name('dosen.setujuijadwal');
     Route::get('/dosen/pengaturan', function () {
         return view('dosen.pengaturan');
     })->name('dosen.pengaturan');

@@ -135,7 +135,7 @@
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.25em;"> Ingin mengajukan permohonan Kerja Praktek di: </li>
             <li style="padding-bottom:0.25em;"> Instansi/Perusahaan <span style="margin-left: 12px;">: {{ $permohonan->perusahaan }}</span></li>
-            <li style="padding-bottom:0.25em;"> Topik Kerja Praktek <span style="margin-left: 9px;">: </span></li>
+            <li style="padding-bottom:0.25em;"> Topik Kerja Praktek <span style="margin-left: 9px;">: {{ $user->mhspendaftaran->topik_kp }}</span></li>
             <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 97px;">: {{ $permohonan->mulai }} s/d {{ $permohonan->selesai }}</span></li>
          </ul>
       </div>
