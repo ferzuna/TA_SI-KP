@@ -42,7 +42,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($seminar as $data)
+                                                @foreach ($seminar1 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
@@ -80,7 +80,7 @@
                                                                                 class="border rounded-0 form-control"
                                                                                 style="width: 440px;margin-bottom: 15px;"
                                                                                 placeholder="Nama" name="name"
-                                                                                value="<?= $data->bimbinganmhs->name ?>" disabled/>
+                                                                                value="<?= $data->name ?>" disabled/>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="status">Status</label>
@@ -142,7 +142,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($seminar as $data)
+                                                @foreach ($seminar2 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
@@ -242,7 +242,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($seminar as $data)
+                                                @foreach ($seminar3 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
@@ -342,7 +342,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($seminar as $data)
+                                                @foreach ($seminar4 as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
