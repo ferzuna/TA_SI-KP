@@ -21,7 +21,7 @@
                                 class="nav-link ">ACC</a></li>
                     </ul>
                     <div id="tabsContent" class="tab-content tabs-border rounded">
-                        <div id="belumdiperiksa" class="tab-pane fade active show">
+                        <div id="belumdiperiksa" class="tab-pane fade show active">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Data Belum Diperiksa</h6>
@@ -412,4 +412,18 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+                localStorage.setItem('activeTab', $(e.target).attr('href'));
+            });
+            var activeTab = localStorage.getItem('activeTab');
+            if(activeTab){
+                $('#tabs a[href="' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
 @endsection
