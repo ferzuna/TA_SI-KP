@@ -70,7 +70,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="">
+                                                                            action="{{ route('dosen.setujuijadwal', $data['id']) }}">
                                                                             @csrf
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="nama">Nama</label>
@@ -90,8 +90,8 @@
                                                                                     <?= $data['status'] == 'revisi jadwal' ? 'selected' : '' ?>
                                                                                     value="revisi jadwal">Revisi Jadwal</option>
                                                                                 <option
-                                                                                    <?= $data['status'] == 'acc jadwal' ? 'selected' : '' ?>
-                                                                                    value="acc jadwal">ACC Jadwal</option>
+                                                                                    <?= $data['status'] == 'acc' ? 'selected' : '' ?>
+                                                                                    value="acc">ACC Jadwal</option>
                                                                                 </select>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"
@@ -168,7 +168,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="">
+                                                                            action="{{ route('dosen.setujuijadwal', $data['id']) }}">
                                                                             @csrf
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="nama">Nama</label>
@@ -266,7 +266,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="">
+                                                                            action="{{ route('dosen.nilaikp', $data['id']) }}">
                                                                             @csrf
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="nama">Nama</label>
