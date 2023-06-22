@@ -80,7 +80,7 @@
                                 @else
                                 <select class="form-select input-border" name="status" id=""
                                     aria-label="Default select example">
-                                    <option <?= $mhs->mhspenjadwalan->status == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
+                                    <option <?= $mhs->mhspenjadwalan->status == 'revisi jadwal' ? 'selected' : '' ?> id="" value="revisi jadwal">Belum diRevisi
                                     </option>
                                     <option <?= $mhs->mhspenjadwalan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
                                     </option>

@@ -344,7 +344,7 @@ class MahasiswaController extends Controller
                 'ruangan' => $request->ruangan,
                 'kehadiran' => $request->kehadiran,
                 'survey' => $request->survey,
-                'status' => false,
+                'status' => 'sudah direvisi'
             ]);
 
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();

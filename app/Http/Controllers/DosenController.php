@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Bimbingan;
+use App\Models\Penilaian;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
 use App\Models\Penjadwalan;
@@ -152,7 +153,7 @@ class DosenController extends Controller
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', null)
+        ->where('penjadwalans.status', 'sudah direvisi')
         ->get();
         $seminar2 = Penjadwalan::leftJoin('users', function($join) {
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
@@ -160,7 +161,7 @@ class DosenController extends Controller
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', '0')
+        ->where('penjadwalans.status', 'revisi jadwal')
         ->get();
         $seminar3 = Penjadwalan::leftJoin('users', function($join) {
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
@@ -168,7 +169,7 @@ class DosenController extends Controller
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', '1')
+        ->where('penjadwalans.status', 'acc')
         ->get();
         $seminar4 = Penjadwalan::leftJoin('users', function($join) {
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
@@ -176,7 +177,7 @@ class DosenController extends Controller
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', '2')
+        ->where('penjadwalans.status', 'acc')
         ->get();
         return view('dosen.jadwal', [
             'seminar1' => $seminar1,
@@ -329,5 +330,24 @@ class DosenController extends Controller
             'status' => $request->status,
         ]);
         return redirect('/dosen/bimbingan');
+    }
+
+    public function nilaikp(Request $request, $id){
+        $nim = Penjadwalan::find($id)->NIM;
+        $penilaian = Penilaian::where('NIM', $nim)->first();
+        if(isset($penilaian)){
+            Penilaian::where('NIM', $nim)->first()->update([
+                'nilai_laporan' => $request->nilai_laporan,
+                'nilai_seminar' => $request->nilai_seminar,
+            ]);
+        }else{
+            Penilaian::create([
+                'NIP' => Auth::user()->NIP,
+                'NIM' => $nim,
+                'nilai_laporan' => $request->nilai_laporan,
+                'nilai_seminar' => $request->nilai_seminar,
+            ]);
+        }
+        return redirect(route('dosen.jadwal'));
     }
 }
