@@ -85,6 +85,7 @@
         padding: 0px 5px;
     }
 
+
     .user{
         text-align:center;
     }
@@ -136,13 +137,13 @@
             <li style="padding-bottom:0.25em;"> Ingin mengajukan permohonan Kerja Praktek di: </li>
             <li style="padding-bottom:0.25em;"> Instansi/Perusahaan <span style="margin-left: 12px;">: {{ $permohonan->perusahaan }}</span></li>
             <li style="padding-bottom:0.25em;"> Topik Kerja Praktek <span style="margin-left: 9px;">: {{ $user->mhspendaftaran->topik_kp }}</span></li>
-            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 97px;">: {{ $permohonan->mulai }} s/d {{ $permohonan->selesai }}</span></li>
+            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 90px;">: {{Carbon\Carbon::parse($permohonan->mulai)->isoFormat('D MMMM Y')}} s/d {{ Carbon\Carbon::parse($permohonan->selesai)->isoFormat('D MMMM Y') }}</span></li>
          </ul>
       </div>
     </section>
     <section class="footer">
         <div class="times">
-            <span style="line-height: 100%;">Semarang, 15 Desember 2023</span>
+            <span style="line-height: 100%;">Semarang, {{$user->mhspendaftaran->updated_at->isoFormat('D MMMM Y')}}</span>
         </div>
         <div class="menyetujui">
             <span>Menyetujui,</span>
