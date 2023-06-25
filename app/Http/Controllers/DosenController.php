@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
+use App\Http\Controllers\MahasiswaController;
 // use GuzzleHttp\Psr7\Request;
 
 class DosenController extends Controller
@@ -70,6 +71,8 @@ class DosenController extends Controller
     }
 
     public function bobotdosen(){
+        $balancing = new MahasiswaController;
+        $balancing->balancing();
         $alldosen = User::where('role_id', 4)->get();
         return view ('admin.bobot',[
             "alldosen"=>$alldosen
@@ -83,6 +86,9 @@ class DosenController extends Controller
             'status' => $request->status,
         ]);
 
+        $balancing = new MahasiswaController;
+        $balancing->balancing();
+        
         return redirect('/admin/bobot')->with('success', 'Data updated');
     }
     

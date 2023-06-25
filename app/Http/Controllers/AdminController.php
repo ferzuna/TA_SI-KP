@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAdminRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\MahasiswaController;
 
 class AdminController extends Controller
 {
