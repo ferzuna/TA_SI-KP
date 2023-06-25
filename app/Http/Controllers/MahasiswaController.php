@@ -39,6 +39,8 @@ class MahasiswaController extends Controller
 
     public function pendaftaran()
     {
+        $balancing = new MahasiswaController;
+        $balancing->balancing();
         $mhs = User::where('email', Auth::user()->email)->first();
         $all = User::where('role_id', 4)->where('status', 1)->get();
         $pendaftaran = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
