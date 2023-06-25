@@ -55,32 +55,43 @@
                                     value="{{ isset($mhs->mhsbimbingan->makalah) ? $mhs->mhsbimbingan->makalah : '' }}" required>
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
-                            
                             @if (isset($mhs->mhsbimbingan->status))
-                                <div class="form-group">
-                                    <label for="status"><b>Status</b></label>
-                                    @if($mhs->mhsbimbingan->status=='acc')
-                                    <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
-                                        <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
-                                        </option>
-                                    </select>
-                                    <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
-                                        <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
-                                        </option>
-                                    </select>
-                                    @else
-                                    <select class="form-select input-border" name="status" id=""
-                                        aria-label="Default select example">
-                                        <option <?= $mhs->mhsbimbingan->status == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
-                                        </option>
-                                        <option <?= $mhs->mhsbimbingan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
-                                        </option>
-                                    </select>
-                                    @endif
-                                    
-                                </div>
+                            <div class="form-group">
+                                <label for="status"><b>Status</b></label>
+                                @if($mhs->mhsbimbingan->status=='acc')
+                                <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
+                                    <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                    </option>
+                                </select>
+                                <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
+                                    <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                    </option>
+                                </select>
+                                @else
+                                <select class="form-select input-border" name="status" id=""
+                                    aria-label="Default select example">
+                                    <option <?= $mhs->mhsbimbingan->status == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
+                                    </option>
+                                    <option <?= $mhs->mhsbimbingan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
+                                    </option>
+                                </select>
+                                @endif
                                 
+                            </div>
                             @endif
+                            
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            @if (isset($mhs->mhsbimbingan->catatan))
+                            <div class="form-group">
+                                <label for="makalah"><b>Catatan</b></label>
+                                <div class="form-control h-100">
+                                    {!!nl2br($mhs->mhsbimbingan->catatan)!!}
+                                </div>
+                                <div class="form-text">Input link Google Drive dokumen terkait</div>
+                            </div>
+                            @endif
+                            
                         </div>
                         <div class="py-2">
                             <button type="submit" class="btn btn-light btn-outline-dark btn-submit">Submit</button>

@@ -64,7 +64,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <form method="POST"
                                                                             action="{{ route('dosen.editbimbingan',$data['id']) }}">
                                                                             @csrf
@@ -89,6 +89,10 @@
                                                                                     <?= $data['status'] == 'acc' ? 'selected' : '' ?>
                                                                                     value="acc">ACC</option>
                                                                                 </select>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="requirement">Catatan Revisi</label>
+                                                                            <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="catatan" class="border rounded-0 form-control" ><?= $data['catatan'] ?></textarea>
                                                                             </div>
                                                                            
                                                                             <input type="submit" class="btn btn-success"
@@ -257,7 +261,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <form method="POST"
                                                                             action="{{ route('dosen.editbimbingan',$data['id']) }}">
                                                                             @csrf
@@ -282,6 +286,10 @@
                                                                                     <?= $data['status'] == 'acc' ? 'selected' : '' ?>
                                                                                     value="acc">ACC</option>
                                                                                 </select>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="requirement">Catatan Revisi</label>
+                                                                            <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="catatan" class="border rounded-0 form-control" ><?= $data['catatan'] ?></textarea>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"
                                                                                 value="Save Changes" name="update"></input>
