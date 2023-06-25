@@ -21,6 +21,7 @@ class CreateBimbingansTable extends Migration
             $table->string('judul')->nullable();
             $table->string('makalah')->nullable();
             $table->string('laporan')->nullable();
+            $table->string('catatan')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
