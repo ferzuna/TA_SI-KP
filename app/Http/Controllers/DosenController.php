@@ -159,7 +159,10 @@ class DosenController extends Controller
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', 'sudah direvisi')
+        ->where(function($query) {
+            $query->where('penjadwalans.status', 'sudah direvisi')
+            ->orWhere('penjadwalans.status', null);
+        })
         ->get();
         $seminar2 = Penjadwalan::leftJoin('users', function($join) {
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
@@ -173,15 +176,21 @@ class DosenController extends Controller
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
         })
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
-        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
+        ->leftJoin('penilaians', 'penjadwalans.NIM', '=', 'penilaians.NIM')
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status', 'penilaians.nilai_seminar', 'penilaians.nilai_laporan')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
         ->where('penjadwalans.status', 'acc')
+        ->where(function($check){
+            $check->where('penilaians.nilai_seminar', null)
+            ->orWhere('penilaians.nilai_laporan', null);
+        })
         ->get();
         $seminar4 = Penjadwalan::leftJoin('users', function($join) {
             $join->on('penjadwalans.NIM', '=', 'users.NIM');
         })
         ->join('permohonans', 'penjadwalans.NIM', '=', 'permohonans.NIM')
-        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status')
+        ->join('penilaians', 'penjadwalans.NIM', '=', 'penilaians.NIM')
+        ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status', 'penilaians.nilai_seminar', 'penilaians.nilai_laporan')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
         ->where('penjadwalans.status', 'acc')
         ->get();
@@ -334,6 +343,7 @@ class DosenController extends Controller
     public function editbimbingan(Request $request, $id){
         Bimbingan::find($id)->update([
             'status' => $request->status,
+            'catatan' => $request->catatan,
         ]);
         return redirect('/dosen/bimbingan');
     }
