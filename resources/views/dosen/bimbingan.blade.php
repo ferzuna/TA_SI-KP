@@ -92,7 +92,7 @@
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="requirement">Catatan Revisi</label>
-                                                                            <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="catatan" class="border rounded-0 form-control" ><?= $data['catatan'] ?></textarea>
+                                                                            <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Catatan yang direvisi" name="catatan" class="border rounded-0 form-control" ><?= $data['catatan'] ?></textarea>
                                                                             </div>
                                                                            
                                                                             <input type="submit" class="btn btn-success"
@@ -289,7 +289,7 @@
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="requirement">Catatan Revisi</label>
-                                                                            <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Requirement yang dibutuhkan" name="catatan" class="border rounded-0 form-control" ><?= $data['catatan'] ?></textarea>
+                                                                            <textarea style="margin-bottom: 15px;width: 440px;" placeholder="Catatan yang direvisi" name="catatan" class="border rounded-0 form-control" ><?= $data['catatan'] ?></textarea>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"
                                                                                 value="Save Changes" name="update"></input>

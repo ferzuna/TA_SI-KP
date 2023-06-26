@@ -84,7 +84,7 @@
                         <div class="col-lg-4 col-md-6">
                             @if (isset($mhs->mhsbimbingan->catatan))
                             <div class="form-group">
-                                <label for="makalah"><b>Catatan</b></label>
+                                <label for="makalah"><b>Catatan Revisi</b></label>
                                 <div class="form-control h-100">
                                     {!!nl2br($mhs->mhsbimbingan->catatan)!!}
                                 </div>
