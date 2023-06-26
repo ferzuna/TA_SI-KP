@@ -120,9 +120,9 @@
                             <div class="media-right">
                                 <b>Dosen Pembimbing :</b> {{ isset($dosbing['name']) ? $dosbing['name'] : 'Belum Ditentukan' }}
                                 <br>
-                                @if (isset($mhs->mhspendaftaran) && $mhs->mhspendaftaran->status == 0)
+                                @if (isset($mhs->mhspendaftaran) && $mhs->mhspendaftaran->status == 1)
                                 <span>
-                                    <b style="color: green">Berkas KP A1 dapat di download <a href="{{ route('kp-a1')}}">disini</a></b>
+                                    <b style="color: green">Berkas KP A1 dapat didownload <a href="{{ route('kp-a1')}}">disini</a></b>
                                 </span>
                                 @endif
                             </div>
@@ -143,20 +143,28 @@
                             <div class="media-right">
                                 <b>Pelaksanaan seminar KP :</b>
                                 {{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : 'Belum Dijadwalkan' }}
+                                @if (isset($mhs->mhspenjadwalan) && $mhs->mhspenjadwalan->status == 1)
+                                <span>
+                                    <b style="color: green">Berkas KP B1 dapat didownload  <a href="{{ route('kp-b1')}}">disini</a></b>
+                                </span>
+                                @endif
                             </div>
                         </div>
                         
-                        
+                        @if (isset($mhs->mhspenjadwalan) && $mhs->mhspenjadwalan->status == 1)
                         <div class="banner">
                             <div class="media-left">
 
                             </div>
                             <div class="media-right">
-                                Mahasiswa mencari tempat/lokasi Kerja Praktek, setelah diterima Mahasiswa mengajukan Surat
-                                Permohonan Kerja Praktek dan proposal
-                                pengajuan pelaksanaan Kerja Praktek ke Dosen Pembimbing
+                               
+                                <span>
+                                    <b style="color: green">Berkas KP B3 dapat didownload  <a href="{{ route('kp-b1')}}">disini</a></b>
+                                </span>
+                               
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
