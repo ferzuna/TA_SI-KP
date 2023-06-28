@@ -21,7 +21,7 @@
                                 class="nav-link ">Sudah Berkas dan Seminar</a></li>
                     </ul>
                     <div id="tabsContent" class="tab-content border border-top-0 rounded">
-                        <div id="home1" class="tab-pane fade active show">
+                        <div id="belumdimulai" class="tab-pane fade active show">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
@@ -33,10 +33,8 @@
                                                 <tr>
                                                     <th>Nama</th>
                                                     <th>NIM</th>
-                                                    <th>Semester</th>
-                                                    <th>Berkas</th>
-                                                    <th>Status</th>
-                                                    <th>Manage</th>
+                                                    <th>Dosen Pembimbing</th>
+                                                    <th>Selesai KP</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -92,10 +90,8 @@
                                                 <tr>
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>NIM</strong></td>
-                                                    <td><strong>Semester</strong></td>
-                                                    <td><strong>Berkas</strong></td>
-                                                    <td><strong>Status</strong></td>
-                                                    <td><strong>Manage</strong></td>
+                                                    <td><strong>Dosen Pembimbing</strong></td>
+                                                    <td><strong>Selesai KP</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -103,7 +99,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="profile1" class="tab-pane fade">
+                        <div id="belumdinilai" class="tab-pane fade">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
@@ -115,9 +111,8 @@
                                                 <tr>
                                                     <th>Nama</th>
                                                     <th>NIM</th>
-                                                    <th>Semester</th>
-                                                    <th>Berkas</th>
-                                                    <th>Status</th>
+                                                    <th>Dosen Pembimbing</th>
+                                                    <th>Selesai KP</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -135,9 +130,88 @@
                                                 <tr>
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>NIM</strong></td>
-                                                    <td><strong>Semester</strong></td>
-                                                    <td><strong>Berkas</strong></td>
-                                                    <td><strong>Status</strong></td>
+                                                    <td><strong>Dosen Pembimbing</strong></td>
+                                                    <td><strong>Selesai</strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sudahdinilai" class="tab-pane fade">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama</th>
+                                                    <th>NIM</th>
+                                                    <th>Dosen Pembimbing</th>
+                                                    <th>Selesai KP</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($datasudah as $data)
+                                                    <tr>
+                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $data['NIM'] ?></td>
+                                                        <td><?= $data['semester'] ?></td>
+                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                        <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td><strong>Nama</strong></td>
+                                                    <td><strong>NIM</strong></td>
+                                                    <td><strong>Dosen Pembimbing</strong></td>
+                                                    <td><strong>Selesai KP</strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="selesaikp" class="tab-pane fade">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered data" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama</th>
+                                                    <th>NIM</th>
+                                                    <th>Dosen Pembimbing</th>
+                                                    <th>Selesai KP</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($datasudah as $data)
+                                                    <tr>
+                                                        <td><?= $data['name'] ?></td>
+                                                        <td><?= $data['NIM'] ?></td>
+                                                        <td><?= $data['semester'] ?></td>
+                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                        <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td><strong>Nama</strong></td>
+                                                    <td><strong>NIM</strong></td>
+                                                    <td><strong>Dosen Pembimbing</strong></td>
+                                                    <td><strong>Selesai KP</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>

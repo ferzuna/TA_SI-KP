@@ -19,8 +19,8 @@
                                 class="nav-link">Revisi Jadwal</a></li>
                         <li class="nav-item"><a href="#profile1" data-target="#profile1" data-toggle="tab"
                                 class="nav-link ">Sudah disetujui</a></li>
-                        <li class="nav-item"><a href="#sudahseminar" data-target="#sudahseminar" data-toggle="tab"
-                                class="nav-link ">Sudah Seminar</a></li>
+                        <li class="nav-item"><a href="#sudahdinilai" data-target="#sudahdinilai" data-toggle="tab"
+                                class="nav-link ">Sudah Dinilai</a></li>
                     </ul>
                     <div id="tabsContent" class="tab-content border border-top-0 rounded">
                         <div id="home1" class="tab-pane fade active show">
@@ -325,7 +325,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="sudahseminar" class="tab-pane fade">
+                        <div id="sudahdinilai" class="tab-pane fade">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">List Data</h6>
