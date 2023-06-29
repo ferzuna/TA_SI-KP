@@ -179,7 +179,7 @@ class DosenController extends Controller
         ->leftJoin('penilaians', 'penjadwalans.NIM', '=', 'penilaians.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status', 'penilaians.nilai_seminar', 'penilaians.nilai_laporan')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', 'acc')
+        ->where('penjadwalans.status', 'acc jadwal')
         ->where(function($check){
             $check->where('penilaians.nilai_seminar', null)
             ->orWhere('penilaians.nilai_laporan', null);
@@ -192,7 +192,7 @@ class DosenController extends Controller
         ->join('penilaians', 'penjadwalans.NIM', '=', 'penilaians.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status', 'penilaians.nilai_seminar', 'penilaians.nilai_laporan')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', 'acc')
+        ->where('penjadwalans.status', 'acc jadwal')
         ->get();
         return view('dosen.jadwal', [
             'seminar1' => $seminar1,
