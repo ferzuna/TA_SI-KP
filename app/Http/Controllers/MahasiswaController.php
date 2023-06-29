@@ -264,12 +264,17 @@ class MahasiswaController extends Controller
             $formatter = new NumberFormatter('id', NumberFormatter::SPELLOUT);
             return $formatter->format($number);
         }
-        $number = 88;
-        $spelled = numberToWords($number);
+        $user = Auth::user();
+        $nilai_laporan = $user->mhspenilaian->nilai_laporan;
+        $nilai_seminar = $user->mhspenilaian->nilai_seminar;
+        $nilai_laporan_spelled = numberToWords($nilai_laporan);
+        $nilai_seminar_spelled = numberToWords($nilai_seminar);
         $dosen = Pendaftaran::where('NIM', Auth::user()->NIM)->first()->NIP;
         $dosbing = User::where('NIP', $dosen)->first();
         return view('mahasiswa.pdf.kpB3', [
-            'spelled' => $spelled,
+            'user' => $user,
+            'nilai_laporan' => $nilai_laporan,
+            'nilai_seminar' => $nilai_seminar,
             'dosbing' => $dosbing,
         ]);
     }
