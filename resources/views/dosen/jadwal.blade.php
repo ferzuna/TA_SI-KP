@@ -298,6 +298,20 @@
                                                                                     style="margin-bottom: 15px;width: 440px;"
                                                                                     name="nilai_seminar" value="<?= $data['nilai_seminar'] ?>" required />
                                                                             </div>
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="status">Status</label>
+                                                                                <select type="text"
+                                                                                class="border rounded-0 form-control"
+                                                                                style="width: 440px;margin-bottom: 15px;"
+                                                                                placeholder="Status" name="status">
+                                                                                <option
+                                                                                    <?= $data['status'] == 'revisi jadwal' ? 'selected' : '' ?>
+                                                                                    value="revisi jadwal">Revisi Jadwal</option>
+                                                                                <option
+                                                                                    <?= $data['status'] == 'acc jadwal' ? 'selected' : '' ?>
+                                                                                    value="acc jadwal">ACC Jadwal</option>
+                                                                                </select>
+                                                                            </div>
                                                                             <input type="submit" class="btn btn-success"
                                                                                 value="Save Changes" name="update"></input>
                                                                             <button type="button" class="btn btn-secondary"

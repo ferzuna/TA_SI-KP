@@ -148,7 +148,7 @@
     </section>
     <section class="footer">
         <div class="times">
-            <span style="line-height: 100%;">Semarang, 15 Desember 2023</span>
+            <span style="line-height: 100%;">Semarang, {{$user->mhspenilaian->created_at->isoFormat('D MMMM Y')}}</span>
         </div>
         <div class="ttd-wrap">
             <div class="ttd">
