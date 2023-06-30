@@ -273,8 +273,8 @@ class MahasiswaController extends Controller
         $dosbing = User::where('NIP', $dosen)->first();
         return view('mahasiswa.pdf.kpB3', [
             'user' => $user,
-            'nilai_laporan' => $nilai_laporan,
-            'nilai_seminar' => $nilai_seminar,
+            'nilai_laporan_spelled' => $nilai_laporan_spelled,
+            'nilai_seminar_spelled' => $nilai_seminar_spelled,
             'dosbing' => $dosbing,
         ]);
     }

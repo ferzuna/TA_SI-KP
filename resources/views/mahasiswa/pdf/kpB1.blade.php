@@ -135,13 +135,13 @@
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.25em;"> Ingin mengajukan permohonan seminar Kerja Praktek di: </li>
             <li style="padding-bottom:0.25em;"> Ruang <span style="margin-left: 25px;">: {{ $jadwal->ruangan }}</span></li>
-            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 26px;">: {{ $jadwal->jadwal }}</span></li>
+            <li style="padding-bottom:0.25em;"> Waktu <span style="margin-left: 26px;">: {{ Carbon\Carbon::parse($jadwal->jadwal)->isoFormat('dddd, D MMMM Y | HH:mm') }} WIB</span></li>
          </ul>
       </div>
     </section>
     <section class="footer">
         <div class="times">
-            <span style="line-height: 100%;">Semarang, 15 Desember 2023</span>
+            <span style="line-height: 100%;">Semarang, {{$user->mhspenjadwalan->updated_at->isoFormat('D MMMM Y')}}</span>
         </div>
         <div class="menyetujui">
             <span>Menyetujui,</span>

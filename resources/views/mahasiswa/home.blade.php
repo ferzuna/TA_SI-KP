@@ -142,8 +142,9 @@
                             </div>
                             <div class="media-right">
                                 <b>Pelaksanaan seminar KP :</b>
-                                {{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : 'Belum Dijadwalkan' }}
-                                @if (isset($mhs->mhspenjadwalan) && $mhs->mhspenjadwalan->status == 1)
+                                {{ isset($mhs->mhspenjadwalan->jadwal) ? Carbon\Carbon::parse($mhs->mhspenjadwalan->jadwal)->isoFormat('dddd, D MMMM Y | HH:mm')  : 'Belum Dijadwalkan' }}
+                                <br>
+                                @if (isset($mhs->mhspenjadwalan) && $mhs->mhspenjadwalan->status == 'acc jadwal')
                                 <span>
                                     <b style="color: green">Berkas KP B1 dapat didownload  <a href="{{ route('kp-b1')}}">disini</a></b>
                                 </span>
@@ -151,7 +152,7 @@
                             </div>
                         </div>
                         
-                        @if (isset($mhs->mhspenjadwalan) && $mhs->mhspenjadwalan->status == 1)
+                        @if (isset($mhs->mhspenilaian->nilai_laporan ) && isset($mhs->mhspenilaian->nilai_seminar))
                         <div class="banner">
                             <div class="media-left">
 
@@ -159,7 +160,7 @@
                             <div class="media-right">
                                
                                 <span>
-                                    <b style="color: green">Berkas KP B3 dapat didownload  <a href="{{ route('kp-b1')}}">disini</a></b>
+                                    <b style="color: green">Berkas KP B3 dapat didownload  <a href="{{ route('kp-b3')}}">disini</a></b>
                                 </span>
                                
                             </div>
