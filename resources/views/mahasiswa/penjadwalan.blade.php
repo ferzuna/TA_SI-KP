@@ -68,7 +68,7 @@
                             @if (isset($mhs->mhspenjadwalan->status))
                             <div class="form-group">
                                 <label for="status"><b>Status</b></label>
-                                @if($mhs->mhspenjadwalan->status=='acc')
+                                @if($mhs->mhspenjadwalan->status=='acc jadwal')
                                 <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
                                     <option <?= $mhs->mhspenjadwalan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                     </option>

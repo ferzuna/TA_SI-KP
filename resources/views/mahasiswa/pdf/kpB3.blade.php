@@ -136,13 +136,13 @@
             <li style="padding-bottom:0.25em;"> Memberikan nilai kepada mahasiswa : </li>
             <li style="padding-bottom:0.25em;"> Nama <span style="margin-left: 40px;">: {{Auth::user()->name}}</span></li>
             <li style="padding-bottom:0.25em;"> NIM <span style="margin-left: 46px;">: {{Auth::user()->NIM}}</span></li>
-            <li style="padding-bottom:0.25em;"> Judul KP <span style="margin-left: 24px;">: </span></li>
+            <li style="padding-bottom:0.25em;"> Judul KP <span style="margin-left: 24px;">: {{ $user->mhsbimbingan->judul }}</span></li>
          </ul>
 
          <ul style="list-style-type: none; padding: 0;">
             <li style="padding-bottom:0.25em;"> Adapun perincian nilai adalah sebagai berikut : </li>
-            <li style="padding-bottom:0.25em;"> Nilai Seminar Kerja Praktik <span style="margin-left: 25px;">: <span style="margin-left:10px">88</span></span> <span style="margin-left: 10px;">( <span class="spelled">{{$spelled}}</span>)*</span></li>
-            <li style="padding-bottom:0.25em;"> Nilai Laporan Kerja Praktik <span style="margin-left: 26px;">: <span style="margin-left:10px">88</span></span> <span style="margin-left: 10px;">( <span class="spelled">{{$spelled}}</span>)* </span></li>
+            <li style="padding-bottom:0.25em;"> Nilai Seminar Kerja Praktik <span style="margin-left: 25px;">: <span style="margin-left:10px">{{$user->mhspenilaian->nilai_laporan}}</span></span> <span style="margin-left: 10px;">( <span class="spelled">{{$nilai_laporan_spelled}}</span>)*</span></li>
+            <li style="padding-bottom:0.25em;"> Nilai Laporan Kerja Praktik <span style="margin-left: 26px;">: <span style="margin-left:10px">{{$user->mhspenilaian->nilai_seminar}}</span></span> <span style="margin-left: 10px;">( <span class="spelled">{{$nilai_seminar_spelled}}</span>)* </span></li>
          </ul>
       </div>
     </section>

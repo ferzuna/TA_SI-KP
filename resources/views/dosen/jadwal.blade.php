@@ -90,8 +90,8 @@
                                                                                     <?= $data['status'] == 'revisi jadwal' ? 'selected' : '' ?>
                                                                                     value="revisi jadwal">Revisi Jadwal</option>
                                                                                 <option
-                                                                                    <?= $data['status'] == 'acc' ? 'selected' : '' ?>
-                                                                                    value="acc">ACC Jadwal</option>
+                                                                                    <?= $data['status'] == 'acc jadwal' ? 'selected' : '' ?>
+                                                                                    value="acc jadwal">ACC Jadwal</option>
                                                                                 </select>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"
@@ -145,7 +145,7 @@
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
                                                         <td style="max-width: 200px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['kehadiran'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['kehadiran'] ?></a></td>
-                                                        <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | hh:mm') : 'Belum Dijawalkan' ?>  </td>
+                                                        <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | HH:mm') : 'Belum Dijawalkan' ?>  </td>
                                                         <td><?= $data['ruangan'] ?></td>
                                                         </td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
@@ -243,7 +243,7 @@
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
                                                         <td style="max-width: 200px !important; overflow-x:scroll; white-space: nowrap;"><a href="<?= $data['kehadiran'] ?>" target="_blank" rel="noopener noreferrer"><?= $data['kehadiran'] ?></a></td>
-                                                        <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | hh:mm') : 'Belum Dijawalkan' ?>  </td>
+                                                        <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | HH:mm') : 'Belum Dijawalkan' ?>  </td>
                                                         <td><?= $data['ruangan'] ?></td>
                                                         </td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
@@ -347,7 +347,7 @@
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['perusahaan'] ?></td>
-                                                        <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | hh:mm') : 'Belum Dijawalkan' ?>  </td>
+                                                        <td><?= $data['jadwal'] ? Carbon\Carbon::parse($data['jadwal'])->isoFormat('dddd, D MMMM Y | HH:mm') : 'Belum Dijawalkan' ?>  </td>
                                                         <td><?= $data['ruangan'] ?></td>
                                                         </td>
                                                         <td><i class="fas fa-edit iconedit" style="padding-left: 9px;"
@@ -355,42 +355,12 @@
                                                             data-target="#edit<?= $data['id'] ?>"></i>
                                                         </td>
                                                     </tr>
-                                                    <div class="modal fade" id="approve<?= $data['id'] ?>"
-                                                        tabindex="-1" role="dialog"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">Setujui Data</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="col-md-6">
-                                                                        <form method="POST"
-                                                                            action="{{ route('dosen.setujuipendaftaran', $data['id']) }}">
-                                                                            @csrf
-                                                                            <h6>Apakah Anda Yakin?</h6>
-                                                                            <input type="submit"
-                                                                                class="btn btn-success" value="Ya"
-                                                                                name="approve"></input>
-                                                                            <button type="button"
-                                                                                class="btn btn-secondary"
-                                                                                data-dismiss="modal">Tidak</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
+                                                    <div class="modal fade" id="edit<?= $data['id'] ?>" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title">Edit Santri</h5>
+                                                                    <h5 class="modal-title">Edit Data</h5>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -399,50 +369,38 @@
                                                                 <div class="modal-body">
                                                                     <div class="col-md-6">
                                                                         <form method="POST"
-                                                                            action="">
+                                                                            action="{{ route('dosen.nilaikp', $data['id']) }}">
                                                                             @csrf
-                                                                            <input type="text"
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="nama">Nama</label>
+                                                                                <input type="text"
                                                                                 class="border rounded-0 form-control"
                                                                                 style="width: 440px;margin-bottom: 15px;"
-                                                                                placeholder="Nama" name="nama"
-                                                                                value="<?= $data['nama'] ?>" />
-                                                                            <select type="text"
-                                                                                class="border rounded-0 form-control"
-                                                                                style="width: 440px;margin-bottom: 15px;"
-                                                                                placeholder="Gender" name="gender" />
-                                                                            <option
-                                                                                <?= $data['gender'] == 'Laki - Laki' ? 'selected' : '' ?>
-                                                                                value="Laki - Laki">Laki - Laki</option>
-                                                                            <option
-                                                                                <?= $data['gender'] == 'Perempuan' ? 'selected' : '' ?>
-                                                                                value="Perempuan">Perempuan</option>
-                                                                            </select>
-                                                                            <input type="text"
-                                                                                class="border rounded-0 form-control"
-                                                                                style="width: 440px;margin-bottom: 15px;"
-                                                                                placeholder="Alamat" name="alamat"
-                                                                                value="<?= $data['alamat'] ?>" />
-                                                                            <input type="text"
-                                                                                class="border rounded-0 form-control"
-                                                                                style="width: 440px;margin-bottom: 15px;"
-                                                                                placeholder="Perguruan Tinggi" name="pt"
-                                                                                value="<?= $data['pt'] ?>" />
-                                                                            <input type="text"
-                                                                                class="border rounded-0 form-control"
-                                                                                placeholder="Jurusan"
-                                                                                style="margin-bottom: 15px;width: 440px;"
-                                                                                name="jurusan" value="<?= $data['jurusan'] ?>" />
-                                                                            <select type="text"
-                                                                                class="border rounded-0 form-control"
-                                                                                style="width: 440px;margin-bottom: 15px;"
-                                                                                placeholder="Status" name="status" />
-                                                                            <option
-                                                                                <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>
-                                                                                value="Aktif">Aktif</option>
-                                                                            <option
-                                                                                <?= $data['status'] == 'Tidak Aktif' ? 'selected' : '' ?>
-                                                                                value="Tidak Aktif">Tidak Aktif</option>
-                                                                            </select>
+                                                                                placeholder="Nama" name="name"
+                                                                                value="<?= $data->name ?>" disabled/>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="nilai_laporan">Nilai Laporan</label>
+                                                                                <input type="number"
+                                                                                    class="border rounded-0 form-control"
+                                                                                    placeholder="Nilai Laporan KP"
+                                                                                    oninput="limitInputLength(this, 3)"
+                                                                                    maxlength="3"
+                                                                                    pattern="[0-9]{3}"
+                                                                                    style="margin-bottom: 15px;width: 440px;"
+                                                                                    name="nilai_laporan" value="<?= $data['nilai_laporan'] ?>" required />
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label" for="nilai_seminar">Nilai Seminar</label>
+                                                                                <input type="number"
+                                                                                    class="border rounded-0 form-control"
+                                                                                    placeholder="Nilai Seminar KP"
+                                                                                    oninput="limitInputLength(this, 3)"
+                                                                                    maxlength="3"
+                                                                                    pattern="[0-9]{3}"
+                                                                                    style="margin-bottom: 15px;width: 440px;"
+                                                                                    name="nilai_seminar" value="<?= $data['nilai_seminar'] ?>" required />
+                                                                            </div>
                                                                             <input type="submit" class="btn btn-success"
                                                                                 value="Save Changes" name="update"></input>
                                                                             <button type="button" class="btn btn-secondary"
@@ -452,7 +410,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
