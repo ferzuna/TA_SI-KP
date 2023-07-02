@@ -442,7 +442,7 @@ class MahasiswaController extends Controller
                 'b2' => $request->b2,
                 'b3' => $request->b3,
                 'b1' => $request->b1,
-                'status' => 0,
+                'status' => null,
             ]);
             Bimbingan::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,
@@ -460,7 +460,7 @@ class MahasiswaController extends Controller
                 'b2' => $request->b2,
                 'b3' => $request->b3,
                 'b1' => $request->b1,
-                'status' => 0,
+                'status' => null,
             ]);
             Bimbingan::where('NIM', $nim)->first()->update([
                 'makalah' => $request->makalah,

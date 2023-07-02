@@ -179,7 +179,7 @@ class DosenController extends Controller
         ->leftJoin('penilaians', 'penjadwalans.NIM', '=', 'penilaians.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status', 'penilaians.nilai_seminar', 'penilaians.nilai_laporan')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', 'acc jadwal')
+        ->where('penjadwalans.status', 'acc')
         ->where(function($check){
             $check->where('penilaians.nilai_seminar', null)
             ->orWhere('penilaians.nilai_laporan', null);
@@ -192,7 +192,7 @@ class DosenController extends Controller
         ->join('penilaians', 'penjadwalans.NIM', '=', 'penilaians.NIM')
         ->select('penjadwalans.id', 'users.name', 'permohonans.perusahaan', 'penjadwalans.kehadiran', 'penjadwalans.jadwal', 'penjadwalans.ruangan', 'penjadwalans.status', 'penilaians.nilai_seminar', 'penilaians.nilai_laporan')
         ->where('penjadwalans.NIP', Auth::user()->NIP)
-        ->where('penjadwalans.status', 'acc jadwal')
+        ->where('penjadwalans.status', 'acc')
         ->get();
         return view('dosen.jadwal', [
             'seminar1' => $seminar1,
@@ -341,6 +341,9 @@ class DosenController extends Controller
     }
 
     public function editbimbingan(Request $request, $id){
+        $this->validate($request, [
+            'catatan' => 'max:255'
+        ]);
         Bimbingan::find($id)->update([
             'status' => $request->status,
             'catatan' => $request->catatan,
@@ -357,11 +360,16 @@ class DosenController extends Controller
                 'nilai_seminar' => $request->nilai_seminar,
             ]);
         }else{
-            Penilaian::create([
-                'NIP' => Auth::user()->NIP,
-                'NIM' => $nim,
-                'nilai_laporan' => $request->nilai_laporan,
-                'nilai_seminar' => $request->nilai_seminar,
+            if(null !== $request->nilai_laporan && $request->nilai_seminar){
+                Penilaian::create([
+                    'NIP' => Auth::user()->NIP,
+                    'NIM' => $nim,
+                    'nilai_laporan' => $request->nilai_laporan,
+                    'nilai_seminar' => $request->nilai_seminar,
+                ]);
+            }
+            Penjadwalan::find($id)->update([
+                'status' => $request->status,
             ]);
         }
         return redirect(route('dosen.jadwal'));

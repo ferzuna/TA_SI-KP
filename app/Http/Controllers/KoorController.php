@@ -70,20 +70,45 @@ class KoorController extends Controller
 
     public function penilaian()
     {
-        $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
-        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'penilaians.a1', 'penilaians.b1', 'b5', 'penilaians.status as status')
-        ->where('penilaians.status', 1)->get();
-        $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
-        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'penilaians.a1', 'penilaians.b1', 'penilaians.b5', 'penilaians.status as status')
-        ->where('penilaians.status', 0)->get();
+        // $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        // ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        // ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
+        // ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'penilaians.a1', 'penilaians.b1', 'b5', 'penilaians.status as status')
+        // ->where('penilaians.status', 1)->get();
+        // $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        // ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        // ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
+        // ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'penilaians.a1', 'penilaians.b1', 'penilaians.b5', 'penilaians.status as status')
+        // ->where('penilaians.status', 0)->get();
         // dd($datas);
+        $tanggalSekarang = date('Y-m-d');
+        $arr1 = [];
+        $arr2 = [];
+        $arr3 = [];
+        $arr4 = [];
+        $mahasiswa = User::where('role_id', 1)->get();
+        foreach($mahasiswa as $belum){
+            if($belum->mhspenjadwalan->jadwal > $tanggalSekarang){
+                $arr1[] = $belum;
+            }
+        }
+
+        foreach($mahasiswa as $belumdinilai){
+            if($belumdinilai->mhspenjadwalan->jadwal < $tanggalSekarang && $belumdinilai->mhspenilaian->nilai_seminar == null && $belumdinilai->mhspenilaian->nilai_laporan == null){
+                $arr2[] = $belumdinilai;
+            }
+        }
+        
+        foreach($mahasiswa as $sudahdinilai){
+            if($sudahdinilai->mhspenilaian->nilai_laporan && $sudahdinilai->mhspenilaian->nilai_seminar){
+                $arr3[] = $sudahdinilai;
+            }
+        }
+
         return view('koordinator.penilaian', [
-            'datasudah' => $datasudah,
-            'databelum' => $databelum,
+            'mhsbelum' => $arr1,
+            'belumdinilai' => $arr2,
+            'sudahdinilai' => $arr3,
         ]);
     }
 
