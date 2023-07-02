@@ -90,8 +90,8 @@
                                                                                     <?= $data['status'] == 'revisi jadwal' ? 'selected' : '' ?>
                                                                                     value="revisi jadwal">Revisi Jadwal</option>
                                                                                 <option
-                                                                                    <?= $data['status'] == 'acc jadwal' ? 'selected' : '' ?>
-                                                                                    value="acc jadwal">ACC Jadwal</option>
+                                                                                    <?= $data['status'] == 'acc' ? 'selected' : '' ?>
+                                                                                    value="acc">ACC Jadwal</option>
                                                                                 </select>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"
@@ -188,8 +188,8 @@
                                                                                     <?= $data['status'] == 'revisi jadwal' ? 'selected' : '' ?>
                                                                                     value="revisi jadwal">Revisi Jadwal</option>
                                                                                 <option
-                                                                                    <?= $data['status'] == 'acc jadwal' ? 'selected' : '' ?>
-                                                                                    value="acc jadwal">ACC Jadwal</option>
+                                                                                    <?= $data['status'] == 'acc' ? 'selected' : '' ?>
+                                                                                    value="acc">ACC Jadwal</option>
                                                                                 </select>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"
@@ -285,7 +285,7 @@
                                                                                     maxlength="3"
                                                                                     pattern="[0-9]{3}"
                                                                                     style="margin-bottom: 15px;width: 440px;"
-                                                                                    name="nilai_laporan" value="<?= $data['nilai_laporan'] ?>" required />
+                                                                                    name="nilai_laporan" value="<?= $data['nilai_laporan'] ?>"  />
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="nilai_seminar">Nilai Seminar</label>
@@ -296,7 +296,7 @@
                                                                                     maxlength="3"
                                                                                     pattern="[0-9]{3}"
                                                                                     style="margin-bottom: 15px;width: 440px;"
-                                                                                    name="nilai_seminar" value="<?= $data['nilai_seminar'] ?>" required />
+                                                                                    name="nilai_seminar" value="<?= $data['nilai_seminar'] ?>"  />
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="form-control-label" for="status">Status</label>
@@ -308,8 +308,8 @@
                                                                                     <?= $data['status'] == 'revisi jadwal' ? 'selected' : '' ?>
                                                                                     value="revisi jadwal">Revisi Jadwal</option>
                                                                                 <option
-                                                                                    <?= $data['status'] == 'acc jadwal' ? 'selected' : '' ?>
-                                                                                    value="acc jadwal">ACC Jadwal</option>
+                                                                                    <?= $data['status'] == 'acc' ? 'selected' : '' ?>
+                                                                                    value="acc">ACC Jadwal</option>
                                                                                 </select>
                                                                             </div>
                                                                             <input type="submit" class="btn btn-success"

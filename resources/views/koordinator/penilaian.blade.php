@@ -38,12 +38,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($databelum as $data)
+                                                @foreach ($mhsbelum as $data)
                                                     <tr> 
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['NIM'] ?></td>
-                                                        <td><?= $data['semester'] ?></td>
-                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                        <td><?= $data->mhspendaftaran->pendaftarandosen->name ?></td>
+                                                        <td><?= $data->mhspermohonan->selesai ?></td>
+                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data->mhspenilaian->id ?>' target="_blank">Detail berkas</a></td>
                                                         <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                         <td style="display:flex">
                                                             <div class="icon-wrap" data-target="tooltip" data-placement="top" title="Setujui">
@@ -116,12 +117,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($datasudah as $data)
+                                                @foreach ($belumdinilai as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['NIM'] ?></td>
-                                                        <td><?= $data['semester'] ?></td>
-                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                        <td><?= $data->mhspendaftaran->pendaftarandosen->name ?></td>
+                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data->mhspenilaian->id ?>' target="_blank">Detail berkas</a></td>
                                                         <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                     </tr>
                                                 @endforeach
@@ -156,12 +157,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($datasudah as $data)
+                                                @foreach ($sudahdinilai as $data)
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['NIM'] ?></td>
-                                                        <td><?= $data['semester'] ?></td>
-                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                        <td><?= $data->mhspendaftaran->pendaftarandosen->name ?></td>
+                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data->mhspenilaian->id ?>' target="_blank">Detail berkas</a></td>
                                                         <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                     </tr>
                                                 @endforeach
@@ -200,8 +201,8 @@
                                                     <tr>
                                                         <td><?= $data['name'] ?></td>
                                                         <td><?= $data['NIM'] ?></td>
-                                                        <td><?= $data['semester'] ?></td>
-                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data['id'] ?>' target="_blank">Detail berkas</a></td>
+                                                        <td><?= $data->mhspendaftaran->pendaftarandosen->name ?></td>
+                                                        <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data->mhspenilaian->id ?>' target="_blank">Detail berkas</a></td>
                                                         <td>{{ $data['status'] ? 'disetujui' : 'belum disetujui' }}</td>
                                                     </tr>
                                                 @endforeach
