@@ -100,15 +100,21 @@ class KoorController extends Controller
         }
         
         foreach($mahasiswa as $sudahdinilai){
-            if($sudahdinilai->mhspenilaian->nilai_laporan && $sudahdinilai->mhspenilaian->nilai_seminar){
+            if($sudahdinilai->mhspenilaian->nilai_laporan && $sudahdinilai->mhspenilaian->nilai_seminar && !($sudahdinilai->mhspenilaian->b3)){
                 $arr3[] = $sudahdinilai;
             }
         }
 
+        foreach($mahasiswa as $berkassudah){
+            if($berkassudah->mhspenilaian->b3){
+                $arr4[] = $berkassudah;
+            }
+        }
         return view('koordinator.penilaian', [
             'mhsbelum' => $arr1,
             'belumdinilai' => $arr2,
             'sudahdinilai' => $arr3,
+            'berkassudah' => $arr4,
         ]);
     }
 
