@@ -35,6 +35,7 @@
                                                     <th>NIM</th>
                                                     <th>Dosen Pembimbing</th>
                                                     <th>Selesai KP</th>
+                                                    <th>Detail Berkas</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -45,45 +46,7 @@
                                                         <td><?= $data->mhspendaftaran->pendaftarandosen->name ?></td>
                                                         <td><?= $data->mhspermohonan->selesai ?></td>
                                                         <td><a href='/koordinator/penilaian/berkas-akhir/<?= $data->mhspenilaian->id ?>' target="_blank">Detail berkas</a></td>
-                                                        <td style="display:flex">
-                                                            <div class="icon-wrap" data-target="tooltip" data-placement="top" title="Setujui">
-                                                                <i class="fas fa-check-circle" style="padding-left: 9px;"
-                                                                    type="button" data-toggle="modal"
-                                                                    data-target="#approve<?= $data['id'] ?>"></i>
-                                                            </div>
-                                                        </td>
                                                     </tr>
-                                                    <!-- approved -->
-                                                    <div class="modal fade" id="approve<?= $data['id'] ?>"
-                                                        tabindex="-1" role="dialog"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">Setujui Data</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="col-md-6">
-                                                                        <form method="POST"
-                                                                            action="{{ route('koordinator.penilaianapproved', $data['id']) }}">
-                                                                            @csrf
-                                                                            <h6>Apakah Anda Yakin?</h6>
-                                                                            <input type="submit"
-                                                                                class="btn btn-success" value="Ya"
-                                                                                name="koordinator.penilaianapproved"></input>
-                                                                            <button type="button"
-                                                                                class="btn btn-secondary"
-                                                                                data-dismiss="modal">Tidak</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
@@ -92,6 +55,7 @@
                                                     <td><strong>NIM</strong></td>
                                                     <td><strong>Dosen Pembimbing</strong></td>
                                                     <td><strong>Selesai KP</strong></td>
+                                                    <td><strong>Detail Berkas</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -113,6 +77,7 @@
                                                     <th>NIM</th>
                                                     <th>Dosen Pembimbing</th>
                                                     <th>Selesai KP</th>
+                                                    <th>Detail Berkas</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -131,7 +96,8 @@
                                                     <td><strong>Nama</strong></td>
                                                     <td><strong>NIM</strong></td>
                                                     <td><strong>Dosen Pembimbing</strong></td>
-                                                    <td><strong>Selesai</strong></td>
+                                                    <td><strong>Selesai KP</strong></td>
+                                                    <td><strong>Detail Berkas</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -153,6 +119,7 @@
                                                     <th>NIM</th>
                                                     <th>Dosen Pembimbing</th>
                                                     <th>Selesai KP</th>
+                                                    <th>Detail Berkas</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -172,6 +139,7 @@
                                                     <td><strong>NIM</strong></td>
                                                     <td><strong>Dosen Pembimbing</strong></td>
                                                     <td><strong>Selesai KP</strong></td>
+                                                    <td><strong>Detail Berkas</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -193,6 +161,7 @@
                                                     <th>NIM</th>
                                                     <th>Dosen Pembimbing</th>
                                                     <th>Selesai KP</th>
+                                                    <th>Detail Berkas</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -212,6 +181,7 @@
                                                     <td><strong>NIM</strong></td>
                                                     <td><strong>Dosen Pembimbing</strong></td>
                                                     <td><strong>Selesai KP</strong></td>
+                                                    <td><strong>Detail Berkas</strong></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
