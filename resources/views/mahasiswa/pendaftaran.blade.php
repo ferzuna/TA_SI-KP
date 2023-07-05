@@ -39,10 +39,10 @@
                         @csrf
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="a1"><b>KP A1</b></label>
-                                <input id="a1-input" class="form-control" type="text" name="a1"
-                                    value="{{ isset($pendaftaran['a1']) ? $pendaftaran['a1'] : '' }}" required>
-                                <div class="form-text">Input link Folder Google Drive dokumen terkait</div>
+                                <label for="topik_kp"><b>Topik Kerja Praktik</b></label>
+                                <input class="form-control" type="text" name="topik_kp"
+                                    value="{{ isset($pendaftaran['topik_kp']) ? $pendaftaran['topik_kp'] : '' }}" required>
+                                <div class="form-text">Contoh: Perangkat Lunak, Jaringan, dan lain-lain</div>
                             </div>
                             <div class="form-group">
                                 <label for="diterima"><b>Email/Surat Diterima KP</b></label>
@@ -89,7 +89,7 @@
 
 @section('script')
     <script>
-    const inputs = document.querySelectorAll('#a1-input, #bukti-input');
+    const inputs = document.querySelectorAll('#bukti-input');
     const linkRegex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/;
 
     inputs.forEach(input => {

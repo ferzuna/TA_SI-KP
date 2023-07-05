@@ -30,11 +30,13 @@ class PermohonanController extends Controller
         $this->validate($request, [
             'perusahaan' => 'required|string|max:50',
             'proposal' => 'string|max:255',
+            'alamat' => 'string|max:75',
         ]);
         $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if(isset($data)){
             Permohonan::where('NIM', Auth::user()->NIM)->first()->update([
                 'perusahaan' => $request->perusahaan,
+                'alamatins' => $request->alamat,
                 'proposal' => $request->proposal,
                 'mulai' => $request->mulai,
                 'selesai' => $request->selesai,
@@ -45,6 +47,7 @@ class PermohonanController extends Controller
             'NIM' => Auth::user()->NIM,
             'email' => Auth::user()->email,
             'perusahaan' => $request->perusahaan,
+            'alamatins' => $request->alamat,
             'proposal' => $request->proposal,
             'mulai' => $request->mulai,
             'selesai' => $request->selesai,

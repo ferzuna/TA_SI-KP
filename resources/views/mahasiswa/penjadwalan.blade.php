@@ -32,67 +32,69 @@
         @endif
         <div class="container">
             <div class="py-3">
-                <form action="{{ route('bimbingan.store') }}" method="post">
+                <form action="{{ route('penjadwalan.store') }}" method="post">
                     <div class="row">
 
-                        <h2 style="margin-bottom:2em"><b>Halaman Pengumpulan Berkas Bimbingan KP</b></h2>
+                        <h2 style="margin-bottom:2em"><b>Halaman Penjadwalan Seminar KP</b></h2>
                         @csrf
+                        
+                        
+                        <div class="col-lg-4 col-md-6">          
+                            <div class="form-group">
+                                <label for="jadwal-seminar"><b>Jadwal Seminar</b></label>
+                                <input class="form-control" type="datetime-local" name="jadwal" id=""
+                                    value="{{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : '' }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="jadwal-seminar"><b>Ruangan Seminar</b></label>
+                                <input class="form-control" type="text" name="ruangan" id=""
+                                    value="{{ isset($mhs->mhspenjadwalan->ruangan) ? $mhs->mhspenjadwalan->ruangan : '' }}">
+                                    <div class="form-text">Input Ruangan yang ingin digunakan. Contoh: Ruangan A-201</div>
+                            </div>                
+                            
+                        </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <label for="judul"><b>Judul Laporan KP</b></label>
-                                <input class="form-control" type="text" name="judul"
-                                    value="{{ isset($mhs->mhsbimbingan->judul) ? $mhs->mhsbimbingan->judul : '' }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="laporan"><b>Laporan</b></label>
-                                <input id="laporan-input" class="form-control" type="text" name="laporan"
-                                    value="{{ isset($mhs->mhsbimbingan->laporan) ? $mhs->mhsbimbingan->laporan : '' }}" required>
+                                <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
+                                <input id="survey-input" class="form-control" type="text" name="survey"
+                                    value="{{ isset($mhs->mhspenjadwalan->survey) ? $mhs->mhspenjadwalan->survey : '' }}">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
-                                <label for="makalah"><b>Makalah</b></label>
-                                <input id="makalah-input" class="form-control" type="text" name="makalah"
-                                    value="{{ isset($mhs->mhsbimbingan->makalah) ? $mhs->mhsbimbingan->makalah : '' }}" required>
-                                    <div class="form-text">Input link Google Drive dokumen terkait</div>
+                                <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>
+                                <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenjadwalan->kehadiran) ? $mhs->mhspenjadwalan->kehadiran : '' }}">
+                                <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
-                            @if (isset($mhs->mhsbimbingan->status))
+                            @if (isset($mhs->mhspenjadwalan->status))
                             <div class="form-group">
                                 <label for="status"><b>Status</b></label>
-                                @if($mhs->mhsbimbingan->status=='acc')
+                                @if($mhs->mhspenjadwalan->status=='acc')
                                 <select class="form-select input-border" name="status" id="" aria-label="Default select example" hidden>
-                                    <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                    <option <?= $mhs->mhspenjadwalan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                     </option>
                                 </select>
                                 <select class="form-select input-border" name="status" id="" aria-label="Default select example" disabled>
-                                    <option <?= $mhs->mhsbimbingan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
+                                    <option <?= $mhs->mhspenjadwalan->status == 'acc' ? 'selected' : '' ?> value="acc">ACC
                                     </option>
                                 </select>
                                 @else
                                 <select class="form-select input-border" name="status" id=""
                                     aria-label="Default select example">
-                                    <option <?= $mhs->mhsbimbingan->status == 'revisi' ? 'selected' : '' ?> id="" value="revisi">Belum diRevisi
+                                    <option <?= $mhs->mhspenjadwalan->status == 'revisi jadwal' ? 'selected' : '' ?> id="" value="revisi jadwal">Revisi Jadwal
                                     </option>
-                                    <option <?= $mhs->mhsbimbingan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Sudah Direvisi
+                                    <option <?= $mhs->mhspenjadwalan->status == 'sudah direvisi' ? 'selected' : '' ?> value="sudah direvisi">Jadwal sudah disesuaikan
                                     </option>
                                 </select>
                                 @endif
                                 
                             </div>
                             @endif
-                            
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            @if (isset($mhs->mhsbimbingan->catatan))
-                            <div class="form-group">
-                                <label for="makalah"><b>Catatan Revisi</b></label>
-                                <div class="form-control h-100">
-                                    {!!nl2br($mhs->mhsbimbingan->catatan)!!}
-                                </div>
-                                <div class="form-text">Input link Google Drive dokumen terkait</div>
-                            </div>
-                            @endif
-                            
-                        </div>
+
+
+
+
+
                         <div class="py-2">
                             <button type="submit" class="btn btn-light btn-outline-dark btn-submit">Submit</button>
                         </div>
@@ -105,7 +107,7 @@
 
 @section('script')
     <script>
-    const inputs = document.querySelectorAll('#laporan-input, #makalah-input, #kehadiran-input, #b1-input, #b2-input, #b3-input');
+    const inputs = document.querySelectorAll('#survey-input, #kehadiran-input, #b1-input, #b2-input, #b3-input');
     const linkRegex = /^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/;
 
     inputs.forEach(input => {

@@ -70,22 +70,51 @@ class KoorController extends Controller
 
     public function penilaian()
     {
-        $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
-        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
-        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'pendaftarans.a1', 'b1', 'b5', 'penilaians.status as status')
-        ->where('penilaians.status', 1)->get();
-        $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
-        ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
-        ->join('bimbingans', 'bimbingans.NIM', '=', 'penilaians.NIM')
-        ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
-        ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'pendaftarans.a1', 'bimbingans.b1', 'penilaians.b5', 'penilaians.status as status')
-        ->where('penilaians.status', 0)->get();
+        // $datasudah = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        // ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        // ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
+        // ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester','perusahaan', 'penilaians.a1', 'penilaians.b1', 'b5', 'penilaians.status as status')
+        // ->where('penilaians.status', 1)->get();
+        // $databelum = Penilaian::leftjoin('users', 'users.NIM', '=', 'penilaians.NIM')
+        // ->join('pendaftarans', 'pendaftarans.NIM', '=', 'penilaians.NIM')
+        // ->join('permohonans', 'penilaians.NIM', '=', 'permohonans.NIM')
+        // ->select('penilaians.id', 'users.name', 'users.NIM', 'users.semester', 'permohonans.perusahaan', 'penilaians.a1', 'penilaians.b1', 'penilaians.b5', 'penilaians.status as status')
+        // ->where('penilaians.status', 0)->get();
         // dd($datas);
+        $tanggalSekarang = date('Y-m-d');
+        $arr1 = [];
+        $arr2 = [];
+        $arr3 = [];
+        $arr4 = [];
+        $mahasiswa = User::where('role_id', 1)->get();
+        foreach($mahasiswa as $belum){
+            if($belum->mhspenjadwalan->jadwal > $tanggalSekarang){
+                $arr1[] = $belum;
+            }
+        }
+
+        foreach($mahasiswa as $belumdinilai){
+            if($belumdinilai->mhspenjadwalan->jadwal < $tanggalSekarang && $belumdinilai->mhspenilaian->nilai_seminar == null && $belumdinilai->mhspenilaian->nilai_laporan == null){
+                $arr2[] = $belumdinilai;
+            }
+        }
+        
+        foreach($mahasiswa as $sudahdinilai){
+            if($sudahdinilai->mhspenilaian->nilai_laporan && $sudahdinilai->mhspenilaian->nilai_seminar && !($sudahdinilai->mhspenilaian->b3)){
+                $arr3[] = $sudahdinilai;
+            }
+        }
+
+        foreach($mahasiswa as $berkassudah){
+            if($berkassudah->mhspenilaian->b3){
+                $arr4[] = $berkassudah;
+            }
+        }
         return view('koordinator.penilaian', [
-            'datasudah' => $datasudah,
-            'databelum' => $databelum,
+            'mhsbelum' => $arr1,
+            'belumdinilai' => $arr2,
+            'sudahdinilai' => $arr3,
+            'berkassudah' => $arr4,
         ]);
     }
 
@@ -98,10 +127,10 @@ class KoorController extends Controller
 
     public function berkasakhir($id) {
         $mhs = User::join('permohonans', 'users.NIM', 'permohonans.NIM')->join('pendaftarans', 'users.NIM', 'pendaftarans.NIM')
-        ->join('penjadwalans', 'users.NIM', 'penjadwalans.NIM')->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
+        ->join('bimbingans', 'users.NIM', 'bimbingans.NIM')
         ->join('penilaians', 'users.NIM', 'penilaians.NIM')
         ->select('users.id', 'users.name', 'users.semester','users.image', 'users.NIM', 'permohonans.perusahaan', 'pendaftarans.bukti', 'bimbingans.laporan',
-         'bimbingans.makalah', 'pendaftarans.a1', 'bimbingans.b1', 'bimbingans.b2', 'bimbingans.b3', 'penilaians.a2',
+         'bimbingans.makalah', 'penilaians.a1', 'penilaians.b1', 'penilaians.b2', 'penilaians.b3', 'penilaians.a2',
           'penilaians.b4', 'penilaians.b5')
         ->where('penilaians.id', $id)->first();
         // dd($mhs);

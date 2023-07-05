@@ -18,7 +18,9 @@
                         
                         @if (isset($mhs->mhspermohonan->status))
                         @if ($mhs->mhspermohonan->status == 1)
-                        <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP untuk Perusahaan <a href="{{ route('export-pdf') }}">disini</a>, untuk Fakultas <a href="{{ route('permohonan-fakultas') }}">disini</a>.
+                        <div class="alert alert-success">Permohonan KP Anda sudah diterima, download surat permohonan KP 
+                            {{-- untuk Perusahaan <a href="{{ route('export-pdf') }}">disini</a>, untuk Fakultas  --}}
+                            <a href="{{ route('permohonan-fakultas') }}">disini</a>.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true" style="color: #181818">&times;</span>
                               </button>
@@ -116,8 +118,13 @@
 
                             </div>
                             <div class="media-right">
-                                Pelaksanaan seminar kerja praktik akan dilaksanakan pada tanggal :
-                                {{ isset($mhs->mhspenjadwalan->jadwal) ? $mhs->mhspenjadwalan->jadwal : '' }}
+                                <b>Dosen Pembimbing :</b> {{ isset($dosbing['name']) ? $dosbing['name'] : 'Belum Ditentukan' }}
+                                <br>
+                                @if (isset($mhs->mhspendaftaran) && $mhs->mhspendaftaran->status == 1)
+                                <span>
+                                    <b style="color: green">Berkas KP A1 dapat didownload <a href="{{ route('kp-a1')}}">disini</a></b>
+                                </span>
+                                @endif
                             </div>
                         </div>
                         <div class="banner">
@@ -125,15 +132,7 @@
 
                             </div>
                             <div class="media-right">
-                                Dosen Pembimbing : {{ isset($dosbing['name']) ? $dosbing['name'] : '' }}
-                            </div>
-                        </div>
-                        <div class="banner">
-                            <div class="media-left">
-
-                            </div>
-                            <div class="media-right">
-                                Pelaksanaan Kerja Praktik dilaksanakan di :
+                                <b>Pelaksanaan KP dilaksanakan di :</b>
                                 {{ isset($mhs->mhspermohonan->perusahaan) ? $mhs->mhspermohonan->perusahaan : '' }}
                             </div>
                         </div>
@@ -142,11 +141,31 @@
 
                             </div>
                             <div class="media-right">
-                                Mahasiswa mencari tempat/lokasi Kerja Praktek, setelah diterima Mahasiswa mengajukan Surat
-                                Permohonan Kerja Praktek dan proposal
-                                pengajuan pelaksanaan Kerja Praktek ke Dosen Pembimbing
+                                <b>Pelaksanaan seminar KP :</b>
+                                {{ isset($mhs->mhspenjadwalan->jadwal) ? Carbon\Carbon::parse($mhs->mhspenjadwalan->jadwal)->isoFormat('dddd, D MMMM Y | HH:mm')  : 'Belum Dijadwalkan' }}
+                                <br>
+                                @if (isset($mhs->mhspenjadwalan) && $mhs->mhspenjadwalan->status == 'acc jadwal')
+                                <span>
+                                    <b style="color: green">Berkas KP B1 dapat didownload  <a href="{{ route('kp-b1')}}">disini</a></b>
+                                </span>
+                                @endif
                             </div>
                         </div>
+                        
+                        @if (isset($mhs->mhspenilaian->nilai_laporan ) && isset($mhs->mhspenilaian->nilai_seminar))
+                        <div class="banner">
+                            <div class="media-left">
+
+                            </div>
+                            <div class="media-right">
+                               
+                                <span>
+                                    <b style="color: green">Berkas KP B3 dapat didownload  <a href="{{ route('kp-b3')}}">disini</a></b>
+                                </span>
+                               
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -207,14 +226,14 @@
                         @endif
                     </div>
                     <div class="row">
-                        @if(isset($mhs->mhspendaftaran) && $mhs->mhspermohonan->status == 1)
+                        @if(isset($mhs->mhspendaftaran) && $mhs->mhspermohonan->status == 1 && $mhs->mhspendaftaran->status == 1)
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">
                                     <a href="{{ route('pengumpulan') }}" class="link-dark">
                                         <div class="card-content">
-                                            <h3 class="text-center"><b>Pengumpulan Berkas</b></h3>
-                                            <p style="margin-top:2em; font-size:16px">Pengumpulan berkas yang berkairan dengan magang yang peru
+                                            <h3 class="text-center"><b>Bimbingan Laporan</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Pengumpulan berkas yang berkaitan dengan magang yang perlu
                                                 ditanda
                                                 tangan diikumpulkan disini
                                             </p>
@@ -229,7 +248,7 @@
                                 <div class="menu-wrap" style="background-color: grey">
                                     <div>
                                         <div class="card-content">
-                                            <h3 class="text-center"><b>Pengumpulan Berkas</b></h3>
+                                            <h3 class="text-center"><b>Bimbingan Laporan</b></h3>
                                             <p style="margin-top:2em; font-size:16px">Pengumpulan berkas yang berkairan dengan magang yang peru
                                                 ditanda
                                                 tangan diikumpulkan disini
@@ -240,7 +259,36 @@
                             </div>
                         </div>
                         @endif
-                        @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' && $mhs->mhspermohonan->status == 1)
+                        @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' && $mhs->mhspermohonan->status == 1 && $mhs->mhspendaftaran->status == 1)
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap">
+                                    <a href="{{ route('penjadwalan') }}" class="link-dark">
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Penjadwalan Seminar</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Penjadwalan seminar yang dilakukan untuk menentukan waktu dan tempat dapat dilakukan disini.
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                        <div class="col-lg-6">
+                            <div class="m-3">
+                                <div class="menu-wrap" style="background-color: grey">
+                                    <div>
+                                        <div class="card-content">
+                                            <h3 class="text-center"><b>Penjadwalan Seminar</b></h3>
+                                            <p style="margin-top:2em; font-size:16px">Penjadwalan seminar yang dilakukan untuk menentukan waktu dan tempat dapat dilakukan disini.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if(isset($mhs->mhsbimbingan) && $mhs->mhsbimbingan->status == 'acc' && $mhs->mhspermohonan->status == 1 && $mhs->mhspendaftaran->status == 1)
                         <div class="col-lg-6">
                             <div class="m-3">
                                 <div class="menu-wrap">

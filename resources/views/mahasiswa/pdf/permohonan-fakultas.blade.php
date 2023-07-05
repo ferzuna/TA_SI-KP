@@ -120,6 +120,7 @@
 
             <ul style="list-style-type: none; padding: 0;">
                 <li style="padding-bottom:0.5em;"> Nama Instansi<span style="margin-left: 30px;">: {{$permohonan->perusahaan}}</span></li>
+                <li style="padding-bottom:0.5em;"> Alamat Instansi<span style="margin-left: 21px;">: {{$permohonan->alamatins}}</span></li>
              </ul>
          
             
