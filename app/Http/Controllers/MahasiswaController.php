@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use NumberFormatter;
 use App\Models\Bimbingan;
 use App\Models\Penilaian;
 use App\Models\Permohonan;
 use App\Models\Pendaftaran;
 use App\Models\Penjadwalan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
-use NumberFormatter;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class MahasiswaController extends Controller
 {
@@ -596,21 +597,27 @@ class MahasiswaController extends Controller
     }
 
     // ini buat profil picturenya, blom jadi
-    public function avatar(Request $request)
+    public function drive()
     {
-        // $this->validate($request, [
-        //     'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        // ]);
+        return view('/mahasiswa/drive');
+    }
+    public function driveUpload(Request $request)
+    {
+        $this->validate($request, [
+            'proposal' => 'file|max:5120',
+        ]);
 
-        // $image_path = $request->file('image')->store('image', 'public');
+        $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
 
-        // User::where('name', Auth::user()->name)->update([
-        //     'image' => $image_path,
-        // ]);
-        $s = "ijln";
-        dd($s);
+        // Gdrive::makeDir($foldername);
+        // Gdrive::put($request->file('proposal'), $request->file('proposal'));
 
-        return redirect('/mahasiswa');
+        $file = $request->file('proposal');
+        $fileName = $file->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileName, file_get_contents($file));
+        
+        return Gdrive::all('/', true);
+        
     }
 
     public function balancing(){
