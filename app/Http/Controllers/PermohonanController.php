@@ -12,6 +12,8 @@ use App\Mail\ContactFormMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class PermohonanController extends Controller
 {
@@ -29,15 +31,24 @@ class PermohonanController extends Controller
     {
         $this->validate($request, [
             'perusahaan' => 'required|string|max:50',
-            'proposal' => 'string|max:255',
+            'proposal' => 'file|max:5120|required',
             'alamat' => 'string|max:75',
         ]);
+        
+        $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
+        $file = $request->file('proposal');
+        $fileName = $file->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileName, file_get_contents($file));
+        $link = 'https://drive.google.com/file/d/';
+        $google = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileName)->first()['extraMetadata']['id'];
+        $name = Gdrive::all('/', true)->where('path', $foldername . '/' . $fileName)->first()['path'];
+
         $data = Permohonan::where('NIM', Auth::user()->NIM)->first();
         if(isset($data)){
             Permohonan::where('NIM', Auth::user()->NIM)->first()->update([
                 'perusahaan' => $request->perusahaan,
                 'alamatins' => $request->alamat,
-                'proposal' => $request->proposal,
+                'proposal' => $google,
                 'mulai' => $request->mulai,
                 'selesai' => $request->selesai,
                 'status' => false,
@@ -48,7 +59,7 @@ class PermohonanController extends Controller
             'email' => Auth::user()->email,
             'perusahaan' => $request->perusahaan,
             'alamatins' => $request->alamat,
-            'proposal' => $request->proposal,
+            'proposal' => $google,
             'mulai' => $request->mulai,
             'selesai' => $request->selesai,
             'status'=> false,

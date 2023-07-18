@@ -32,7 +32,7 @@
         @endif
         <div class="container">
             <div class="py-3">
-                <form action="{{ route('penjadwalan.store') }}" method="post">
+                <form action="{{ route('penjadwalan.store') }}" method="post" enctype="multipart/form-data">
                     <div class="row">
 
                         <h2 style="margin-bottom:2em"><b>Halaman Penjadwalan Seminar KP</b></h2>
@@ -56,13 +56,15 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="survey-perusahaan"><b>Form Survey Perusahaan</b></label>
-                                <input id="survey-input" class="form-control" type="text" name="survey"
-                                    value="{{ isset($mhs->mhspenjadwalan->survey) ? $mhs->mhspenjadwalan->survey : '' }}">
+                                <!-- <input id="survey-input" class="form-control" type="text" name="survey"
+                                    value="{{ isset($mhs->mhspenjadwalan->survey) ? $mhs->mhspenjadwalan->survey : '' }}"> -->
+                                    <input class="form-control" type="file" id="survey" name="survey">
                                     <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             <div class="form-group">
                                 <label for="kehadiran"><b>Bukti Kehadiran 10 Seminar</b></label>
-                                <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenjadwalan->kehadiran) ? $mhs->mhspenjadwalan->kehadiran : '' }}">
+                                <!-- <input id="kehadiran-input" class="form-control" type="text" name="kehadiran" value="{{ isset($mhs->mhspenjadwalan->kehadiran) ? $mhs->mhspenjadwalan->kehadiran : '' }}"> -->
+                                <input class="form-control" type="file" id="kehadiran" name="kehadiran">
                                 <div class="form-text">Input link Google Drive dokumen terkait</div>
                             </div>
                             @if (isset($mhs->mhspenjadwalan->status))

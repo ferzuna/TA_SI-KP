@@ -33,7 +33,7 @@
         @endif
         <div class="container">
             <div class="py-3">
-                <form action="{{ route('pendaftaran.store') }}" method="POST">
+                <form action="{{ route('pendaftaran.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <h2 style="margin-bottom:2em"><b>Halaman Pendaftaran KP</b></h2>
                         @csrf
@@ -46,8 +46,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="diterima"><b>Email/Surat Diterima KP</b></label>
-                                <input id="bukti-input" class="form-control" type="text" name="bukti"
-                                    value="{{ isset($pendaftaran['bukti']) ? $pendaftaran['bukti'] : '' }}" required>
+                                <!-- <input id="bukti-input" class="form-control" type="text" name="bukti"
+                                    value="{{ isset($pendaftaran['bukti']) ? $pendaftaran['bukti'] : '' }}" required> -->
+                                    <input class="form-control" type="file" id="bukti" name="bukti">
                                 <div class="form-text">Input link Folder Google Drive dokumen terkait</div>
                             </div>
                         </div>
