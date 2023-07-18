@@ -86,21 +86,29 @@ class MahasiswaController extends Controller
         }
         $this->validate($request, [
             'topik_kp' => 'required|string|max:255',
-            'bukti' => 'max:255',
+            'bukti' => 'file|max:5120|required',
             'dosbing' => 'required|string|max:20',
         ]);
+        $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
+        $file = $request->file('bukti');
+        $fileName = $file->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileName, file_get_contents($file));
+        $link = 'https://drive.google.com/file/d/';
+        $google = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileName)->first()['extraMetadata']['id'];
+        // $google = Gdrive::all('/', true);
+        // dd($google);
         // pengondisian untuk data yang sudah ada
         if (isset($ini)) {
             Pendaftaran::where('NIM', Auth::user()->NIM)->first()->update([
                 'topik_kp' => $request->topik_kp,
-                'bukti' => $request->bukti,
+                'bukti' => $google,
                 'NIP' => $request->dosbing,
             ]);
         } else {
             Pendaftaran::create([
                 'NIM' => Auth::user()->NIM,
                 'topik_kp' => $request->topik_kp,
-                'bukti' => $request->bukti,
+                'bukti' => $google,
                 'NIP' => $request->dosbing,
             ]);
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
@@ -283,10 +291,22 @@ class MahasiswaController extends Controller
     public function bimbinganstore(Request $request)
     {
         $this->validate($request, [
-            'makalah' => 'max:255',
+            'makalah' => 'file|max:5120|required',
             'judul' => 'max:255',
-            'laporan' => 'max:255',
+            'laporan' => 'file|max:5120|required',
         ]);
+
+        $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
+        $link = 'https://drive.google.com/file/d/';
+        $filelaporan = $request->file('laporan');
+        $fileNamelaporan = $filelaporan->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileNamelaporan, file_get_contents($filelaporan));
+        $googlelaporan = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNamelaporan)->first()['extraMetadata']['id'];
+        $filemakalah = $request->file('makalah');
+        $fileNamemakalah = $filemakalah->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileNamemakalah, file_get_contents($filemakalah));
+        $googlemakalah = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNamemakalah)->first()['extraMetadata']['id'];
+
         $nim = Auth::user()->NIM;
         $data = Bimbingan::where('NIM', $nim)->first();
         $penilaian = Penilaian::where('NIM', $nim)->first();
@@ -294,8 +314,8 @@ class MahasiswaController extends Controller
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Bimbingan::where('NIM', $nim)->first()->update([
                 'judul' => $request->judul,
-                'makalah' => $request->makalah,
-                'laporan' => $request->laporan,
+                'makalah' => $googlemakalah,
+                'laporan' => $googlelaporan,
                 'status' => $request->status,
             ]);
         } else {
@@ -304,8 +324,8 @@ class MahasiswaController extends Controller
                 'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
                 'judul' => $request->judul,
-                'makalah' => $request->makalah,
-                'laporan' => $request->laporan,
+                'makalah' => $googlemakalah,
+                'laporan' => $googlelaporan,
             ]);
 
             $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
@@ -334,10 +354,21 @@ class MahasiswaController extends Controller
     public function penjadwalanstore(Request $request)
     {
         $this->validate($request, [
-            'kehadiran' => 'max:255',
-            'survey' => 'max:255',
+            'kehadiran' => 'file|max:5120|required',
+            'survey' => 'file|max:5120|required',
             'ruangan' => 'max:15',
         ]);
+        $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
+        $link = 'https://drive.google.com/file/d/';
+        $filesurvey = $request->file('survey');
+        $fileNamesurvey = $filesurvey->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileNamesurvey, file_get_contents($filesurvey));
+        $googlesurvey = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNamesurvey)->first()['extraMetadata']['id'];
+        $filekehadiran = $request->file('kehadiran');
+        $fileNamekehadiran = $filekehadiran->getClientOriginalName(); // Retrieve the original file name
+        Storage::disk('google')->put($foldername . '/' . $fileNamekehadiran, file_get_contents($filekehadiran));
+        $googlekehadiran = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNamekehadiran)->first()['extraMetadata']['id'];
+
         $nim = Auth::user()->NIM;
         $pendaftaran = Pendaftaran::where('NIM', $nim)->first();
         $data = Bimbingan::where('NIM', $nim)->first();
@@ -346,9 +377,9 @@ class MahasiswaController extends Controller
         if (isset($penjadwalan)) {
             Penjadwalan::where('NIM', $nim)->first()->update([
                 'jadwal' => $request->jadwal,
-                'kehadiran' => $request->kehadiran,
+                'kehadiran' => $googlekehadiran,
                 'ruangan' => $request->ruangan,
-                'survey' => $request->survey,
+                'survey' => $googlesurvey,
                 'status' => $request->status,
             ]);
         } else {
@@ -357,8 +388,8 @@ class MahasiswaController extends Controller
                 'NIM' => Auth::user()->NIM,
                 'jadwal' => $request->jadwal,
                 'ruangan' => $request->ruangan,
-                'kehadiran' => $request->kehadiran,
-                'survey' => $request->survey,
+                'kehadiran' => $googlekehadiran,
+                'survey' => $googlesurvey,
                 'status' => null
             ]);
 
@@ -410,7 +441,9 @@ class MahasiswaController extends Controller
     {
         $mhs = User::where('email', Auth::user()->email)->first();
         // untuk memastikan apakah user sudah melakukan proses permohonan kerja praktik
+        $name = Auth::user()->name .' - ' . Auth::user()->NIM;
         $perusahaan = Permohonan::where('NIM', Auth::user()->NIM)->first();
+        $datas = Gdrive::all('/', true)->where('path', $name);
         if (!isset($perusahaan)) {
             return redirect('/mahasiswa/permohonan')->with('mohon ini form pendaftaran terlebih dahulu');
         }
@@ -422,51 +455,86 @@ class MahasiswaController extends Controller
     public function finalisasistore(Request $request)
     {
         $this->validate($request, [
-            'makalah' => 'max:255',
-            'laporan' => 'max:255',
-            'a1' => 'max:255',
-            'a2' => 'max:255',
-            'b1' => 'max:255',
-            'b2' => 'max:255',
-            'b3' => 'max:255',
-            'b4' => 'max:255',
-            'b5' => 'max:255',
+            'a1' => 'file|max:5120|required',
+            'a2' => 'file|max:5120|required',
+            'b1' => 'file|max:5120|required',
+            'b2' => 'file|max:5120|required',
+            'b3' => 'file|max:5120|required',
+            'b4' => 'file|max:5120|required',
+            'b5' => 'file|max:5120|required',
         ]);
+        
+        $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
+        $link = 'https://drive.google.com/file/d/';
+
+
+        $filea1 = $request->file('a1');
+        $fileNamea1 = $filea1->getClientOriginalName(); // Retrieve the original file name
+        $filea2 = $request->file('a2');
+        $fileNamea2 = $filea2->getClientOriginalName(); // Retrieve the original file name
+        $fileb1 = $request->file('b1');
+        $fileNameb1 = $fileb1->getClientOriginalName(); // Retrieve the original file name
+        $fileb2  = $request->file('b2');
+        $fileNameb2 = $fileb2->getClientOriginalName(); // Retrieve the original file name
+        $fileb3 = $request->file('b3');
+        $fileNameb3 = $fileb3->getClientOriginalName(); // Retrieve the original file name
+        $fileb4 = $request->file('b4');
+        $fileNameb4 = $fileb4->getClientOriginalName(); // Retrieve the original file name
+        $fileb5 = $request->file('b5');
+        $fileNameb5 = $fileb5->getClientOriginalName(); // Retrieve the original file name
+
+
+        Storage::disk('google')->put($foldername . '/' . $fileNamea1, file_get_contents($filea1));
+        $googlea1 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNamea1)->first()['extraMetadata']['id'];
+        Storage::disk('google')->put($foldername . '/' . $fileNamea2, file_get_contents($filea2));
+        $googlea2 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNamea2)->first()['extraMetadata']['id'];
+        Storage::disk('google')->put($foldername . '/' . $fileNameb1, file_get_contents($fileb1));
+        $googleb1 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNameb1)->first()['extraMetadata']['id'];
+        Storage::disk('google')->put($foldername . '/' . $fileNameb2, file_get_contents($fileb2));
+        $googleb2 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNameb2)->first()['extraMetadata']['id'];
+        Storage::disk('google')->put($foldername . '/' . $fileNameb3, file_get_contents($fileb3));
+        $googleb3 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNameb3)->first()['extraMetadata']['id'];
+        Storage::disk('google')->put($foldername . '/' . $fileNameb4, file_get_contents($fileb4));
+        $googleb4 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNameb4)->first()['extraMetadata']['id'];
+        Storage::disk('google')->put($foldername . '/' . $fileNameb5, file_get_contents($fileb5));
+        $googleb5 = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileNameb5)->first()['extraMetadata']['id'];
+
+
         $nim = Auth::user()->NIM;
         $data = Penilaian::where('NIM', $nim)->first();
         if (isset($data)) {
             Penilaian::where('NIM', $nim)->first()->update([
-                'a1' => $request->a1,
-                'a2' => $request->a2,
-                'b4' => $request->b4,
-                'b5' => $request->b5,
-                'b2' => $request->b2,
-                'b3' => $request->b3,
-                'b1' => $request->b1,
+                'a1' => $googlea1,
+                'a2' => $googlea2,
+                'b4' => $googleb4,
+                'b5' => $googleb5,
+                'b2' => $googleb2,
+                'b3' => $googleb3,
+                'b1' => $googleb1,
                 'status' => null,
             ]);
-            Bimbingan::where('NIM', $nim)->first()->update([
-                'makalah' => $request->makalah,
-                'laporan' => $request->laporan,
-            ]);
+            // Bimbingan::where('NIM', $nim)->first()->update([
+            //     'makalah' => $googlemakalah,
+            //     'laporan' => $googlelaporan,
+            // ]);
         } else {
             $dosbing = Pendaftaran::where('NIM', Auth::user()->NIM)->first()['NIP'];
             Penilaian::create([
                 'NIP' => $dosbing,
                 'NIM' => Auth::user()->NIM,
-                'a1' => $request->a1,
-                'a2' => $request->a2,
-                'b4' => $request->b4,
-                'b5' => $request->b5,
-                'b2' => $request->b2,
-                'b3' => $request->b3,
-                'b1' => $request->b1,
+                'a1' => $googlea1,
+                'a2' => $googlea2,
+                'b4' => $googleb4,
+                'b5' => $googleb5,
+                'b2' => $googleb2,
+                'b3' => $googleb3,
+                'b1' => $googleb1,
                 'status' => null,
             ]);
-            Bimbingan::where('NIM', $nim)->first()->update([
-                'makalah' => $request->makalah,
-                'laporan' => $request->laporan,
-            ]);
+            // Bimbingan::where('NIM', $nim)->first()->update([
+            //     'makalah' => $googlemakalah,
+            //     'laporan' => $googlelaporan,
+            // ]);
             // apakah bimbingan perlu dibuaat juga??
         }
         $status1 = Pendaftaran::where('NIM', Auth::user()->NIM)->first();
@@ -608,15 +676,17 @@ class MahasiswaController extends Controller
         ]);
 
         $foldername = Auth::user()->name .' - ' . Auth::user()->NIM;
-
-        // Gdrive::makeDir($foldername);
-        // Gdrive::put($request->file('proposal'), $request->file('proposal'));
-
         $file = $request->file('proposal');
         $fileName = $file->getClientOriginalName(); // Retrieve the original file name
         Storage::disk('google')->put($foldername . '/' . $fileName, file_get_contents($file));
-        
+        $link = 'https://drive.google.com/file/d/';
+        $google = $link . Gdrive::all('/', true)->where('path', $foldername . '/' . $fileName)->first()['extraMetadata']['id'];
+
+        $datas = Gdrive::all('/', true)->where('path', $foldername);
+        // return Gdrive::all('/', true);
         return Gdrive::all('/', true);
+        // return Gdrive::all('/', true)->where('path', $foldername . '/' . $fileName)->last();
+        // return Gdrive::get('path/filename.png');
         
     }
 

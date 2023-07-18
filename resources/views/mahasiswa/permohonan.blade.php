@@ -50,8 +50,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="proposal"><b>Proposal Perusahaan</b></label>
-                                <input id="proposal-input" class="form-control" type="text" name="proposal"
-                                    value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}">
+                                <!-- <input id="proposal-input" class="form-control" type="text" name="proposal"
+                                    value="{{ isset($data['proposal']) ? $data['proposal'] : '' }}"> -->
+                                    <input class="form-control" type="file" id="proposal" name="proposal">
                                     <div class="form-text">Input link Google Drive dokumen terkait dan berikan akses untuk mengedit</div>
                             </div>
                             
