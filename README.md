@@ -13,7 +13,7 @@ SIKP atau Sistem Informasi Kerja Praktik merupakan sebuah sistem informasi untuk
 Pada repository ini terdapat beberapa branch yang perlu diperhatikan.
 - [main] = berfungsi sebagai branch production. Branch ini digunakan apabila fitur sudah selesai di develop dan bebas dari bug. 
 - [development] = sesuai namanya, branch ini berfungsi sebagai tempat para pengembang untuk menggabungkan semua fitur yang telah dikembangkan oleh masing-masing pengembang. Apabila fitur yang dikerjakan sudah selesai dan bebas dari bug maka dapat dilakukan open pull request ke branch main untuk dimasukkan ke production.
-- [akbar, pajil] = branch untuk masing-masing pengembang. apabila sudah selesai mengembangkan fitur atau apapun dapat melakukan pull request ke development dulu dan direview codenya. branch ini dapat disesuaikan sesuai dengan jumlah pengembangnya. Mis: ada pengembang namanya asep, bisa dibuat dulu branch asep dan melakukan pull request dari branch development
+- [kibar, pajil] = branch untuk masing-masing pengembang. apabila sudah selesai mengembangkan fitur atau apapun dapat melakukan pull request ke development dulu dan direview codenya. branch ini dapat disesuaikan sesuai dengan jumlah pengembangnya. Mis: ada pengembang namanya asep, bisa dibuat dulu branch asep dan melakukan pull request dari branch development
 - [drive] = branch yang berfungsi untuk melakukan pengembangan integrasi SIKP dengan google drive api. Fitur ini masih dalam tahap pengembangan. Jadi apabila ada pengembang yang ingin melanjutkan fitur ini, maka branch ini wajib di pull request setelah melakukan pull request branch development (tetap membuat branch baru bagi pengembang baru)
 
 
